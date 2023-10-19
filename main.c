@@ -6,21 +6,20 @@
 /*   By: jesuserr <jesuserr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/25 19:40:52 by jesuserr          #+#    #+#             */
-/*   Updated: 2023/10/19 00:10:41 by jesuserr         ###   ########.fr       */
+/*   Updated: 2023/10/19 12:36:27 by jesuserr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fdf.h"
+#include "cub3D.h"
 
 void	init_map(char *file, t_fdf *fdf)
 {
 	ft_printf ("%s", BLUE);
 	fdf->raw_map = read_map(file, fdf);
-	fdf->offset_x = INIT_OFFSET_X;
-	fdf->offset_y = INIT_OFFSET_Y;
-	//ft_printf ("%sOK!\nAnalyzing Map... ", BLUE);
+	fdf->offset_x = MAP_X_OFFSET;
+	fdf->offset_y = MAP_Y_OFFSET;
+	ft_printf ("\n\n");
 	check_map(fdf);
-	//ft_printf ("%sOK!\n", BLUE);
 }
 
 void	init_win(t_fdf *fdf, char *s)
@@ -41,7 +40,7 @@ void	init_win(t_fdf *fdf, char *s)
 void	init_hooks(t_fdf *fdf)
 {
 	mlx_hook(fdf->mlx_win, 17, 0, close_window, fdf);
-	mlx_hook(fdf->mlx_win, 2, 0, key_pressed, fdf);	
+	mlx_hook(fdf->mlx_win, 2, 0, key_pressed, fdf);
 }
 
 int	main(int argc, char **argv)
@@ -53,7 +52,7 @@ int	main(int argc, char **argv)
 	init_map(argv[1], &fdf);
 	init_win(&fdf, argv[1]);
 	projection(&fdf);
-	mlx_put_image_to_window(fdf.mlx, fdf.mlx_win, fdf.img.img, 0, 0);	
+	mlx_put_image_to_window(fdf.mlx, fdf.mlx_win, fdf.img.img, 0, 0);
 	init_hooks(&fdf);
 	mlx_loop(fdf.mlx);
 	return (0);

@@ -6,13 +6,11 @@
 /*   By: jesuserr <jesuserr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/09 19:43:38 by jesuserr          #+#    #+#             */
-/*   Updated: 2023/10/19 01:42:21 by jesuserr         ###   ########.fr       */
+/*   Updated: 2023/10/19 12:44:03 by jesuserr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fdf.h"
-
-void	draw_square(t_fdf *fdf, t_point square, int size);
+#include "cub3D.h"
 
 void	projection(t_fdf *fdf)
 {
@@ -34,24 +32,4 @@ void	projection(t_fdf *fdf)
 	square.color = 0xFFFFFF;
 	draw_square(fdf, square, SQUARE_SIZE / 4);
 	mlx_put_pixel(fdf, fdf->player.x_pos, fdf->player.y_pos, DEF_COLOR);
-}
-
-void	draw_square(t_fdf *fdf, t_point square, int size)
-{
-	int		i;
-	t_line	line;
-			
-	i = 0;
-	line.x0 = square.x;
-	line.y0 = square.y;
-	line.x1 = square.x + size;
-	line.y1 = line.y0;
-	line.color = square.color;
-	while (i < size)
-	{
-		draw_line(line, fdf);
-		line.y0++;
-		line.y1++;
-		i++;
-	}
 }

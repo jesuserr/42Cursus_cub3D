@@ -6,11 +6,11 @@
 /*   By: jesuserr <jesuserr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/25 21:10:39 by jesuserr          #+#    #+#             */
-/*   Updated: 2023/06/12 10:12:37 by jesuserr         ###   ########.fr       */
+/*   Updated: 2023/10/19 12:30:09 by jesuserr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fdf.h"
+#include "cub3D.h"
 
 void	ft_error_handler(int error)
 {

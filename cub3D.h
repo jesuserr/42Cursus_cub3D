@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fdf.h                                              :+:      :+:    :+:   */
+/*   cub3D.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jesuserr <jesuserr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 11:34:08 by jesuserr          #+#    #+#             */
-/*   Updated: 2023/10/19 10:40:12 by jesuserr         ###   ########.fr       */
+/*   Updated: 2023/10/19 12:43:09 by jesuserr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FDF_H
-# define FDF_H
+#ifndef CUB3D_H
+# define CUB3D_H
 
 /*
 ** -.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-
@@ -32,9 +32,9 @@
 # define DEF_COLOR		0xf26e04
 # define WHITE			0xFFFFFF
 # define PI				3.141592654
-# define INIT_OFFSET_X	0
-# define INIT_OFFSET_Y	0
-# define INC_OFFSET		10
+# define MAP_X_OFFSET	32
+# define MAP_Y_OFFSET	32
+# define INC_OFFSET		4
 # define SQUARE_SIZE	32
 
 /*
@@ -58,6 +58,7 @@ typedef struct s_player
 {
 	float	x_pos;
 	float	y_pos;
+	float	angle;
 }	t_player;
 
 typedef struct s_point
@@ -98,7 +99,7 @@ typedef struct s_fdf
 {
 	void		*mlx;
 	void		*mlx_win;
-	char		*raw_map;	
+	char		*raw_map;
 	int			x_elem;
 	int			y_elem;
 	int			offset_x;
@@ -121,6 +122,7 @@ void	free_map_and_exit(t_fdf *fdf, int error, int flag);
 void	mlx_put_pixel(t_fdf *fdf, int x, int y, int color);
 void	draw_line(t_line line, t_fdf *fdf);
 void	line_direction(t_line *line, t_line_aux *line_aux);
+void	draw_square(t_fdf *fdf, t_point square, int size);
 
 int		key_pressed(int keycode, t_fdf *fdf);
 int		close_window(t_fdf *fdf);
@@ -131,7 +133,6 @@ void	init_hooks(t_fdf *fdf);
 
 char	*read_map(char *file, t_fdf *fdf);
 void	check_map(t_fdf *fdf);
-int		count_x_elem(char *line, int jump);
 void	parse_map(t_fdf *fdf, char *line);
 
 void	key_action_1(int keycode, t_fdf *fdf);

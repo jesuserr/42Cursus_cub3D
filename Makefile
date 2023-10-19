@@ -13,7 +13,7 @@
 LIBFT_DIR = libft/
 LIBX_DIR = minilibx_macos/
 
-NAME = fdf
+NAME = cub3D
 SRCS = errors.c graphics.c hooks.c main.c map_utils.c moves.c projections.c
 OBJS = $(SRCS:.c=.o)
 DEPS = $(SRCS:.c=.d)
@@ -22,7 +22,7 @@ INCLUDE = -I./ -I./minilibx_macos/ -I./libft/includes/
 RM = rm -f
 CFLAGS = -O3 -Wall -Wextra -Werror
 
-NORM = ${SRCS} fdf.h controls.h
+NORM = ${SRCS} cub3D.h controls.h
 GREEN = "\033[0;92m"
 RED = "\033[0;91m"
 BLUE = "\033[0;94m"
@@ -46,7 +46,7 @@ makelibx:
 	
 $(NAME): $(OBJS) $(LIBFT_DIR)libft.a $(LIBX_DIR)libmlx.a
 	$(CC) $(CFLAGS) $(OBJS) $(LIBFT_DIR)libft.a $(LIBX) -o $@
-	@echo ${GREEN}"FdF Compiled!\n"${NC};
+	@echo ${GREEN}"cub3D Compiled!\n"${NC};
 -include $(DEPS)
 
 clean:
