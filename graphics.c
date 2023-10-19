@@ -6,7 +6,7 @@
 /*   By: jesuserr <jesuserr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/06 16:03:40 by jesuserr          #+#    #+#             */
-/*   Updated: 2023/10/19 12:44:00 by jesuserr         ###   ########.fr       */
+/*   Updated: 2023/10/19 16:20:44 by jesuserr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,20 +62,58 @@ void	line_direction(t_line *line, t_line_aux *line_aux)
 
 void	draw_square(t_fdf *fdf, t_point square, int size)
 {
-	int		i;
+	int		x;
+	int		y;
+	int		x_copy;
+
+	y = 0;
+	while (y < size)
+	{
+		x = 0;
+		x_copy = square.x;
+		while (x < size)
+		{
+			mlx_put_pixel(fdf, x_copy, square.y, square.color);
+			x_copy++;
+			x++;
+		}
+		square.y++;
+		y++;
+	}
+}
+
+void	draw_rectangle(t_fdf *fdf, t_line diagonal)
+{
+	int		x;
+	int		y;
+	int		x_copy;
+	int		y_copy;
+
+	y = 0;
+	y_copy = diagonal.y0;
+	while (y < (diagonal.y1 - diagonal.y0))
+	{
+		x = 0;
+		x_copy = diagonal.x0;
+		while (x < (diagonal.x1 - diagonal.x0))
+		{
+			mlx_put_pixel(fdf, x_copy, y_copy, diagonal.color);
+			x_copy++;
+			x++;
+		}
+		y_copy++;
+		y++;
+	}
+}
+
+void	draw_pointer(t_fdf *fdf)
+{
 	t_line	line;
 
-	i = 0;
-	line.x0 = square.x;
-	line.y0 = square.y;
-	line.x1 = square.x + size;
-	line.y1 = line.y0;
-	line.color = square.color;
-	while (i < size)
-	{
-		draw_line(line, fdf);
-		line.y0++;
-		line.y1++;
-		i++;
-	}
+	line.x0 = fdf->player.x_pos;
+	line.y0 = fdf->player.y_pos;
+	line.x1 = line.x0 + WALL_SIZE / 1.5 * cos(fdf->player.angle * PI / 180);
+	line.y1 = line.y0 - WALL_SIZE / 1.5 * sin(fdf->player.angle * PI / 180);
+	line.color = 0xF0F0F0;
+	draw_line(line, fdf);
 }

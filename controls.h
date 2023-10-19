@@ -6,7 +6,7 @@
 /*   By: jesuserr <jesuserr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/16 12:30:23 by jesuserr          #+#    #+#             */
-/*   Updated: 2023/06/16 12:50:00 by jesuserr         ###   ########.fr       */
+/*   Updated: 2023/10/19 15:40:22 by jesuserr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@
 # define W_KEY			13
 # define A_KEY			00
 # define S_KEY			01
+# define D_KEY			02
 # define Z_KEY			06
 # define X_KEY			07
 # define LEFT_KEY		123

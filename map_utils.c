@@ -6,7 +6,7 @@
 /*   By: jesuserr <jesuserr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/31 14:23:42 by jesuserr          #+#    #+#             */
-/*   Updated: 2023/10/19 12:36:11 by jesuserr         ###   ########.fr       */
+/*   Updated: 2023/10/19 15:56:01 by jesuserr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,15 +81,16 @@ void	parse_map(t_fdf *fdf, char *line)
 	i = 0;
 	while (i < fdf->x_elem)
 	{
-		fdf->map[k].x = i * SQUARE_SIZE + fdf->offset_x;
-		fdf->map[k].y = j * SQUARE_SIZE + fdf->offset_y;
+		fdf->map[k].x = i * WALL_SIZE + fdf->offset_x;
+		fdf->map[k].y = j * WALL_SIZE + fdf->offset_y;
 		fdf->map[k].color = 0;
 		if (!ft_strncmp (line, "1", 1))
 			fdf->map[k].color = DEF_COLOR;
 		else if (!ft_strncmp (line, "P", 1))
 		{
-			fdf->player.x_pos = fdf->map[k].x + (SQUARE_SIZE / 2);
-			fdf->player.y_pos = fdf->map[k].y + (SQUARE_SIZE / 2);
+			fdf->player.angle = 0;
+			fdf->player.x_pos = fdf->map[k].x + (WALL_SIZE / 2);
+			fdf->player.y_pos = fdf->map[k].y + (WALL_SIZE / 2);
 		}
 		printf("(%06.2f %06.2f) ", fdf->map[k].x, fdf->map[k].y);
 		line++;

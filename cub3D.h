@@ -6,7 +6,7 @@
 /*   By: jesuserr <jesuserr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 11:34:08 by jesuserr          #+#    #+#             */
-/*   Updated: 2023/10/19 12:43:09 by jesuserr         ###   ########.fr       */
+/*   Updated: 2023/10/19 16:24:09 by jesuserr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,8 @@
 # define MAP_X_OFFSET	32
 # define MAP_Y_OFFSET	32
 # define INC_OFFSET		4
-# define SQUARE_SIZE	32
+# define WALL_SIZE		32
+# define ROT_ANGLE_INC	6
 
 /*
 ** -.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-
@@ -123,6 +124,8 @@ void	mlx_put_pixel(t_fdf *fdf, int x, int y, int color);
 void	draw_line(t_line line, t_fdf *fdf);
 void	line_direction(t_line *line, t_line_aux *line_aux);
 void	draw_square(t_fdf *fdf, t_point square, int size);
+void	draw_rectangle(t_fdf *fdf, t_line diagonal);
+void	draw_pointer(t_fdf *fdf);
 
 int		key_pressed(int keycode, t_fdf *fdf);
 int		close_window(t_fdf *fdf);

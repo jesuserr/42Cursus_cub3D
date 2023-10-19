@@ -6,7 +6,7 @@
 /*   By: jesuserr <jesuserr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/07 11:54:26 by jesuserr          #+#    #+#             */
-/*   Updated: 2023/10/19 12:30:09 by jesuserr         ###   ########.fr       */
+/*   Updated: 2023/10/19 15:41:38 by jesuserr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ int	key_pressed(int keycode, t_fdf *fdf)
 {
 	if (keycode == ESC_KEY)
 		close_window(fdf);
-	else if (keycode == Q_KEY || keycode == W_KEY || keycode == A_KEY
+	else if (keycode == D_KEY || keycode == W_KEY || keycode == A_KEY
 		|| keycode == S_KEY || keycode == Z_KEY || keycode == X_KEY
 		|| keycode == LEFT_KEY || keycode == RIGHT_KEY || keycode == DOWN_KEY
 		|| keycode == UP_KEY)

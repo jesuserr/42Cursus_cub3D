@@ -6,7 +6,7 @@
 /*   By: jesuserr <jesuserr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/09 19:43:38 by jesuserr          #+#    #+#             */
-/*   Updated: 2023/10/19 12:44:03 by jesuserr         ###   ########.fr       */
+/*   Updated: 2023/10/19 16:15:43 by jesuserr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,12 +24,14 @@ void	projection(t_fdf *fdf)
 		square.x = fdf->map[i].x;
 		square.y = fdf->map[i].y;
 		square.color = fdf->map[i].color;
-		draw_square(fdf, square, SQUARE_SIZE);
+		if (square.color != 0)
+			draw_square(fdf, square, WALL_SIZE);
 		i++;
 	}
-	square.x = fdf->player.x_pos - SQUARE_SIZE / 8;
-	square.y = fdf->player.y_pos - SQUARE_SIZE / 8;
+	square.x = fdf->player.x_pos - WALL_SIZE / 8;
+	square.y = fdf->player.y_pos - WALL_SIZE / 8;
 	square.color = 0xFFFFFF;
-	draw_square(fdf, square, SQUARE_SIZE / 4);
+	draw_square(fdf, square, WALL_SIZE / 4);
 	mlx_put_pixel(fdf, fdf->player.x_pos, fdf->player.y_pos, DEF_COLOR);
+	draw_pointer(fdf);
 }
