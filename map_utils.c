@@ -6,7 +6,7 @@
 /*   By: jesuserr <jesuserr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/31 14:23:42 by jesuserr          #+#    #+#             */
-/*   Updated: 2023/10/19 15:56:01 by jesuserr         ###   ########.fr       */
+/*   Updated: 2023/10/23 11:19:19 by jesuserr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,8 +81,8 @@ void	parse_map(t_fdf *fdf, char *line)
 	i = 0;
 	while (i < fdf->x_elem)
 	{
-		fdf->map[k].x = i * WALL_SIZE + fdf->offset_x;
-		fdf->map[k].y = j * WALL_SIZE + fdf->offset_y;
+		fdf->map[k].x = i * WALL_SIZE + MAP_X_OFFSET;
+		fdf->map[k].y = j * WALL_SIZE + MAP_Y_OFFSET;
 		fdf->map[k].color = 0;
 		if (!ft_strncmp (line, "1", 1))
 			fdf->map[k].color = DEF_COLOR;

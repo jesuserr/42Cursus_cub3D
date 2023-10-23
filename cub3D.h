@@ -6,7 +6,7 @@
 /*   By: jesuserr <jesuserr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 11:34:08 by jesuserr          #+#    #+#             */
-/*   Updated: 2023/10/19 16:24:09 by jesuserr         ###   ########.fr       */
+/*   Updated: 2023/10/23 11:40:47 by jesuserr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@
 # define MAP_Y_OFFSET	32
 # define INC_OFFSET		4
 # define WALL_SIZE		32
-# define ROT_ANGLE_INC	6
+# define ROT_ANGLE_INC	6			// Must be multiple of 360
 
 /*
 ** -.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-
@@ -103,8 +103,6 @@ typedef struct s_fdf
 	char		*raw_map;
 	int			x_elem;
 	int			y_elem;
-	int			offset_x;
-	int			offset_y;
 	t_point		*map;
 	t_img		img;
 	t_player	player;

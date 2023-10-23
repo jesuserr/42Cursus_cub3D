@@ -6,7 +6,7 @@
 /*   By: jesuserr <jesuserr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/25 19:40:52 by jesuserr          #+#    #+#             */
-/*   Updated: 2023/10/19 15:55:58 by jesuserr         ###   ########.fr       */
+/*   Updated: 2023/10/23 11:37:28 by jesuserr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,6 @@ void	init_map(char *file, t_fdf *fdf)
 {
 	ft_printf ("%s", BLUE);
 	fdf->raw_map = read_map(file, fdf);
-	fdf->offset_x = MAP_X_OFFSET;
-	fdf->offset_y = MAP_Y_OFFSET;
 	ft_printf ("\n\n");
 	check_map(fdf);
 }
