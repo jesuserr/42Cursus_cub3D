@@ -6,7 +6,7 @@
 /*   By: jesuserr <jesuserr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/31 14:23:42 by jesuserr          #+#    #+#             */
-/*   Updated: 2023/10/23 11:19:19 by jesuserr         ###   ########.fr       */
+/*   Updated: 2023/10/23 18:07:00 by jesuserr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,11 +43,6 @@ char	*read_map(char *file, t_fdf *fdf)
 	return (map);
 }
 
-/* Verifies that all lines have the same number of elements */
-/* and that no line contains any forbidden characters (ALLOWED_CHR) */
-/* If there is only one line (no 3D element) -> finishes too */
-/* After map parsing, centers and scales Z coordinates, figure 100% centered */
-
 void	check_map(t_fdf *fdf)
 {
 	char	**split;
@@ -66,11 +61,6 @@ void	check_map(t_fdf *fdf)
 		parse_map(fdf, split[i++]);
 	free_split(split);
 }
-
-/* Parses the map in such way that X = 0 and Y = 0 are in the center */
-/* Determines max and min values of Z to center all heights later */
-/* Note: k can be replaced by (i + (j * fdf->x_elem)) */
-/*       harder to read but can help to save a couple of lines if needed */
 
 void	parse_map(t_fdf *fdf, char *line)
 {
@@ -92,7 +82,7 @@ void	parse_map(t_fdf *fdf, char *line)
 			fdf->player.x_pos = fdf->map[k].x + (WALL_SIZE / 2);
 			fdf->player.y_pos = fdf->map[k].y + (WALL_SIZE / 2);
 		}
-		printf("(%06.2f %06.2f) ", fdf->map[k].x, fdf->map[k].y);
+		printf("(%04d %04d %08d) ", fdf->map[k].x, fdf->map[k].y, fdf->map[k].color);
 		line++;
 		k++;
 		i++;

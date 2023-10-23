@@ -6,7 +6,7 @@
 /*   By: jesuserr <jesuserr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/09 19:43:38 by jesuserr          #+#    #+#             */
-/*   Updated: 2023/10/19 16:15:43 by jesuserr         ###   ########.fr       */
+/*   Updated: 2023/10/23 18:02:00 by jesuserr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	projection(t_fdf *fdf)
 	int		i;
 	t_point	square;
 
-	printf("%6.2f %6.2f\n", fdf->player.x_pos, fdf->player.y_pos);
+	printf("%6.2d %6.2d\n", fdf->player.x_pos, fdf->player.y_pos);
 	i = 0;
 	while (i < (fdf->x_elem * fdf->y_elem))
 	{

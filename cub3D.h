@@ -6,7 +6,7 @@
 /*   By: jesuserr <jesuserr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 11:34:08 by jesuserr          #+#    #+#             */
-/*   Updated: 2023/10/23 11:40:47 by jesuserr         ###   ########.fr       */
+/*   Updated: 2023/10/23 17:56:28 by jesuserr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,13 +29,13 @@
 
 # define WIDTH			1024
 # define HEIGHT			768
-# define DEF_COLOR		0xf26e04
+# define DEF_COLOR		0xf26e04	// Wall RGB color
 # define WHITE			0xFFFFFF
 # define PI				3.141592654
-# define MAP_X_OFFSET	32
-# define MAP_Y_OFFSET	32
-# define INC_OFFSET		4
-# define WALL_SIZE		32
+# define MAP_X_OFFSET	0			// Initial minimap x-position
+# define MAP_Y_OFFSET	0			// Initial minimap y-position
+# define INC_OFFSET		4			// Player movement pixels
+# define WALL_SIZE		32			// Must be power of 2 (for the moment)
 # define ROT_ANGLE_INC	6			// Must be multiple of 360
 
 /*
@@ -57,16 +57,16 @@
 */
 typedef struct s_player
 {
-	float	x_pos;
-	float	y_pos;
-	float	angle;
+	int	x_pos;
+	int	y_pos;
+	int	angle;
 }	t_player;
 
 typedef struct s_point
 {
-	float	x;
-	float	y;
-	int		color;	
+	int	x;
+	int	y;
+	int	color;	
 }	t_point;
 
 typedef struct s_line
