@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3D.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jesuserr <jesuserr@student.42.fr>          +#+  +:+       +#+        */
+/*   By: cescanue <cescanue@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 11:34:08 by jesuserr          #+#    #+#             */
-/*   Updated: 2023/10/24 20:23:03 by jesuserr         ###   ########.fr       */
+/*   Updated: 2023/10/24 21:00:51 by cescanue         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,6 +95,20 @@ typedef struct s_img
 	int		len;
 	int		endian;
 }	t_img;
+
+typedef struct s_map
+{
+	char		*t_no;
+	char		*t_so;
+	char		*t_ea;
+	char		*t_we;
+	int			c_f;
+	int			c_c;
+	char		*raw_map;
+	int			x_elem;
+	int			y_elem;
+	t_point		*map;
+}	t_map;
 
 typedef struct s_cub
 {

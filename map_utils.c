@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_utils.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jesuserr <jesuserr@student.42.fr>          +#+  +:+       +#+        */
+/*   By: cescanue <cescanue@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/31 14:23:42 by jesuserr          #+#    #+#             */
-/*   Updated: 2023/10/24 20:12:19 by jesuserr         ###   ########.fr       */
+/*   Updated: 2023/10/24 21:03:28 by cescanue         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,8 @@ void	check_map(t_cub *cub)
 	char	*line;
 	int		i;
 
+	(void) line;
+	
 	split = ft_split(cub->raw_map, '\n');
 	cub->y_elem = 0;
 	while (split[cub->y_elem])
