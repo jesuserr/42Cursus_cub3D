@@ -6,7 +6,7 @@
 /*   By: cescanue <cescanue@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 11:34:08 by jesuserr          #+#    #+#             */
-/*   Updated: 2023/10/24 21:11:56 by cescanue         ###   ########.fr       */
+/*   Updated: 2023/10/24 21:17:08 by cescanue         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -120,6 +120,7 @@ typedef struct s_cub
 	t_point		*map;
 	t_img		img;
 	t_player	player;
+	t_map		*cmap;
 }	t_cub;
 
 /*
