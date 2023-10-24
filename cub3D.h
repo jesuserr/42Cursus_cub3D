@@ -6,7 +6,7 @@
 /*   By: cescanue <cescanue@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 11:34:08 by jesuserr          #+#    #+#             */
-/*   Updated: 2023/10/24 21:00:51 by cescanue         ###   ########.fr       */
+/*   Updated: 2023/10/24 21:11:56 by cescanue         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -153,5 +153,6 @@ void	key_action_1(int keycode, t_cub *cub);
 void	action_aux(t_cub *cub);
 /*		projections.c		*/
 void	projection(t_cub *cub);
-
+/*		map_utils2.c*/
+void	init_map2(char *file, t_cub *cub);
 #endif
