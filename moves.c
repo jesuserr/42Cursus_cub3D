@@ -6,53 +6,53 @@
 /*   By: jesuserr <jesuserr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/14 11:47:50 by jesuserr          #+#    #+#             */
-/*   Updated: 2023/10/23 18:08:13 by jesuserr         ###   ########.fr       */
+/*   Updated: 2023/10/24 10:43:39 by jesuserr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
 
-void	key_action_1(int keycode, t_fdf *fdf)
+void	key_action_1(int keycode, t_cub *cub)
 {
 	if (keycode == A_KEY)
-		fdf->player.x_pos -= INC_OFFSET;
+		cub->player.x_pos -= INC_OFFSET;
 	else if (keycode == D_KEY)
-		fdf->player.x_pos += INC_OFFSET;
+		cub->player.x_pos += INC_OFFSET;
 	else if (keycode == S_KEY)
-		fdf->player.y_pos += INC_OFFSET;
+		cub->player.y_pos += INC_OFFSET;
 	else if (keycode == W_KEY)
-		fdf->player.y_pos -= INC_OFFSET;
+		cub->player.y_pos -= INC_OFFSET;
 	else if (keycode == LEFT_KEY)
 	{
-		fdf->player.angle += ROT_ANGLE_INC;
-		if (fdf->player.angle >= 360)
-			fdf->player.angle = 0;
+		cub->player.angle += ROT_ANGLE_INC;
+		if (cub->player.angle >= 360)
+			cub->player.angle = 0;
 	}
 	else if (keycode == RIGHT_KEY)
 	{
-		fdf->player.angle -= ROT_ANGLE_INC;
-		if (fdf->player.angle < 0)
-			fdf->player.angle = 360 - ROT_ANGLE_INC;
+		cub->player.angle -= ROT_ANGLE_INC;
+		if (cub->player.angle < 0)
+			cub->player.angle = 360 - ROT_ANGLE_INC;
 	}
-	action_aux(fdf);
+	action_aux(cub);
 }
 
 /* Erases the image in memory; calculates and writes the new one */
 
-void	action_aux(t_fdf *fdf)
+void	action_aux(t_cub *cub)
 {
 	char	*str;
 
-	ft_bzero(fdf->img.addr, WIDTH * HEIGHT * fdf->img.bpp / 8);
-	projection(fdf);
-	mlx_put_image_to_window(fdf->mlx, fdf->mlx_win, fdf->img.img, 0, 0);
-	str = ft_itoa(fdf->player.x_pos);
-	mlx_string_put(fdf->mlx, fdf->mlx_win, 500, 10, WHITE, str);
+	ft_bzero(cub->img.addr, WIDTH * HEIGHT * cub->img.bpp / 8);
+	projection(cub);
+	mlx_put_image_to_window(cub->mlx, cub->mlx_win, cub->img.img, 0, 0);
+	str = ft_itoa(cub->player.x_pos);
+	mlx_string_put(cub->mlx, cub->mlx_win, 500, 10, WHITE, str);
 	free(str);
-	str = ft_itoa(fdf->player.y_pos);
-	mlx_string_put(fdf->mlx, fdf->mlx_win, 500, 30, WHITE, str);
+	str = ft_itoa(cub->player.y_pos);
+	mlx_string_put(cub->mlx, cub->mlx_win, 500, 30, WHITE, str);
 	free(str);
-	str = ft_itoa(fdf->player.angle);
-	mlx_string_put(fdf->mlx, fdf->mlx_win, 500, 50, WHITE, str);
+	str = ft_itoa(cub->player.angle);
+	mlx_string_put(cub->mlx, cub->mlx_win, 500, 50, WHITE, str);
 	free(str);
 }

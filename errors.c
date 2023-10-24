@@ -6,7 +6,7 @@
 /*   By: jesuserr <jesuserr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/25 21:10:39 by jesuserr          #+#    #+#             */
-/*   Updated: 2023/10/19 12:30:09 by jesuserr         ###   ########.fr       */
+/*   Updated: 2023/10/24 10:43:39 by jesuserr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,13 +67,13 @@ void	free_split_and_exit(char **str, int error, char *ptr)
 /* the mlx init. Flag controls the step where the error happened and */
 /* frees in consequence */
 
-void	free_map_and_exit(t_fdf *fdf, int error, int flag)
+void	free_map_and_exit(t_cub *cub, int error, int flag)
 {
 	if (flag == 1)
-		free(fdf->mlx);
+		free(cub->mlx);
 	if (flag == 2)
-		mlx_destroy_window(fdf->mlx, fdf->mlx_win);
-	free(fdf->raw_map);
-	free(fdf->map);
+		mlx_destroy_window(cub->mlx, cub->mlx_win);
+	free(cub->raw_map);
+	free(cub->map);
 	ft_error_handler(error);
 }

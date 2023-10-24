@@ -6,7 +6,7 @@
 /*   By: jesuserr <jesuserr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 11:34:08 by jesuserr          #+#    #+#             */
-/*   Updated: 2023/10/23 17:56:28 by jesuserr         ###   ########.fr       */
+/*   Updated: 2023/10/24 10:43:39 by jesuserr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,7 +96,7 @@ typedef struct s_img
 	int		endian;
 }	t_img;
 
-typedef struct s_fdf
+typedef struct s_cub
 {
 	void		*mlx;
 	void		*mlx_win;
@@ -106,7 +106,7 @@ typedef struct s_fdf
 	t_point		*map;
 	t_img		img;
 	t_player	player;
-}	t_fdf;
+}	t_cub;
 
 /*
 ** -.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-
@@ -116,29 +116,29 @@ void	ft_error_handler(int error);
 void	free_split(char **str);
 void	free_and_exit(int error, char *ptr);
 void	free_split_and_exit(char **str, int error, char *ptr);
-void	free_map_and_exit(t_fdf *fdf, int error, int flag);
+void	free_map_and_exit(t_cub *cub, int error, int flag);
 
-void	mlx_put_pixel(t_fdf *fdf, int x, int y, int color);
-void	draw_line(t_line line, t_fdf *fdf);
+void	mlx_put_pixel(t_cub *cub, int x, int y, int color);
+void	draw_line(t_line line, t_cub *cub);
 void	line_direction(t_line *line, t_line_aux *line_aux);
-void	draw_square(t_fdf *fdf, t_point square, int size);
-void	draw_rectangle(t_fdf *fdf, t_line diagonal);
-void	draw_pointer(t_fdf *fdf);
+void	draw_square(t_cub *cub, t_point square, int size);
+void	draw_rectangle(t_cub *cub, t_line diagonal);
+void	draw_pointer(t_cub *cub);
 
-int		key_pressed(int keycode, t_fdf *fdf);
-int		close_window(t_fdf *fdf);
+int		key_pressed(int keycode, t_cub *cub);
+int		close_window(t_cub *cub);
 
-void	init_map(char *file, t_fdf *fdf);
-void	init_win(t_fdf *fdf, char *s);
-void	init_hooks(t_fdf *fdf);
+void	init_map(char *file, t_cub *cub);
+void	init_win(t_cub *cub, char *s);
+void	init_hooks(t_cub *cub);
 
-char	*read_map(char *file, t_fdf *fdf);
-void	check_map(t_fdf *fdf);
-void	parse_map(t_fdf *fdf, char *line);
+char	*read_map(char *file, t_cub *cub);
+void	check_map(t_cub *cub);
+void	parse_map(t_cub *cub, char *line);
 
-void	key_action_1(int keycode, t_fdf *fdf);
-void	action_aux(t_fdf *fdf);
+void	key_action_1(int keycode, t_cub *cub);
+void	action_aux(t_cub *cub);
 
-void	projection(t_fdf *fdf);
+void	projection(t_cub *cub);
 
 #endif

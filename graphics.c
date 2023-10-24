@@ -6,24 +6,24 @@
 /*   By: jesuserr <jesuserr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/06 16:03:40 by jesuserr          #+#    #+#             */
-/*   Updated: 2023/10/19 16:20:44 by jesuserr         ###   ########.fr       */
+/*   Updated: 2023/10/24 10:43:39 by jesuserr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
 
-void	mlx_put_pixel(t_fdf *fdf, int x, int y, int color)
+void	mlx_put_pixel(t_cub *cub, int x, int y, int color)
 {
 	char	*dst;
 
-	dst = fdf->img.addr + ((y * fdf->img.len) + (x * (fdf->img.bpp / 8)));
+	dst = cub->img.addr + ((y * cub->img.len) + (x * (cub->img.bpp / 8)));
 	*(unsigned int *)dst = color;
 }
 
 /* Uses Bresenham's line algorithm (extended to work in any octant) */
 /* Pixels outside screen boundaries (including info bar) are not printed */
 
-void	draw_line(t_line line, t_fdf *fdf)
+void	draw_line(t_line line, t_cub *cub)
 {
 	t_line_aux	line_aux;
 
@@ -34,7 +34,7 @@ void	draw_line(t_line line, t_fdf *fdf)
 	while (!(line.x0 == line.x1 && line.y0 == line.y1))
 	{
 		if (line.x0 >= 0 && line.y0 >= 0 && line.x0 < WIDTH && line.y0 < HEIGHT)
-			mlx_put_pixel(fdf, line.x0, line.y0, line.color);
+			mlx_put_pixel(cub, line.x0, line.y0, line.color);
 		if ((2 * line_aux.error) >= line_aux.dy)
 		{
 			line_aux.error = line_aux.error + line_aux.dy;
@@ -60,7 +60,7 @@ void	line_direction(t_line *line, t_line_aux *line_aux)
 		line_aux->sy = -1;
 }
 
-void	draw_square(t_fdf *fdf, t_point square, int size)
+void	draw_square(t_cub *cub, t_point square, int size)
 {
 	int		x;
 	int		y;
@@ -73,7 +73,7 @@ void	draw_square(t_fdf *fdf, t_point square, int size)
 		x_copy = square.x;
 		while (x < size)
 		{
-			mlx_put_pixel(fdf, x_copy, square.y, square.color);
+			mlx_put_pixel(cub, x_copy, square.y, square.color);
 			x_copy++;
 			x++;
 		}
@@ -82,7 +82,7 @@ void	draw_square(t_fdf *fdf, t_point square, int size)
 	}
 }
 
-void	draw_rectangle(t_fdf *fdf, t_line diagonal)
+void	draw_rectangle(t_cub *cub, t_line diagonal)
 {
 	int		x;
 	int		y;
@@ -97,7 +97,7 @@ void	draw_rectangle(t_fdf *fdf, t_line diagonal)
 		x_copy = diagonal.x0;
 		while (x < (diagonal.x1 - diagonal.x0))
 		{
-			mlx_put_pixel(fdf, x_copy, y_copy, diagonal.color);
+			mlx_put_pixel(cub, x_copy, y_copy, diagonal.color);
 			x_copy++;
 			x++;
 		}
@@ -106,14 +106,14 @@ void	draw_rectangle(t_fdf *fdf, t_line diagonal)
 	}
 }
 
-void	draw_pointer(t_fdf *fdf)
+void	draw_pointer(t_cub *cub)
 {
 	t_line	line;
 
-	line.x0 = fdf->player.x_pos;
-	line.y0 = fdf->player.y_pos;
-	line.x1 = line.x0 + WALL_SIZE / 1.5 * cos(fdf->player.angle * PI / 180);
-	line.y1 = line.y0 - WALL_SIZE / 1.5 * sin(fdf->player.angle * PI / 180);
+	line.x0 = cub->player.x_pos;
+	line.y0 = cub->player.y_pos;
+	line.x1 = line.x0 + WALL_SIZE / 1.5 * cos(cub->player.angle * PI / 180);
+	line.y1 = line.y0 - WALL_SIZE / 1.5 * sin(cub->player.angle * PI / 180);
 	line.color = 0xF0F0F0;
-	draw_line(line, fdf);
+	draw_line(line, cub);
 }

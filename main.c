@@ -6,52 +6,52 @@
 /*   By: jesuserr <jesuserr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/25 19:40:52 by jesuserr          #+#    #+#             */
-/*   Updated: 2023/10/23 11:37:28 by jesuserr         ###   ########.fr       */
+/*   Updated: 2023/10/24 10:43:39 by jesuserr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
 
-void	init_map(char *file, t_fdf *fdf)
+void	init_map(char *file, t_cub *cub)
 {
 	ft_printf ("%s", BLUE);
-	fdf->raw_map = read_map(file, fdf);
+	cub->raw_map = read_map(file, cub);
 	ft_printf ("\n\n");
-	check_map(fdf);
+	check_map(cub);
 }
 
-void	init_win(t_fdf *fdf, char *s)
+void	init_win(t_cub *cub, char *s)
 {
-	fdf->mlx = mlx_init();
-	if (!fdf->mlx)
-		free_map_and_exit(fdf, ERROR_MLX, 0);
-	fdf->mlx_win = mlx_new_window(fdf->mlx, WIDTH, HEIGHT, s);
-	if (!fdf->mlx_win)
-		free_map_and_exit(fdf, ERROR_MLX, 1);
-	fdf->img.img = mlx_new_image(fdf->mlx, WIDTH, HEIGHT);
-	if (!fdf->img.img)
-		free_map_and_exit(fdf, ERROR_MLX, 2);
-	fdf->img.addr = mlx_get_data_addr(fdf->img.img, &fdf->img.bpp, \
-		&fdf->img.len, &fdf->img.endian);
+	cub->mlx = mlx_init();
+	if (!cub->mlx)
+		free_map_and_exit(cub, ERROR_MLX, 0);
+	cub->mlx_win = mlx_new_window(cub->mlx, WIDTH, HEIGHT, s);
+	if (!cub->mlx_win)
+		free_map_and_exit(cub, ERROR_MLX, 1);
+	cub->img.img = mlx_new_image(cub->mlx, WIDTH, HEIGHT);
+	if (!cub->img.img)
+		free_map_and_exit(cub, ERROR_MLX, 2);
+	cub->img.addr = mlx_get_data_addr(cub->img.img, &cub->img.bpp, \
+		&cub->img.len, &cub->img.endian);
 }
 
-void	init_hooks(t_fdf *fdf)
+void	init_hooks(t_cub *cub)
 {
-	mlx_hook(fdf->mlx_win, 17, 0, close_window, fdf);
-	mlx_hook(fdf->mlx_win, 2, 0, key_pressed, fdf);
+	mlx_hook(cub->mlx_win, 17, 0, close_window, cub);
+	mlx_hook(cub->mlx_win, 2, 0, key_pressed, cub);
 }
 
 int	main(int argc, char **argv)
 {
-	t_fdf	fdf;	
+	t_cub	cub;	
 
 	if (argc != 2)
 		ft_error_handler(ERROR_ARGS);
-	init_map(argv[1], &fdf);
-	init_win(&fdf, argv[1]);
-	projection(&fdf);
-	mlx_put_image_to_window(fdf.mlx, fdf.mlx_win, fdf.img.img, 0, 0);
-	init_hooks(&fdf);
-	mlx_loop(fdf.mlx);
+	init_map(argv[1], &cub);
+	init_win(&cub, argv[1]);
+	projection(&cub);
+	mlx_put_image_to_window(cub.mlx, cub.mlx_win, cub.img.img, 0, 0);
+	init_hooks(&cub);
+	mlx_loop(cub.mlx);
 	return (0);
 }
