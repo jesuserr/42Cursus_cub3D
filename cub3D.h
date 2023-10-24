@@ -6,7 +6,7 @@
 /*   By: jesuserr <jesuserr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 11:34:08 by jesuserr          #+#    #+#             */
-/*   Updated: 2023/10/24 10:43:39 by jesuserr         ###   ########.fr       */
+/*   Updated: 2023/10/24 20:23:03 by jesuserr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,33 +112,32 @@ typedef struct s_cub
 ** -.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-
 **                        FUNCTION PROTOTYPES
 */
+
+/*		errors.c		*/
 void	ft_error_handler(int error);
 void	free_split(char **str);
 void	free_and_exit(int error, char *ptr);
 void	free_split_and_exit(char **str, int error, char *ptr);
 void	free_map_and_exit(t_cub *cub, int error, int flag);
-
+/*		graphics.c		*/
 void	mlx_put_pixel(t_cub *cub, int x, int y, int color);
 void	draw_line(t_line line, t_cub *cub);
 void	line_direction(t_line *line, t_line_aux *line_aux);
+void	draw_pointer(t_cub *cub);
+/*		graphics_2.c		*/
 void	draw_square(t_cub *cub, t_point square, int size);
 void	draw_rectangle(t_cub *cub, t_line diagonal);
-void	draw_pointer(t_cub *cub);
-
+/*		hooks.c				*/
 int		key_pressed(int keycode, t_cub *cub);
 int		close_window(t_cub *cub);
-
-void	init_map(char *file, t_cub *cub);
-void	init_win(t_cub *cub, char *s);
-void	init_hooks(t_cub *cub);
-
+/*		map_utils.c				*/
 char	*read_map(char *file, t_cub *cub);
 void	check_map(t_cub *cub);
 void	parse_map(t_cub *cub, char *line);
-
+/*		moves.c				*/
 void	key_action_1(int keycode, t_cub *cub);
 void	action_aux(t_cub *cub);
-
+/*		projections.c		*/
 void	projection(t_cub *cub);
 
 #endif

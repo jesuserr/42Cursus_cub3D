@@ -6,7 +6,7 @@
 /*   By: jesuserr <jesuserr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/25 19:40:52 by jesuserr          #+#    #+#             */
-/*   Updated: 2023/10/24 10:43:39 by jesuserr         ###   ########.fr       */
+/*   Updated: 2023/10/24 20:09:58 by jesuserr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,12 @@ void	init_win(t_cub *cub, char *s)
 		&cub->img.len, &cub->img.endian);
 }
 
+void	draw_first_frame(t_cub *cub)
+{
+	projection(cub);
+	mlx_put_image_to_window(cub->mlx, cub->mlx_win, cub->img.img, 0, 0);
+}
+
 void	init_hooks(t_cub *cub)
 {
 	mlx_hook(cub->mlx_win, 17, 0, close_window, cub);
@@ -49,8 +55,7 @@ int	main(int argc, char **argv)
 		ft_error_handler(ERROR_ARGS);
 	init_map(argv[1], &cub);
 	init_win(&cub, argv[1]);
-	projection(&cub);
-	mlx_put_image_to_window(cub.mlx, cub.mlx_win, cub.img.img, 0, 0);
+	draw_first_frame(&cub);
 	init_hooks(&cub);
 	mlx_loop(cub.mlx);
 	return (0);

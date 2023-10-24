@@ -6,7 +6,7 @@
 /*   By: jesuserr <jesuserr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/31 14:23:42 by jesuserr          #+#    #+#             */
-/*   Updated: 2023/10/24 10:54:36 by jesuserr         ###   ########.fr       */
+/*   Updated: 2023/10/24 20:12:19 by jesuserr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,7 +84,7 @@ void	parse_map(t_cub *cub, char *line)
 			cub->player.x_pos = cub->map[k].x + (WALL_SIZE / 2);
 			cub->player.y_pos = cub->map[k].y + (WALL_SIZE / 2);
 		}
-		printf("(%04d %04d %08d) ", cub->map[k].x, cub->map[k].y, cub->map[k].color);
+		printf("(%03d %03d) ", cub->map[k].x, cub->map[k].y);
 		line++;
 		k++;
 		i++;
