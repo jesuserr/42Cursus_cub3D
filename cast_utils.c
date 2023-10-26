@@ -6,20 +6,20 @@
 /*   By: jesuserr <jesuserr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/26 19:24:03 by jesuserr          #+#    #+#             */
-/*   Updated: 2023/10/26 19:35:16 by jesuserr         ###   ########.fr       */
+/*   Updated: 2023/10/26 20:21:20 by jesuserr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
 
-double	degrees_to_radians(int angle_degrees, int inc_angle);
+double	degrees_to_radians(int angle_degrees, float inc_angle);
 void	draw_shorter_ray(t_cub *cub, t_ray_cast *vert, t_ray_cast *horz);
 
-double	degrees_to_radians(int angle_degrees, int inc_angle)
+double	degrees_to_radians(int angle_degrees, float inc_angle)
 {
 	double	angle_radians;
 
-	angle_radians = (angle_degrees + inc_angle) * PI / 180;
+	angle_radians = ((float)angle_degrees + inc_angle) * PI / 180;
 	while (angle_radians >= 2 * PI)
 		angle_radians -= 2 * PI;
 	while (angle_radians < 0)

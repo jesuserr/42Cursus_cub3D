@@ -6,7 +6,7 @@
 /*   By: jesuserr <jesuserr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 11:34:08 by jesuserr          #+#    #+#             */
-/*   Updated: 2023/10/26 19:41:27 by jesuserr         ###   ########.fr       */
+/*   Updated: 2023/10/26 20:23:25 by jesuserr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -175,7 +175,7 @@ void	projection(t_cub *cub);
 /*		map_utils2.c		*/
 void	init_map2(char *file, t_cub *cub);
 /*		cast_utils.c 		*/
-double	degrees_to_radians(int angle_degrees, int inc_angle);
+double	degrees_to_radians(int angle_degrees, float inc_angle);
 void	draw_shorter_ray(t_cub *cub, t_ray_cast *vert, t_ray_cast *horz);
 
 #endif
