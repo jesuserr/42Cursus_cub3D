@@ -6,7 +6,7 @@
 /*   By: jesuserr <jesuserr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 11:34:08 by jesuserr          #+#    #+#             */
-/*   Updated: 2023/10/26 09:52:26 by jesuserr         ###   ########.fr       */
+/*   Updated: 2023/10/26 11:24:35 by jesuserr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,8 @@
 # define MAP_Y_OFFSET	0			// Initial minimap y-position
 # define INC_OFFSET		4			// Player movement pixels
 # define WALL_SIZE		64			// Must be power of 2 (for the moment)
-# define ROT_ANGLE_INC	6			// Must be multiple of 360
+# define ROT_ANGLE_INC	1			// Must be multiple of 360
+# define DEPTH_OF_FIELD	20			// Value 20 is temporary, will depend on map size, revise later
 
 /*
 ** -.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-
@@ -76,6 +77,7 @@ typedef struct s_ray_cast
 	float	x_offset;
 	float	y_offset;
 	double	ray_angle;
+	float	ray_length;
 }	t_ray_cast;
 
 typedef struct s_point
