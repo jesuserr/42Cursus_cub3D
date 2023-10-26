@@ -6,7 +6,7 @@
 /*   By: jesuserr <jesuserr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 11:34:08 by jesuserr          #+#    #+#             */
-/*   Updated: 2023/10/26 18:38:33 by jesuserr         ###   ########.fr       */
+/*   Updated: 2023/10/26 19:41:27 by jesuserr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -146,7 +146,6 @@ typedef struct s_cub
 ** -.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-
 **                        FUNCTION PROTOTYPES
 */
-
 /*		errors.c		*/
 void	ft_error_handler(int error);
 void	free_split(char **str);
@@ -173,6 +172,10 @@ void	key_action_1(int keycode, t_cub *cub);
 void	action_aux(t_cub *cub);
 /*		projections.c		*/
 void	projection(t_cub *cub);
-/*		map_utils2.c*/
+/*		map_utils2.c		*/
 void	init_map2(char *file, t_cub *cub);
+/*		cast_utils.c 		*/
+double	degrees_to_radians(int angle_degrees, int inc_angle);
+void	draw_shorter_ray(t_cub *cub, t_ray_cast *vert, t_ray_cast *horz);
+
 #endif

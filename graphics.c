@@ -6,7 +6,7 @@
 /*   By: jesuserr <jesuserr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/06 16:03:40 by jesuserr          #+#    #+#             */
-/*   Updated: 2023/10/24 20:24:57 by jesuserr         ###   ########.fr       */
+/*   Updated: 2023/10/26 19:33:01 by jesuserr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,6 @@ void	draw_pointer(t_cub *cub)
 	line.y0 = cub->player.y_pos;
 	line.x1 = line.x0 + WALL_SIZE / 1.5 * cos(cub->player.angle * PI / 180);
 	line.y1 = line.y0 - WALL_SIZE / 1.5 * sin(cub->player.angle * PI / 180);
-	line.color = 0xF0F0F0;
+	line.color = 0x0000FF;
 	draw_line(line, cub);
 }

@@ -6,17 +6,16 @@
 /*   By: jesuserr <jesuserr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/09 19:43:38 by jesuserr          #+#    #+#             */
-/*   Updated: 2023/10/26 18:24:10 by jesuserr         ###   ########.fr       */
+/*   Updated: 2023/10/26 19:33:48 by jesuserr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
 
 void	draw_minimap_and_player(t_cub *cub);
-double	degrees_to_radians(int angle_degrees, int inc_angle);
 void	check_horizontal_lines(t_ray_cast *horz, t_cub *cub);
 void	check_vertical_lines(t_ray_cast *horz, t_cub *cub);
-void	draw_ray(t_cub *cub, t_ray_cast *vert, t_ray_cast *horz);
+void	check_hit_to_wall(t_cub *cub, t_ray_cast *cast);
 
 void	projection(t_cub *cub)
 {
@@ -29,12 +28,17 @@ void	projection(t_cub *cub)
 	while (i < FOV / 2)
 	{
 		horz.ray_angle = degrees_to_radians(cub->player.angle, i);
+		horz.ray_length = WIDTH * HEIGHT;
+		horz.depth_of_field = 0;
 		check_horizontal_lines(&horz, cub);
 		vert.ray_angle = degrees_to_radians(cub->player.angle, i);
+		vert.ray_length = WIDTH * HEIGHT;
+		vert.depth_of_field = 0;
 		check_vertical_lines(&vert, cub);
-		draw_ray(cub, &vert, &horz);
+		draw_shorter_ray(cub, &vert, &horz);
 		i = i + (1.0 / RAYS_PER_FOV);
 	}
+	draw_pointer(cub);
 }
 
 void	draw_minimap_and_player(t_cub *cub)
@@ -56,37 +60,24 @@ void	draw_minimap_and_player(t_cub *cub)
 	square.y = cub->player.y_pos - WALL_SIZE / 8;
 	square.color = 0xFFFFFF;
 	draw_square(cub, square, WALL_SIZE / 4);
-	//draw_pointer(cub);	
-}
-
-double	degrees_to_radians(int angle_degrees, int inc_angle)
-{
-	double	angle_radians;
-
-	angle_radians = (angle_degrees + inc_angle) * PI / 180;
-	while (angle_radians >= 2 * PI)
-		angle_radians -= 2 * PI;
-	while (angle_radians < 0)
-		angle_radians += 2 * PI;
-	return (angle_radians);
 }
 
 void	check_horizontal_lines(t_ray_cast *horz, t_cub *cub)
 {
-	horz->ray_length = WIDTH * HEIGHT;
-	horz->depth_of_field = 0;
 	horz->arc_tan = 1.0 / tan(horz->ray_angle);
 	if (horz->ray_angle > 0 && horz->ray_angle < PI)
 	{
 		horz->ray_y = ((cub->player.y_pos / WALL_SIZE) * WALL_SIZE) - 0.001;
-		horz->ray_x = (cub->player.y_pos - horz->ray_y) * horz->arc_tan + cub->player.x_pos;
+		horz->ray_x = (cub->player.y_pos - horz->ray_y) * \
+		horz->arc_tan + cub->player.x_pos;
 		horz->y_offset = -WALL_SIZE;
 		horz->x_offset = -horz->y_offset * horz->arc_tan;
 	}
 	else if (horz->ray_angle > PI && horz->ray_angle < (2 * PI))
 	{
 		horz->ray_y = ((cub->player.y_pos / WALL_SIZE) * WALL_SIZE) + WALL_SIZE;
-		horz->ray_x = (cub->player.y_pos - horz->ray_y) * horz->arc_tan + cub->player.x_pos;
+		horz->ray_x = (cub->player.y_pos - horz->ray_y) * \
+		horz->arc_tan + cub->player.x_pos;
 		horz->y_offset = WALL_SIZE;
 		horz->x_offset = -horz->y_offset * horz->arc_tan;
 	}
@@ -96,29 +87,11 @@ void	check_horizontal_lines(t_ray_cast *horz, t_cub *cub)
 		horz->ray_y = cub->player.y_pos;
 		horz->depth_of_field = DEPTH_OF_FIELD;
 	}
-	while (horz->depth_of_field < DEPTH_OF_FIELD)
-	{
-		horz->map_x = horz->ray_x / WALL_SIZE;
-		horz->map_y = horz->ray_y / WALL_SIZE;
-		horz->map_pos = horz->map_y * cub->x_elem + horz->map_x;
-		if (horz->map_pos > 0 && horz->map_pos < (cub->x_elem * cub->y_elem) && cub->map[horz->map_pos].color != 0)
-		{
-			horz->ray_length = cos(horz->ray_angle) * (horz->ray_x - cub->player.x_pos) - sin(horz->ray_angle) * (horz->ray_y - cub->player.y_pos);
-			break ;
-		}
-		else
-		{
-			horz->ray_x += horz->x_offset;
-			horz->ray_y += horz->y_offset;
-			horz->depth_of_field++;
-		}
-	}
+	check_hit_to_wall(cub, horz);
 }
 
 void	check_vertical_lines(t_ray_cast *vert, t_cub *cub)
 {
-	vert->ray_length = WIDTH * HEIGHT;
-	vert->depth_of_field = 0;
 	vert->tan = tan(vert->ray_angle);
 	if (vert->ray_angle == PI / 2 || vert->ray_angle == PI * 3 / 2)
 	{
@@ -129,53 +102,42 @@ void	check_vertical_lines(t_ray_cast *vert, t_cub *cub)
 	else if (vert->ray_angle > PI / 2 && vert->ray_angle < PI * 3 / 2)
 	{
 		vert->ray_x = ((cub->player.x_pos / WALL_SIZE) * WALL_SIZE) - 0.0001;
-		vert->ray_y = (cub->player.x_pos - vert->ray_x) * vert->tan + cub->player.y_pos;
+		vert->ray_y = (cub->player.x_pos - vert->ray_x) * \
+		vert->tan + cub->player.y_pos;
 		vert->x_offset = -WALL_SIZE;
 		vert->y_offset = -vert->x_offset * vert->tan;
 	}
 	else
 	{
 		vert->ray_x = ((cub->player.x_pos / WALL_SIZE) * WALL_SIZE) + WALL_SIZE;
-		vert->ray_y = (cub->player.x_pos - vert->ray_x) * vert->tan + cub->player.y_pos;
+		vert->ray_y = (cub->player.x_pos - vert->ray_x) * \
+		vert->tan + cub->player.y_pos;
 		vert->x_offset = WALL_SIZE;
 		vert->y_offset = -vert->x_offset * vert->tan;
 	}
-	while (vert->depth_of_field < DEPTH_OF_FIELD)
+	check_hit_to_wall(cub, vert);
+}
+
+void	check_hit_to_wall(t_cub *cub, t_ray_cast *cast)
+{
+	while (cast->depth_of_field < DEPTH_OF_FIELD)
 	{
-		vert->map_x = vert->ray_x / WALL_SIZE;
-		vert->map_y = vert->ray_y / WALL_SIZE;
-		vert->map_pos = vert->map_y * cub->x_elem + vert->map_x;
-		if (vert->map_pos > 0 && vert->map_pos < (cub->x_elem * cub->y_elem) && cub->map[vert->map_pos].color != 0)
+		cast->map_x = cast->ray_x / WALL_SIZE;
+		cast->map_y = cast->ray_y / WALL_SIZE;
+		cast->map_pos = cast->map_y * cub->x_elem + cast->map_x;
+		if (cast->map_pos > 0 && cast->map_pos < (cub->x_elem * cub->y_elem) \
+		&& cub->map[cast->map_pos].color != 0)
 		{
-			vert->ray_length = cos(vert->ray_angle) * (vert->ray_x - cub->player.x_pos) - sin(vert->ray_angle) * (vert->ray_y - cub->player.y_pos);
+			cast->ray_length = cos(cast->ray_angle) * \
+			(cast->ray_x - cub->player.x_pos) - sin(cast->ray_angle) * \
+			(cast->ray_y - cub->player.y_pos);
 			break ;
 		}
 		else
 		{
-			vert->ray_x += vert->x_offset;
-			vert->ray_y += vert->y_offset;
-			vert->depth_of_field++;
+			cast->ray_x += cast->x_offset;
+			cast->ray_y += cast->y_offset;
+			cast->depth_of_field++;
 		}
 	}
-}
-
-void	draw_ray(t_cub *cub, t_ray_cast *vert, t_ray_cast *horz)
-{
-	t_line	line;
-
-	line.x0 = cub->player.x_pos;
-	line.y0 = cub->player.y_pos;
-	if (vert->ray_length < horz->ray_length)
-	{
-		line.x1 = vert->ray_x;
-		line.y1 = vert->ray_y;
-		line.color = 0xFF00FF;
-	}
-	else
-	{
-		line.x1 = horz->ray_x;
-		line.y1 = horz->ray_y;
-		line.color = 0xFFFF00;
-	}
-	draw_line(line, cub);
 }
