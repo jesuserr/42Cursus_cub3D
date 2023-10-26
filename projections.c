@@ -6,7 +6,7 @@
 /*   By: jesuserr <jesuserr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/09 19:43:38 by jesuserr          #+#    #+#             */
-/*   Updated: 2023/10/26 19:33:48 by jesuserr         ###   ########.fr       */
+/*   Updated: 2023/10/26 23:07:23 by jesuserr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ void	projection(t_cub *cub)
 		vert.ray_length = WIDTH * HEIGHT;
 		vert.depth_of_field = 0;
 		check_vertical_lines(&vert, cub);
+		check_first_corner_exception(cub, &vert, &horz);
 		draw_shorter_ray(cub, &vert, &horz);
 		i = i + (1.0 / RAYS_PER_FOV);
 	}
@@ -67,7 +68,7 @@ void	check_horizontal_lines(t_ray_cast *horz, t_cub *cub)
 	horz->arc_tan = 1.0 / tan(horz->ray_angle);
 	if (horz->ray_angle > 0 && horz->ray_angle < PI)
 	{
-		horz->ray_y = ((cub->player.y_pos / WALL_SIZE) * WALL_SIZE) - 0.001;
+		horz->ray_y = ((cub->player.y_pos / WALL_SIZE) * WALL_SIZE) - 0.0001;
 		horz->ray_x = (cub->player.y_pos - horz->ray_y) * \
 		horz->arc_tan + cub->player.x_pos;
 		horz->y_offset = -WALL_SIZE;
