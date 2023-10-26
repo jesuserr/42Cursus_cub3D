@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3D.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cescanue <cescanue@student.42barcelona.    +#+  +:+       +#+        */
+/*   By: jesuserr <jesuserr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 11:34:08 by jesuserr          #+#    #+#             */
-/*   Updated: 2023/10/24 21:17:08 by cescanue         ###   ########.fr       */
+/*   Updated: 2023/10/26 09:52:26 by jesuserr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@
 # define MAP_X_OFFSET	0			// Initial minimap x-position
 # define MAP_Y_OFFSET	0			// Initial minimap y-position
 # define INC_OFFSET		4			// Player movement pixels
-# define WALL_SIZE		32			// Must be power of 2 (for the moment)
+# define WALL_SIZE		64			// Must be power of 2 (for the moment)
 # define ROT_ANGLE_INC	6			// Must be multiple of 360
 
 /*
@@ -61,6 +61,22 @@ typedef struct s_player
 	int	y_pos;
 	int	angle;
 }	t_player;
+
+typedef struct s_ray_cast
+{
+	float	ray_x;
+	float	ray_y;
+	int		ray_number;
+	int		depth_of_field;
+	int		map_x;
+	int		map_y;
+	int		map_pos;
+	float	arc_tan;
+	float	tan;
+	float	x_offset;
+	float	y_offset;
+	double	ray_angle;
+}	t_ray_cast;
 
 typedef struct s_point
 {

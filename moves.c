@@ -6,7 +6,7 @@
 /*   By: jesuserr <jesuserr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/14 11:47:50 by jesuserr          #+#    #+#             */
-/*   Updated: 2023/10/24 10:43:39 by jesuserr         ###   ########.fr       */
+/*   Updated: 2023/10/24 20:58:36 by jesuserr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,5 +54,9 @@ void	action_aux(t_cub *cub)
 	free(str);
 	str = ft_itoa(cub->player.angle);
 	mlx_string_put(cub->mlx, cub->mlx_win, 500, 50, WHITE, str);
+	free(str);
+	str = ft_itoa(cub->map[cub->player.x_pos / WALL_SIZE + \
+	(cub->player.y_pos / WALL_SIZE * cub->y_elem)].color);
+	mlx_string_put(cub->mlx, cub->mlx_win, 500, 70, WHITE, str);
 	free(str);
 }
