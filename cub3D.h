@@ -6,7 +6,7 @@
 /*   By: jesuserr <jesuserr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 11:34:08 by jesuserr          #+#    #+#             */
-/*   Updated: 2023/10/26 11:24:35 by jesuserr         ###   ########.fr       */
+/*   Updated: 2023/10/26 18:38:33 by jesuserr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,10 +34,12 @@
 # define PI				3.141592654
 # define MAP_X_OFFSET	0			// Initial minimap x-position
 # define MAP_Y_OFFSET	0			// Initial minimap y-position
-# define INC_OFFSET		4			// Player movement pixels
+# define INC_OFFSET		6			// Player movement pixels
 # define WALL_SIZE		64			// Must be power of 2 (for the moment)
-# define ROT_ANGLE_INC	1			// Must be multiple of 360
-# define DEPTH_OF_FIELD	20			// Value 20 is temporary, will depend on map size, revise later
+# define ROT_ANGLE_INC	1			// Must be multiple of 360, player rotation
+# define DEPTH_OF_FIELD	20		// Temp value, depend on map size, revise later
+# define FOV			66
+# define RAYS_PER_FOV	1			// Rays per each degree of FOV
 
 /*
 ** -.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-
@@ -66,8 +68,7 @@ typedef struct s_player
 typedef struct s_ray_cast
 {
 	float	ray_x;
-	float	ray_y;
-	int		ray_number;
+	float	ray_y;	
 	int		depth_of_field;
 	int		map_x;
 	int		map_y;
@@ -77,7 +78,7 @@ typedef struct s_ray_cast
 	float	x_offset;
 	float	y_offset;
 	double	ray_angle;
-	float	ray_length;
+	float	ray_length;	
 }	t_ray_cast;
 
 typedef struct s_point
