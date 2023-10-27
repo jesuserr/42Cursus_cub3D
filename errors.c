@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   errors.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jesuserr <jesuserr@student.42.fr>          +#+  +:+       +#+        */
+/*   By: cescanue <cescanue@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/25 21:10:39 by jesuserr          #+#    #+#             */
-/*   Updated: 2023/10/24 10:43:39 by jesuserr         ###   ########.fr       */
+/*   Updated: 2023/10/27 12:02:38 by cescanue         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,10 @@ void	ft_error_handler(int error)
 		ft_printf ("%sInvalid map format\n", RED);
 	else if (error == ERROR_MLX)
 		ft_printf ("%sError starting MLX instances\n", RED);
+	else if (error == ERROR_COLOR_F)
+		ft_printf ("%sError, the color format is not RGB\n", RED);
+	else if (error == ERROR_MAP_F)
+		ft_printf ("%sError, the map format is not correct\n", RED);
 	exit(EXIT_FAILURE);
 }
 

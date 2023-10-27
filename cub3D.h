@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3D.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jesuserr <jesuserr@student.42.fr>          +#+  +:+       +#+        */
+/*   By: cescanue <cescanue@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 11:34:08 by jesuserr          #+#    #+#             */
-/*   Updated: 2023/10/26 23:23:35 by jesuserr         ###   ########.fr       */
+/*   Updated: 2023/10/27 11:58:18 by cescanue         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,8 @@
 # define ERROR_EMPTY		3
 # define ERROR_MAP			4
 # define ERROR_MLX			5
+# define ERROR_COLOR_F		6
+# define ERROR_MAP_F		7
 
 # define WIDTH			1024
 # define HEIGHT			768
