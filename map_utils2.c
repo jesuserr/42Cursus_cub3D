@@ -6,7 +6,7 @@
 /*   By: cescanue <cescanue@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/24 21:08:23 by cescanue          #+#    #+#             */
-/*   Updated: 2023/10/27 13:12:52 by cescanue         ###   ########.fr       */
+/*   Updated: 2023/10/27 17:12:14 by cescanue         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void	ttorgbcheckcoma(char **line)
 		count++;
 		(*line)++;
 	}
-	if (count > 3)
+	if (count > 3 || !count)
 		ft_error_handler(ERROR_COLOR_F);
 }
 
@@ -37,6 +37,8 @@ int	textrgbtoint(char *line)
 	int	color;
 	int	count;
 
+	if (*(line + 1) != ' ')
+		ft_error_handler(ERROR_COLOR_F);
 	color = 0;
 	while (color < 3)
 	{
@@ -114,10 +116,69 @@ void	read_text_colors(int fd, char **line, t_cub *cub)
 	}
 }
 
+char	*read_raw_map(int fd, char **line, t_cub *cub)
+{
+	char	*tmap;
+	char	*omap;
+	int	size;
+
+	tmap = 0;
+	while (*line)
+	{
+		size = ft_strlen(*line) + ft_strlen(tmap);
+		cub->cmap->x_elem++;
+		if (cub->cmap->y_elem < (int) ft_strlen(*line))
+			cub->cmap->y_elem = ft_strlen(*line);
+		omap = tmap;
+		tmap = ft_calloc(size, sizeof(char) + 1);
+		if (!tmap)
+			ft_error_handler(ERROR_MEM);
+		ft_strlcpy(tmap, omap, size);
+		ft_strlcat(tmap, *line, size + 1);
+		free (omap);
+		*line = get_next_line(fd);
+	}
+	cub->cmap->y_elem--;
+	return (tmap);
+}
+char	*rawmap_to_squaremap(char *rmap, t_cub *cub)
+{
+	char	*smap;
+	int		x;
+	int		y;
+	int		y1;
+
+	if (!rmap)
+		ft_error_handler(ERROR_MAP_F);
+	smap = ft_calloc(cub->cmap->x_elem * cub->cmap->y_elem, sizeof(char) + 1);
+	if (!smap)
+		ft_error_handler(ERROR_MEM);
+	ft_memset(smap, ' ', cub->cmap->x_elem * cub->cmap->y_elem);
+	x = 0;
+	y1 = 0;
+		while (x < cub->cmap->x_elem)
+	{
+		y = 0;
+		while (rmap[y1] && rmap[y1] != '\n')
+		{
+			smap[(x * cub->cmap->y_elem) +  y] = rmap[y1];
+			y++;
+			y1++;
+		}
+		y1++;
+		x++;
+	}
+	free(rmap);
+	return (smap);
+}
+
 char	*read_map2(char *file, t_cub *cub)
 {
 	int		fd;
 	char	*line;
+	char	*smap;
+	int y;
+	int y1;
 
 	fd = open(file, O_RDONLY);
 	if (fd == -1)
@@ -126,8 +187,22 @@ char	*read_map2(char *file, t_cub *cub)
 	if (!line)
 		ft_error_handler(ERROR_EMPTY);
 	read_text_colors(fd, &line, cub);
-	
+	smap = rawmap_to_squaremap(read_raw_map(fd, &line, cub), cub);
 	close (fd);
+	//printf("%s", smap);
+	y = 0;
+	y1 = 0;
+	while (smap[y])
+	{
+		printf("%c", smap[y]);
+		y++;
+		y1++;
+		if (y1 > cub->cmap->y_elem)
+		{
+			y1 = 1;	
+			printf("\n");
+		}
+	}
 	return (0);
 }
 
