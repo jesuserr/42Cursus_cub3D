@@ -15,7 +15,7 @@ LIBX_DIR = minilibx_macos/
 
 NAME = cub3D
 SRCS = errors.c graphics.c hooks.c main.c map_utils.c map_utils2.c moves.c \
-projections.c graphics_2.c cast_utils.c
+ray_casting.c graphics_2.c raycast_utils.c
 OBJS = $(SRCS:.c=.o)
 DEPS = $(SRCS:.c=.d)
 

@@ -6,7 +6,7 @@
 /*   By: jesuserr <jesuserr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/14 11:47:50 by jesuserr          #+#    #+#             */
-/*   Updated: 2023/10/24 20:58:36 by jesuserr         ###   ########.fr       */
+/*   Updated: 2023/10/29 13:50:24 by jesuserr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ void	action_aux(t_cub *cub)
 	char	*str;
 
 	ft_bzero(cub->img.addr, WIDTH * HEIGHT * cub->img.bpp / 8);
-	projection(cub);
+	ray_casting(cub);
 	mlx_put_image_to_window(cub->mlx, cub->mlx_win, cub->img.img, 0, 0);
 	str = ft_itoa(cub->player.x_pos);
 	mlx_string_put(cub->mlx, cub->mlx_win, 500, 10, WHITE, str);

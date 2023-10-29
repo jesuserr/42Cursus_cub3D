@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3D.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cescanue <cescanue@student.42barcelona.    +#+  +:+       +#+        */
+/*   By: jesuserr <jesuserr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 11:34:08 by jesuserr          #+#    #+#             */
-/*   Updated: 2023/10/27 11:58:18 by cescanue         ###   ########.fr       */
+/*   Updated: 2023/10/29 14:01:33 by jesuserr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -172,11 +172,11 @@ void	parse_map(t_cub *cub, char *line);
 /*		moves.c				*/
 void	key_action_1(int keycode, t_cub *cub);
 void	action_aux(t_cub *cub);
-/*		projections.c		*/
-void	projection(t_cub *cub);
+/*		ray_casting.c		*/
+void	ray_casting(t_cub *cub);
 /*		map_utils2.c		*/
 void	init_map2(char *file, t_cub *cub);
-/*		cast_utils.c 		*/
+/*		raycast_utils.c 		*/
 double	degrees_to_radians(int angle_degrees, float inc_angle);
 void	draw_shorter_ray(t_cub *cub, t_ray_cast *vert, t_ray_cast *horz);
 void	check_first_corner_exception(t_cub *cub, t_ray_cast *v, t_ray_cast *h);

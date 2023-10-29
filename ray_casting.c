@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   projections.c                                      :+:      :+:    :+:   */
+/*   ray_casting.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jesuserr <jesuserr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/09 19:43:38 by jesuserr          #+#    #+#             */
-/*   Updated: 2023/10/26 23:07:23 by jesuserr         ###   ########.fr       */
+/*   Updated: 2023/10/29 13:59:00 by jesuserr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	check_horizontal_lines(t_ray_cast *horz, t_cub *cub);
 void	check_vertical_lines(t_ray_cast *horz, t_cub *cub);
 void	check_hit_to_wall(t_cub *cub, t_ray_cast *cast);
 
-void	projection(t_cub *cub)
+void	ray_casting(t_cub *cub)
 {
 	t_ray_cast	horz;
 	t_ray_cast	vert;
@@ -29,11 +29,9 @@ void	projection(t_cub *cub)
 	{
 		horz.ray_angle = degrees_to_radians(cub->player.angle, i);
 		horz.ray_length = WIDTH * HEIGHT;
-		horz.depth_of_field = 0;
 		check_horizontal_lines(&horz, cub);
 		vert.ray_angle = degrees_to_radians(cub->player.angle, i);
 		vert.ray_length = WIDTH * HEIGHT;
-		vert.depth_of_field = 0;
 		check_vertical_lines(&vert, cub);
 		check_first_corner_exception(cub, &vert, &horz);
 		draw_shorter_ray(cub, &vert, &horz);
@@ -65,6 +63,7 @@ void	draw_minimap_and_player(t_cub *cub)
 
 void	check_horizontal_lines(t_ray_cast *horz, t_cub *cub)
 {
+	horz->depth_of_field = 0;
 	horz->arc_tan = 1.0 / tan(horz->ray_angle);
 	if (horz->ray_angle > 0 && horz->ray_angle < PI)
 	{
@@ -93,6 +92,7 @@ void	check_horizontal_lines(t_ray_cast *horz, t_cub *cub)
 
 void	check_vertical_lines(t_ray_cast *vert, t_cub *cub)
 {
+	vert->depth_of_field = 0;
 	vert->tan = tan(vert->ray_angle);
 	if (vert->ray_angle == PI / 2 || vert->ray_angle == PI * 3 / 2)
 	{

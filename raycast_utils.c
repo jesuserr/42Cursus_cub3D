@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cast_utils.c                                       :+:      :+:    :+:   */
+/*   raycast_utils.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jesuserr <jesuserr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/26 19:24:03 by jesuserr          #+#    #+#             */
-/*   Updated: 2023/10/26 23:20:33 by jesuserr         ###   ########.fr       */
+/*   Updated: 2023/10/29 14:04:20 by jesuserr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,9 +55,9 @@ void	check_first_corner_exception(t_cub *cub, t_ray_cast *v, t_ray_cast *h)
 	{
 		h->ray_length = (cub->player.x_pos - WALL_SIZE) / (cos(PI / 4));
 		v->ray_length = h->ray_length;
-		h->ray_x = 64;
-		h->ray_y = 64;
-		v->ray_x = 64;
-		v->ray_y = 64;		
-	}		
+		h->ray_x = WALL_SIZE;
+		h->ray_y = WALL_SIZE;
+		v->ray_x = WALL_SIZE;
+		v->ray_y = WALL_SIZE;
+	}
 }
