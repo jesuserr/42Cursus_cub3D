@@ -6,7 +6,7 @@
 /*   By: jesuserr <jesuserr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/09 19:43:38 by jesuserr          #+#    #+#             */
-/*   Updated: 2023/10/29 18:29:39 by jesuserr         ###   ########.fr       */
+/*   Updated: 2023/10/29 20:01:07 by jesuserr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,10 +22,12 @@ void	ray_casting(t_cub *cub)
 	t_ray_cast	horz;
 	t_ray_cast	vert;
 	float		i;
+	float		casted_rays;
 
 	draw_minimap_and_player(cub);
-	i = -FOV / 2;
-	while (i < FOV / 2)
+	casted_rays = 0;
+	i = -FOV / 2.0;
+	while (++casted_rays < WIDTH)
 	{
 		horz.ray_angle = degrees_to_radians(cub->player.angle, i);
 		horz.depth_of_field = 0;
@@ -37,7 +39,7 @@ void	ray_casting(t_cub *cub)
 		check_vertical_lines(&vert, cub);
 		check_first_corner_exception(cub, &vert, &horz);
 		draw_shorter_ray(cub, &vert, &horz);
-		i = i + (1.0 / RAYS_PER_FOV);
+		i = i + ((float)FOV / (float)WIDTH);
 	}
 	draw_pointer(cub);
 }

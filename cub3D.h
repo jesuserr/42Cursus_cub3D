@@ -6,7 +6,7 @@
 /*   By: jesuserr <jesuserr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 11:34:08 by jesuserr          #+#    #+#             */
-/*   Updated: 2023/10/29 18:33:33 by jesuserr         ###   ########.fr       */
+/*   Updated: 2023/10/29 20:10:48 by jesuserr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,11 +36,10 @@
 # define PI				3.141592654
 # define MAP_X_OFFSET	0			// Initial minimap x-position
 # define MAP_Y_OFFSET	0			// Initial minimap y-position
-# define INC_OFFSET		8			// Player movement pixels
-# define WALL_SIZE		32			// Must be power of 2 (for the moment)
+# define INC_OFFSET		8			// Player movement pixels,wall size multiple
+# define WALL_SIZE		32			// Must be power of 2
 # define ROT_ANGLE_INC	6			// Must be multiple of 360, player rotation
-# define FOV			360
-# define RAYS_PER_FOV	10			// Rays per each degree of FOV
+# define FOV			66			// Field of view (even number)
 
 /*
 ** -.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-
