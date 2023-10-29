@@ -6,7 +6,7 @@
 /*   By: cescanue <cescanue@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 11:34:08 by jesuserr          #+#    #+#             */
-/*   Updated: 2023/10/27 11:58:18 by cescanue         ###   ########.fr       */
+/*   Updated: 2023/10/29 21:42:41 by cescanue         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -125,10 +125,6 @@ typedef struct s_map
 	char		*t_we;
 	int			c_f;
 	int			c_c;
-	char		*raw_map;
-	int			x_elem;
-	int			y_elem;
-	t_point		*map;
 }	t_map;
 
 typedef struct s_cub

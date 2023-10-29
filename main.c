@@ -3,22 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jesuserr <jesuserr@student.42.fr>          +#+  +:+       +#+        */
+/*   By: cescanue <cescanue@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/25 19:40:52 by jesuserr          #+#    #+#             */
-/*   Updated: 2023/10/24 20:09:58 by jesuserr         ###   ########.fr       */
+/*   Updated: 2023/10/29 21:45:52 by cescanue         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
-
-void	init_map(char *file, t_cub *cub)
-{
-	ft_printf ("%s", BLUE);
-	cub->raw_map = read_map(file, cub);
-	ft_printf ("\n\n");
-	check_map(cub);
-}
 
 void	init_win(t_cub *cub, char *s)
 {
@@ -53,7 +45,7 @@ int	main(int argc, char **argv)
 
 	if (argc != 2)
 		ft_error_handler(ERROR_ARGS);
-	init_map(argv[1], &cub);
+	init_map2(argv[1], &cub);
 	init_win(&cub, argv[1]);
 	draw_first_frame(&cub);
 	init_hooks(&cub);
