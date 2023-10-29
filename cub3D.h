@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: cescanue <cescanue@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/18 11:34:08 by jesuserr          #+#    #+#             */
-/*   Updated: 2023/10/29 21:42:41 by cescanue         ###   ########.fr       */
+/*   Created: 2023/10/29 21:48:51 by cescanue          #+#    #+#             */
+/*   Updated: 2023/10/29 21:48:55 by cescanue         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,12 +36,10 @@
 # define PI				3.141592654
 # define MAP_X_OFFSET	0			// Initial minimap x-position
 # define MAP_Y_OFFSET	0			// Initial minimap y-position
-# define INC_OFFSET		6			// Player movement pixels
-# define WALL_SIZE		64			// Must be power of 2 (for the moment)
-# define ROT_ANGLE_INC	1			// Must be multiple of 360, player rotation
-# define DEPTH_OF_FIELD	20		// Temp value, depend on map size, revise later
-# define FOV			66
-# define RAYS_PER_FOV	1			// Rays per each degree of FOV
+# define INC_OFFSET		8			// Player movement pixels,wall size multiple
+# define WALL_SIZE		32			// Must be power of 2
+# define ROT_ANGLE_INC	6			// Must be multiple of 360, player rotation
+# define FOV			66			// Field of view (even number)
 
 /*
 ** -.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-
@@ -72,6 +70,7 @@ typedef struct s_ray_cast
 	float	ray_x;
 	float	ray_y;	
 	int		depth_of_field;
+	int		depth_of_field_max;	
 	int		map_x;
 	int		map_y;
 	int		map_pos;
@@ -167,12 +166,13 @@ void	check_map(t_cub *cub);
 void	parse_map(t_cub *cub, char *line);
 /*		moves.c				*/
 void	key_action_1(int keycode, t_cub *cub);
+int		check_collision(int keycode, t_cub *cub);
 void	action_aux(t_cub *cub);
-/*		projections.c		*/
-void	projection(t_cub *cub);
+/*		ray_casting.c		*/
+void	ray_casting(t_cub *cub);
 /*		map_utils2.c		*/
 void	init_map2(char *file, t_cub *cub);
-/*		cast_utils.c 		*/
+/*		raycast_utils.c 		*/
 double	degrees_to_radians(int angle_degrees, float inc_angle);
 void	draw_shorter_ray(t_cub *cub, t_ray_cast *vert, t_ray_cast *horz);
 void	check_first_corner_exception(t_cub *cub, t_ray_cast *v, t_ray_cast *h);

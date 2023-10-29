@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: cescanue <cescanue@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/25 19:40:52 by jesuserr          #+#    #+#             */
-/*   Updated: 2023/10/29 21:45:52 by cescanue         ###   ########.fr       */
+/*   Created: 2023/10/29 21:49:02 by cescanue          #+#    #+#             */
+/*   Updated: 2023/10/29 21:49:05 by cescanue         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ void	init_win(t_cub *cub, char *s)
 
 void	draw_first_frame(t_cub *cub)
 {
-	projection(cub);
+	ray_casting(cub);
 	mlx_put_image_to_window(cub->mlx, cub->mlx_win, cub->img.img, 0, 0);
 }
 

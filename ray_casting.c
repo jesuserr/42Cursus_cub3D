@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   projections.c                                      :+:      :+:    :+:   */
+/*   ray_casting.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jesuserr <jesuserr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/09 19:43:38 by jesuserr          #+#    #+#             */
-/*   Updated: 2023/10/26 23:07:23 by jesuserr         ###   ########.fr       */
+/*   Updated: 2023/10/29 20:01:07 by jesuserr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,27 +17,29 @@ void	check_horizontal_lines(t_ray_cast *horz, t_cub *cub);
 void	check_vertical_lines(t_ray_cast *horz, t_cub *cub);
 void	check_hit_to_wall(t_cub *cub, t_ray_cast *cast);
 
-void	projection(t_cub *cub)
+void	ray_casting(t_cub *cub)
 {
 	t_ray_cast	horz;
 	t_ray_cast	vert;
 	float		i;
+	float		casted_rays;
 
 	draw_minimap_and_player(cub);
-	i = -FOV / 2;
-	while (i < FOV / 2)
+	casted_rays = 0;
+	i = -FOV / 2.0;
+	while (++casted_rays < WIDTH)
 	{
 		horz.ray_angle = degrees_to_radians(cub->player.angle, i);
-		horz.ray_length = WIDTH * HEIGHT;
 		horz.depth_of_field = 0;
+		horz.ray_length = WIDTH * HEIGHT;
 		check_horizontal_lines(&horz, cub);
 		vert.ray_angle = degrees_to_radians(cub->player.angle, i);
-		vert.ray_length = WIDTH * HEIGHT;
 		vert.depth_of_field = 0;
+		vert.ray_length = WIDTH * HEIGHT;
 		check_vertical_lines(&vert, cub);
 		check_first_corner_exception(cub, &vert, &horz);
 		draw_shorter_ray(cub, &vert, &horz);
-		i = i + (1.0 / RAYS_PER_FOV);
+		i = i + ((float)FOV / (float)WIDTH);
 	}
 	draw_pointer(cub);
 }
@@ -65,6 +67,7 @@ void	draw_minimap_and_player(t_cub *cub)
 
 void	check_horizontal_lines(t_ray_cast *horz, t_cub *cub)
 {
+	horz->depth_of_field_max = cub->y_elem;
 	horz->arc_tan = 1.0 / tan(horz->ray_angle);
 	if (horz->ray_angle > 0 && horz->ray_angle < PI)
 	{
@@ -86,19 +89,20 @@ void	check_horizontal_lines(t_ray_cast *horz, t_cub *cub)
 	{
 		horz->ray_x = cub->player.x_pos;
 		horz->ray_y = cub->player.y_pos;
-		horz->depth_of_field = DEPTH_OF_FIELD;
+		horz->depth_of_field = horz->depth_of_field_max;
 	}
 	check_hit_to_wall(cub, horz);
 }
 
 void	check_vertical_lines(t_ray_cast *vert, t_cub *cub)
 {
+	vert->depth_of_field_max = cub->x_elem;
 	vert->tan = tan(vert->ray_angle);
 	if (vert->ray_angle == PI / 2 || vert->ray_angle == PI * 3 / 2)
 	{
 		vert->ray_x = cub->player.x_pos;
 		vert->ray_y = cub->player.y_pos;
-		vert->depth_of_field = DEPTH_OF_FIELD;
+		vert->depth_of_field = vert->depth_of_field_max;
 	}
 	else if (vert->ray_angle > PI / 2 && vert->ray_angle < PI * 3 / 2)
 	{
@@ -121,7 +125,7 @@ void	check_vertical_lines(t_ray_cast *vert, t_cub *cub)
 
 void	check_hit_to_wall(t_cub *cub, t_ray_cast *cast)
 {
-	while (cast->depth_of_field < DEPTH_OF_FIELD)
+	while (cast->depth_of_field < cast->depth_of_field_max)
 	{
 		cast->map_x = cast->ray_x / WALL_SIZE;
 		cast->map_y = cast->ray_y / WALL_SIZE;
