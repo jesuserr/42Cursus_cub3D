@@ -6,7 +6,7 @@
 /*   By: jesuserr <jesuserr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/14 11:47:50 by jesuserr          #+#    #+#             */
-/*   Updated: 2023/10/29 13:50:24 by jesuserr         ###   ########.fr       */
+/*   Updated: 2023/10/29 17:41:24 by jesuserr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,13 +15,13 @@
 void	key_action_1(int keycode, t_cub *cub)
 {
 	if (keycode == A_KEY)
-		cub->player.x_pos -= INC_OFFSET;
+		cub->player.x_pos -= check_collision(keycode, cub);
 	else if (keycode == D_KEY)
-		cub->player.x_pos += INC_OFFSET;
+		cub->player.x_pos += check_collision(keycode, cub);
 	else if (keycode == S_KEY)
-		cub->player.y_pos += INC_OFFSET;
+		cub->player.y_pos += check_collision(keycode, cub);
 	else if (keycode == W_KEY)
-		cub->player.y_pos -= INC_OFFSET;
+		cub->player.y_pos -= check_collision(keycode, cub);
 	else if (keycode == LEFT_KEY)
 	{
 		cub->player.angle += ROT_ANGLE_INC;
@@ -35,6 +35,28 @@ void	key_action_1(int keycode, t_cub *cub)
 			cub->player.angle = 360 - ROT_ANGLE_INC;
 	}
 	action_aux(cub);
+}
+
+int	check_collision(int keycode, t_cub *cub)
+{
+	int	dist_to_wall;
+
+	dist_to_wall = INC_OFFSET * 1.5;
+	if (keycode == A_KEY && (cub->map[(cub->player.x_pos - (dist_to_wall)) / \
+	WALL_SIZE + (cub->player.y_pos / WALL_SIZE * cub->x_elem)].color == 0))
+		return (INC_OFFSET);
+	if (keycode == D_KEY && (cub->map[(cub->player.x_pos + (dist_to_wall)) / \
+	WALL_SIZE + (cub->player.y_pos / WALL_SIZE * cub->x_elem)].color == 0))
+		return (INC_OFFSET);
+	if (keycode == S_KEY && (cub->map[(cub->player.x_pos / WALL_SIZE + \
+	(cub->player.y_pos + (dist_to_wall)) / WALL_SIZE * cub->x_elem)].color \
+	== 0))
+		return (INC_OFFSET);
+	if (keycode == W_KEY && (cub->map[(cub->player.x_pos / WALL_SIZE + \
+	(cub->player.y_pos - (dist_to_wall)) / WALL_SIZE * cub->x_elem)].color \
+	== 0))
+		return (INC_OFFSET);
+	return (0);
 }
 
 /* Erases the image in memory; calculates and writes the new one */
@@ -56,7 +78,7 @@ void	action_aux(t_cub *cub)
 	mlx_string_put(cub->mlx, cub->mlx_win, 500, 50, WHITE, str);
 	free(str);
 	str = ft_itoa(cub->map[cub->player.x_pos / WALL_SIZE + \
-	(cub->player.y_pos / WALL_SIZE * cub->y_elem)].color);
+	(cub->player.y_pos / WALL_SIZE * cub->x_elem)].color);
 	mlx_string_put(cub->mlx, cub->mlx_win, 500, 70, WHITE, str);
 	free(str);
 }
