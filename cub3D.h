@@ -6,7 +6,7 @@
 /*   By: jesuserr <jesuserr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 11:34:08 by jesuserr          #+#    #+#             */
-/*   Updated: 2023/10/29 17:38:54 by jesuserr         ###   ########.fr       */
+/*   Updated: 2023/10/29 18:33:33 by jesuserr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,9 +39,8 @@
 # define INC_OFFSET		8			// Player movement pixels
 # define WALL_SIZE		32			// Must be power of 2 (for the moment)
 # define ROT_ANGLE_INC	6			// Must be multiple of 360, player rotation
-# define DEPTH_OF_FIELD	20		// Temp value, depend on map size, revise later
-# define FOV			66
-# define RAYS_PER_FOV	1			// Rays per each degree of FOV
+# define FOV			360
+# define RAYS_PER_FOV	10			// Rays per each degree of FOV
 
 /*
 ** -.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-
@@ -72,6 +71,7 @@ typedef struct s_ray_cast
 	float	ray_x;
 	float	ray_y;	
 	int		depth_of_field;
+	int		depth_of_field_max;	
 	int		map_x;
 	int		map_y;
 	int		map_pos;

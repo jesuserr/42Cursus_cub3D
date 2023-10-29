@@ -6,7 +6,7 @@
 /*   By: jesuserr <jesuserr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/09 19:43:38 by jesuserr          #+#    #+#             */
-/*   Updated: 2023/10/29 13:59:00 by jesuserr         ###   ########.fr       */
+/*   Updated: 2023/10/29 18:29:39 by jesuserr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,9 +28,11 @@ void	ray_casting(t_cub *cub)
 	while (i < FOV / 2)
 	{
 		horz.ray_angle = degrees_to_radians(cub->player.angle, i);
+		horz.depth_of_field = 0;
 		horz.ray_length = WIDTH * HEIGHT;
 		check_horizontal_lines(&horz, cub);
 		vert.ray_angle = degrees_to_radians(cub->player.angle, i);
+		vert.depth_of_field = 0;
 		vert.ray_length = WIDTH * HEIGHT;
 		check_vertical_lines(&vert, cub);
 		check_first_corner_exception(cub, &vert, &horz);
@@ -63,7 +65,7 @@ void	draw_minimap_and_player(t_cub *cub)
 
 void	check_horizontal_lines(t_ray_cast *horz, t_cub *cub)
 {
-	horz->depth_of_field = 0;
+	horz->depth_of_field_max = cub->y_elem;
 	horz->arc_tan = 1.0 / tan(horz->ray_angle);
 	if (horz->ray_angle > 0 && horz->ray_angle < PI)
 	{
@@ -85,20 +87,20 @@ void	check_horizontal_lines(t_ray_cast *horz, t_cub *cub)
 	{
 		horz->ray_x = cub->player.x_pos;
 		horz->ray_y = cub->player.y_pos;
-		horz->depth_of_field = DEPTH_OF_FIELD;
+		horz->depth_of_field = horz->depth_of_field_max;
 	}
 	check_hit_to_wall(cub, horz);
 }
 
 void	check_vertical_lines(t_ray_cast *vert, t_cub *cub)
 {
-	vert->depth_of_field = 0;
+	vert->depth_of_field_max = cub->x_elem;
 	vert->tan = tan(vert->ray_angle);
 	if (vert->ray_angle == PI / 2 || vert->ray_angle == PI * 3 / 2)
 	{
 		vert->ray_x = cub->player.x_pos;
 		vert->ray_y = cub->player.y_pos;
-		vert->depth_of_field = DEPTH_OF_FIELD;
+		vert->depth_of_field = vert->depth_of_field_max;
 	}
 	else if (vert->ray_angle > PI / 2 && vert->ray_angle < PI * 3 / 2)
 	{
@@ -121,7 +123,7 @@ void	check_vertical_lines(t_ray_cast *vert, t_cub *cub)
 
 void	check_hit_to_wall(t_cub *cub, t_ray_cast *cast)
 {
-	while (cast->depth_of_field < DEPTH_OF_FIELD)
+	while (cast->depth_of_field < cast->depth_of_field_max)
 	{
 		cast->map_x = cast->ray_x / WALL_SIZE;
 		cast->map_y = cast->ray_y / WALL_SIZE;
