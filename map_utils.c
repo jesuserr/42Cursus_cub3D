@@ -6,7 +6,7 @@
 /*   By: cescanue <cescanue@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/24 21:08:23 by cescanue          #+#    #+#             */
-/*   Updated: 2023/10/30 11:45:45 by cescanue         ###   ########.fr       */
+/*   Updated: 2023/10/30 14:07:46 by cescanue         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ char	*read_raw_map(int fd, char **line, t_cub *cub)
 		size = ft_strlen(*line) + ft_strlen(tmap);
 		cub->y_elem++;
 		if (cub->x_elem < (int) ft_strlen(*line))
-			cub->x_elem = ft_strlen(*line);
+			cub->x_elem = ft_strlen(*line) - 1;
 		omap = tmap;
 		tmap = ft_calloc(size, sizeof(char) + 1);
 		if (!tmap)
@@ -36,6 +36,7 @@ char	*read_raw_map(int fd, char **line, t_cub *cub)
 		*line = get_next_line(fd);
 	}
 	return (tmap);
+	
 }
 
 void	rawmap_to_squaremap2(char *smap, char *rmap, t_cub *cub)
@@ -100,6 +101,6 @@ void	init_map(char *file, t_cub *cub)
 	if (!cub->cmap)
 		ft_error_handler(ERROR_MEM);
 	cub->raw_map = read_map(file, cub);
-//	check_map2(); >> Pending;
+	check_map(cub);
 	cub->map = parse_map(cub);
 }

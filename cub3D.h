@@ -6,7 +6,7 @@
 /*   By: cescanue <cescanue@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/30 11:49:33 by cescanue          #+#    #+#             */
-/*   Updated: 2023/10/30 11:49:35 by cescanue         ###   ########.fr       */
+/*   Updated: 2023/10/30 14:02:49 by cescanue         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -175,6 +175,8 @@ void	init_map(char *file, t_cub *cub);
 void	read_text_colors(int fd, char **line, t_cub *cub);
 /*		map_utils_parse.c		*/
 t_point	*parse_map(t_cub *cub);
+/*		map_utils_check.c		*/
+int		check_map(t_cub *cub);
 /*		moves.c				*/
 void	key_action_1(int keycode, t_cub *cub);
 int		check_collision(int keycode, t_cub *cub);
