@@ -6,7 +6,7 @@
 /*   By: jesuserr <jesuserr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/09 19:43:38 by jesuserr          #+#    #+#             */
-/*   Updated: 2023/10/30 20:30:36 by jesuserr         ###   ########.fr       */
+/*   Updated: 2023/10/30 21:06:26 by jesuserr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,14 +29,14 @@ void	ray_casting(t_cub *cub)
 	ray_angle = FOV / 2.0;
 	draw_floor_and_ceiling(cub);
 	//draw_minimap_and_player(cub);
-	while (casted_rays++ < WIDTH)
+	while (casted_rays < WIDTH)
 	{
 		init_ray_casters(cub, &vert, &horz, ray_angle);
 		check_horizontal_lines(&horz, cub);
 		check_vertical_lines(&vert, cub);
 		check_first_corner_exception(cub, &vert, &horz);
 		//draw_shorter_ray(cub, &vert, &horz);
-		rise_walls(cub, &vert, &horz, casted_rays -1);
+		rise_walls(cub, &vert, &horz, casted_rays++);
 		ray_angle = ray_angle - ((float)FOV / (float)WIDTH);
 	}
 	//draw_pointer(cub);
