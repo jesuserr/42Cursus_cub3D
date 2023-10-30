@@ -6,7 +6,7 @@
 /*   By: cescanue <cescanue@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/25 21:10:39 by jesuserr          #+#    #+#             */
-/*   Updated: 2023/10/27 12:02:38 by cescanue         ###   ########.fr       */
+/*   Updated: 2023/10/30 15:59:10 by cescanue         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,21 +15,21 @@
 void	ft_error_handler(int error)
 {
 	if (error == ERROR_ARGS)
-		ft_printf ("%sInvalid arguments - One single map expected\n", RED);
+		ft_printf ("%sError\nInvalid arguments - One single map expected\n", RED);
 	else if (error == ERROR_FILE)
-		ft_printf ("%sError opening file\n", RED);
+		ft_printf ("%sError\nopening file\n", RED);
 	else if (error == ERROR_MEM)
-		ft_printf ("%sError allocating memory\n", RED);
+		ft_printf ("%sError\nallocating memory\n", RED);
 	else if (error == ERROR_EMPTY)
-		ft_printf ("%sError - Empty map\n", RED);
+		ft_printf ("%sError\nEmpty map\n", RED);
 	else if (error == ERROR_MAP)
-		ft_printf ("%sInvalid map format\n", RED);
+		ft_printf ("%sError\nInvalid map format\n", RED);
 	else if (error == ERROR_MLX)
-		ft_printf ("%sError starting MLX instances\n", RED);
+		ft_printf ("%sError\nstarting MLX instances\n", RED);
 	else if (error == ERROR_COLOR_F)
-		ft_printf ("%sError, the color format is not RGB\n", RED);
+		ft_printf ("%sError\nThe color format is not RGB\n", RED);
 	else if (error == ERROR_MAP_F)
-		ft_printf ("%sError, the map format is not correct\n", RED);
+		ft_printf ("%sError\nThe map format is not correct\n", RED);
 	exit(EXIT_FAILURE);
 }
 
