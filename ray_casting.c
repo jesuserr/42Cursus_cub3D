@@ -6,12 +6,13 @@
 /*   By: jesuserr <jesuserr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/09 19:43:38 by jesuserr          #+#    #+#             */
-/*   Updated: 2023/10/29 20:01:07 by jesuserr         ###   ########.fr       */
+/*   Updated: 2023/10/30 10:47:40 by jesuserr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
 
+void	ray_casting(t_cub *cub);
 void	draw_minimap_and_player(t_cub *cub);
 void	check_horizontal_lines(t_ray_cast *horz, t_cub *cub);
 void	check_vertical_lines(t_ray_cast *horz, t_cub *cub);
@@ -21,25 +22,21 @@ void	ray_casting(t_cub *cub)
 {
 	t_ray_cast	horz;
 	t_ray_cast	vert;
-	float		i;
+	float		ray_angle;
 	float		casted_rays;
 
 	draw_minimap_and_player(cub);
 	casted_rays = 0;
-	i = -FOV / 2.0;
+	ray_angle = FOV / 2.0;
 	while (++casted_rays < WIDTH)
 	{
-		horz.ray_angle = degrees_to_radians(cub->player.angle, i);
-		horz.depth_of_field = 0;
-		horz.ray_length = WIDTH * HEIGHT;
+		init_ray_casters(cub, &vert, &horz, ray_angle);
 		check_horizontal_lines(&horz, cub);
-		vert.ray_angle = degrees_to_radians(cub->player.angle, i);
-		vert.depth_of_field = 0;
-		vert.ray_length = WIDTH * HEIGHT;
 		check_vertical_lines(&vert, cub);
 		check_first_corner_exception(cub, &vert, &horz);
 		draw_shorter_ray(cub, &vert, &horz);
-		i = i + ((float)FOV / (float)WIDTH);
+		rise_walls(cub, &vert, &horz, casted_rays);
+		ray_angle = ray_angle - ((float)FOV / (float)WIDTH);
 	}
 	draw_pointer(cub);
 }
