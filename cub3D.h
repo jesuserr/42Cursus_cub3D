@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3D.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cescanue <cescanue@student.42barcelona.    +#+  +:+       +#+        */
+/*   By: jesuserr <jesuserr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/29 21:48:51 by cescanue          #+#    #+#             */
-/*   Updated: 2023/10/29 21:48:55 by cescanue         ###   ########.fr       */
+/*   Updated: 2023/10/30 10:46:59 by jesuserr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,9 +37,10 @@
 # define MAP_X_OFFSET	0			// Initial minimap x-position
 # define MAP_Y_OFFSET	0			// Initial minimap y-position
 # define INC_OFFSET		8			// Player movement pixels,wall size multiple
-# define WALL_SIZE		32			// Must be power of 2
+# define WALL_SIZE		64			// Must be power of 2
 # define ROT_ANGLE_INC	6			// Must be multiple of 360, player rotation
 # define FOV			66			// Field of view (even number)
+# define VERT_SCALE		1			// Modifies wall height in screen
 
 /*
 ** -.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-
@@ -173,8 +174,10 @@ void	ray_casting(t_cub *cub);
 /*		map_utils2.c		*/
 void	init_map2(char *file, t_cub *cub);
 /*		raycast_utils.c 		*/
+void	init_ray_casters(t_cub *cub, t_ray_cast *ver, t_ray_cast *hor, float a);
 double	degrees_to_radians(int angle_degrees, float inc_angle);
 void	draw_shorter_ray(t_cub *cub, t_ray_cast *vert, t_ray_cast *horz);
 void	check_first_corner_exception(t_cub *cub, t_ray_cast *v, t_ray_cast *h);
+void	rise_walls(t_cub *cub, t_ray_cast *vert, t_ray_cast *horz, float x);
 
 #endif
