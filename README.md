@@ -4,6 +4,10 @@
 
 ## Notes
 
+30/10 para revisar
+* Tamaño del mapa en funcion del mapa del fichero;
+* Se tiene que hacer free de los punteros donde se almacenan los nobmres de las texturas. 
+
 - Subject y evaluation page dentro de carpeta misc
 
 ## Links
