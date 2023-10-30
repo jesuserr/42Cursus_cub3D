@@ -14,7 +14,7 @@ LIBFT_DIR = libft/
 LIBX_DIR = minilibx_macos/
 
 NAME = cub3D
-SRCS = errors.c graphics.c hooks.c main.c map_utils2.c moves.c \
+SRCS = errors.c graphics.c hooks.c main.c map_utils.c map_utils2.c map_utils_parse.c moves.c \
 ray_casting.c graphics_2.c raycast_utils.c
 
 OBJS = $(SRCS:.c=.o)

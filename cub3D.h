@@ -6,7 +6,7 @@
 /*   By: cescanue <cescanue@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/29 21:48:51 by cescanue          #+#    #+#             */
-/*   Updated: 2023/10/29 21:48:55 by cescanue         ###   ########.fr       */
+/*   Updated: 2023/10/30 11:46:58 by cescanue         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -126,6 +126,14 @@ typedef struct s_map
 	int			c_c;
 }	t_map;
 
+typedef struct s_parse
+{
+	t_point	*map;
+	int		x;
+	int		y;
+	int		xl;
+} t_parse;
+
 typedef struct s_cub
 {
 	void		*mlx;
@@ -161,17 +169,17 @@ void	draw_rectangle(t_cub *cub, t_line diagonal);
 int		key_pressed(int keycode, t_cub *cub);
 int		close_window(t_cub *cub);
 /*		map_utils.c				*/
-char	*read_map(char *file, t_cub *cub);
-void	check_map(t_cub *cub);
-void	parse_map(t_cub *cub, char *line);
+void	init_map(char *file, t_cub *cub);
+/*		map_utils2.c				*/
+void	read_text_colors(int fd, char **line, t_cub *cub);
+/*		map_utils_parse.c		*/
+t_point	*parse_map(t_cub *cub);
 /*		moves.c				*/
 void	key_action_1(int keycode, t_cub *cub);
 int		check_collision(int keycode, t_cub *cub);
 void	action_aux(t_cub *cub);
 /*		ray_casting.c		*/
 void	ray_casting(t_cub *cub);
-/*		map_utils2.c		*/
-void	init_map2(char *file, t_cub *cub);
 /*		raycast_utils.c 		*/
 double	degrees_to_radians(int angle_degrees, float inc_angle);
 void	draw_shorter_ray(t_cub *cub, t_ray_cast *vert, t_ray_cast *horz);

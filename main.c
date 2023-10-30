@@ -6,7 +6,7 @@
 /*   By: cescanue <cescanue@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/29 21:49:02 by cescanue          #+#    #+#             */
-/*   Updated: 2023/10/29 21:49:05 by cescanue         ###   ########.fr       */
+/*   Updated: 2023/10/30 11:41:09 by cescanue         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ int	main(int argc, char **argv)
 
 	if (argc != 2)
 		ft_error_handler(ERROR_ARGS);
-	init_map2(argv[1], &cub);
+	init_map(argv[1], &cub);
 	init_win(&cub, argv[1]);
 	draw_first_frame(&cub);
 	init_hooks(&cub);
