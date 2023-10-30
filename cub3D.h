@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3D.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cescanue <cescanue@student.42barcelona.    +#+  +:+       +#+        */
+/*   By: jesuserr <jesuserr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/30 11:49:33 by cescanue          #+#    #+#             */
-/*   Updated: 2023/10/30 14:02:49 by cescanue         ###   ########.fr       */
+/*   Updated: 2023/10/30 20:30:26 by jesuserr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -133,7 +133,7 @@ typedef struct s_parse
 	int		x;
 	int		y;
 	int		xl;
-} t_parse;
+}	t_parse;
 
 typedef struct s_cub
 {
@@ -188,6 +188,8 @@ void	init_ray_casters(t_cub *cub, t_ray_cast *ver, t_ray_cast *hor, float a);
 double	degrees_to_radians(int angle_degrees, float inc_angle);
 void	draw_shorter_ray(t_cub *cub, t_ray_cast *vert, t_ray_cast *horz);
 void	check_first_corner_exception(t_cub *cub, t_ray_cast *v, t_ray_cast *h);
+/*		wall_utils.c 		*/
+void	draw_floor_and_ceiling(t_cub *cub);
 void	rise_walls(t_cub *cub, t_ray_cast *vert, t_ray_cast *horz, float x);
 
 #endif
