@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3D.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jesuserr <jesuserr@student.42.fr>          +#+  +:+       +#+        */
+/*   By: cescanue <cescanue@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/30 11:49:33 by cescanue          #+#    #+#             */
-/*   Updated: 2023/10/30 20:30:26 by jesuserr         ###   ########.fr       */
+/*   Updated: 2023/10/30 21:39:52 by cescanue         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -130,6 +130,7 @@ typedef struct s_map
 typedef struct s_parse
 {
 	t_point	*map;
+	char	**mapa;
 	int		x;
 	int		y;
 	int		xl;
@@ -177,6 +178,10 @@ void	read_text_colors(int fd, char **line, t_cub *cub);
 t_point	*parse_map(t_cub *cub);
 /*		map_utils_check.c		*/
 int		check_map(t_cub *cub);
+/*		map_utils_check.c		*/
+char	**str_to_array(int lx, int ly, char *smap);
+/*		map_utils_check2.c		*/
+void	check_limits(t_cub *cub);
 /*		moves.c				*/
 void	key_action_1(int keycode, t_cub *cub);
 int		check_collision(int keycode, t_cub *cub);

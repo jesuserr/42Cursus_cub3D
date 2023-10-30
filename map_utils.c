@@ -6,7 +6,7 @@
 /*   By: cescanue <cescanue@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/24 21:08:23 by cescanue          #+#    #+#             */
-/*   Updated: 2023/10/30 14:07:46 by cescanue         ###   ########.fr       */
+/*   Updated: 2023/10/30 21:25:34 by cescanue         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,6 @@ char	*read_raw_map(int fd, char **line, t_cub *cub)
 		*line = get_next_line(fd);
 	}
 	return (tmap);
-	
 }
 
 void	rawmap_to_squaremap2(char *smap, char *rmap, t_cub *cub)

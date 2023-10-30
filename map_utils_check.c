@@ -6,7 +6,7 @@
 /*   By: cescanue <cescanue@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/30 13:56:56 by cescanue          #+#    #+#             */
-/*   Updated: 2023/10/30 15:08:51 by cescanue         ###   ########.fr       */
+/*   Updated: 2023/10/30 21:48:13 by cescanue         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ void	check_player(char *rmap)
 	char	*tmap;
 	int		player;
 	int		cero;
-	
+
 	player = 0;
 	cero = 0;
 	tmap = rmap;
@@ -45,79 +45,58 @@ void	check_player(char *rmap)
 			|| *rmap == 'W' || *rmap == 'P')
 			player++;
 		if (*rmap == '0')
-			cero++; 
+			cero++;
 		rmap++;
 	}
 	if (!player || player > 1 || !cero)
 	{
-		printf("Error\nThe player is missing, you have more than one player or");
-		printf(" the map has no area for the player to move around.\n");
+		printf("Error\nThe player is missing, you have more than one player");
+		printf(" or the map has no area for the player to move around.\n");
 		free(tmap);
 		ft_error_handler(ERROR_MAP_F);
 	}
 }
+
+void	str_to_array2(t_parse *p, int lx, int ly, char *smap)
+{
+	p->xl = 0;
+	p->x = 0;
+	p->y = 0;
+	while (p->y < ly)
+	{
+		while (p->x < lx)
+		{
+			p->mapa[p->y][p->x] = smap[p->xl];
+			p->x++;
+			p->xl++;
+		}
+		p->x = 0;
+		p->y++;
+	}
+}
+
 char	**str_to_array(int lx, int ly, char *smap)
 {
-	int		xl;
-	int		x;
-	int		y;
-	char	**mapa;
-	
-	mapa = ft_calloc(ly, sizeof(char *));
-	if (!mapa)
+	t_parse	p;
+
+	p.mapa = ft_calloc(ly, sizeof(char *));
+	if (!p.mapa)
 		ft_error_handler(ERROR_MEM);
-	y = 0;
-	while (y < ly)
+	p.y = 0;
+	while (p.y < ly)
 	{
-		mapa[y] = ft_calloc(lx, sizeof(char *));
-		if (!mapa[y++])
+		p.mapa[p.y] = ft_calloc(lx, sizeof(char *));
+		if (!p.mapa[p.y++])
 			ft_error_handler(ERROR_MEM);
-	}	
-	xl = 0;
-	x = 0;
-	y = 0;
-	while (y < ly)
-	{
-		while (x < lx)
-		{
-			mapa[y][x] = smap[xl];
-			x++;
-			xl++;
-		}
-		x = 0;
-		y++;
 	}
-	return (mapa);	
+	str_to_array2(&p, lx, ly, smap);
+	return (p.mapa);
 }
-
-void	check_limits(t_cub *cub)
-{
-	int x;
-	int y;
-	char	**mapa;
-	
-	mapa = str_to_array(cub->x_elem, cub->y_elem, cub->raw_map);	
-	x = 0;
-	y = 0;
-	while (y < cub->y_elem)
-	{
-		while (x < cub->x_elem)
-		{
-			printf("%c", mapa[y][x]);
-			x++;
-		}
-		printf("\n");
-		x = 0;
-		y++;
-	}
-	
-}
-
 
 int	check_map(t_cub *cub)
 {
 	check_mapch(cub->raw_map);
 	check_player(cub->raw_map);
 	check_limits(cub);
-	return (0);	
+	return (0);
 }
