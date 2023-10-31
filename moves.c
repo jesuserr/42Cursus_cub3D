@@ -6,7 +6,7 @@
 /*   By: jesuserr <jesuserr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/14 11:47:50 by jesuserr          #+#    #+#             */
-/*   Updated: 2023/10/29 17:41:24 by jesuserr         ###   ########.fr       */
+/*   Updated: 2023/10/31 13:30:59 by jesuserr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,24 +15,38 @@
 void	key_action_1(int keycode, t_cub *cub)
 {
 	if (keycode == A_KEY)
-		cub->player.x_pos -= check_collision(keycode, cub);
+	{
+		cub->player.x_pos = cub->player.x_pos + (cub->player.y_vector * INC_OFFSET);
+		cub->player.y_pos = cub->player.y_pos - (cub->player.x_vector * INC_OFFSET);
+	}
 	else if (keycode == D_KEY)
-		cub->player.x_pos += check_collision(keycode, cub);
-	else if (keycode == S_KEY)
-		cub->player.y_pos += check_collision(keycode, cub);
+	{
+		cub->player.x_pos = cub->player.x_pos - (cub->player.y_vector * INC_OFFSET);
+		cub->player.y_pos = cub->player.y_pos + (cub->player.x_vector * INC_OFFSET);
+	}
 	else if (keycode == W_KEY)
-		cub->player.y_pos -= check_collision(keycode, cub);
+	{
+		cub->player.x_pos = cub->player.x_pos + (cub->player.x_vector * INC_OFFSET);
+		cub->player.y_pos = cub->player.y_pos + (cub->player.y_vector * INC_OFFSET);
+	}
+	else if (keycode == S_KEY)
+	{
+		cub->player.x_pos = cub->player.x_pos - (cub->player.x_vector * INC_OFFSET);
+		cub->player.y_pos = cub->player.y_pos - (cub->player.y_vector * INC_OFFSET);
+	}
 	else if (keycode == LEFT_KEY)
 	{
 		cub->player.angle += ROT_ANGLE_INC;
 		if (cub->player.angle >= 360)
 			cub->player.angle = 0;
+		calc_player_vector(cub);
 	}
 	else if (keycode == RIGHT_KEY)
 	{
 		cub->player.angle -= ROT_ANGLE_INC;
 		if (cub->player.angle < 0)
 			cub->player.angle = 360 - ROT_ANGLE_INC;
+		calc_player_vector(cub);
 	}
 	action_aux(cub);
 }
@@ -81,4 +95,6 @@ void	action_aux(t_cub *cub)
 	(cub->player.y_pos / WALL_SIZE * cub->x_elem)].color);
 	mlx_string_put(cub->mlx, cub->mlx_win, 500, 70, WHITE, str);
 	free(str);
+	printf("%d %d %d %f %f\n", cub->player.x_pos, cub->player.y_pos, \
+	cub->player.angle, cub->player.x_vector, cub->player.y_vector);
 }

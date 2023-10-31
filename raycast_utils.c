@@ -6,7 +6,7 @@
 /*   By: jesuserr <jesuserr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/26 19:24:03 by jesuserr          #+#    #+#             */
-/*   Updated: 2023/10/30 20:18:35 by jesuserr         ###   ########.fr       */
+/*   Updated: 2023/10/31 13:38:55 by jesuserr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@ void	init_ray_casters(t_cub *cub, t_ray_cast *ver, t_ray_cast *hor, float a);
 double	degrees_to_radians(int angle_degrees, float inc_angle);
 void	draw_shorter_ray(t_cub *cub, t_ray_cast *vert, t_ray_cast *horz);
 void	check_first_corner_exception(t_cub *cub, t_ray_cast *v, t_ray_cast *h);
+void	calc_player_vector(t_cub *cub);
 
 void	init_ray_casters(t_cub *cub, t_ray_cast *ver, t_ray_cast *hor, float a)
 {
@@ -71,4 +72,10 @@ void	check_first_corner_exception(t_cub *cub, t_ray_cast *v, t_ray_cast *h)
 		v->ray_x = WALL_SIZE;
 		v->ray_y = WALL_SIZE;
 	}
+}
+
+void	calc_player_vector(t_cub *cub)
+{
+	cub->player.x_vector = cos(degrees_to_radians(cub->player.angle, 0));
+	cub->player.y_vector = -sin(degrees_to_radians(cub->player.angle, 0));
 }

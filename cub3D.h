@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3D.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cescanue <cescanue@student.42barcelona.    +#+  +:+       +#+        */
+/*   By: jesuserr <jesuserr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/30 11:49:33 by cescanue          #+#    #+#             */
-/*   Updated: 2023/10/30 21:39:52 by cescanue         ###   ########.fr       */
+/*   Updated: 2023/10/31 13:46:08 by jesuserr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,9 +36,9 @@
 # define PI				3.141592654
 # define MAP_X_OFFSET	0			// Initial minimap x-position
 # define MAP_Y_OFFSET	0			// Initial minimap y-position
-# define INC_OFFSET		8			// Player movement pixels,wall size multiple
+# define INC_OFFSET		16			// Player movement pixels,wall size multiple
 # define WALL_SIZE		64			// Must be power of 2
-# define ROT_ANGLE_INC	6			// Must be multiple of 360, player rotation
+# define ROT_ANGLE_INC	9			// Must be multiple of 360 and 90
 # define FOV			66			// Field of view (even number)
 # define VERT_SCALE		1			// Modifies wall height in screen
 
@@ -61,9 +61,11 @@
 */
 typedef struct s_player
 {
-	int	x_pos;
-	int	y_pos;
-	int	angle;
+	int		x_pos;
+	int		y_pos;
+	int		angle;
+	float	x_vector;
+	float	y_vector;
 }	t_player;
 
 typedef struct s_ray_cast
@@ -193,6 +195,7 @@ void	init_ray_casters(t_cub *cub, t_ray_cast *ver, t_ray_cast *hor, float a);
 double	degrees_to_radians(int angle_degrees, float inc_angle);
 void	draw_shorter_ray(t_cub *cub, t_ray_cast *vert, t_ray_cast *horz);
 void	check_first_corner_exception(t_cub *cub, t_ray_cast *v, t_ray_cast *h);
+void	calc_player_vector(t_cub *cub);
 /*		wall_utils.c 		*/
 void	draw_floor_and_ceiling(t_cub *cub);
 void	rise_walls(t_cub *cub, t_ray_cast *vert, t_ray_cast *horz, float x);
