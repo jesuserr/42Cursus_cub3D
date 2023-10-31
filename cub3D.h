@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3D.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jesuserr <jesuserr@student.42.fr>          +#+  +:+       +#+        */
+/*   By: cescanue <cescanue@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/30 11:49:33 by cescanue          #+#    #+#             */
-/*   Updated: 2023/10/31 13:46:08 by jesuserr         ###   ########.fr       */
+/*   Updated: 2023/10/31 21:15:55 by cescanue         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -145,6 +145,7 @@ typedef struct s_cub
 	char		*raw_map;
 	int			x_elem;
 	int			y_elem;
+	int			mapconsistency;
 	t_point		*map;
 	t_img		img;
 	t_player	player;

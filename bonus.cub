@@ -6,7 +6,7 @@ WE ./textures/torch.xpm
 EA ./textures/attack_torch.xpm
 
 S ./textures/creeper.xpm
-F 77,92,53
+F 77,192,53
 C 163,208,230
 
         111111111111111111111111
