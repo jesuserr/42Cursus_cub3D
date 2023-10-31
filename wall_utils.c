@@ -6,7 +6,7 @@
 /*   By: jesuserr <jesuserr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/30 20:13:31 by jesuserr          #+#    #+#             */
-/*   Updated: 2023/10/30 20:20:51 by jesuserr         ###   ########.fr       */
+/*   Updated: 2023/10/31 20:17:55 by jesuserr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,5 +59,5 @@ void	rise_walls(t_cub *cub, t_ray_cast *vert, t_ray_cast *horz, float x)
 		wall_height = HEIGHT;
 	line.y0 = (HEIGHT / 2) - (wall_height / 2);
 	line.y1 = (HEIGHT / 2) + (wall_height / 2);
-	draw_line(line, cub);
+	draw_vert_line(line, cub);
 }

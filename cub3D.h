@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: cescanue <cescanue@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/30 11:49:33 by cescanue          #+#    #+#             */
-/*   Updated: 2023/10/31 21:15:55 by cescanue         ###   ########.fr       */
+/*   Created: 2023/10/31 21:51:13 by cescanue          #+#    #+#             */
+/*   Updated: 2023/10/31 21:51:16 by cescanue         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -167,6 +167,7 @@ void	mlx_put_pixel(t_cub *cub, int x, int y, int color);
 void	draw_line(t_line line, t_cub *cub);
 void	line_direction(t_line *line, t_line_aux *line_aux);
 void	draw_pointer(t_cub *cub);
+void	draw_vert_line(t_line line, t_cub *cub);
 /*		graphics_2.c		*/
 void	draw_square(t_cub *cub, t_point square, int size);
 void	draw_rectangle(t_cub *cub, t_line diagonal);
