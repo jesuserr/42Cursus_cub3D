@@ -6,7 +6,7 @@
 /*   By: jesuserr <jesuserr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/29 21:49:02 by cescanue          #+#    #+#             */
-/*   Updated: 2023/11/01 10:50:28 by jesuserr         ###   ########.fr       */
+/*   Updated: 2023/11/01 13:43:16 by jesuserr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,18 +27,31 @@ void	init_win(t_cub *cub, char *s)
 		&cub->img.len, &cub->img.endian);
 }
 
+void	init_struct(t_cub *cub)
+{
+	cub->key.a_pressed = 0;
+	cub->key.d_pressed = 0;
+	cub->key.w_pressed = 0;
+	cub->key.s_pressed = 0;
+	cub->key.left_pressed = 0;
+	cub->key.right_pressed = 0;
+	calc_player_vector(cub);
+}
+
 int	main(int argc, char **argv)
 {
-	t_cub	cub;	
+	t_cub	cub;
 
 	if (argc != 2)
 		ft_error_handler(ERROR_ARGS);
 	init_map(argv[1], &cub);
 	init_win(&cub, argv[1]);
-	calc_player_vector(&cub);
+	init_struct(&cub);
 	ray_casting(&cub);
 	mlx_hook(cub.mlx_win, 17, 0, close_window, &cub);
 	mlx_hook(cub.mlx_win, 2, 0, key_pressed, &cub);
+	mlx_loop_hook(cub.mlx, ray_casting, &cub);
+	mlx_hook(cub.mlx_win, 3, 0, key_released, &cub);
 	mlx_loop(cub.mlx);
 	return (0);
 }

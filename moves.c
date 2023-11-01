@@ -6,56 +6,53 @@
 /*   By: jesuserr <jesuserr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/14 11:47:50 by jesuserr          #+#    #+#             */
-/*   Updated: 2023/11/01 10:39:01 by jesuserr         ###   ########.fr       */
+/*   Updated: 2023/11/01 13:41:15 by jesuserr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
 
-void	key_action_1(int keycode, t_cub *cub)
+void	key_actions(t_cub *cub)
 {
-	if (keycode == A_KEY)
+	if (cub->key.a_pressed == 1)
 	{
 		cub->player.x_pos = cub->player.x_pos + (cub->player.y_vector * INC_OFFSET);
 		cub->player.y_pos = cub->player.y_pos - (cub->player.x_vector * INC_OFFSET);
 	}
-	else if (keycode == D_KEY)
+	if (cub->key.d_pressed == 1)
 	{
 		cub->player.x_pos = cub->player.x_pos - (cub->player.y_vector * INC_OFFSET);
 		cub->player.y_pos = cub->player.y_pos + (cub->player.x_vector * INC_OFFSET);
 	}
-	else if (keycode == W_KEY)
+	if (cub->key.w_pressed == 1)
 	{
 		cub->player.x_pos = cub->player.x_pos + (cub->player.x_vector * INC_OFFSET);
 		cub->player.y_pos = cub->player.y_pos + (cub->player.y_vector * INC_OFFSET);
 	}
-	else if (keycode == S_KEY)
+	if (cub->key.s_pressed == 1)
 	{
 		cub->player.x_pos = cub->player.x_pos - (cub->player.x_vector * INC_OFFSET);
 		cub->player.y_pos = cub->player.y_pos - (cub->player.y_vector * INC_OFFSET);
 	}
-	else
-		key_action_2(keycode, cub);
-	ray_casting(cub);
+	key_actions_2(cub);
 }
 
-void	key_action_2(int keycode, t_cub *cub)
+void	key_actions_2(t_cub *cub)
 {
-	if (keycode == LEFT_KEY)
+	if (cub->key.left_pressed == 1)
 	{
 		cub->player.angle += ROT_ANGLE_INC;
 		if (cub->player.angle >= 360)
 			cub->player.angle = 0;
 		calc_player_vector(cub);
 	}
-	else if (keycode == RIGHT_KEY)
+	else if (cub->key.right_pressed == 1)
 	{
 		cub->player.angle -= ROT_ANGLE_INC;
 		if (cub->player.angle < 0)
 			cub->player.angle = 360 - ROT_ANGLE_INC;
 		calc_player_vector(cub);
 	}
-	ray_casting(cub);
 }
 
 int	check_collision(int keycode, t_cub *cub)

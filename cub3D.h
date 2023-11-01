@@ -6,7 +6,7 @@
 /*   By: jesuserr <jesuserr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/31 21:51:13 by cescanue          #+#    #+#             */
-/*   Updated: 2023/11/01 11:05:23 by jesuserr         ###   ########.fr       */
+/*   Updated: 2023/11/01 13:43:35 by jesuserr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,9 +36,9 @@
 # define PI				3.141592654
 # define MAP_X_OFFSET	0			// Initial minimap x-position
 # define MAP_Y_OFFSET	0			// Initial minimap y-position
-# define INC_OFFSET		16			// Player movement pixels,wall size multiple
+# define INC_OFFSET		4			// Player movement pixels,wall size multiple
 # define WALL_SIZE		64			// Must be power of 2
-# define ROT_ANGLE_INC	9			// Must be multiple of 360 and 90
+# define ROT_ANGLE_INC	3			// Must be multiple of 360 and 90
 # define FOV			66			// Field of view (even number)
 # define VERT_SCALE		1			// Modifies wall height in screen
 
@@ -59,6 +59,16 @@
 ** -.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-
 **                              STRUCTS
 */
+typedef struct s_keys
+{
+	int		d_pressed;
+	int		w_pressed;
+	int		a_pressed;
+	int		s_pressed;
+	int		left_pressed;
+	int		right_pressed;
+}	t_keys;
+
 typedef struct s_player
 {
 	int		x_pos;
@@ -139,6 +149,7 @@ typedef struct s_parse
 
 typedef struct s_cub
 {
+	t_keys		key;
 	void		*mlx;
 	void		*mlx_win;
 	char		*raw_map;
@@ -172,6 +183,7 @@ void	draw_square(t_cub *cub, t_point square, int size);
 void	draw_rectangle(t_cub *cub, t_line diagonal);
 /*		hooks.c				*/
 int		key_pressed(int keycode, t_cub *cub);
+int		key_released(int keycode, t_cub *cub);
 int		close_window(t_cub *cub);
 /*		map_utils.c				*/
 void	init_map(char *file, t_cub *cub);
@@ -186,11 +198,11 @@ char	**str_to_array(int lx, int ly, char *smap);
 /*		map_utils_check2.c		*/
 void	check_limits(t_cub *cub);
 /*		moves.c				*/
-void	key_action_1(int keycode, t_cub *cub);
-void	key_action_2(int keycode, t_cub *cub);
+void	key_actions(t_cub *cub);
+void	key_actions_2(t_cub *cub);
 int		check_collision(int keycode, t_cub *cub);
 /*		ray_casting.c		*/
-void	ray_casting(t_cub *cub);
+int		ray_casting(t_cub *cub);
 /*		raycast_utils.c 		*/
 void	init_ray_casters(t_cub *cub, t_ray_cast *ver, t_ray_cast *hor, float a);
 double	degrees_to_radians(int angle_degrees, float inc_angle);

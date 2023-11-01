@@ -6,19 +6,19 @@
 /*   By: jesuserr <jesuserr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/09 19:43:38 by jesuserr          #+#    #+#             */
-/*   Updated: 2023/11/01 11:04:59 by jesuserr         ###   ########.fr       */
+/*   Updated: 2023/11/01 13:34:18 by jesuserr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
 
-void	ray_casting(t_cub *cub);
+int		ray_casting(t_cub *cub);
 void	draw_minimap_and_player(t_cub *cub);
 void	check_horizontal_lines(t_ray_cast *horz, t_cub *cub);
 void	check_vertical_lines(t_ray_cast *horz, t_cub *cub);
 void	check_hit_to_wall(t_cub *cub, t_ray_cast *cast);
 
-void	ray_casting(t_cub *cub)
+int	ray_casting(t_cub *cub)
 {
 	t_ray_cast	horz;
 	t_ray_cast	vert;
@@ -42,6 +42,8 @@ void	ray_casting(t_cub *cub)
 	}
 	//draw_pointer(cub);
 	mlx_put_image_to_window(cub->mlx, cub->mlx_win, cub->img.img, 0, 0);
+	key_actions(cub);
+	return (0);
 }
 
 void	draw_minimap_and_player(t_cub *cub)
