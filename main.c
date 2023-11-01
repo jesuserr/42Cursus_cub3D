@@ -6,7 +6,7 @@
 /*   By: jesuserr <jesuserr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/29 21:49:02 by cescanue          #+#    #+#             */
-/*   Updated: 2023/11/01 13:43:16 by jesuserr         ###   ########.fr       */
+/*   Updated: 2023/11/01 15:06:55 by jesuserr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,8 @@ void	init_struct(t_cub *cub)
 	cub->key.s_pressed = 0;
 	cub->key.left_pressed = 0;
 	cub->key.right_pressed = 0;
+	cub->key.shift_pressed = 0;
+	cub->player.speed = INC_OFFSET;
 	calc_player_vector(cub);
 }
 

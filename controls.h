@@ -6,7 +6,7 @@
 /*   By: jesuserr <jesuserr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/16 12:30:23 by jesuserr          #+#    #+#             */
-/*   Updated: 2023/10/19 15:40:22 by jesuserr         ###   ########.fr       */
+/*   Updated: 2023/11/01 15:02:46 by jesuserr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@
 # define RIGHT_KEY		124
 # define DOWN_KEY		125
 # define UP_KEY			126
+# define SHIFT_KEY      257
 # define I_KEY			34
 # define O_KEY			31
 # define P_KEY			35

@@ -6,7 +6,7 @@
 /*   By: jesuserr <jesuserr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/31 21:51:13 by cescanue          #+#    #+#             */
-/*   Updated: 2023/11/01 13:43:35 by jesuserr         ###   ########.fr       */
+/*   Updated: 2023/11/01 15:06:26 by jesuserr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,7 @@ typedef struct s_keys
 	int		s_pressed;
 	int		left_pressed;
 	int		right_pressed;
+	int		shift_pressed;
 }	t_keys;
 
 typedef struct s_player
@@ -76,6 +77,7 @@ typedef struct s_player
 	int		angle;
 	float	x_vector;
 	float	y_vector;
+	int		speed;
 }	t_player;
 
 typedef struct s_ray_cast

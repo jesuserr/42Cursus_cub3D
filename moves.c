@@ -6,7 +6,7 @@
 /*   By: jesuserr <jesuserr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/14 11:47:50 by jesuserr          #+#    #+#             */
-/*   Updated: 2023/11/01 13:41:15 by jesuserr         ###   ########.fr       */
+/*   Updated: 2023/11/01 15:10:37 by jesuserr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,23 +16,23 @@ void	key_actions(t_cub *cub)
 {
 	if (cub->key.a_pressed == 1)
 	{
-		cub->player.x_pos = cub->player.x_pos + (cub->player.y_vector * INC_OFFSET);
-		cub->player.y_pos = cub->player.y_pos - (cub->player.x_vector * INC_OFFSET);
+		cub->player.x_pos = cub->player.x_pos + (cub->player.y_vector * cub->player.speed);
+		cub->player.y_pos = cub->player.y_pos - (cub->player.x_vector * cub->player.speed);
 	}
 	if (cub->key.d_pressed == 1)
 	{
-		cub->player.x_pos = cub->player.x_pos - (cub->player.y_vector * INC_OFFSET);
-		cub->player.y_pos = cub->player.y_pos + (cub->player.x_vector * INC_OFFSET);
+		cub->player.x_pos = cub->player.x_pos - (cub->player.y_vector * cub->player.speed);
+		cub->player.y_pos = cub->player.y_pos + (cub->player.x_vector * cub->player.speed);
 	}
 	if (cub->key.w_pressed == 1)
 	{
-		cub->player.x_pos = cub->player.x_pos + (cub->player.x_vector * INC_OFFSET);
-		cub->player.y_pos = cub->player.y_pos + (cub->player.y_vector * INC_OFFSET);
+		cub->player.x_pos = cub->player.x_pos + (cub->player.x_vector * cub->player.speed);
+		cub->player.y_pos = cub->player.y_pos + (cub->player.y_vector * cub->player.speed);
 	}
 	if (cub->key.s_pressed == 1)
 	{
-		cub->player.x_pos = cub->player.x_pos - (cub->player.x_vector * INC_OFFSET);
-		cub->player.y_pos = cub->player.y_pos - (cub->player.y_vector * INC_OFFSET);
+		cub->player.x_pos = cub->player.x_pos - (cub->player.x_vector * cub->player.speed);
+		cub->player.y_pos = cub->player.y_pos - (cub->player.y_vector * cub->player.speed);
 	}
 	key_actions_2(cub);
 }

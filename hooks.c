@@ -6,7 +6,7 @@
 /*   By: jesuserr <jesuserr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/07 11:54:26 by jesuserr          #+#    #+#             */
-/*   Updated: 2023/11/01 13:10:51 by jesuserr         ###   ########.fr       */
+/*   Updated: 2023/11/01 15:11:06 by jesuserr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,11 @@ int	key_pressed(int keycode, t_cub *cub)
 		cub->key.left_pressed = 1;
 	else if (keycode == RIGHT_KEY)
 		cub->key.right_pressed = 1;
+	else if (keycode == SHIFT_KEY)
+	{
+		cub->key.shift_pressed = 1;
+		cub->player.speed *= 2;
+	}
 	return (0);
 }
 
@@ -45,6 +50,11 @@ int	key_released(int keycode, t_cub *cub)
 		cub->key.left_pressed = 0;
 	else if (keycode == RIGHT_KEY)
 		cub->key.right_pressed = 0;
+	else if (keycode == SHIFT_KEY)
+	{
+		cub->key.shift_pressed = 0;
+		cub->player.speed = INC_OFFSET;
+	}
 	return (0);
 }
 /* Without mlx_destroy_window & free(cub->mlx) there are no leaks either !?? */
