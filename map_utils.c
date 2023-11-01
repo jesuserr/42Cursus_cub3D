@@ -6,7 +6,7 @@
 /*   By: cescanue <cescanue@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/24 21:08:23 by cescanue          #+#    #+#             */
-/*   Updated: 2023/11/01 20:56:06 by cescanue         ###   ########.fr       */
+/*   Updated: 2023/11/01 21:32:07 by cescanue         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ char	*rawmap_to_squaremap(char *rmap, t_cub *cub)
 
 	if (!rmap)
 		ft_error_handler(ERROR_MAP_F);
-	smap = ft_calloc(cub->y_elem * cub->x_elem, sizeof(char) + 1);
+	smap = ft_calloc((cub->y_elem * cub->x_elem) + 1, sizeof(char));
 	if (!smap)
 		ft_error_handler(ERROR_MEM);
 	ft_memset(smap, ' ', cub->y_elem * cub->x_elem);
