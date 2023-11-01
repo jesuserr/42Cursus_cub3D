@@ -6,7 +6,7 @@
 /*   By: jesuserr <jesuserr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/09 19:43:38 by jesuserr          #+#    #+#             */
-/*   Updated: 2023/10/31 13:19:24 by jesuserr         ###   ########.fr       */
+/*   Updated: 2023/11/01 10:15:28 by jesuserr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,7 @@ void	draw_minimap_and_player(t_cub *cub)
 	int		i;
 	t_point	square;
 
+	ft_bzero(cub->img.addr, WIDTH * HEIGHT * cub->img.bpp / 8);
 	i = 0;
 	while (i < (cub->x_elem * cub->y_elem))
 	{
@@ -67,22 +68,22 @@ void	draw_minimap_and_player(t_cub *cub)
 void	check_horizontal_lines(t_ray_cast *horz, t_cub *cub)
 {
 	horz->depth_of_field_max = cub->y_elem;
-	horz->arc_tan = 1.0 / tan(horz->ray_angle);
+	horz->tan = tan((PI / 2) - horz->ray_angle);
 	if (horz->ray_angle > 0 && horz->ray_angle < PI)
 	{
 		horz->ray_y = ((cub->player.y_pos / WALL_SIZE) * WALL_SIZE) - 0.0001;
 		horz->ray_x = (cub->player.y_pos - horz->ray_y) * \
-		horz->arc_tan + cub->player.x_pos;
+		horz->tan + cub->player.x_pos;
 		horz->y_offset = -WALL_SIZE;
-		horz->x_offset = -horz->y_offset * horz->arc_tan;
+		horz->x_offset = -horz->y_offset * horz->tan;
 	}
 	else if (horz->ray_angle > PI && horz->ray_angle < (2 * PI))
 	{
 		horz->ray_y = ((cub->player.y_pos / WALL_SIZE) * WALL_SIZE) + WALL_SIZE;
 		horz->ray_x = (cub->player.y_pos - horz->ray_y) * \
-		horz->arc_tan + cub->player.x_pos;
+		horz->tan + cub->player.x_pos;
 		horz->y_offset = WALL_SIZE;
-		horz->x_offset = -horz->y_offset * horz->arc_tan;
+		horz->x_offset = -horz->y_offset * horz->tan;
 	}
 	else
 	{

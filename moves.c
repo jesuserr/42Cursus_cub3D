@@ -6,7 +6,7 @@
 /*   By: jesuserr <jesuserr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/14 11:47:50 by jesuserr          #+#    #+#             */
-/*   Updated: 2023/10/31 13:30:59 by jesuserr         ###   ########.fr       */
+/*   Updated: 2023/11/01 10:17:57 by jesuserr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,13 +73,12 @@ int	check_collision(int keycode, t_cub *cub)
 	return (0);
 }
 
-/* Erases the image in memory; calculates and writes the new one */
+/* Calculates and shows the new frame */
 
 void	action_aux(t_cub *cub)
 {
 	char	*str;
 
-	ft_bzero(cub->img.addr, WIDTH * HEIGHT * cub->img.bpp / 8);
 	ray_casting(cub);
 	mlx_put_image_to_window(cub->mlx, cub->mlx_win, cub->img.img, 0, 0);
 	str = ft_itoa(cub->player.x_pos);
