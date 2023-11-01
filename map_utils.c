@@ -6,7 +6,7 @@
 /*   By: cescanue <cescanue@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/24 21:08:23 by cescanue          #+#    #+#             */
-/*   Updated: 2023/10/30 21:25:34 by cescanue         ###   ########.fr       */
+/*   Updated: 2023/11/01 20:56:06 by cescanue         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,22 +41,22 @@ char	*read_raw_map(int fd, char **line, t_cub *cub)
 void	rawmap_to_squaremap2(char *smap, char *rmap, t_cub *cub)
 {
 	int		x;
+	int		x1;
 	int		y;
-	int		y1;
 
-	x = 0;
-	y1 = 0;
-	while (x < cub->x_elem)
+	y = 0;
+	x1 = 0;
+	while (y < cub->y_elem)
 	{
-		y = 0;
-		while (rmap[y1] && rmap[y1] != '\n')
+		x = 0;
+		while (rmap[x1] && rmap[x1] != '\n')
 		{
-			smap[(x * cub->x_elem) + y] = rmap[y1];
-			y++;
-			y1++;
+			smap[(y * cub->x_elem) + x] = rmap[x1];
+			x++;
+			x1++;
 		}
-		y1++;
-		x++;
+		x1++;
+		y++;
 	}
 }
 

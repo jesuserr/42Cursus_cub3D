@@ -1,0 +1,17 @@
+NO ./textures/planks.xpm
+SO ./textures/grass.xpm
+WE ./textures/torch.xpm
+EA ./textures/attack_torch.xpm
+
+F 77,92,53
+C 163,208,230
+
+11111111
+10100001
+10100001
+10100001
+1000N001
+10000101
+10000101
+10000001
+11111111

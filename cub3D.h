@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3D.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jesuserr <jesuserr@student.42.fr>          +#+  +:+       +#+        */
+/*   By: cescanue <cescanue@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/31 21:51:13 by cescanue          #+#    #+#             */
-/*   Updated: 2023/11/01 15:06:26 by jesuserr         ###   ########.fr       */
+/*   Updated: 2023/11/01 20:55:18 by cescanue         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -151,7 +151,6 @@ typedef struct s_parse
 
 typedef struct s_cub
 {
-	t_keys		key;
 	void		*mlx;
 	void		*mlx_win;
 	char		*raw_map;
@@ -162,6 +161,7 @@ typedef struct s_cub
 	t_img		img;
 	t_player	player;
 	t_map		*cmap;
+	t_keys		key;
 }	t_cub;
 
 /*
