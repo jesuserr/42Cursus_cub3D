@@ -6,7 +6,7 @@
 /*   By: cescanue <cescanue@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/24 21:08:23 by cescanue          #+#    #+#             */
-/*   Updated: 2023/11/01 21:55:58 by cescanue         ###   ########.fr       */
+/*   Updated: 2023/11/01 22:01:21 by cescanue         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ char	*read_raw_map(int fd, char **line, t_cub *cub)
 		if (cub->x_elem < (int) ft_strlen(*line))
 			cub->x_elem = ft_strlen(*line) - 1;
 		omap = tmap;
-		tmap = ft_calloc(size + 1 , sizeof(char));
+		tmap = ft_calloc(size + 1, sizeof(char));
 		if (!tmap)
 			ft_error_handler(ERROR_MEM);
 		ft_strlcpy(tmap, omap, size);
