@@ -6,7 +6,7 @@
 /*   By: jesuserr <jesuserr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/24 20:03:49 by jesuserr          #+#    #+#             */
-/*   Updated: 2023/11/01 20:50:13 by jesuserr         ###   ########.fr       */
+/*   Updated: 2023/11/01 23:47:12 by jesuserr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,27 +60,24 @@ void	draw_rectangle(t_cub *cub, t_line diagonal)
 
 void	on_screen_minimap(t_cub *cub)
 {
-	int		i;
 	t_point	square;
-	int		scale;
-	int		x_map_offset;
+	int		i;
 
-	scale = WIDTH / cub->x_elem / 5.0;
-	x_map_offset = (WIDTH / 2) - (cub->x_elem * scale / 2);
 	i = 0;
 	while (i < (cub->x_elem * cub->y_elem))
 	{
-		square.x = (cub->map[i].x / WALL_SIZE * scale) + x_map_offset;
-		square.y = (cub->map[i].y / WALL_SIZE * scale) + 10;
+		square.x = (cub->map[i].x / WALL_SIZE * cub->key.map_scale) + \
+		cub->key.map_x_offset;
+		square.y = (cub->map[i].y / WALL_SIZE * cub->key.map_scale) + 10;
 		square.color = cub->map[i].color;
 		if (square.color != 0)
-			draw_square(cub, square, scale - 1);
+			draw_square(cub, square, cub->key.map_scale - 1);
 		i++;
 	}
-	square.x = ((cub->player.x_pos - (WALL_SIZE / 2)) * scale) / WALL_SIZE;
-	square.y = ((cub->player.y_pos - (WALL_SIZE / 2)) * scale) / WALL_SIZE;
-	square.x += x_map_offset;
-	square.y += 10;
+	square.x = ((cub->player.x_pos - (WALL_SIZE / 2)) * cub->key.map_scale);
+	square.y = ((cub->player.y_pos - (WALL_SIZE / 2)) * cub->key.map_scale);
+	square.x = (square.x / WALL_SIZE) + cub->key.map_x_offset;
+	square.y = (square.y / WALL_SIZE) + 10;
 	square.color = 0xFFFFFF;
-	draw_square(cub, square, scale / 2);
+	draw_square(cub, square, cub->key.map_scale / 2);
 }
