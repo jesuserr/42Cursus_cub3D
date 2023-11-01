@@ -6,7 +6,7 @@
 /*   By: jesuserr <jesuserr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/14 11:47:50 by jesuserr          #+#    #+#             */
-/*   Updated: 2023/11/01 10:17:57 by jesuserr         ###   ########.fr       */
+/*   Updated: 2023/11/01 10:39:01 by jesuserr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,14 @@ void	key_action_1(int keycode, t_cub *cub)
 		cub->player.x_pos = cub->player.x_pos - (cub->player.x_vector * INC_OFFSET);
 		cub->player.y_pos = cub->player.y_pos - (cub->player.y_vector * INC_OFFSET);
 	}
-	else if (keycode == LEFT_KEY)
+	else
+		key_action_2(keycode, cub);
+	ray_casting(cub);
+}
+
+void	key_action_2(int keycode, t_cub *cub)
+{
+	if (keycode == LEFT_KEY)
 	{
 		cub->player.angle += ROT_ANGLE_INC;
 		if (cub->player.angle >= 360)
@@ -48,7 +55,7 @@ void	key_action_1(int keycode, t_cub *cub)
 			cub->player.angle = 360 - ROT_ANGLE_INC;
 		calc_player_vector(cub);
 	}
-	action_aux(cub);
+	ray_casting(cub);
 }
 
 int	check_collision(int keycode, t_cub *cub)
@@ -73,27 +80,20 @@ int	check_collision(int keycode, t_cub *cub)
 	return (0);
 }
 
-/* Calculates and shows the new frame */
-
-void	action_aux(t_cub *cub)
-{
-	char	*str;
-
-	ray_casting(cub);
-	mlx_put_image_to_window(cub->mlx, cub->mlx_win, cub->img.img, 0, 0);
-	str = ft_itoa(cub->player.x_pos);
-	mlx_string_put(cub->mlx, cub->mlx_win, 500, 10, WHITE, str);
-	free(str);
-	str = ft_itoa(cub->player.y_pos);
-	mlx_string_put(cub->mlx, cub->mlx_win, 500, 30, WHITE, str);
-	free(str);
-	str = ft_itoa(cub->player.angle);
-	mlx_string_put(cub->mlx, cub->mlx_win, 500, 50, WHITE, str);
-	free(str);
-	str = ft_itoa(cub->map[cub->player.x_pos / WALL_SIZE + \
-	(cub->player.y_pos / WALL_SIZE * cub->x_elem)].color);
-	mlx_string_put(cub->mlx, cub->mlx_win, 500, 70, WHITE, str);
-	free(str);
-	printf("%d %d %d %f %f\n", cub->player.x_pos, cub->player.y_pos, \
-	cub->player.angle, cub->player.x_vector, cub->player.y_vector);
-}
+/* Stuff for debugging
+str = ft_itoa(cub->player.x_pos);
+mlx_string_put(cub->mlx, cub->mlx_win, 500, 10, WHITE, str);
+free(str);
+str = ft_itoa(cub->player.y_pos);
+mlx_string_put(cub->mlx, cub->mlx_win, 500, 30, WHITE, str);
+free(str);
+str = ft_itoa(cub->player.angle);
+mlx_string_put(cub->mlx, cub->mlx_win, 500, 50, WHITE, str);
+free(str);
+str = ft_itoa(cub->map[cub->player.x_pos / WALL_SIZE + \
+(cub->player.y_pos / WALL_SIZE * cub->x_elem)].color);
+mlx_string_put(cub->mlx, cub->mlx_win, 500, 70, WHITE, str);
+free(str);
+printf("%d %d %d %f %f\n", cub->player.x_pos, cub->player.y_pos, \
+cub->player.angle, cub->player.x_vector, cub->player.y_vector);
+*/

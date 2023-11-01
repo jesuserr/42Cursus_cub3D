@@ -6,7 +6,7 @@
 /*   By: jesuserr <jesuserr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/31 21:51:13 by cescanue          #+#    #+#             */
-/*   Updated: 2023/11/01 09:56:34 by jesuserr         ###   ########.fr       */
+/*   Updated: 2023/11/01 11:05:23 by jesuserr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -187,8 +187,8 @@ char	**str_to_array(int lx, int ly, char *smap);
 void	check_limits(t_cub *cub);
 /*		moves.c				*/
 void	key_action_1(int keycode, t_cub *cub);
+void	key_action_2(int keycode, t_cub *cub);
 int		check_collision(int keycode, t_cub *cub);
-void	action_aux(t_cub *cub);
 /*		ray_casting.c		*/
 void	ray_casting(t_cub *cub);
 /*		raycast_utils.c 		*/

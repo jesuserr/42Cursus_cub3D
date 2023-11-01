@@ -6,7 +6,7 @@
 /*   By: jesuserr <jesuserr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/29 21:49:02 by cescanue          #+#    #+#             */
-/*   Updated: 2023/10/31 13:30:27 by jesuserr         ###   ########.fr       */
+/*   Updated: 2023/11/01 10:50:28 by jesuserr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,19 +27,6 @@ void	init_win(t_cub *cub, char *s)
 		&cub->img.len, &cub->img.endian);
 }
 
-void	draw_first_frame(t_cub *cub)
-{
-	calc_player_vector(cub);
-	ray_casting(cub);
-	mlx_put_image_to_window(cub->mlx, cub->mlx_win, cub->img.img, 0, 0);
-}
-
-void	init_hooks(t_cub *cub)
-{
-	mlx_hook(cub->mlx_win, 17, 0, close_window, cub);
-	mlx_hook(cub->mlx_win, 2, 0, key_pressed, cub);
-}
-
 int	main(int argc, char **argv)
 {
 	t_cub	cub;	
@@ -48,8 +35,10 @@ int	main(int argc, char **argv)
 		ft_error_handler(ERROR_ARGS);
 	init_map(argv[1], &cub);
 	init_win(&cub, argv[1]);
-	draw_first_frame(&cub);
-	init_hooks(&cub);
+	calc_player_vector(&cub);
+	ray_casting(&cub);
+	mlx_hook(cub.mlx_win, 17, 0, close_window, &cub);
+	mlx_hook(cub.mlx_win, 2, 0, key_pressed, &cub);
 	mlx_loop(cub.mlx);
 	return (0);
 }

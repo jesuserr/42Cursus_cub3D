@@ -6,7 +6,7 @@
 /*   By: jesuserr <jesuserr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/09 19:43:38 by jesuserr          #+#    #+#             */
-/*   Updated: 2023/11/01 10:15:28 by jesuserr         ###   ########.fr       */
+/*   Updated: 2023/11/01 11:04:59 by jesuserr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,7 @@ void	ray_casting(t_cub *cub)
 		casted_rays++;
 	}
 	//draw_pointer(cub);
+	mlx_put_image_to_window(cub->mlx, cub->mlx_win, cub->img.img, 0, 0);
 }
 
 void	draw_minimap_and_player(t_cub *cub)
