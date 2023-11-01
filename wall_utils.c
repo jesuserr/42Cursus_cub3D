@@ -6,7 +6,7 @@
 /*   By: jesuserr <jesuserr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/30 20:13:31 by jesuserr          #+#    #+#             */
-/*   Updated: 2023/10/31 20:17:55 by jesuserr         ###   ########.fr       */
+/*   Updated: 2023/11/01 15:57:19 by jesuserr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,13 +44,13 @@ void	rise_walls(t_cub *cub, t_ray_cast *vert, t_ray_cast *horz, float x)
 
 	line.x0 = x;
 	line.x1 = x;
-	line.color = 0x880808;
+	line.color = 0x0000FC;
 	if (vert->ray_length < horz->ray_length)
 		wall_height = vert->ray_length;
 	else
 	{
 		wall_height = horz->ray_length;
-		line.color = 0xEE4B2B;
+		line.color = 0x0000A4;
 	}
 	eye_angle = degrees_to_radians(cub->player.angle, 0) - horz->ray_angle;
 	wall_height = HEIGHT * WALL_SIZE / (wall_height * cos(eye_angle));

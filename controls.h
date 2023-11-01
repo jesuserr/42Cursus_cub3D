@@ -6,7 +6,7 @@
 /*   By: jesuserr <jesuserr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/16 12:30:23 by jesuserr          #+#    #+#             */
-/*   Updated: 2023/11/01 15:02:46 by jesuserr         ###   ########.fr       */
+/*   Updated: 2023/11/01 21:00:14 by jesuserr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,8 @@
 # define O_KEY			31
 # define P_KEY			35
 # define BAR_KEY		49
+# define M_KEY          46
+# define TAB_KEY        48
 
 # define LB_BUTTON		01
 # define RB_BUTTON		02

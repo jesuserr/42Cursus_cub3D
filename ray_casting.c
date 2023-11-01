@@ -6,7 +6,7 @@
 /*   By: jesuserr <jesuserr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/09 19:43:38 by jesuserr          #+#    #+#             */
-/*   Updated: 2023/11/01 13:34:18 by jesuserr         ###   ########.fr       */
+/*   Updated: 2023/11/01 20:42:59 by jesuserr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,8 @@ int	ray_casting(t_cub *cub)
 		ray_angle = ray_angle - ((float)FOV / (float)WIDTH);
 		casted_rays++;
 	}
+	if (cub->key.map_on_screen == 1)
+		on_screen_minimap(cub);
 	//draw_pointer(cub);
 	mlx_put_image_to_window(cub->mlx, cub->mlx_win, cub->img.img, 0, 0);
 	key_actions(cub);

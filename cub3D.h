@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3D.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cescanue <cescanue@student.42barcelona.    +#+  +:+       +#+        */
+/*   By: jesuserr <jesuserr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/31 21:51:13 by cescanue          #+#    #+#             */
-/*   Updated: 2023/11/01 20:55:18 by cescanue         ###   ########.fr       */
+/*   Updated: 2023/11/01 21:09:48 by jesuserr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,8 +34,6 @@
 # define DEF_COLOR		0xf26e04	// Wall RGB color
 # define WHITE			0xFFFFFF
 # define PI				3.141592654
-# define MAP_X_OFFSET	0			// Initial minimap x-position
-# define MAP_Y_OFFSET	0			// Initial minimap y-position
 # define INC_OFFSET		4			// Player movement pixels,wall size multiple
 # define WALL_SIZE		64			// Must be power of 2
 # define ROT_ANGLE_INC	3			// Must be multiple of 360 and 90
@@ -68,6 +66,7 @@ typedef struct s_keys
 	int		left_pressed;
 	int		right_pressed;
 	int		shift_pressed;
+	int		map_on_screen;
 }	t_keys;
 
 typedef struct s_player
@@ -151,6 +150,7 @@ typedef struct s_parse
 
 typedef struct s_cub
 {
+	t_keys		key;
 	void		*mlx;
 	void		*mlx_win;
 	char		*raw_map;
@@ -160,8 +160,7 @@ typedef struct s_cub
 	t_point		*map;
 	t_img		img;
 	t_player	player;
-	t_map		*cmap;
-	t_keys		key;
+	t_map		*cmap;	
 }	t_cub;
 
 /*
@@ -183,6 +182,7 @@ void	draw_vert_line(t_line line, t_cub *cub);
 /*		graphics_2.c		*/
 void	draw_square(t_cub *cub, t_point square, int size);
 void	draw_rectangle(t_cub *cub, t_line diagonal);
+void    on_screen_minimap(t_cub *cub);
 /*		hooks.c				*/
 int		key_pressed(int keycode, t_cub *cub);
 int		key_released(int keycode, t_cub *cub);

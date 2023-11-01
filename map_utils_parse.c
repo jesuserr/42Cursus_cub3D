@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_utils_parse.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cescanue <cescanue@student.42barcelona.    +#+  +:+       +#+        */
+/*   By: jesuserr <jesuserr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/30 11:42:12 by cescanue          #+#    #+#             */
-/*   Updated: 2023/10/30 11:42:50 by cescanue         ###   ########.fr       */
+/*   Updated: 2023/11/01 20:07:44 by jesuserr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 void	parse_map_set(t_parse *p, t_cub *cub)
 {
-	p->map[p->xl].x = p->x * WALL_SIZE + MAP_X_OFFSET;
-	p->map[p->xl].y = p->y * WALL_SIZE + MAP_Y_OFFSET;
+	p->map[p->xl].x = p->x * WALL_SIZE;
+	p->map[p->xl].y = p->y * WALL_SIZE;
 	p->map[p->xl].color = 0;
 	if (cub->raw_map[p->xl] == '1')
 		p->map[p->xl].color = DEF_COLOR;

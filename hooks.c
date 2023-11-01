@@ -6,7 +6,7 @@
 /*   By: jesuserr <jesuserr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/07 11:54:26 by jesuserr          #+#    #+#             */
-/*   Updated: 2023/11/01 15:11:06 by jesuserr         ###   ########.fr       */
+/*   Updated: 2023/11/01 21:00:31 by jesuserr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@ int	key_pressed(int keycode, t_cub *cub)
 {
 	if (keycode == ESC_KEY)
 		close_window(cub);
+	else if (keycode == TAB_KEY)
+		cub->key.map_on_screen = !cub->key.map_on_screen;
 	else if (keycode == D_KEY)
 		cub->key.d_pressed = 1;
 	else if (keycode == S_KEY)
