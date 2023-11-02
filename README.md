@@ -7,7 +7,7 @@
 * ~~Se tiene que hacer free de los punteros donde se almacenan los nobmres de las texturas.~~ 
 * ~~mlx_loop_hook cescanue~~
 * ~~modificar movimiento jugador acuerdo subject jesuserr~~
-* mejorar sistema de colisiones jesuserr
+* ~~mejorar sistema de colisiones jesuserr~~
 * investigar como usar el ratón ~~y combinar movimientos (avanzar y girar a la vez, por ejemplo)~~
 * implementar texturas
 
