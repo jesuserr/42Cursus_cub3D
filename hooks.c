@@ -6,7 +6,7 @@
 /*   By: cescanue <cescanue@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/07 11:54:26 by jesuserr          #+#    #+#             */
-/*   Updated: 2023/11/02 10:27:07 by cescanue         ###   ########.fr       */
+/*   Updated: 2023/11/02 11:04:33 by cescanue         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,18 @@ int	close_window(t_cub *cub)
 		free(cub->cmap);
 	free(cub->raw_map);
 	free(cub->map);
-	mlx_destroy_window(cub->mlx, cub->mlx_win);
-	free(cub->mlx);
+	if (cub->img.img)
+		mlx_destroy_image(cub->mlx, cub->img.img);
+	if (cub->mlx_win)
+	{
+		mlx_clear_window(cub->mlx, cub->mlx_win);
+		mlx_destroy_window(cub->mlx, cub->mlx_win);
+	}
+	if (cub->mlx)
+	{
+		mlx_destroy_image(cub->mlx, ((mlx_ptr_t *)cub->mlx)->img_list);
+		free(((mlx_ptr_t *)cub->mlx)->img_list);
+		free(cub->mlx);
+	}
 	exit (EXIT_SUCCESS);
 }

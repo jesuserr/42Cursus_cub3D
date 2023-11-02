@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3D.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jesuserr <jesuserr@student.42.fr>          +#+  +:+       +#+        */
+/*   By: cescanue <cescanue@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/31 21:51:13 by cescanue          #+#    #+#             */
-/*   Updated: 2023/11/01 23:29:23 by jesuserr         ###   ########.fr       */
+/*   Updated: 2023/11/02 10:52:53 by cescanue         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,7 @@
 # include "libft/includes/ft_printf.h"
 # include "libft/includes/libft.h"
 # include "mlx.h"
+# include "minilibx_macos/mlx_error.h"
 # include <fcntl.h>	// for open
 # include <math.h>
 # include "controls.h"
