@@ -6,7 +6,7 @@
 /*   By: cescanue <cescanue@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/07 11:54:26 by jesuserr          #+#    #+#             */
-/*   Updated: 2023/11/02 11:04:33 by cescanue         ###   ########.fr       */
+/*   Updated: 2023/11/02 11:16:33 by cescanue         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,8 +73,10 @@ int	close_window(t_cub *cub)
 		free(cub->cmap->t_ea);
 	if (cub->cmap)
 		free(cub->cmap);
-	free(cub->raw_map);
-	free(cub->map);
+	if (cub->raw_map)
+		free(cub->raw_map);
+	if (cub->map)
+		free(cub->map);
 	if (cub->img.img)
 		mlx_destroy_image(cub->mlx, cub->img.img);
 	if (cub->mlx_win)
