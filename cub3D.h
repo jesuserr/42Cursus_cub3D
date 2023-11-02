@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: cescanue <cescanue@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/31 21:51:13 by cescanue          #+#    #+#             */
-/*   Updated: 2023/11/02 21:29:34 by cescanue         ###   ########.fr       */
+/*   Created: 2023/11/02 21:39:06 by cescanue          #+#    #+#             */
+/*   Updated: 2023/11/02 21:39:09 by cescanue         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,7 @@
 # define ROT_ANGLE_INC	3			// Must be multiple of 360 and 90
 # define FOV			66			// Field of view (even number)
 # define VERT_SCALE		1			// Modifies wall height in screen
+# define DIST_TO_WALL	4			// Multiple of WALL_SIZE
 
 /*
 ** -.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-
@@ -82,6 +83,8 @@ typedef struct s_player
 	float	x_vector;
 	float	y_vector;
 	int		speed;
+	int		offset_x;
+	int		offset_y;	
 }	t_player;
 
 typedef struct s_ray_cast
@@ -208,8 +211,6 @@ char	**str_to_array(int lx, int ly, char *smap);
 void	check_limits(t_cub *cub);
 /*		moves.c				*/
 void	key_actions(t_cub *cub);
-void	key_actions_2(t_cub *cub);
-int		check_collision(int keycode, t_cub *cub);
 /*		ray_casting.c		*/
 int		ray_casting(t_cub *cub);
 /*		raycast_utils.c 		*/

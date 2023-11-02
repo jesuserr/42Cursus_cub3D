@@ -6,7 +6,7 @@
 /*   By: jesuserr <jesuserr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/26 19:24:03 by jesuserr          #+#    #+#             */
-/*   Updated: 2023/10/31 13:38:55 by jesuserr         ###   ########.fr       */
+/*   Updated: 2023/11/02 20:41:55 by jesuserr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,4 +78,12 @@ void	calc_player_vector(t_cub *cub)
 {
 	cub->player.x_vector = cos(degrees_to_radians(cub->player.angle, 0));
 	cub->player.y_vector = -sin(degrees_to_radians(cub->player.angle, 0));
+	if (cub->player.x_vector > 0)
+		cub->player.offset_x = DIST_TO_WALL;
+	else
+		cub->player.offset_x = -DIST_TO_WALL;
+	if (cub->player.y_vector > 0)
+		cub->player.offset_y = DIST_TO_WALL;
+	else
+		cub->player.offset_y = -DIST_TO_WALL;
 }

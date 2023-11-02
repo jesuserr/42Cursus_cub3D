@@ -6,39 +6,27 @@
 /*   By: jesuserr <jesuserr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/14 11:47:50 by jesuserr          #+#    #+#             */
-/*   Updated: 2023/11/01 15:10:37 by jesuserr         ###   ########.fr       */
+/*   Updated: 2023/11/02 20:29:51 by jesuserr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
 
+void	key_a_pressed(t_cub *cub);
+void	key_d_pressed(t_cub *cub);
+void	key_w_pressed(t_cub *cub);
+void	key_s_pressed(t_cub *cub);
+
 void	key_actions(t_cub *cub)
 {
 	if (cub->key.a_pressed == 1)
-	{
-		cub->player.x_pos = cub->player.x_pos + (cub->player.y_vector * cub->player.speed);
-		cub->player.y_pos = cub->player.y_pos - (cub->player.x_vector * cub->player.speed);
-	}
+		key_a_pressed(cub);
 	if (cub->key.d_pressed == 1)
-	{
-		cub->player.x_pos = cub->player.x_pos - (cub->player.y_vector * cub->player.speed);
-		cub->player.y_pos = cub->player.y_pos + (cub->player.x_vector * cub->player.speed);
-	}
+		key_d_pressed(cub);
 	if (cub->key.w_pressed == 1)
-	{
-		cub->player.x_pos = cub->player.x_pos + (cub->player.x_vector * cub->player.speed);
-		cub->player.y_pos = cub->player.y_pos + (cub->player.y_vector * cub->player.speed);
-	}
+		key_w_pressed(cub);
 	if (cub->key.s_pressed == 1)
-	{
-		cub->player.x_pos = cub->player.x_pos - (cub->player.x_vector * cub->player.speed);
-		cub->player.y_pos = cub->player.y_pos - (cub->player.y_vector * cub->player.speed);
-	}
-	key_actions_2(cub);
-}
-
-void	key_actions_2(t_cub *cub)
-{
+		key_s_pressed(cub);
 	if (cub->key.left_pressed == 1)
 	{
 		cub->player.angle += ROT_ANGLE_INC;
@@ -55,42 +43,70 @@ void	key_actions_2(t_cub *cub)
 	}
 }
 
-int	check_collision(int keycode, t_cub *cub)
+void	key_a_pressed(t_cub *cub)
 {
-	int	dist_to_wall;
+	int	x_pos_temp;
+	int	y_pos_temp;
 
-	dist_to_wall = INC_OFFSET * 1.5;
-	if (keycode == A_KEY && (cub->map[(cub->player.x_pos - (dist_to_wall)) / \
-	WALL_SIZE + (cub->player.y_pos / WALL_SIZE * cub->x_elem)].color == 0))
-		return (INC_OFFSET);
-	if (keycode == D_KEY && (cub->map[(cub->player.x_pos + (dist_to_wall)) / \
-	WALL_SIZE + (cub->player.y_pos / WALL_SIZE * cub->x_elem)].color == 0))
-		return (INC_OFFSET);
-	if (keycode == S_KEY && (cub->map[(cub->player.x_pos / WALL_SIZE + \
-	(cub->player.y_pos + (dist_to_wall)) / WALL_SIZE * cub->x_elem)].color \
-	== 0))
-		return (INC_OFFSET);
-	if (keycode == W_KEY && (cub->map[(cub->player.x_pos / WALL_SIZE + \
-	(cub->player.y_pos - (dist_to_wall)) / WALL_SIZE * cub->x_elem)].color \
-	== 0))
-		return (INC_OFFSET);
-	return (0);
+	x_pos_temp = cub->player.x_pos + ((cub->player.y_vector + \
+	cub->player.offset_y) * cub->player.speed);
+	y_pos_temp = cub->player.y_pos - ((cub->player.x_vector + \
+	cub->player.offset_x) * cub->player.speed);
+	if (cub->map[(x_pos_temp / WALL_SIZE) + (cub->player.y_pos / WALL_SIZE \
+	* cub->x_elem)].color == 0)
+		cub->player.x_pos += cub->player.y_vector * cub->player.speed;
+	if (cub->map[(cub->player.x_pos / WALL_SIZE) + (y_pos_temp / WALL_SIZE \
+	* cub->x_elem)].color == 0)
+		cub->player.y_pos -= cub->player.x_vector * cub->player.speed;
 }
 
-/* Stuff for debugging
-str = ft_itoa(cub->player.x_pos);
-mlx_string_put(cub->mlx, cub->mlx_win, 500, 10, WHITE, str);
-free(str);
-str = ft_itoa(cub->player.y_pos);
-mlx_string_put(cub->mlx, cub->mlx_win, 500, 30, WHITE, str);
-free(str);
-str = ft_itoa(cub->player.angle);
-mlx_string_put(cub->mlx, cub->mlx_win, 500, 50, WHITE, str);
-free(str);
-str = ft_itoa(cub->map[cub->player.x_pos / WALL_SIZE + \
-(cub->player.y_pos / WALL_SIZE * cub->x_elem)].color);
-mlx_string_put(cub->mlx, cub->mlx_win, 500, 70, WHITE, str);
-free(str);
-printf("%d %d %d %f %f\n", cub->player.x_pos, cub->player.y_pos, \
-cub->player.angle, cub->player.x_vector, cub->player.y_vector);
-*/
+void	key_d_pressed(t_cub *cub)
+{
+	int	x_pos_temp;
+	int	y_pos_temp;
+
+	x_pos_temp = cub->player.x_pos - ((cub->player.y_vector + \
+	cub->player.offset_y) * cub->player.speed);
+	y_pos_temp = cub->player.y_pos + ((cub->player.x_vector + \
+	cub->player.offset_x) * cub->player.speed);
+	if (cub->map[(x_pos_temp / WALL_SIZE) + (cub->player.y_pos / WALL_SIZE \
+	* cub->x_elem)].color == 0)
+		cub->player.x_pos -= cub->player.y_vector * cub->player.speed;
+	if (cub->map[(cub->player.x_pos / WALL_SIZE) + (y_pos_temp / WALL_SIZE \
+	* cub->x_elem)].color == 0)
+		cub->player.y_pos += cub->player.x_vector * cub->player.speed;
+}
+
+void	key_w_pressed(t_cub *cub)
+{
+	int	x_pos_temp;
+	int	y_pos_temp;
+
+	x_pos_temp = cub->player.x_pos + ((cub->player.x_vector + \
+	cub->player.offset_x) * cub->player.speed);
+	y_pos_temp = cub->player.y_pos + ((cub->player.y_vector + \
+	cub->player.offset_y) * cub->player.speed);
+	if (cub->map[(x_pos_temp / WALL_SIZE) + (cub->player.y_pos / WALL_SIZE \
+	* cub->x_elem)].color == 0)
+		cub->player.x_pos += cub->player.x_vector * cub->player.speed;
+	if (cub->map[(cub->player.x_pos / WALL_SIZE) + (y_pos_temp / WALL_SIZE \
+	* cub->x_elem)].color == 0)
+		cub->player.y_pos += cub->player.y_vector * cub->player.speed;
+}
+
+void	key_s_pressed(t_cub *cub)
+{
+	int	x_pos_temp;
+	int	y_pos_temp;
+
+	x_pos_temp = cub->player.x_pos - ((cub->player.x_vector + \
+	cub->player.offset_x) * cub->player.speed);
+	y_pos_temp = cub->player.y_pos - ((cub->player.y_vector + \
+	cub->player.offset_y) * cub->player.speed);
+	if (cub->map[(x_pos_temp / WALL_SIZE) + (cub->player.y_pos / WALL_SIZE \
+	* cub->x_elem)].color == 0)
+		cub->player.x_pos -= cub->player.x_vector * cub->player.speed;
+	if (cub->map[(cub->player.x_pos / WALL_SIZE) + (y_pos_temp / WALL_SIZE \
+	* cub->x_elem)].color == 0)
+		cub->player.y_pos -= cub->player.y_vector * cub->player.speed;
+}
