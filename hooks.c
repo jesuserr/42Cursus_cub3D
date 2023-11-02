@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   hooks.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cescanue <cescanue@student.42barcelona.    +#+  +:+       +#+        */
+/*   By: jesuserr <jesuserr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/07 11:54:26 by jesuserr          #+#    #+#             */
-/*   Updated: 2023/11/02 11:16:33 by cescanue         ###   ########.fr       */
+/*   Updated: 2023/11/02 11:30:14 by jesuserr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,20 +59,10 @@ int	key_released(int keycode, t_cub *cub)
 	}
 	return (0);
 }
-/* Without mlx_destroy_window & free(cub->mlx) there are no leaks either !?? */
 
 int	close_window(t_cub *cub)
 {
-	if (cub->cmap->t_so)
-		free(cub->cmap->t_so);
-	if (cub->cmap->t_we)
-		free(cub->cmap->t_we);
-	if (cub->cmap->t_no)
-		free(cub->cmap->t_no);
-	if (cub->cmap->t_ea)
-		free(cub->cmap->t_ea);
-	if (cub->cmap)
-		free(cub->cmap);
+	close_cmaps(cub);
 	if (cub->raw_map)
 		free(cub->raw_map);
 	if (cub->map)
@@ -91,4 +81,18 @@ int	close_window(t_cub *cub)
 		free(cub->mlx);
 	}
 	exit (EXIT_SUCCESS);
+}
+
+void	close_cmaps(t_cub *cub)
+{
+	if (cub->cmap->t_so)
+		free(cub->cmap->t_so);
+	if (cub->cmap->t_we)
+		free(cub->cmap->t_we);
+	if (cub->cmap->t_no)
+		free(cub->cmap->t_no);
+	if (cub->cmap->t_ea)
+		free(cub->cmap->t_ea);
+	if (cub->cmap)
+		free(cub->cmap);
 }

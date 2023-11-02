@@ -4,7 +4,7 @@
 
 30/10 para revisar
 * ~~Tamaño del mapa en funcion del mapa del fichero jesuserr~~
-* Se tiene que hacer free de los punteros donde se almacenan los nobmres de las texturas. 
+* ~~Se tiene que hacer free de los punteros donde se almacenan los nobmres de las texturas.~~ 
 * ~~mlx_loop_hook cescanue~~
 * ~~modificar movimiento jugador acuerdo subject jesuserr~~
 * mejorar sistema de colisiones jesuserr
