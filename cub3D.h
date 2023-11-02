@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3D.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cescanue <cescanue@student.42barcelona.    +#+  +:+       +#+        */
+/*   By: jesuserr <jesuserr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/31 21:51:13 by cescanue          #+#    #+#             */
-/*   Updated: 2023/11/01 21:28:07 by cescanue         ###   ########.fr       */
+/*   Updated: 2023/11/01 23:29:23 by jesuserr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,8 @@ typedef struct s_keys
 	int		right_pressed;
 	int		shift_pressed;
 	int		map_on_screen;
+	int		map_scale;
+	int		map_x_offset;
 }	t_keys;
 
 typedef struct s_player
@@ -150,6 +152,7 @@ typedef struct s_parse
 
 typedef struct s_cub
 {
+	t_keys		key;
 	void		*mlx;
 	void		*mlx_win;
 	char		*raw_map;
@@ -159,8 +162,7 @@ typedef struct s_cub
 	t_point		*map;
 	t_img		img;
 	t_player	player;
-	t_map		*cmap;
-	t_keys		key;
+	t_map		*cmap;	
 }	t_cub;
 
 /*
@@ -182,7 +184,7 @@ void	draw_vert_line(t_line line, t_cub *cub);
 /*		graphics_2.c		*/
 void	draw_square(t_cub *cub, t_point square, int size);
 void	draw_rectangle(t_cub *cub, t_line diagonal);
-void    on_screen_minimap(t_cub *cub);
+void	on_screen_minimap(t_cub *cub);
 /*		hooks.c				*/
 int		key_pressed(int keycode, t_cub *cub);
 int		key_released(int keycode, t_cub *cub);
