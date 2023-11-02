@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3D.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jesuserr <jesuserr@student.42.fr>          +#+  +:+       +#+        */
+/*   By: cescanue <cescanue@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/31 21:51:13 by cescanue          #+#    #+#             */
-/*   Updated: 2023/11/02 11:27:11 by jesuserr         ###   ########.fr       */
+/*   Updated: 2023/11/02 21:29:34 by cescanue         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,8 @@ typedef struct s_keys
 	int		map_on_screen;
 	int		map_scale;
 	int		map_x_offset;
+	int		mousex;
+	int		mouse;
 }	t_keys;
 
 typedef struct s_player
@@ -191,6 +193,7 @@ int		key_pressed(int keycode, t_cub *cub);
 int		key_released(int keycode, t_cub *cub);
 int		close_window(t_cub *cub);
 void	close_cmaps(t_cub *cub);
+int		mouse_move(int x, int y, t_cub *cub);
 /*		map_utils.c				*/
 void	init_map(char *file, t_cub *cub);
 /*		map_utils2.c				*/

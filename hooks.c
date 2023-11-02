@@ -3,14 +3,31 @@
 /*                                                        :::      ::::::::   */
 /*   hooks.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jesuserr <jesuserr@student.42.fr>          +#+  +:+       +#+        */
+/*   By: cescanue <cescanue@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/07 11:54:26 by jesuserr          #+#    #+#             */
-/*   Updated: 2023/11/02 11:30:14 by jesuserr         ###   ########.fr       */
+/*   Updated: 2023/11/02 21:36:18 by cescanue         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
+
+int	mouse_move(int x, int y, t_cub *cub)
+{
+	(void) y;
+	if (!cub->key.mousex && x > -1 && x < WIDTH)
+		cub->key.mousex = x;
+	else if (cub->key.mousex != 0)
+	{
+		if (cub->key.mousex < x)
+			cub->key.left_pressed = 1;
+		else
+			cub->key.right_pressed = 1;
+		cub->key.mousex = x;
+		cub->key.mouse++;
+	}
+	return (0);
+}
 
 int	key_pressed(int keycode, t_cub *cub)
 {
@@ -85,13 +102,13 @@ int	close_window(t_cub *cub)
 
 void	close_cmaps(t_cub *cub)
 {
-	if (cub->cmap->t_so)
+	if (cub->cmap && cub->cmap->t_so)
 		free(cub->cmap->t_so);
-	if (cub->cmap->t_we)
+	if (cub->cmap && cub->cmap->t_we)
 		free(cub->cmap->t_we);
-	if (cub->cmap->t_no)
+	if (cub->cmap && cub->cmap->t_no)
 		free(cub->cmap->t_no);
-	if (cub->cmap->t_ea)
+	if (cub->cmap && cub->cmap->t_ea)
 		free(cub->cmap->t_ea);
 	if (cub->cmap)
 		free(cub->cmap);

@@ -6,7 +6,7 @@
 /*   By: cescanue <cescanue@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/29 21:49:02 by cescanue          #+#    #+#             */
-/*   Updated: 2023/11/02 11:04:43 by cescanue         ###   ########.fr       */
+/*   Updated: 2023/11/02 21:29:02 by cescanue         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,8 @@ void	init_win(t_cub *cub, char *s)
 
 void	init_struct(t_cub *cub)
 {
+	cub->key.mousex = 0;
+	cub->key.mouse = 0;
 	cub->key.a_pressed = 0;
 	cub->key.d_pressed = 0;
 	cub->key.w_pressed = 0;
@@ -57,6 +59,7 @@ int	main(int argc, char **argv)
 	ray_casting(&cub);
 	mlx_hook(cub.mlx_win, 17, 0, close_window, &cub);
 	mlx_hook(cub.mlx_win, 2, 0, key_pressed, &cub);
+	mlx_hook(cub.mlx_win, 6, 0, mouse_move, &cub);
 	mlx_loop_hook(cub.mlx, ray_casting, &cub);
 	mlx_hook(cub.mlx_win, 3, 0, key_released, &cub);
 	mlx_loop(cub.mlx);
