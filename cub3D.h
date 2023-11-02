@@ -6,7 +6,7 @@
 /*   By: cescanue <cescanue@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/02 21:39:06 by cescanue          #+#    #+#             */
-/*   Updated: 2023/11/02 21:39:09 by cescanue         ###   ########.fr       */
+/*   Updated: 2023/11/02 22:02:49 by cescanue         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,8 @@
 */
 typedef struct s_keys
 {
+	int		mousex;
+	int		mouse;
 	int		d_pressed;
 	int		w_pressed;
 	int		a_pressed;
@@ -71,8 +73,6 @@ typedef struct s_keys
 	int		map_on_screen;
 	int		map_scale;
 	int		map_x_offset;
-	int		mousex;
-	int		mouse;
 }	t_keys;
 
 typedef struct s_player
