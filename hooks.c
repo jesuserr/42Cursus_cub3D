@@ -6,7 +6,7 @@
 /*   By: cescanue <cescanue@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/07 11:54:26 by jesuserr          #+#    #+#             */
-/*   Updated: 2023/11/01 21:53:57 by cescanue         ###   ########.fr       */
+/*   Updated: 2023/11/02 10:27:07 by cescanue         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,16 @@ int	key_released(int keycode, t_cub *cub)
 
 int	close_window(t_cub *cub)
 {
+	if (cub->cmap->t_so)
+		free(cub->cmap->t_so);
+	if (cub->cmap->t_we)
+		free(cub->cmap->t_we);
+	if (cub->cmap->t_no)
+		free(cub->cmap->t_no);
+	if (cub->cmap->t_ea)
+		free(cub->cmap->t_ea);
+	if (cub->cmap)
+		free(cub->cmap);
 	free(cub->raw_map);
 	free(cub->map);
 	mlx_destroy_window(cub->mlx, cub->mlx_win);
