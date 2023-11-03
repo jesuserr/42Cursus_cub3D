@@ -3,10 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   hooks.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cescanue <cescanue@student.42barcelona.    +#+  +:+       +#+        */
+/*   By: jesuserr <jesuserr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/03 09:53:34 by cescanue          #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2023/11/03 18:05:31 by cescanue         ###   ########.fr       */
+=======
+/*   Updated: 2023/11/03 18:06:32 by jesuserr         ###   ########.fr       */
+>>>>>>> 556b800d6557cf86ffd24b3a0ef234ccc20288ad
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,6 +88,7 @@ int	key_released(int keycode, t_cub *cub)
 	}
 	return (0);
 }
+<<<<<<< HEAD
 
 int	close_window(t_cub *cub, int exitcode)
 {
@@ -123,3 +128,5 @@ void	close_cmaps(t_cub *cub)
 	if (cub->cmap)
 		free(cub->cmap);
 }
+=======
+>>>>>>> 556b800d6557cf86ffd24b3a0ef234ccc20288ad
