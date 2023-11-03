@@ -6,7 +6,7 @@
 /*   By: cescanue <cescanue@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/03 09:53:42 by cescanue          #+#    #+#             */
-/*   Updated: 2023/11/03 16:25:27 by cescanue         ###   ########.fr       */
+/*   Updated: 2023/11/03 16:44:58 by cescanue         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@
 # define ERROR_MLX			5
 # define ERROR_COLOR_F		6
 # define ERROR_MAP_F		7
+# define ERROR_TXT			8
 
 # define WIDTH			1024
 # define HEIGHT			768

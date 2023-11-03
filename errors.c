@@ -6,7 +6,7 @@
 /*   By: cescanue <cescanue@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/25 21:10:39 by jesuserr          #+#    #+#             */
-/*   Updated: 2023/11/03 16:25:05 by cescanue         ###   ########.fr       */
+/*   Updated: 2023/11/03 16:45:04 by cescanue         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,8 @@ void	ft_error_handler(int error, t_cub *cub)
 		ft_printf ("%sError\nThe color format is not RGB\n", RED);
 	else if (error == ERROR_MAP_F)
 		ft_printf ("%sError\nThe map format is not correct\n", RED);
+	else if (error == ERROR_TXT)
+		ft_printf ("%sError\nThe texture not correct\n", RED);
 	close_window(cub, EXIT_FAILURE);
 }
 
