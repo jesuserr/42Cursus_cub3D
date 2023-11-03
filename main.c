@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cescanue <cescanue@student.42barcelona.    +#+  +:+       +#+        */
+/*   By: jesuserr <jesuserr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/29 21:49:02 by cescanue          #+#    #+#             */
-/*   Updated: 2023/11/03 16:27:11 by cescanue         ###   ########.fr       */
+/*   Updated: 2023/11/03 17:10:27 by jesuserr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,20 +30,11 @@ void	init_win(t_cub *cub, char *s)
 void	init_struct(t_cub *cub)
 {
 	ft_memset(&cub->key, 0, sizeof(t_keys));
-	cub->key.a_pressed = 0;
-	cub->key.d_pressed = 0;
-	cub->key.w_pressed = 0;
-	cub->key.s_pressed = 0;
-	cub->key.left_pressed = 0;
-	cub->key.right_pressed = 0;
-	cub->key.shift_pressed = 0;
 	cub->player.speed = INC_OFFSET;
-	cub->key.map_on_screen = 0;
 	cub->key.map_scale = (-cub->x_elem / 3) + 18;
 	if (cub->key.map_scale < 5)
 		cub->key.map_scale = 5;
 	cub->key.map_x_offset = (WIDTH - cub->x_elem * cub->key.map_scale) / 2;
-	cub->key.mouse_x = 0;
 	calc_player_vector(cub);
 }
 
