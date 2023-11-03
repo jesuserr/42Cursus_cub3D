@@ -3,14 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   hooks.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jesuserr <jesuserr@student.42.fr>          +#+  +:+       +#+        */
+/*   By: cescanue <cescanue@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/03 09:53:34 by cescanue          #+#    #+#             */
-<<<<<<< HEAD
-/*   Updated: 2023/11/03 18:05:31 by cescanue         ###   ########.fr       */
-=======
-/*   Updated: 2023/11/03 18:06:32 by jesuserr         ###   ########.fr       */
->>>>>>> 556b800d6557cf86ffd24b3a0ef234ccc20288ad
+/*   Created: 2023/11/03 18:18:03 by cescanue          #+#    #+#             */
+/*   Updated: 2023/11/03 18:18:20 by cescanue         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,45 +84,3 @@ int	key_released(int keycode, t_cub *cub)
 	}
 	return (0);
 }
-<<<<<<< HEAD
-
-int	close_window(t_cub *cub, int exitcode)
-{
-	close_cmaps(cub);
-	if (cub->map)
-		free(cub->map);
-	if (cub->raw_map)
-		free(cub->raw_map);
-	if (cub->img.img)
-		mlx_destroy_image(cub->mlx, cub->img.img);
-	if (cub->mlx_win)
-	{
-		mlx_clear_window(cub->mlx, cub->mlx_win);
-		mlx_destroy_window(cub->mlx, cub->mlx_win);
-	}
-	if (cub->mlx)
-	{
-		mlx_destroy_image(cub->mlx, ((mlx_ptr_t *)cub->mlx)->img_list);
-		free(((mlx_ptr_t *)cub->mlx)->img_list);
-		free(cub->mlx);
-	}
-	//exit (exitcode);
-	ft_memset(cub, 0, sizeof(t_cub));
-	return (exitcode);
-}
-
-void	close_cmaps(t_cub *cub)
-{
-	if (cub->cmap && cub->cmap->t_so)
-		free(cub->cmap->t_so);
-	if (cub->cmap && cub->cmap->t_we)
-		free(cub->cmap->t_we);
-	if (cub->cmap && cub->cmap->t_no)
-		free(cub->cmap->t_no);
-	if (cub->cmap && cub->cmap->t_ea)
-		free(cub->cmap->t_ea);
-	if (cub->cmap)
-		free(cub->cmap);
-}
-=======
->>>>>>> 556b800d6557cf86ffd24b3a0ef234ccc20288ad
