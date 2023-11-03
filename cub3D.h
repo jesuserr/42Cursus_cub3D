@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3D.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cescanue <cescanue@student.42barcelona.    +#+  +:+       +#+        */
+/*   By: jesuserr <jesuserr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/02 21:39:06 by cescanue          #+#    #+#             */
-/*   Updated: 2023/11/02 22:02:49 by cescanue         ###   ########.fr       */
+/*   Updated: 2023/11/03 09:42:06 by jesuserr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -197,6 +197,7 @@ int		key_released(int keycode, t_cub *cub);
 int		close_window(t_cub *cub);
 void	close_cmaps(t_cub *cub);
 int		mouse_move(int x, int y, t_cub *cub);
+void	mouse_actions(t_cub *cub);
 /*		map_utils.c				*/
 void	init_map(char *file, t_cub *cub);
 /*		map_utils2.c				*/

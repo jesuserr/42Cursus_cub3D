@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   hooks.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cescanue <cescanue@student.42barcelona.    +#+  +:+       +#+        */
+/*   By: jesuserr <jesuserr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/07 11:54:26 by jesuserr          #+#    #+#             */
-/*   Updated: 2023/11/02 22:14:22 by cescanue         ###   ########.fr       */
+/*   Updated: 2023/11/03 09:42:35 by jesuserr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,16 @@ int	mouse_move(int x, int y, t_cub *cub)
 		cub->key.mouse++;
 	}
 	return (0);
+}
+
+void	mouse_actions(t_cub *cub)
+{
+	if (cub->key.mouse && cub->key.mousex > -1 && cub->key.mousex < WIDTH)
+	{
+		cub->key.left_pressed = 0;
+		cub->key.right_pressed = 0;
+		cub->key.mouse = 0;
+	}
 }
 
 int	key_pressed(int keycode, t_cub *cub)
