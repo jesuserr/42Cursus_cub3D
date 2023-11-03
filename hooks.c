@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   hooks.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cescanue <cescanue@student.42barcelona.    +#+  +:+       +#+        */
+/*   By: jesuserr <jesuserr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/03 09:53:34 by cescanue          #+#    #+#             */
-/*   Updated: 2023/11/03 09:56:44 by cescanue         ###   ########.fr       */
+/*   Updated: 2023/11/03 12:25:18 by jesuserr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,17 +14,26 @@
 
 int	mouse_move(int x, int y, t_cub *cub)
 {
-	if (cub->key.mousex != 0 && x > -1 && x < WIDTH && y > -1 && y < HEIGHT)
+	if (cub->key.mouse_x != 0 && x > -1 && x < WIDTH && y > -1 && y < HEIGHT)
 	{
-		if (cub->key.mousex > x)
-			cub->key.left_pressed = 1;
-		else if (cub->key.mousex < x)
-			cub->key.right_pressed = 1;
-		cub->key.mousex = x;
-		cub->key.mouse++;
+		if (cub->key.mouse_x > x)
+		{
+			cub->player.angle += ROT_ANG_MOUSE;
+			if (cub->player.angle >= 360)
+				cub->player.angle = 0;
+			calc_player_vector(cub);
+		}
+		else if (cub->key.mouse_x < x)
+		{
+			cub->player.angle -= ROT_ANG_MOUSE;
+			if (cub->player.angle < 0)
+				cub->player.angle = 360 - ROT_ANG_MOUSE;
+			calc_player_vector(cub);
+		}
+		cub->key.mouse_x = x;
 	}
-	if (!cub->key.mousex && x > -1 && x < WIDTH && y > -1 && y < HEIGHT)
-		cub->key.mousex = x;
+	if (!cub->key.mouse_x && x > -1 && x < WIDTH && y > -1 && y < HEIGHT)
+		cub->key.mouse_x = x;
 	return (0);
 }
 

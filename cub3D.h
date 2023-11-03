@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3D.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cescanue <cescanue@student.42barcelona.    +#+  +:+       +#+        */
+/*   By: jesuserr <jesuserr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/03 09:53:42 by cescanue          #+#    #+#             */
-/*   Updated: 2023/11/03 09:53:45 by cescanue         ###   ########.fr       */
+/*   Updated: 2023/11/03 12:26:52 by jesuserr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@
 # define INC_OFFSET		4			// Player movement pixels,wall size multiple
 # define WALL_SIZE		64			// Must be power of 2
 # define ROT_ANGLE_INC	3			// Must be multiple of 360 and 90
+# define ROT_ANG_MOUSE	1			// Must be multiple of 360 and 90
 # define FOV			66			// Field of view (even number)
 # define VERT_SCALE		1			// Modifies wall height in screen
 # define DIST_TO_WALL	4			// Multiple of WALL_SIZE
@@ -61,8 +62,7 @@
 */
 typedef struct s_keys
 {
-	int		mousex;
-	int		mouse;
+	int		mouse_x;
 	int		d_pressed;
 	int		w_pressed;
 	int		a_pressed;
@@ -192,12 +192,11 @@ void	draw_square(t_cub *cub, t_point square, int size);
 void	draw_rectangle(t_cub *cub, t_line diagonal);
 void	on_screen_minimap(t_cub *cub);
 /*		hooks.c				*/
+int		mouse_move(int x, int y, t_cub *cub);
 int		key_pressed(int keycode, t_cub *cub);
 int		key_released(int keycode, t_cub *cub);
 int		close_window(t_cub *cub);
 void	close_cmaps(t_cub *cub);
-int		mouse_move(int x, int y, t_cub *cub);
-void	mouse_actions(t_cub *cub);
 /*		map_utils.c				*/
 void	init_map(char *file, t_cub *cub);
 /*		map_utils2.c				*/

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cescanue <cescanue@student.42barcelona.    +#+  +:+       +#+        */
+/*   By: jesuserr <jesuserr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/29 21:49:02 by cescanue          #+#    #+#             */
-/*   Updated: 2023/11/02 22:04:38 by cescanue         ###   ########.fr       */
+/*   Updated: 2023/11/03 12:25:27 by jesuserr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,8 +42,7 @@ void	init_struct(t_cub *cub)
 	if (cub->key.map_scale < 5)
 		cub->key.map_scale = 5;
 	cub->key.map_x_offset = (WIDTH - cub->x_elem * cub->key.map_scale) / 2;
-	cub->key.mousex = 0;
-	cub->key.mouse = 0;
+	cub->key.mouse_x = 0;
 	calc_player_vector(cub);
 }
 
