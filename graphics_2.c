@@ -6,7 +6,7 @@
 /*   By: jesuserr <jesuserr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/24 20:03:49 by jesuserr          #+#    #+#             */
-/*   Updated: 2023/11/01 23:47:12 by jesuserr         ###   ########.fr       */
+/*   Updated: 2023/11/03 12:59:56 by jesuserr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,9 @@ void	on_screen_minimap(t_cub *cub)
 	t_point	square;
 	int		i;
 
+	if ((cub->x_elem * WALL_SIZE / cub->key.map_scale > WIDTH) || \
+	(cub->y_elem * WALL_SIZE / cub->key.map_scale > HEIGHT))
+		return ;
 	i = 0;
 	while (i < (cub->x_elem * cub->y_elem))
 	{
