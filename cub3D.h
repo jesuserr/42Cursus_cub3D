@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: cescanue <cescanue@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/02 21:39:06 by cescanue          #+#    #+#             */
-/*   Updated: 2023/11/03 09:52:07 by cescanue         ###   ########.fr       */
+/*   Created: 2023/11/03 09:53:42 by cescanue          #+#    #+#             */
+/*   Updated: 2023/11/03 09:53:45 by cescanue         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -197,6 +197,7 @@ int		key_released(int keycode, t_cub *cub);
 int		close_window(t_cub *cub);
 void	close_cmaps(t_cub *cub);
 int		mouse_move(int x, int y, t_cub *cub);
+void	mouse_actions(t_cub *cub);
 /*		map_utils.c				*/
 void	init_map(char *file, t_cub *cub);
 /*		map_utils2.c				*/
