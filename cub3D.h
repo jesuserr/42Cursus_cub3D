@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3D.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cescanue <cescanue@student.42barcelona.    +#+  +:+       +#+        */
+/*   By: jesuserr <jesuserr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/03 17:45:13 by cescanue          #+#    #+#             */
-/*   Updated: 2023/11/03 17:45:15 by cescanue         ###   ########.fr       */
+/*   Updated: 2023/11/03 18:09:39 by jesuserr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -189,6 +189,8 @@ typedef struct s_cub
 */
 /*		errors.c		*/
 void	ft_error_handler(int error, t_cub *cub);
+int		close_window(t_cub *cub, int exitcode);
+void	close_cmaps(t_cub *cub);
 /*		graphics.c		*/
 void	mlx_put_pixel(t_cub *cub, int x, int y, int color);
 void	draw_line(t_line line, t_cub *cub);
@@ -203,8 +205,6 @@ void	on_screen_minimap(t_cub *cub);
 int		mouse_move(int x, int y, t_cub *cub);
 int		key_pressed(int keycode, t_cub *cub);
 int		key_released(int keycode, t_cub *cub);
-int		close_window(t_cub *cub, int exitcode);
-void	close_cmaps(t_cub *cub);
 /*		map_utils.c				*/
 void	init_map(char *file, t_cub *cub);
 /*		map_utils2.c				*/
@@ -219,7 +219,6 @@ char	**str_to_array(int lx, int ly, char *smap, t_cub *cub);
 void	check_limits(t_cub *cub);
 /*		moves.c				*/
 void	key_actions(t_cub *cub);
-void	mouse_actions(t_cub *cub);
 /*		ray_casting.c		*/
 int		ray_casting(t_cub *cub);
 /*		raycast_utils.c 		*/
