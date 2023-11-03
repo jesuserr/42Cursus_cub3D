@@ -31,7 +31,7 @@ RED = "\033[0;91m"
 BLUE = "\033[0;94m"
 NC = "\033[37m"
 
-LIBX = -lmlx -framework OpenGL -framework Appkit -Lminilibx_macos/
+LIBX = -lmlx -lz -framework OpenGL -framework Appkit -Lminilibx_macos/
 
 all: makelibft makelibx $(NAME)
 

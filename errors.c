@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   errors.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jesuserr <jesuserr@student.42.fr>          +#+  +:+       +#+        */
+/*   By: cescanue <cescanue@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/03 17:45:04 by cescanue          #+#    #+#             */
-/*   Updated: 2023/11/03 18:07:02 by jesuserr         ###   ########.fr       */
+/*   Updated: 2023/11/03 21:33:58 by cescanue         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,28 +15,29 @@
 void	ft_error_handler(int error, t_cub *cub)
 {
 	if (error == ERROR_ARGS)
-		ft_printf ("%sError\nInvalid arguments - expected one map\n", RED);
+		ft_printf ("%s\nError\nInvalid arguments - expected one map\n", RED);
 	else if (error == ERROR_FILE)
-		ft_printf ("%sError\nopening file\n", RED);
+		ft_printf ("%s\nError\nopening file\n", RED);
 	else if (error == ERROR_MEM)
-		ft_printf ("%sError\nallocating memory\n", RED);
+		ft_printf ("%s\nError\nallocating memory\n", RED);
 	else if (error == ERROR_EMPTY)
-		ft_printf ("%sError\nEmpty map\n", RED);
+		ft_printf ("%s\nError\nEmpty map\n", RED);
 	else if (error == ERROR_MAP)
-		ft_printf ("%sError\nInvalid map format\n", RED);
+		ft_printf ("%s\nError\nInvalid map format\n", RED);
 	else if (error == ERROR_MLX)
-		ft_printf ("%sError\nstarting MLX instances\n", RED);
+		ft_printf ("%s\nError\nstarting MLX instances\n", RED);
 	else if (error == ERROR_COLOR_F)
-		ft_printf ("%sError\nThe color format is not RGB\n", RED);
+		ft_printf ("%s\nError\nThe color format is not RGB\n", RED);
 	else if (error == ERROR_MAP_F)
-		ft_printf ("%sError\nThe map format is not correct\n", RED);
+		ft_printf ("%s\nError\nThe map format is not correct\n", RED);
 	else if (error == ERROR_TXT)
-		ft_printf ("%sError\nThe texture not correct\n", RED);
+		ft_printf ("%s\nError\nError in some of the textures\n", RED);
 	close_window(cub, EXIT_FAILURE);
 }
 
 int	close_window(t_cub *cub, int exitcode)
 {
+	free_textures(cub);
 	close_cmaps(cub);
 	if (cub->map)
 		free(cub->map);
@@ -56,8 +57,30 @@ int	close_window(t_cub *cub, int exitcode)
 		free(cub->mlx);
 	}
 	exit (exitcode);
-	ft_memset(cub, 0, sizeof(t_cub));
-	return (exitcode);
+}
+
+void	free_textures(t_cub *cub)
+{
+	if (cub->txt_so)
+	{
+		mlx_destroy_image(cub->mlx, cub->txt_so->txt);
+		free(cub->txt_so);
+	}
+	if (cub->txt_no)
+	{
+		mlx_destroy_image(cub->mlx, cub->txt_no->txt);
+		free(cub->txt_no);
+	}
+	if (cub->txt_ea)
+	{
+		mlx_destroy_image(cub->mlx, cub->txt_ea->txt);
+		free(cub->txt_ea);
+	}
+	if (cub->txt_we)
+	{
+		mlx_destroy_image(cub->mlx, cub->txt_we->txt);
+		free(cub->txt_we);
+	}
 }
 
 void	close_cmaps(t_cub *cub)

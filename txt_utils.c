@@ -6,7 +6,7 @@
 /*   By: cescanue <cescanue@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/03 15:48:41 by cescanue          #+#    #+#             */
-/*   Updated: 2023/11/03 17:19:59 by cescanue         ###   ########.fr       */
+/*   Updated: 2023/11/03 21:28:53 by cescanue         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,16 +23,24 @@ t_txt	*load_txt(char *file, t_cub *cub)
 		ft_error_handler(ERROR_MEM, cub);
 	if (ft_strnstr(file, ".png", ft_strlen(file))
 		|| ft_strnstr(file, ".PNG", ft_strlen(file)))
-		tmp->txt = mlx_xpm_file_to_image(cub->mlx, file, &tmp->w, &tmp->h);
+		tmp->txt = mlx_png_file_to_image(cub->mlx, file, &tmp->w, &tmp->h);
 	else if (ft_strnstr(file, ".xpm", ft_strlen(file))
 		|| ft_strnstr(file, ".XPM", ft_strlen(file)))
 		tmp->txt = mlx_xpm_file_to_image(cub->mlx, file, &tmp->w, &tmp->h);
 	if (!tmp->txt)
 	{
 		free(tmp);
-		printf("\nError\nLoading texture %s", file);
-		printf("file not found or unsupported format (PNG or XPM supported)");
+		printf("\nError\nLoading texture %s ", file);
+		printf("file not found or unsupported format (PNG or XPM supported)\n");
 		ft_error_handler(ERROR_TXT, cub);
 	}
 	return (tmp);
+}
+
+void	load_textures(t_cub *cub)
+{
+	cub->txt_no = load_txt(cub->cmap->t_no, cub);
+	cub->txt_so = load_txt(cub->cmap->t_so, cub);
+	cub->txt_ea = load_txt(cub->cmap->t_ea, cub);
+	cub->txt_we = load_txt(cub->cmap->t_we, cub);
 }

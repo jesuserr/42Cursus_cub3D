@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3D.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jesuserr <jesuserr@student.42.fr>          +#+  +:+       +#+        */
+/*   By: cescanue <cescanue@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/03 17:45:13 by cescanue          #+#    #+#             */
-/*   Updated: 2023/11/03 18:09:39 by jesuserr         ###   ########.fr       */
+/*   Updated: 2023/11/03 21:32:37 by cescanue         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -191,6 +191,7 @@ typedef struct s_cub
 void	ft_error_handler(int error, t_cub *cub);
 int		close_window(t_cub *cub, int exitcode);
 void	close_cmaps(t_cub *cub);
+void	free_textures(t_cub *cub);
 /*		graphics.c		*/
 void	mlx_put_pixel(t_cub *cub, int x, int y, int color);
 void	draw_line(t_line line, t_cub *cub);
@@ -230,5 +231,7 @@ void	calc_player_vector(t_cub *cub);
 /*		wall_utils.c 		*/
 void	draw_floor_and_ceiling(t_cub *cub);
 void	rise_walls(t_cub *cub, t_ray_cast *vert, t_ray_cast *horz, float x);
-
+/*		txt_utils.c 		*/
+t_txt	*load_txt(char *file, t_cub *cub);
+void	load_textures(t_cub *cub);
 #endif

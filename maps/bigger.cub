@@ -1,7 +1,7 @@
 R 1920 1080
 
 NO ./textures/planks.xpm
-SO ./textures/grass.xpm
+SO ./textures/enemy1.xpm
 WE ./textures/torch.xpm
 EA ./textures/attack_torch.xpm
 

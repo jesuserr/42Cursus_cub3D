@@ -6,7 +6,7 @@
 /*   By: cescanue <cescanue@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/30 13:56:56 by cescanue          #+#    #+#             */
-/*   Updated: 2023/11/03 16:27:46 by cescanue         ###   ########.fr       */
+/*   Updated: 2023/11/03 20:38:53 by cescanue         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void	check_mapch(char *rmap, t_cub *cub)
 		if (*rmap != '0' && *rmap != '1' && *rmap != 'N' && *rmap != 'S'
 			&& *rmap != 'E' && *rmap != 'W' && *rmap != ' ' && *rmap != 'P')
 		{
-			printf("Error\nIllegal character %c detected on map.\n", *rmap);
+			printf("\nError\nIllegal character %c detected on map.\n", *rmap);
 			free(tmap);
 			ft_error_handler(ERROR_MAP_F, cub);
 		}
@@ -50,7 +50,7 @@ void	check_player(char *rmap, t_cub *cub)
 	}
 	if (!player || player > 1 || !cero)
 	{
-		printf("Error\nThe player is missing, you have more than one player");
+		printf("\nError\nThe player is missing, you have more than one player");
 		printf(" or the map has no area for the player to move around.\n");
 		free(tmap);
 		ft_error_handler(ERROR_MAP_F, cub);

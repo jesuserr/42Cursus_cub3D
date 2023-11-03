@@ -6,7 +6,7 @@
 /*   By: cescanue <cescanue@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/03 17:44:36 by cescanue          #+#    #+#             */
-/*   Updated: 2023/11/03 18:16:45 by cescanue         ###   ########.fr       */
+/*   Updated: 2023/11/03 21:24:21 by cescanue         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,13 +48,16 @@ int	main(int argc, char **argv)
 	init_map(argv[1], &cub);
 	init_win(&cub, argv[1]);
 	init_struct(&cub);
-	ray_casting(&cub);
-	mlx_hook(cub.mlx_win, 17, 0, close_window, &cub);
-	mlx_hook(cub.mlx_win, 2, 0, key_pressed, &cub);
-	mlx_loop_hook(cub.mlx, ray_casting, &cub);
-	mlx_hook(cub.mlx_win, 3, 0, key_released, &cub);
-	mlx_hook(cub.mlx_win, 6, 0, mouse_move, &cub);
-	mlx_loop(cub.mlx);
-	//close_window(&cub, EXIT_SUCCESS);
-	return (0);
+	load_textures(&cub);
+	if (cub.map)
+	{
+		ray_casting(&cub);
+		mlx_hook(cub.mlx_win, 17, 0, close_window, &cub);
+		mlx_hook(cub.mlx_win, 2, 0, key_pressed, &cub);
+		mlx_loop_hook(cub.mlx, ray_casting, &cub);
+		mlx_hook(cub.mlx_win, 3, 0, key_released, &cub);
+		mlx_hook(cub.mlx_win, 6, 0, mouse_move, &cub);
+		mlx_loop(cub.mlx);
+	}
+	return (EXIT_SUCCESS);
 }
