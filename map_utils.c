@@ -6,7 +6,7 @@
 /*   By: jesuserr <jesuserr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/24 21:08:23 by cescanue          #+#    #+#             */
-/*   Updated: 2023/11/03 13:18:36 by jesuserr         ###   ########.fr       */
+/*   Updated: 2023/11/03 13:25:39 by jesuserr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,7 +103,7 @@ void	init_map(char *file, t_cub *cub)
 	cub->raw_map = read_map(file, cub);
 	ft_printf ("%sOK!\nAnalyzing Map... ", BLUE);
 	check_map(cub);
-	ft_printf ("%sOK!\nParsing Map... ", BLUE);	
+	ft_printf ("%sOK!\nParsing Map... ", BLUE);
 	cub->map = parse_map(cub);
 	ft_printf ("%sOK!\n", BLUE);
 }
