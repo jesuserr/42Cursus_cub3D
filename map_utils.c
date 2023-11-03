@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_utils.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cescanue <cescanue@student.42barcelona.    +#+  +:+       +#+        */
+/*   By: jesuserr <jesuserr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/24 21:08:23 by cescanue          #+#    #+#             */
-/*   Updated: 2023/11/01 22:01:21 by cescanue         ###   ########.fr       */
+/*   Updated: 2023/11/03 13:18:36 by jesuserr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,7 +99,11 @@ void	init_map(char *file, t_cub *cub)
 	cub->cmap = ft_calloc(1, sizeof(t_map));
 	if (!cub->cmap)
 		ft_error_handler(ERROR_MEM);
+	ft_printf ("%sReading Map..... ", BLUE);
 	cub->raw_map = read_map(file, cub);
+	ft_printf ("%sOK!\nAnalyzing Map... ", BLUE);
 	check_map(cub);
+	ft_printf ("%sOK!\nParsing Map... ", BLUE);	
 	cub->map = parse_map(cub);
+	ft_printf ("%sOK!\n", BLUE);
 }
