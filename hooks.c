@@ -6,7 +6,7 @@
 /*   By: cescanue <cescanue@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/07 11:54:26 by jesuserr          #+#    #+#             */
-/*   Updated: 2023/11/02 22:14:22 by cescanue         ###   ########.fr       */
+/*   Updated: 2023/11/03 09:49:04 by cescanue         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,18 +14,17 @@
 
 int	mouse_move(int x, int y, t_cub *cub)
 {
-	(void) y;
-	if (!cub->key.mousex && x > -1 && x < WIDTH)
-		cub->key.mousex = x;
-	else if (cub->key.mousex != 0)
+	if (cub->key.mousex != 0 && x > -1 && x < WIDTH && y > -1 && y < HEIGHT)
 	{
-		if (cub->key.mousex < x)
+		if (cub->key.mousex > x)
 			cub->key.left_pressed = 1;
-		else
+		else if (cub->key.mousex < x)
 			cub->key.right_pressed = 1;
 		cub->key.mousex = x;
 		cub->key.mouse++;
 	}
+	if (!cub->key.mousex && x > -1 && x < WIDTH && y > -1 && y < HEIGHT)
+		cub->key.mousex = x;
 	return (0);
 }
 

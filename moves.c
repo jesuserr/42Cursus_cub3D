@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   moves.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jesuserr <jesuserr@student.42.fr>          +#+  +:+       +#+        */
+/*   By: cescanue <cescanue@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/14 11:47:50 by jesuserr          #+#    #+#             */
-/*   Updated: 2023/11/02 20:29:51 by jesuserr         ###   ########.fr       */
+/*   Updated: 2023/11/03 09:51:29 by cescanue         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,16 @@ void	key_a_pressed(t_cub *cub);
 void	key_d_pressed(t_cub *cub);
 void	key_w_pressed(t_cub *cub);
 void	key_s_pressed(t_cub *cub);
+
+void	mouse_actions(t_cub *cub)
+{
+	if (cub->key.mouse && cub->key.mousex > -1 && cub->key.mousex < WIDTH)
+	{
+		cub->key.left_pressed = 0;
+		cub->key.right_pressed = 0;
+		cub->key.mouse = 0;
+	}
+}
 
 void	key_actions(t_cub *cub)
 {

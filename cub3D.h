@@ -6,7 +6,7 @@
 /*   By: cescanue <cescanue@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/02 21:39:06 by cescanue          #+#    #+#             */
-/*   Updated: 2023/11/02 22:02:49 by cescanue         ###   ########.fr       */
+/*   Updated: 2023/11/03 09:52:07 by cescanue         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -211,6 +211,7 @@ char	**str_to_array(int lx, int ly, char *smap);
 void	check_limits(t_cub *cub);
 /*		moves.c				*/
 void	key_actions(t_cub *cub);
+void	mouse_actions(t_cub *cub);
 /*		ray_casting.c		*/
 int		ray_casting(t_cub *cub);
 /*		raycast_utils.c 		*/

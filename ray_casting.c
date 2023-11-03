@@ -6,7 +6,7 @@
 /*   By: cescanue <cescanue@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/09 19:43:38 by jesuserr          #+#    #+#             */
-/*   Updated: 2023/11/02 21:26:27 by cescanue         ###   ########.fr       */
+/*   Updated: 2023/11/03 09:51:44 by cescanue         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,12 +45,7 @@ int	ray_casting(t_cub *cub)
 	//draw_pointer(cub);
 	mlx_put_image_to_window(cub->mlx, cub->mlx_win, cub->img.img, 0, 0);
 	key_actions(cub);
-	if (cub->key.mouse && cub->key.mousex > -1 && cub->key.mousex < WIDTH)
-	{
-		cub->key.left_pressed = 0;
-		cub->key.right_pressed = 0;
-		cub->key.mouse = 0;
-	}
+	mouse_actions(cub);
 	return (0);
 }
 
