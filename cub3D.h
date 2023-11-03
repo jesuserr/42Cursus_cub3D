@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: cescanue <cescanue@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/03 09:53:42 by cescanue          #+#    #+#             */
-/*   Updated: 2023/11/03 16:44:58 by cescanue         ###   ########.fr       */
+/*   Created: 2023/11/03 17:45:13 by cescanue          #+#    #+#             */
+/*   Updated: 2023/11/03 17:45:15 by cescanue         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -189,10 +189,6 @@ typedef struct s_cub
 */
 /*		errors.c		*/
 void	ft_error_handler(int error, t_cub *cub);
-void	free_split(char **str);
-void	free_and_exit(int error, char *ptr);
-void	free_split_and_exit(char **str, int error, char *ptr);
-void	free_map_and_exit(t_cub *cub, int error, int flag);
 /*		graphics.c		*/
 void	mlx_put_pixel(t_cub *cub, int x, int y, int color);
 void	draw_line(t_line line, t_cub *cub);

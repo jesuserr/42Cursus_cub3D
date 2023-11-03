@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: cescanue <cescanue@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/29 21:49:02 by cescanue          #+#    #+#             */
-/*   Updated: 2023/11/03 17:21:22 by cescanue         ###   ########.fr       */
+/*   Created: 2023/11/03 17:44:36 by cescanue          #+#    #+#             */
+/*   Updated: 2023/11/03 17:44:54 by cescanue         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,17 +29,6 @@ void	init_win(t_cub *cub, char *s)
 
 void	init_struct(t_cub *cub)
 {
-/* Esto se puede borrar, ya que el memset se ocupa de inicialiar todo a 0, te lo dejo por si lo quieres para glo que no controlo
-	cub->key.a_pressed = 0;
-	cub->key.d_pressed = 0;
-	cub->key.w_pressed = 0;
-	cub->key.s_pressed = 0;
-	cub->key.left_pressed = 0;
-	cub->key.right_pressed = 0;
-	cub->key.shift_pressed = 0;
-	cub->key.mouse_x = 0;
-	cub->key.map_on_screen = 0;
-*/	
 	ft_memset(&cub->key, 0, sizeof(t_keys));
 	cub->player.speed = INC_OFFSET;
 	cub->key.map_scale = (-cub->x_elem / 3) + 18;

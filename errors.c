@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: cescanue <cescanue@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/25 21:10:39 by jesuserr          #+#    #+#             */
-/*   Updated: 2023/11/03 16:45:04 by cescanue         ###   ########.fr       */
+/*   Created: 2023/11/03 17:45:04 by cescanue          #+#    #+#             */
+/*   Updated: 2023/11/03 17:45:06 by cescanue         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	ft_error_handler(int error, t_cub *cub)
 	else if (error == ERROR_MEM)
 		ft_printf ("%sError\nallocating memory\n", RED);
 	else if (error == ERROR_EMPTY)
-		ft_printf ("%sError\nEmpty map\n", RED);
+		ft_printf ("%sError\nEmpty map\n", RED);	
 	else if (error == ERROR_MAP)
 		ft_printf ("%sError\nInvalid map format\n", RED);
 	else if (error == ERROR_MLX)
@@ -33,16 +33,4 @@ void	ft_error_handler(int error, t_cub *cub)
 	else if (error == ERROR_TXT)
 		ft_printf ("%sError\nThe texture not correct\n", RED);
 	close_window(cub, EXIT_FAILURE);
-}
-
-/* To be used mainly with double pointers used on ft_split */
-
-void	free_split(char **str)
-{
-	size_t	i;
-
-	i = 0;
-	while (str[i])
-		free(str[i++]);
-	free(str);
 }
