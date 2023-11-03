@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   hooks.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jesuserr <jesuserr@student.42.fr>          +#+  +:+       +#+        */
+/*   By: cescanue <cescanue@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/03 09:53:34 by cescanue          #+#    #+#             */
-/*   Updated: 2023/11/03 12:25:18 by jesuserr         ###   ########.fr       */
+/*   Updated: 2023/11/03 16:17:54 by cescanue         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ int	mouse_move(int x, int y, t_cub *cub)
 int	key_pressed(int keycode, t_cub *cub)
 {
 	if (keycode == ESC_KEY)
-		close_window(cub);
+		close_window(cub, EXIT_SUCCESS);
 	else if (keycode == TAB_KEY)
 		cub->key.map_on_screen = !cub->key.map_on_screen;
 	else if (keycode == D_KEY)
@@ -85,7 +85,7 @@ int	key_released(int keycode, t_cub *cub)
 	return (0);
 }
 
-int	close_window(t_cub *cub)
+int	close_window(t_cub *cub, int exitcode)
 {
 	close_cmaps(cub);
 	if (cub->raw_map)
@@ -105,7 +105,8 @@ int	close_window(t_cub *cub)
 		free(((mlx_ptr_t *)cub->mlx)->img_list);
 		free(cub->mlx);
 	}
-	exit (EXIT_SUCCESS);
+	exit (exitcode);
+	return (exitcode);
 }
 
 void	close_cmaps(t_cub *cub)

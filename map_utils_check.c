@@ -6,13 +6,13 @@
 /*   By: cescanue <cescanue@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/30 13:56:56 by cescanue          #+#    #+#             */
-/*   Updated: 2023/10/30 21:48:13 by cescanue         ###   ########.fr       */
+/*   Updated: 2023/11/03 16:12:02 by cescanue         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
 
-void	check_mapch(char *rmap)
+void	check_mapch(char *rmap, t_cub *cub)
 {
 	char	*tmap;
 
@@ -24,13 +24,13 @@ void	check_mapch(char *rmap)
 		{
 			printf("Error\nIllegal character %c detected on map.\n", *rmap);
 			free(tmap);
-			ft_error_handler(ERROR_MAP_F);
+			ft_error_handler(cub, ERROR_MAP_F);
 		}
 		rmap++;
 	}
 }
 
-void	check_player(char *rmap)
+void	check_player(char *rmap, t_cub *cub)
 {
 	char	*tmap;
 	int		player;
@@ -53,7 +53,7 @@ void	check_player(char *rmap)
 		printf("Error\nThe player is missing, you have more than one player");
 		printf(" or the map has no area for the player to move around.\n");
 		free(tmap);
-		ft_error_handler(ERROR_MAP_F);
+		ft_error_handler(cub, ERROR_MAP_F);
 	}
 }
 
@@ -75,19 +75,19 @@ void	str_to_array2(t_parse *p, int lx, int ly, char *smap)
 	}
 }
 
-char	**str_to_array(int lx, int ly, char *smap)
+char	**str_to_array(int lx, int ly, char *smap, t_cub *cub)
 {
 	t_parse	p;
 
 	p.mapa = ft_calloc(ly, sizeof(char *));
 	if (!p.mapa)
-		ft_error_handler(ERROR_MEM);
+		ft_error_handler(cub, ERROR_MEM);
 	p.y = 0;
 	while (p.y < ly)
 	{
 		p.mapa[p.y] = ft_calloc(lx, sizeof(char *));
 		if (!p.mapa[p.y++])
-			ft_error_handler(ERROR_MEM);
+			ft_error_handler(cub, ERROR_MEM);
 	}
 	str_to_array2(&p, lx, ly, smap);
 	return (p.mapa);
@@ -95,8 +95,8 @@ char	**str_to_array(int lx, int ly, char *smap)
 
 int	check_map(t_cub *cub)
 {
-	check_mapch(cub->raw_map);
-	check_player(cub->raw_map);
+	check_mapch(cub->raw_map, cub);
+	check_player(cub->raw_map, cub);
 	check_limits(cub);
 	return (0);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3D.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jesuserr <jesuserr@student.42.fr>          +#+  +:+       +#+        */
+/*   By: cescanue <cescanue@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/03 09:53:42 by cescanue          #+#    #+#             */
-/*   Updated: 2023/11/03 12:26:52 by jesuserr         ###   ########.fr       */
+/*   Updated: 2023/11/03 16:13:58 by cescanue         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -156,6 +156,13 @@ typedef struct s_parse
 	int		xl;
 }	t_parse;
 
+typedef struct s_txt
+{
+	void	*txt;
+	int		w;
+	int		h;
+}	t_txt;
+
 typedef struct s_cub
 {
 	t_keys		key;
@@ -168,7 +175,11 @@ typedef struct s_cub
 	t_point		*map;
 	t_img		img;
 	t_player	player;
-	t_map		*cmap;	
+	t_map		*cmap;
+	t_txt		*txt_so;
+	t_txt		*txt_no;
+	t_txt		*txt_we;
+	t_txt		*txt_ea;
 }	t_cub;
 
 /*
@@ -176,7 +187,7 @@ typedef struct s_cub
 **                        FUNCTION PROTOTYPES
 */
 /*		errors.c		*/
-void	ft_error_handler(int error);
+void	ft_error_handler(t_cub *cub, int error);
 void	free_split(char **str);
 void	free_and_exit(int error, char *ptr);
 void	free_split_and_exit(char **str, int error, char *ptr);
@@ -195,7 +206,7 @@ void	on_screen_minimap(t_cub *cub);
 int		mouse_move(int x, int y, t_cub *cub);
 int		key_pressed(int keycode, t_cub *cub);
 int		key_released(int keycode, t_cub *cub);
-int		close_window(t_cub *cub);
+int		close_window(t_cub *cub, int exitcode);
 void	close_cmaps(t_cub *cub);
 /*		map_utils.c				*/
 void	init_map(char *file, t_cub *cub);
@@ -206,7 +217,7 @@ t_point	*parse_map(t_cub *cub);
 /*		map_utils_check.c		*/
 int		check_map(t_cub *cub);
 /*		map_utils_check.c		*/
-char	**str_to_array(int lx, int ly, char *smap);
+char	**str_to_array(int lx, int ly, char *smap, t_cub *cub);
 /*		map_utils_check2.c		*/
 void	check_limits(t_cub *cub);
 /*		moves.c				*/

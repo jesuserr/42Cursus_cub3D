@@ -6,7 +6,7 @@
 /*   By: cescanue <cescanue@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/30 21:36:37 by cescanue          #+#    #+#             */
-/*   Updated: 2023/10/31 21:35:08 by cescanue         ###   ########.fr       */
+/*   Updated: 2023/11/03 16:13:10 by cescanue         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,14 +52,14 @@ void	check_limits(t_cub *cub)
 			|| cub->raw_map[count] == 'N' || cub->raw_map[count] == 'E'
 			|| cub->raw_map[count] == 'W' || cub->raw_map[count] == '0')
 		{
-			mapa = str_to_array(cub->x_elem, cub->y_elem, cub->raw_map);
+			mapa = str_to_array(cub->x_elem, cub->y_elem, cub->raw_map, cub);
 			ft_checkmapclose(mapa, count / cub->x_elem,
 				(count % cub->x_elem) - 1, cub);
 			freearray(mapa, cub->y_elem);
 			if (cub->mapconsistency)
 			{
 				printf("Error\nThe map is not closed at one of the edges.\n");
-				ft_error_handler(ERROR_MAP_F);
+				ft_error_handler(cub, ERROR_MAP_F);
 			}
 			mapa = 0;
 		}
