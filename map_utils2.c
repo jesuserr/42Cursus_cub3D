@@ -6,7 +6,7 @@
 /*   By: cescanue <cescanue@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/30 11:44:56 by cescanue          #+#    #+#             */
-/*   Updated: 2023/11/03 16:09:27 by cescanue         ###   ########.fr       */
+/*   Updated: 2023/11/03 16:29:11 by cescanue         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ void	ttorgbcheckcoma(char **line, t_cub *cub)
 		(*line)++;
 	}
 	if (count > 3 || !count)
-		ft_error_handler(cub, ERROR_COLOR_F);
+		ft_error_handler(ERROR_COLOR_F, cub);
 }
 
 int	textrgbtoint(char *line, t_cub *cub)
@@ -38,7 +38,7 @@ int	textrgbtoint(char *line, t_cub *cub)
 	int	count;
 
 	if (*(line + 1) != ' ')
-		ft_error_handler(cub, ERROR_COLOR_F);
+		ft_error_handler(ERROR_COLOR_F, cub);
 	color = 0;
 	while (color < 3)
 	{
@@ -50,7 +50,7 @@ int	textrgbtoint(char *line, t_cub *cub)
 			line++;
 		}
 		if (!*line || *line == '\n' || (color && count != 1))
-			ft_error_handler(cub, ERROR_COLOR_F);
+			ft_error_handler(ERROR_COLOR_F, cub);
 		rgb[color] = ft_atoi(line);
 		count = 0;
 		ttorgbcheckcoma(&line, cub);
@@ -82,7 +82,7 @@ char	*get_text(char *line, t_cub *cub)
 	}
 	tmp = ft_calloc(count + 1, sizeof(char));
 	if (!tmp)
-		ft_error_handler(cub, ERROR_MEM);
+		ft_error_handler(ERROR_MEM, cub);
 	ft_strlcpy(tmp, line + blanks + 2, count + 1);
 	return (tmp);
 }

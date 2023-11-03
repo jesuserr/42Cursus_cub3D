@@ -6,7 +6,7 @@
 /*   By: cescanue <cescanue@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/03 09:53:42 by cescanue          #+#    #+#             */
-/*   Updated: 2023/11/03 16:13:58 by cescanue         ###   ########.fr       */
+/*   Updated: 2023/11/03 16:25:27 by cescanue         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -187,7 +187,7 @@ typedef struct s_cub
 **                        FUNCTION PROTOTYPES
 */
 /*		errors.c		*/
-void	ft_error_handler(t_cub *cub, int error);
+void	ft_error_handler(int error, t_cub *cub);
 void	free_split(char **str);
 void	free_and_exit(int error, char *ptr);
 void	free_split_and_exit(char **str, int error, char *ptr);

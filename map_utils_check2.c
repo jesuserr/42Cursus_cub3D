@@ -6,7 +6,7 @@
 /*   By: cescanue <cescanue@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/30 21:36:37 by cescanue          #+#    #+#             */
-/*   Updated: 2023/11/03 16:13:10 by cescanue         ###   ########.fr       */
+/*   Updated: 2023/11/03 16:27:59 by cescanue         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ void	check_limits(t_cub *cub)
 			if (cub->mapconsistency)
 			{
 				printf("Error\nThe map is not closed at one of the edges.\n");
-				ft_error_handler(cub, ERROR_MAP_F);
+				ft_error_handler(ERROR_MAP_F, cub);
 			}
 			mapa = 0;
 		}

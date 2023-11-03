@@ -6,7 +6,7 @@
 /*   By: cescanue <cescanue@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/24 21:08:23 by cescanue          #+#    #+#             */
-/*   Updated: 2023/11/03 16:06:17 by cescanue         ###   ########.fr       */
+/*   Updated: 2023/11/03 16:28:47 by cescanue         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ char	*read_raw_map(int fd, char **line, t_cub *cub)
 		omap = tmap;
 		tmap = ft_calloc(size + 1, sizeof(char));
 		if (!tmap)
-			ft_error_handler(cub, ERROR_MEM);
+			ft_error_handler(ERROR_MEM, cub);
 		ft_strlcpy(tmap, omap, size);
 		ft_strlcat(tmap, *line, size + 1);
 		free (omap);
@@ -65,10 +65,10 @@ char	*rawmap_to_squaremap(char *rmap, t_cub *cub)
 	char	*smap;
 
 	if (!rmap)
-		ft_error_handler(cub, ERROR_MAP_F);
+		ft_error_handler(ERROR_MAP_F, cub);
 	smap = ft_calloc((cub->y_elem * cub->x_elem) + 1, sizeof(char));
 	if (!smap)
-		ft_error_handler(cub, ERROR_MEM);
+		ft_error_handler(ERROR_MEM, cub);
 	ft_memset(smap, ' ', cub->y_elem * cub->x_elem);
 	rawmap_to_squaremap2(smap, rmap, cub);
 	free(rmap);
@@ -83,10 +83,10 @@ char	*read_map(char *file, t_cub *cub)
 
 	fd = open(file, O_RDONLY);
 	if (fd == -1)
-		ft_error_handler(cub, ERROR_FILE);
+		ft_error_handler(ERROR_FILE, cub);
 	line = get_next_line(fd);
 	if (!line)
-		ft_error_handler(cub, ERROR_EMPTY);
+		ft_error_handler(ERROR_EMPTY, cub);
 	read_text_colors(fd, &line, cub);
 	smap = rawmap_to_squaremap(read_raw_map(fd, &line, cub), cub);
 	close (fd);
@@ -98,7 +98,7 @@ void	init_map(char *file, t_cub *cub)
 	ft_printf ("%s", BLUE);
 	cub->cmap = ft_calloc(1, sizeof(t_map));
 	if (!cub->cmap)
-		ft_error_handler(cub, ERROR_MEM);
+		ft_error_handler(ERROR_MEM, cub);
 	ft_printf ("%sReading Map..... ", BLUE);
 	cub->raw_map = read_map(file, cub);
 	ft_printf ("%sOK!\nAnalyzing Map... ", BLUE);

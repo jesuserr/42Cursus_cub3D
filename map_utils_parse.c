@@ -6,7 +6,7 @@
 /*   By: cescanue <cescanue@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/30 11:42:12 by cescanue          #+#    #+#             */
-/*   Updated: 2023/11/03 16:10:05 by cescanue         ###   ########.fr       */
+/*   Updated: 2023/11/03 16:28:08 by cescanue         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ t_point	*parse_map(t_cub *cub)
 	p.xl = 0;
 	p.map = ft_calloc(cub->x_elem * cub->y_elem, sizeof(t_point));
 	if (!p.map)
-		ft_error_handler(cub, ERROR_MEM);
+		ft_error_handler(ERROR_MEM, cub);
 	while (cub->raw_map && cub->raw_map[p.xl])
 	{
 		parse_map_set(&p, cub);

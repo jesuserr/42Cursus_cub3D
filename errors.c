@@ -6,13 +6,13 @@
 /*   By: cescanue <cescanue@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/25 21:10:39 by jesuserr          #+#    #+#             */
-/*   Updated: 2023/11/03 16:14:18 by cescanue         ###   ########.fr       */
+/*   Updated: 2023/11/03 16:25:05 by cescanue         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
 
-void	ft_error_handler(t_cub *cub, int error)
+void	ft_error_handler(int error, t_cub *cub)
 {
 	if (error == ERROR_ARGS)
 		ft_printf ("%sError\nInvalid arguments - expected one map\n", RED);

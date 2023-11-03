@@ -6,7 +6,7 @@
 /*   By: cescanue <cescanue@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/29 21:49:02 by cescanue          #+#    #+#             */
-/*   Updated: 2023/11/03 16:18:41 by cescanue         ###   ########.fr       */
+/*   Updated: 2023/11/03 16:27:11 by cescanue         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,13 +16,13 @@ void	init_win(t_cub *cub, char *s)
 {
 	cub->mlx = mlx_init();
 	if (!cub->mlx)
-		ft_error_handler(cub, ERROR_MLX);
+		ft_error_handler(ERROR_MLX, cub);
 	cub->mlx_win = mlx_new_window(cub->mlx, WIDTH, HEIGHT, s);
 	if (!cub->mlx_win)
-		ft_error_handler(cub, ERROR_MLX);
+		ft_error_handler(ERROR_MLX, cub);
 	cub->img.img = mlx_new_image(cub->mlx, WIDTH, HEIGHT);
 	if (!cub->img.img)
-		ft_error_handler(cub, ERROR_MLX);
+		ft_error_handler(ERROR_MLX, cub);
 	cub->img.addr = mlx_get_data_addr(cub->img.img, &cub->img.bpp, \
 		&cub->img.len, &cub->img.endian);
 }
@@ -52,7 +52,7 @@ int	main(int argc, char **argv)
 	t_cub	cub;
 
 	if (argc != 2)
-		ft_error_handler(ERROR_ARGS, EXIT_FAILURE);
+		ft_error_handler(ERROR_ARGS, &cub);
 	ft_memset(&cub, 0, sizeof(t_cub));
 	init_map(argv[1], &cub);
 	init_win(&cub, argv[1]);
