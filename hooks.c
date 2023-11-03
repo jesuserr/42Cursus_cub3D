@@ -6,7 +6,7 @@
 /*   By: cescanue <cescanue@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/03 09:53:34 by cescanue          #+#    #+#             */
-/*   Updated: 2023/11/03 17:55:40 by cescanue         ###   ########.fr       */
+/*   Updated: 2023/11/03 18:05:31 by cescanue         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,7 +105,7 @@ int	close_window(t_cub *cub, int exitcode)
 		free(((mlx_ptr_t *)cub->mlx)->img_list);
 		free(cub->mlx);
 	}
-	exit (exitcode);
+	//exit (exitcode);
 	ft_memset(cub, 0, sizeof(t_cub));
 	return (exitcode);
 }

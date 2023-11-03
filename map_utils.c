@@ -6,7 +6,7 @@
 /*   By: cescanue <cescanue@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/24 21:08:23 by cescanue          #+#    #+#             */
-/*   Updated: 2023/11/03 16:28:47 by cescanue         ###   ########.fr       */
+/*   Updated: 2023/11/03 18:15:58 by cescanue         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,10 @@ char	*rawmap_to_squaremap(char *rmap, t_cub *cub)
 	char	*smap;
 
 	if (!rmap)
+	{
 		ft_error_handler(ERROR_MAP_F, cub);
+		return (0);
+	}
 	smap = ft_calloc((cub->y_elem * cub->x_elem) + 1, sizeof(char));
 	if (!smap)
 		ft_error_handler(ERROR_MEM, cub);
@@ -81,6 +84,7 @@ char	*read_map(char *file, t_cub *cub)
 	char	*line;
 	char	*smap;
 
+	smap = 0;
 	fd = open(file, O_RDONLY);
 	if (fd == -1)
 		ft_error_handler(ERROR_FILE, cub);
