@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3D.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cescanue <cescanue@student.42barcelona.    +#+  +:+       +#+        */
+/*   By: jesuserr <jesuserr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/03 17:45:13 by cescanue          #+#    #+#             */
-/*   Updated: 2023/11/03 21:32:37 by cescanue         ###   ########.fr       */
+/*   Updated: 2023/11/05 11:52:39 by jesuserr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -159,7 +159,7 @@ typedef struct s_parse
 
 typedef struct s_txt
 {
-	void	*txt;
+	t_img	img;
 	int		w;
 	int		h;
 }	t_txt;
@@ -231,6 +231,8 @@ void	calc_player_vector(t_cub *cub);
 /*		wall_utils.c 		*/
 void	draw_floor_and_ceiling(t_cub *cub);
 void	rise_walls(t_cub *cub, t_ray_cast *vert, t_ray_cast *horz, float x);
+void	draw_texture(t_cub *cub, t_txt *txt, int x, int y);
+void	hexdump(const void *data, size_t length);
 /*		txt_utils.c 		*/
 t_txt	*load_txt(char *file, t_cub *cub);
 void	load_textures(t_cub *cub);

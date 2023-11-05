@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ray_casting.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cescanue <cescanue@student.42barcelona.    +#+  +:+       +#+        */
+/*   By: jesuserr <jesuserr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/03 09:53:27 by cescanue          #+#    #+#             */
-/*   Updated: 2023/11/03 21:23:43 by cescanue         ###   ########.fr       */
+/*   Updated: 2023/11/05 11:59:06 by jesuserr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,10 @@ int	ray_casting(t_cub *cub)
 	if (cub->key.map_on_screen == 1)
 		on_screen_minimap(cub);
 	//draw_pointer(cub);
+	draw_texture(cub, cub->txt_ea, 0, 0);
+	draw_texture(cub, cub->txt_no, 64, 0);
+	draw_texture(cub, cub->txt_so, 128, 0);
+	draw_texture(cub, cub->txt_we, 192, 0);
 	mlx_put_image_to_window(cub->mlx, cub->mlx_win, cub->img.img, 0, 0);
 	key_actions(cub);
 	return (0);

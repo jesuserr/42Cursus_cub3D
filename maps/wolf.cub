@@ -1,3 +1,8 @@
+NO ./textures/bluestone.png
+SO ./textures/colorstone.png
+WE ./textures/greystone.png
+EA ./textures/wood.png
+
 F 113,113,113
 C 56,56,56
 

@@ -6,7 +6,7 @@
 /*   By: jesuserr <jesuserr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/30 20:13:31 by jesuserr          #+#    #+#             */
-/*   Updated: 2023/11/01 15:57:19 by jesuserr         ###   ########.fr       */
+/*   Updated: 2023/11/05 12:03:23 by jesuserr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,4 +60,58 @@ void	rise_walls(t_cub *cub, t_ray_cast *vert, t_ray_cast *horz, float x)
 	line.y0 = (HEIGHT / 2) - (wall_height / 2);
 	line.y1 = (HEIGHT / 2) + (wall_height / 2);
 	draw_vert_line(line, cub);
+}
+
+void	draw_texture(t_cub *cub, t_txt *txt, int x, int y)
+{
+	int		i;
+	int		temp_x;
+	int		temp_y;
+	int		color;
+	char	*temp;
+
+	temp = txt->img.addr;
+	i = 0;
+	temp_x = x;
+	temp_y = y;
+	while (i < txt->h * txt->w)
+	{
+		color = *(unsigned int *)temp;
+		mlx_put_pixel(cub, temp_x, temp_y, color);
+		temp += txt->img.bpp / 8;
+		if (i % txt->w == 0)
+		{
+			temp_x = x;
+			temp_y++;
+		}
+		i++;
+		temp_x++;
+	}
+}
+
+void	hexdump(const void *data, size_t length)
+{
+	const unsigned char	*ptr;
+
+	ptr = (const unsigned char *)data;
+	for (size_t i = 0; i < length; i++)
+	{
+		printf("%02X ", ptr[i]);
+		if ((i + 1) % 16 == 0 || i == length - 1)
+		{
+			printf(" ");
+			for (size_t j = i - (i % 16); j <= i; j++)
+			{
+				if (j == i / 2)
+					printf(" ");
+				if (j >= length)
+					printf("   ");
+				else if (ptr[j] >= 32 && ptr[j] <= 126)
+					printf("%c ", ptr[j]);
+				else
+					printf(". ");
+			}
+			printf("\n");
+		}
+	}
 }
