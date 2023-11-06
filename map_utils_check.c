@@ -6,7 +6,7 @@
 /*   By: cescanue <cescanue@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/30 13:56:56 by cescanue          #+#    #+#             */
-/*   Updated: 2023/11/03 20:38:53 by cescanue         ###   ########.fr       */
+/*   Updated: 2023/11/06 19:07:03 by cescanue         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,16 +14,12 @@
 
 void	check_mapch(char *rmap, t_cub *cub)
 {
-	char	*tmap;
-
-	tmap = rmap;
 	while (*rmap)
 	{
 		if (*rmap != '0' && *rmap != '1' && *rmap != 'N' && *rmap != 'S'
 			&& *rmap != 'E' && *rmap != 'W' && *rmap != ' ' && *rmap != 'P')
 		{
 			printf("\nError\nIllegal character %c detected on map.\n", *rmap);
-			free(tmap);
 			ft_error_handler(ERROR_MAP_F, cub);
 		}
 		rmap++;
