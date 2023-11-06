@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   txt_utils.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jesuserr <jesuserr@student.42.fr>          +#+  +:+       +#+        */
+/*   By: cescanue <cescanue@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/03 15:48:41 by cescanue          #+#    #+#             */
-/*   Updated: 2023/11/05 11:41:55 by jesuserr         ###   ########.fr       */
+/*   Updated: 2023/11/06 21:31:59 by cescanue         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,8 +41,11 @@ t_txt	*load_txt(char *file, t_cub *cub)
 
 void	load_textures(t_cub *cub)
 {
-	cub->txt_no = load_txt(cub->cmap->t_no, cub);
-	cub->txt_so = load_txt(cub->cmap->t_so, cub);
-	cub->txt_ea = load_txt(cub->cmap->t_ea, cub);
-	cub->txt_we = load_txt(cub->cmap->t_we, cub);
+	if (cub->cmap)
+	{
+		cub->txt_no = load_txt(cub->cmap->t_no, cub);
+		cub->txt_so = load_txt(cub->cmap->t_so, cub);
+		cub->txt_ea = load_txt(cub->cmap->t_ea, cub);
+		cub->txt_we = load_txt(cub->cmap->t_we, cub);
+	}
 }

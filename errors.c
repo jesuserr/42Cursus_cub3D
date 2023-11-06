@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   errors.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jesuserr <jesuserr@student.42.fr>          +#+  +:+       +#+        */
+/*   By: cescanue <cescanue@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/03 17:45:04 by cescanue          #+#    #+#             */
-/*   Updated: 2023/11/05 10:52:48 by jesuserr         ###   ########.fr       */
+/*   Updated: 2023/11/06 21:46:06 by cescanue         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,8 @@ int	close_window(t_cub *cub, int exitcode)
 		free(cub->mlx);
 	}
 	exit (exitcode);
+	ft_memset(cub, 0, sizeof(t_cub));
+	return (exitcode);
 }
 
 void	free_textures(t_cub *cub)

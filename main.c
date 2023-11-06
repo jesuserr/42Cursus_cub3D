@@ -6,7 +6,7 @@
 /*   By: cescanue <cescanue@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/03 17:44:36 by cescanue          #+#    #+#             */
-/*   Updated: 2023/11/03 21:24:21 by cescanue         ###   ########.fr       */
+/*   Updated: 2023/11/06 21:52:12 by cescanue         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,9 +42,9 @@ int	main(int argc, char **argv)
 {
 	t_cub	cub;
 
+	ft_memset(&cub, 0, sizeof(t_cub));
 	if (argc != 2)
 		ft_error_handler(ERROR_ARGS, &cub);
-	ft_memset(&cub, 0, sizeof(t_cub));
 	init_map(argv[1], &cub);
 	init_win(&cub, argv[1]);
 	init_struct(&cub);

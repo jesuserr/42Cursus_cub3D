@@ -180,7 +180,10 @@ int	mipng_data(mlx_img_list_t *img, unsigned char *dat, png_info_t *pi)
   z_strm.next_in = Z_NULL;
   z_ret = inflateInit(&z_strm);
   if (z_ret != Z_OK)
+  {
+	free(buffer);
     return (ERR_ZLIB);
+  }
 
   while (mipng_is_type(dat, "IDAT"))
     {
@@ -198,11 +201,13 @@ int	mipng_data(mlx_img_list_t *img, unsigned char *dat, png_info_t *pi)
 	  if (z_ret != Z_OK && z_ret != Z_STREAM_END)
 	    {
 	      inflateEnd(&z_strm);
+		  free(buffer);
 	      return (ERR_ZLIB);
 	    }
 	  if (b_pos + Z_CHUNK - z_strm.avail_out > img->width*img->height*pi->bpp+img->height)
 	    {
 	      inflateEnd(&z_strm);
+		  free(buffer);
 	      return (ERR_DATA_MISMATCH);
 	    }
 	  bcopy(z_out, buffer+b_pos, Z_CHUNK - z_strm.avail_out);
@@ -214,10 +219,15 @@ int	mipng_data(mlx_img_list_t *img, unsigned char *dat, png_info_t *pi)
   if (b_pos != img->width*img->height*pi->bpp+img->height)
     {
       //      printf("pb : bpos %d vs expected %d\n", b_pos, img->width*img->height*pi->bpp+img->height);
-      return (ERR_DATA_MISMATCH);
+      free(buffer);
+	  return (ERR_DATA_MISMATCH);
     }
   if ((ret = mipng_fill_img(img, buffer, pi)))
+  {
+	free(buffer);
     return (ret);
+  }
+  free(buffer);
   return (0);
 }
 
