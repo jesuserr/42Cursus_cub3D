@@ -6,7 +6,7 @@
 /*   By: cescanue <cescanue@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/03 17:45:04 by cescanue          #+#    #+#             */
-/*   Updated: 2023/11/07 15:28:18 by cescanue         ###   ########.fr       */
+/*   Updated: 2023/11/07 15:59:52 by cescanue         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,9 +81,8 @@ void	free_sprites(t_cub *cub)
 	if (cub->enemy && cub->enemy->sprites)
 	{
 		ft_clearlsti(cub->enemy->sprites);
-	}	
-	if (cub->enemy->sprites)
 		free(cub->enemy->sprites);
+		}
 	if (cub->enemy)
 		free(cub->enemy);
 }
