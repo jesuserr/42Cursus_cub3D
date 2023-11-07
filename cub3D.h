@@ -6,7 +6,7 @@
 /*   By: jesuserr <jesuserr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/03 17:45:13 by cescanue          #+#    #+#             */
-/*   Updated: 2023/11/07 22:42:48 by jesuserr         ###   ########.fr       */
+/*   Updated: 2023/11/07 23:08:20 by jesuserr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -212,7 +212,7 @@ void	mlx_put_pixel(t_cub *cub, int x, int y, int color);
 void	draw_line(t_line line, t_cub *cub);
 void	line_direction(t_line *line, t_line_aux *line_aux);
 void	draw_pointer(t_cub *cub);
-void	draw_vert_line(t_line line, t_cub *cub);
+void	draw_vert_line(t_line line, t_cub *cub, float wall_height);
 /*		graphics_2.c		*/
 void	draw_square(t_cub *cub, t_point square, int size);
 void	on_screen_minimap(t_cub *cub);
@@ -245,7 +245,6 @@ void	calc_player_vector(t_cub *cub);
 /*		wall_utils.c 		*/
 void	draw_floor_and_ceiling(t_cub *cub);
 void	rise_walls(t_cub *cub, t_ray_cast *vert, t_ray_cast *horz, float x);
-void	draw_texture(t_cub *cub, t_txt *txt, int x, int y);
 /*		txt_utils.c 		*/
 t_txt	*load_txt(char *file, t_cub *cub);
 void	load_textures(t_cub *cub);

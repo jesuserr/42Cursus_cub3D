@@ -6,7 +6,7 @@
 /*   By: jesuserr <jesuserr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/30 20:13:31 by jesuserr          #+#    #+#             */
-/*   Updated: 2023/11/07 22:43:11 by jesuserr         ###   ########.fr       */
+/*   Updated: 2023/11/07 23:03:45 by jesuserr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 void	draw_floor_and_ceiling(t_cub *cub);
 void	rise_walls(t_cub *cub, t_ray_cast *vert, t_ray_cast *horz, float x);
+void	draw_texture(t_line line, t_cub *cub, t_txt *txt, float wall_height);
 
 void	draw_floor_and_ceiling(t_cub *cub)
 {
@@ -54,37 +55,45 @@ void	rise_walls(t_cub *cub, t_ray_cast *vert, t_ray_cast *horz, float x)
 	}
 	eye_angle = degrees_to_radians(cub->player.angle, 0) - horz->ray_angle;
 	wall_height = HEIGHT * WALL_SIZE / (wall_height * cos(eye_angle));
-	wall_height *= VERT_SCALE;
-	if (wall_height > HEIGHT)
-		wall_height = HEIGHT;
-	line.y0 = (HEIGHT / 2) - (wall_height / 2);
-	line.y1 = (HEIGHT / 2) + (wall_height / 2);
-	draw_vert_line(line, cub);
+	if (cub->txt_ea && cub->txt_no && cub->txt_we && cub->txt_so)
+		draw_texture(line, cub, cub->txt_no, wall_height);
+	else
+		draw_vert_line(line, cub, wall_height);
 }
 
-void	draw_texture(t_cub *cub, t_txt *txt, int x, int y)
+void	draw_texture(t_line line, t_cub *cub, t_txt *txt, float wall_height)
 {
-	int		i;
-	int		temp_x;
-	int		temp_y;
-	int		color;
-	char	*temp;
+	char		*dst;
+	char		*texture;
+	int			i;
+	float		scale;
+	float		cont;
+	float		txt_offset = 0;
 
-	temp = txt->img.addr;
-	i = 0;
-	temp_x = x;
-	temp_y = y;
-	while (i < txt->h * txt->w)
+	wall_height *= VERT_SCALE;
+	scale = (float)txt->h / wall_height;
+	if (wall_height > HEIGHT)
 	{
-		color = *(unsigned int *)temp;
-		mlx_put_pixel(cub, temp_x, temp_y, color);
-		temp += txt->img.bpp / 8;
-		if (i % txt->w == 0)
-		{
-			temp_x = x;
-			temp_y++;
-		}
+		txt_offset = ((wall_height) - HEIGHT) / 2.0;
+		wall_height = HEIGHT;
+	}
+	line.y0 = (HEIGHT / 2) - (wall_height / 2);
+	line.y1 = (HEIGHT / 2) + (wall_height / 2);
+	cont = scale * txt_offset;
+	texture = txt->img.addr;
+	dst = cub->img.addr + (line.x0 * cub->img.bpp / 8);
+	dst = dst + (line.y0 * cub->img.bpp / 8 * WIDTH);
+	i = 0;
+	while (i < (line.y1 - line.y0))
+	{
+		*(unsigned int *)dst = *(unsigned int *)texture;
+		dst = dst + (cub->img.bpp / 8 * WIDTH);
 		i++;
-		temp_x++;
+		cont = cont + scale;
+		while (cont >= 1)
+		{
+			texture = texture + (txt->img.bpp / 8 * txt->w);
+			cont--;
+		}
 	}
 }
