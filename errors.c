@@ -6,7 +6,7 @@
 /*   By: cescanue <cescanue@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/03 17:45:04 by cescanue          #+#    #+#             */
-/*   Updated: 2023/11/07 16:05:09 by cescanue         ###   ########.fr       */
+/*   Updated: 2023/11/07 20:53:25 by cescanue         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,24 +62,6 @@ int	close_window(t_cub *cub, int exitcode)
 	exit (exitcode);
 	ft_memset(cub, 0, sizeof(t_cub));
 	return (exitcode);
-}
-void	ft_dellsti(void *img)
-{
-	if (((t_txt *)img)->img.img)
-		mlx_destroy_image(((t_txt *)img)->img.mlx, ((t_txt *)img)->img.img);
-	if (((t_txt *)img))
-		free(((t_img *)img));
-}
-
-void	free_sprites(t_cub *cub)
-{
-	if (cub->enemy && cub->enemy->sprites)
-	{
-		ft_lstclear(cub->enemy->sprites, ft_dellsti);
-		free(cub->enemy->sprites);
-		}
-	if (cub->enemy)
-		free(cub->enemy);
 }
 
 void	free_textures(t_cub *cub)

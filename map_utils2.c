@@ -6,16 +6,11 @@
 /*   By: cescanue <cescanue@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/30 11:44:56 by cescanue          #+#    #+#             */
-/*   Updated: 2023/11/07 14:45:59 by cescanue         ###   ########.fr       */
+/*   Updated: 2023/11/07 20:49:25 by cescanue         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
-
-int	rgbtoint(int r, int g, int b)
-{
-	return ((r << 16) | (g << 8) | b);
-}
 
 void	ttorgbcheckcoma(char **line, t_cub *cub)
 {
@@ -56,7 +51,7 @@ int	textrgbtoint(char *line, t_cub *cub)
 		ttorgbcheckcoma(&line, cub);
 		color++;
 	}
-	return (rgbtoint(rgb[0], rgb[1], rgb[2]));
+	return (((rgb[0] << 16) | (rgb[1] << 8) | rgb[2]));
 }
 
 char	*get_text(char *line, t_cub *cub)
@@ -87,6 +82,24 @@ char	*get_text(char *line, t_cub *cub)
 	return (tmp);
 }
 
+void	read_text_colors2(char **line, int count, t_cub *cub)
+{
+	if (!ft_strncmp(&(*line)[count], "NO", 2))
+		cub->cmap->t_no = get_text(&(*line)[count + 2], cub);
+	else if (!ft_strncmp(&(*line)[count], "SO", 2))
+		cub->cmap->t_so = get_text(&(*line)[count + 2], cub);
+	else if (!ft_strncmp(&(*line)[count], "EA", 2))
+		cub->cmap->t_ea = get_text(&(*line)[count + 2], cub);
+	else if (!ft_strncmp(&(*line)[count], "WE", 2))
+		cub->cmap->t_we = get_text(&(*line)[count + 2], cub);
+	else if (!ft_strncmp(&(*line)[count], "F", 1))
+		cub->cmap->c_f = textrgbtoint(&(*line)[count], cub);
+	else if (!ft_strncmp(&(*line)[count], "C", 1))
+		cub->cmap->c_c = textrgbtoint(&(*line)[count], cub);
+	else if (!ft_strncmp(&(*line)[count], "ENEMY", 5))
+		cub->cmap->s_enemy = get_text(&(*line)[count + 5], cub);
+}
+
 void	read_text_colors(int fd, char **line, t_cub *cub)
 {
 	int	count;
@@ -97,21 +110,8 @@ void	read_text_colors(int fd, char **line, t_cub *cub)
 		while ((*line)[count] && ((*line)[count] == ' '
 			|| (*line)[count] == '\t'))
 			count++;
-		if (!ft_strncmp(&(*line)[count], "NO", 2))
-			cub->cmap->t_no = get_text(&(*line)[count + 2], cub);
-		else if (!ft_strncmp(&(*line)[count], "SO", 2))
-			cub->cmap->t_so = get_text(&(*line)[count + 2], cub);
-		else if (!ft_strncmp(&(*line)[count], "EA", 2))
-			cub->cmap->t_ea = get_text(&(*line)[count + 2], cub);
-		else if (!ft_strncmp(&(*line)[count], "WE", 2))
-			cub->cmap->t_we = get_text(&(*line)[count + 2], cub);
-		else if (!ft_strncmp(&(*line)[count], "F", 1))
-			cub->cmap->c_f = textrgbtoint(&(*line)[count], cub);
-		else if (!ft_strncmp(&(*line)[count], "C", 1))
-			cub->cmap->c_c = textrgbtoint(&(*line)[count], cub);
-		else if (!ft_strncmp(&(*line)[count], "ENEMY", 5))
-			cub->cmap->s_enemy = get_text(&(*line)[count + 5], cub);
-		else if (!ft_strncmp(&(*line)[count], "1", 1))
+		read_text_colors2(line, count, cub);
+		if (!ft_strncmp(&(*line)[count], "1", 1))
 			break ;
 		free(*line);
 		*line = get_next_line(fd);

@@ -6,7 +6,7 @@
 /*   By: cescanue <cescanue@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/03 09:53:27 by cescanue          #+#    #+#             */
-/*   Updated: 2023/11/07 15:49:47 by cescanue         ###   ########.fr       */
+/*   Updated: 2023/11/07 21:47:04 by cescanue         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,15 @@ int	ray_casting(t_cub *cub)
 	draw_texture(cub, cub->txt_so, 128, 0);
 	draw_texture(cub, cub->txt_we, 192, 0);
 	mlx_put_image_to_window(cub->mlx, cub->mlx_win, cub->img.img, 0, 0);
+	//sprites -- temporal -- para borrar y veas la logica
+	if (cub->timer++ > 6)
+	{	
+		move_sprite(cub->enemy, cub);
+		cub->timer = 0;
+	}
+	if (cub->enemy)
+		mlx_put_image_to_window(cub->mlx,cub->mlx_win, cub->enemy->current->img.img, 100, 100);
+	//endsprites
 	key_actions(cub);
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: cescanue <cescanue@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/03 17:45:13 by cescanue          #+#    #+#             */
-/*   Updated: 2023/11/07 15:45:45 by cescanue         ###   ########.fr       */
+/*   Updated: 2023/11/07 21:27:44 by cescanue         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -183,6 +183,7 @@ typedef struct s_cub
 	int			x_elem;
 	int			y_elem;
 	int			mapconsistency;
+	int			timer;
 	t_point		*map;
 	t_img		img;
 	t_player	player;
@@ -202,8 +203,9 @@ typedef struct s_cub
 void	ft_error_handler(int error, t_cub *cub);
 int		close_window(t_cub *cub, int exitcode);
 void	close_cmaps(t_cub *cub);
-void	free_sprites(t_cub *cub);
 void	free_textures(t_cub *cub);
+/*		errors2.c		*/
+void	free_sprites(t_cub *cub);
 /*		graphics.c		*/
 void	mlx_put_pixel(t_cub *cub, int x, int y, int color);
 void	draw_line(t_line line, t_cub *cub);
@@ -250,4 +252,5 @@ t_txt	*load_txt(char *file, t_cub *cub);
 void	load_textures(t_cub *cub);
 /*		sprites.c 		*/
 void	loading_sprites(t_cub *cub);
+void	move_sprite(t_enemy *enemy, t_cub *cub);
 #endif

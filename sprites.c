@@ -6,7 +6,7 @@
 /*   By: cescanue <cescanue@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 13:47:14 by cescanue          #+#    #+#             */
-/*   Updated: 2023/11/07 15:51:42 by cescanue         ###   ########.fr       */
+/*   Updated: 2023/11/07 21:46:40 by cescanue         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,28 +43,24 @@ void	ft_loadimgs(char *path, t_list **lst, t_cub *cub)
 	char	file[200];
 	char	*tmp;
 
-	file[0] = 0;
-	ft_strlcat(file, path, 200);
+	ft_strlcpy(file, path, 200);
 	ft_strlcat(file, "files.txt", 200);
 	fd = open(file, O_RDONLY);
 	if (fd < 0)
 	{
-		ft_printf("\nError\nLoading %s, list of sprites.", file);	
+		ft_printf("\nError\nLoading %s, list of sprites.", file);
 		ft_error_handler(ERROR_SPRITE, cub);
 	}
 	tmp = get_next_line(fd);
-	if (tmp && tmp[ft_strlen(tmp) - 1] == '\n')
-		tmp[ft_strlen(tmp) - 1] = 0;
 	while (tmp)
 	{
-		file[0] = 0;
-		ft_strlcat(file, path, 200);
+		if (tmp && tmp[ft_strlen(tmp) - 1] == '\n')
+			tmp[ft_strlen(tmp) - 1] = 0;
+		ft_strlcpy(file, path, 200);
 		ft_strlcat(file, tmp, 200);
 		ft_putimgtolst(file, lst, cub);
 		free(tmp);
 		tmp = get_next_line(fd);
-		if (tmp && tmp[ft_strlen(tmp) - 1] == '\n')
-			tmp[ft_strlen(tmp) - 1] = 0;
 	}
 	close (fd);
 }
@@ -81,13 +77,31 @@ void	loading_sprites(t_cub *cub)
 		if (!cub->enemy->sprites)
 			ft_error_handler(ERROR_MEM, cub);
 		ft_loadimgs(cub->cmap->s_enemy, cub->enemy->sprites, cub);
-		//este copdigo tiene que ser revisado y mejorado
-		t_list *lst;
-		lst = *cub->enemy->sprites;
-		t_txt *img;
-		img = lst->content;
-		cub->enemy->current = img;
-		//mlx_put_image_to_window(cub->mlx,cub->mlx_win, cub->enemy->current->img.img, 100, 100);
-}
+		cub->enemy->current = (*cub->enemy->sprites)->content;
+	}
 	ft_printf("OK!\n");
+}
+
+void	move_sprite(t_enemy *enemy, t_cub *cub)
+{
+	t_list	*lst;
+
+	if (enemy)
+	{
+		lst = *enemy->sprites;
+		while (lst)
+		{
+			if (cub->enemy->current == lst->content)
+			{
+				if (lst->next)
+					cub->enemy->current = lst->next->content;
+				else
+					cub->enemy->current = 0;
+				break ;
+			}
+			lst = lst->next;
+		}
+		if (!cub->enemy->current || !lst)
+			cub->enemy->current = ((t_list *)*cub->enemy->sprites)->content;
+	}
 }
