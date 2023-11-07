@@ -3,6 +3,8 @@ SO ./textures/bluestone.png
 WE ./textures/eagle.png
 EA ./textures/wood.png
 
+ENEMY ./sprites/enemy1/
+
 F 77,92,53
 C 163,208,230
 
@@ -10,7 +12,7 @@ C 163,208,230
 100000011
 101000001
 101000001
-1010S0f001
+1010S0001
 101000001
 101110001
 100000001

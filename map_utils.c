@@ -6,7 +6,7 @@
 /*   By: cescanue <cescanue@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/24 21:08:23 by cescanue          #+#    #+#             */
-/*   Updated: 2023/11/06 21:44:37 by cescanue         ###   ########.fr       */
+/*   Updated: 2023/11/07 14:30:49 by cescanue         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,12 +103,13 @@ void	init_map(char *file, t_cub *cub)
 	cub->cmap = ft_calloc(1, sizeof(t_map));
 	if (!cub->cmap)
 		ft_error_handler(ERROR_MEM, cub);
-	ft_printf ("%sReading Map..... ", BLUE);
+	ft_memset(cub->cmap, 0, sizeof(t_map));
+	ft_printf ("%sReading Map........ ", BLUE);
 	cub->raw_map = read_map(file, cub);
-	ft_printf ("%sOK!\nAnalyzing Map... ", BLUE);
+	ft_printf ("%sOK!\nAnalyzing Map...... ", BLUE);
 	if (cub->raw_map)
 		check_map(cub);
-	ft_printf ("%sOK!\nParsing Map... ", BLUE);
+	ft_printf ("%sOK!\nParsing Map........ ", BLUE);
 	if (cub->raw_map)
 		cub->map = parse_map(cub);
 	ft_printf ("%sOK!\n", BLUE);

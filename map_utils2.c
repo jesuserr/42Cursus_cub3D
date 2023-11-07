@@ -6,7 +6,7 @@
 /*   By: cescanue <cescanue@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/30 11:44:56 by cescanue          #+#    #+#             */
-/*   Updated: 2023/11/03 16:29:11 by cescanue         ###   ########.fr       */
+/*   Updated: 2023/11/07 14:45:59 by cescanue         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ char	*get_text(char *line, t_cub *cub)
 
 	count = 0;
 	blanks = 0;
-	tmp = line + 2;
+	tmp = line;
 	if (*tmp != ' ')
 		return (0);
 	while (*tmp == ' ')
@@ -83,7 +83,7 @@ char	*get_text(char *line, t_cub *cub)
 	tmp = ft_calloc(count + 1, sizeof(char));
 	if (!tmp)
 		ft_error_handler(ERROR_MEM, cub);
-	ft_strlcpy(tmp, line + blanks + 2, count + 1);
+	ft_strlcpy(tmp, line + blanks, count + 1);
 	return (tmp);
 }
 
@@ -98,17 +98,19 @@ void	read_text_colors(int fd, char **line, t_cub *cub)
 			|| (*line)[count] == '\t'))
 			count++;
 		if (!ft_strncmp(&(*line)[count], "NO", 2))
-			cub->cmap->t_no = get_text(&(*line)[count], cub);
+			cub->cmap->t_no = get_text(&(*line)[count + 2], cub);
 		else if (!ft_strncmp(&(*line)[count], "SO", 2))
-			cub->cmap->t_so = get_text(&(*line)[count], cub);
+			cub->cmap->t_so = get_text(&(*line)[count + 2], cub);
 		else if (!ft_strncmp(&(*line)[count], "EA", 2))
-			cub->cmap->t_ea = get_text(&(*line)[count], cub);
+			cub->cmap->t_ea = get_text(&(*line)[count + 2], cub);
 		else if (!ft_strncmp(&(*line)[count], "WE", 2))
-			cub->cmap->t_we = get_text(&(*line)[count], cub);
+			cub->cmap->t_we = get_text(&(*line)[count + 2], cub);
 		else if (!ft_strncmp(&(*line)[count], "F", 1))
 			cub->cmap->c_f = textrgbtoint(&(*line)[count], cub);
 		else if (!ft_strncmp(&(*line)[count], "C", 1))
 			cub->cmap->c_c = textrgbtoint(&(*line)[count], cub);
+		else if (!ft_strncmp(&(*line)[count], "ENEMY", 5))
+			cub->cmap->s_enemy = get_text(&(*line)[count + 5], cub);
 		else if (!ft_strncmp(&(*line)[count], "1", 1))
 			break ;
 		free(*line);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3D.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jesuserr <jesuserr@student.42.fr>          +#+  +:+       +#+        */
+/*   By: cescanue <cescanue@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/03 17:45:13 by cescanue          #+#    #+#             */
-/*   Updated: 2023/11/05 11:52:39 by jesuserr         ###   ########.fr       */
+/*   Updated: 2023/11/07 15:45:45 by cescanue         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@
 # define ERROR_COLOR_F		6
 # define ERROR_MAP_F		7
 # define ERROR_TXT			8
+# define ERROR_SPRITE		9
 
 # define WIDTH			1024
 # define HEIGHT			768
@@ -136,6 +137,7 @@ typedef struct s_img
 	int		bpp;
 	int		len;
 	int		endian;
+	void	*mlx;
 }	t_img;
 
 typedef struct s_map
@@ -144,6 +146,7 @@ typedef struct s_map
 	char		*t_so;
 	char		*t_ea;
 	char		*t_we;
+	char		*s_enemy;
 	int			c_f;
 	int			c_c;
 }	t_map;
@@ -164,6 +167,13 @@ typedef struct s_txt
 	int		h;
 }	t_txt;
 
+typedef struct s_enemy
+{
+	t_list	**sprites;
+	t_txt	*current;
+}	t_enemy;
+
+
 typedef struct s_cub
 {
 	t_keys		key;
@@ -181,6 +191,7 @@ typedef struct s_cub
 	t_txt		*txt_no;
 	t_txt		*txt_we;
 	t_txt		*txt_ea;
+	t_enemy		*enemy;
 }	t_cub;
 
 /*
@@ -191,6 +202,7 @@ typedef struct s_cub
 void	ft_error_handler(int error, t_cub *cub);
 int		close_window(t_cub *cub, int exitcode);
 void	close_cmaps(t_cub *cub);
+void	free_sprites(t_cub *cub);
 void	free_textures(t_cub *cub);
 /*		graphics.c		*/
 void	mlx_put_pixel(t_cub *cub, int x, int y, int color);
@@ -236,4 +248,6 @@ void	hexdump(const void *data, size_t length);
 /*		txt_utils.c 		*/
 t_txt	*load_txt(char *file, t_cub *cub);
 void	load_textures(t_cub *cub);
+/*		sprites.c 		*/
+void	loading_sprites(t_cub *cub);
 #endif

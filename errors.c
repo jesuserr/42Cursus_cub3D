@@ -6,7 +6,7 @@
 /*   By: cescanue <cescanue@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/03 17:45:04 by cescanue          #+#    #+#             */
-/*   Updated: 2023/11/06 21:46:06 by cescanue         ###   ########.fr       */
+/*   Updated: 2023/11/07 15:28:18 by cescanue         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,12 +32,15 @@ void	ft_error_handler(int error, t_cub *cub)
 		ft_printf ("%s\nError\nThe map format is not correct\n", RED);
 	else if (error == ERROR_TXT)
 		ft_printf ("%s\nError\nError in some of the textures\n", RED);
+	else if (error == ERROR_SPRITE)
+		ft_printf ("%s\nError\nError in some of the sprites\n", RED);
 	close_window(cub, EXIT_FAILURE);
 }
 
 int	close_window(t_cub *cub, int exitcode)
 {
 	free_textures(cub);
+	free_sprites(cub);
 	close_cmaps(cub);
 	if (cub->map)
 		free(cub->map);
@@ -59,6 +62,30 @@ int	close_window(t_cub *cub, int exitcode)
 	exit (exitcode);
 	ft_memset(cub, 0, sizeof(t_cub));
 	return (exitcode);
+}
+void	ft_dellsti(void *img)
+{
+	if (((t_txt *)img)->img.img)
+		mlx_destroy_image(((t_txt *)img)->img.mlx, ((t_txt *)img)->img.img);
+	if (((t_txt *)img))
+		free(((t_img *)img));
+}
+
+void	ft_clearlsti(t_list **lst)
+{
+	ft_lstclear(lst, ft_dellsti);
+}
+
+void	free_sprites(t_cub *cub)
+{
+	if (cub->enemy && cub->enemy->sprites)
+	{
+		ft_clearlsti(cub->enemy->sprites);
+	}	
+	if (cub->enemy->sprites)
+		free(cub->enemy->sprites);
+	if (cub->enemy)
+		free(cub->enemy);
 }
 
 void	free_textures(t_cub *cub)
@@ -95,6 +122,8 @@ void	close_cmaps(t_cub *cub)
 		free(cub->cmap->t_no);
 	if (cub->cmap && cub->cmap->t_ea)
 		free(cub->cmap->t_ea);
+	if (cub->cmap && cub->cmap->s_enemy)
+		free(cub->cmap->s_enemy);
 	if (cub->cmap)
 		free(cub->cmap);
 }
