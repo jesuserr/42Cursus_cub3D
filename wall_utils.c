@@ -6,7 +6,7 @@
 /*   By: jesuserr <jesuserr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/30 20:13:31 by jesuserr          #+#    #+#             */
-/*   Updated: 2023/11/05 12:03:23 by jesuserr         ###   ########.fr       */
+/*   Updated: 2023/11/07 22:43:11 by jesuserr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,32 +86,5 @@ void	draw_texture(t_cub *cub, t_txt *txt, int x, int y)
 		}
 		i++;
 		temp_x++;
-	}
-}
-
-void	hexdump(const void *data, size_t length)
-{
-	const unsigned char	*ptr;
-
-	ptr = (const unsigned char *)data;
-	for (size_t i = 0; i < length; i++)
-	{
-		printf("%02X ", ptr[i]);
-		if ((i + 1) % 16 == 0 || i == length - 1)
-		{
-			printf(" ");
-			for (size_t j = i - (i % 16); j <= i; j++)
-			{
-				if (j == i / 2)
-					printf(" ");
-				if (j >= length)
-					printf("   ");
-				else if (ptr[j] >= 32 && ptr[j] <= 126)
-					printf("%c ", ptr[j]);
-				else
-					printf(". ");
-			}
-			printf("\n");
-		}
 	}
 }

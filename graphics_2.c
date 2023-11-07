@@ -6,7 +6,7 @@
 /*   By: jesuserr <jesuserr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/24 20:03:49 by jesuserr          #+#    #+#             */
-/*   Updated: 2023/11/03 12:59:56 by jesuserr         ###   ########.fr       */
+/*   Updated: 2023/11/07 22:42:25 by jesuserr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,30 +30,6 @@ void	draw_square(t_cub *cub, t_point square, int size)
 			x++;
 		}
 		square.y++;
-		y++;
-	}
-}
-
-void	draw_rectangle(t_cub *cub, t_line diagonal)
-{
-	int		x;
-	int		y;
-	int		x_copy;
-	int		y_copy;
-
-	y = 0;
-	y_copy = diagonal.y0;
-	while (y < (diagonal.y1 - diagonal.y0))
-	{
-		x = 0;
-		x_copy = diagonal.x0;
-		while (x < (diagonal.x1 - diagonal.x0))
-		{
-			mlx_put_pixel(cub, x_copy, y_copy, diagonal.color);
-			x_copy++;
-			x++;
-		}
-		y_copy++;
 		y++;
 	}
 }

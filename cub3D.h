@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3D.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cescanue <cescanue@student.42barcelona.    +#+  +:+       +#+        */
+/*   By: jesuserr <jesuserr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/03 17:45:13 by cescanue          #+#    #+#             */
-/*   Updated: 2023/11/07 21:27:44 by cescanue         ###   ########.fr       */
+/*   Updated: 2023/11/07 22:42:48 by jesuserr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -173,7 +173,6 @@ typedef struct s_enemy
 	t_txt	*current;
 }	t_enemy;
 
-
 typedef struct s_cub
 {
 	t_keys		key;
@@ -193,6 +192,8 @@ typedef struct s_cub
 	t_txt		*txt_we;
 	t_txt		*txt_ea;
 	t_enemy		*enemy;
+	t_ray_cast	horz;
+	t_ray_cast	vert;
 }	t_cub;
 
 /*
@@ -214,7 +215,6 @@ void	draw_pointer(t_cub *cub);
 void	draw_vert_line(t_line line, t_cub *cub);
 /*		graphics_2.c		*/
 void	draw_square(t_cub *cub, t_point square, int size);
-void	draw_rectangle(t_cub *cub, t_line diagonal);
 void	on_screen_minimap(t_cub *cub);
 /*		hooks.c				*/
 int		mouse_move(int x, int y, t_cub *cub);
@@ -246,7 +246,6 @@ void	calc_player_vector(t_cub *cub);
 void	draw_floor_and_ceiling(t_cub *cub);
 void	rise_walls(t_cub *cub, t_ray_cast *vert, t_ray_cast *horz, float x);
 void	draw_texture(t_cub *cub, t_txt *txt, int x, int y);
-void	hexdump(const void *data, size_t length);
 /*		txt_utils.c 		*/
 t_txt	*load_txt(char *file, t_cub *cub);
 void	load_textures(t_cub *cub);
