@@ -8,8 +8,11 @@
 * ~~mlx_loop_hook cescanue~~
 * ~~modificar movimiento jugador acuerdo subject jesuserr~~
 * ~~mejorar sistema de colisiones jesuserr~~
-* investigar como usar el ratón ~~y combinar movimientos (avanzar y girar a la vez, por ejemplo)~~
+* ~~investigar como usar el ratón y combinar movimientos (avanzar y girar a la vez, por ejemplo)~~
 * implementar texturas
+* implementar puertas
+* implementar sprites animados
+
 
 ## Notes
 

@@ -6,7 +6,7 @@
 /*   By: jesuserr <jesuserr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/06 16:03:40 by jesuserr          #+#    #+#             */
-/*   Updated: 2023/11/07 23:04:27 by jesuserr         ###   ########.fr       */
+/*   Updated: 2023/11/08 15:41:57 by jesuserr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	mlx_put_pixel(t_cub *cub, int x, int y, int color);
 void	draw_line(t_line line, t_cub *cub);
 void	line_direction(t_line *line, t_line_aux *line_aux);
 void	draw_pointer(t_cub *cub);
-void	draw_vert_line(t_line line, t_cub *cub, float wall_height);
+void	draw_vert_line(t_line line, t_cub *cub);
 
 void	mlx_put_pixel(t_cub *cub, int x, int y, int color)
 {
@@ -83,16 +83,11 @@ void	draw_pointer(t_cub *cub)
 /* calculations the color can be written directly in the memory just */
 /* incrementing the memory position by a constant number. */
 
-void	draw_vert_line(t_line line, t_cub *cub, float wall_height)
+void	draw_vert_line(t_line line, t_cub *cub)
 {
 	char	*dst;
 	int		i;
 
-	wall_height *= VERT_SCALE;
-	if (wall_height > HEIGHT)
-		wall_height = HEIGHT;
-	line.y0 = (HEIGHT / 2) - (wall_height / 2);
-	line.y1 = (HEIGHT / 2) + (wall_height / 2);
 	dst = cub->img.addr + (line.x0 * cub->img.bpp / 8);
 	dst = dst + (line.y0 * cub->img.bpp / 8 * WIDTH);
 	i = 0;

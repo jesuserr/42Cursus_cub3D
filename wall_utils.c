@@ -6,7 +6,7 @@
 /*   By: jesuserr <jesuserr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/30 20:13:31 by jesuserr          #+#    #+#             */
-/*   Updated: 2023/11/07 23:03:45 by jesuserr         ###   ########.fr       */
+/*   Updated: 2023/11/08 16:12:08 by jesuserr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,8 @@
 
 void	draw_floor_and_ceiling(t_cub *cub);
 void	rise_walls(t_cub *cub, t_ray_cast *vert, t_ray_cast *horz, float x);
-void	draw_texture(t_line line, t_cub *cub, t_txt *txt, float wall_height);
+void	draw_texture(t_line line, t_cub *cub, t_txt *txt);
+float	line_height(t_line *line, t_cub *cub, t_txt *txt, float ray);
 
 void	draw_floor_and_ceiling(t_cub *cub)
 {
@@ -37,63 +38,73 @@ void	draw_floor_and_ceiling(t_cub *cub)
 	}
 }
 
-void	rise_walls(t_cub *cub, t_ray_cast *vert, t_ray_cast *horz, float x)
+void	rise_walls(t_cub *cub, t_ray_cast *vert, t_ray_cast *horz, float ray)
 {
 	float	wall_height;
-	float	eye_angle;
 	t_line	line;
 
-	line.x0 = x;
-	line.x1 = x;
+	(void)vert;
+	(void)horz;
 	line.color = 0x0000FC;
-	if (vert->ray_length < horz->ray_length)
-		wall_height = vert->ray_length;
-	else
-	{
-		wall_height = horz->ray_length;
-		line.color = 0x0000A4;
-	}
-	eye_angle = degrees_to_radians(cub->player.angle, 0) - horz->ray_angle;
-	wall_height = HEIGHT * WALL_SIZE / (wall_height * cos(eye_angle));
+	wall_height = line_height(&line, cub, cub->txt_no, ray);
 	if (cub->txt_ea && cub->txt_no && cub->txt_we && cub->txt_so)
-		draw_texture(line, cub, cub->txt_no, wall_height);
+		draw_texture(line, cub, cub->txt_no);
 	else
-		draw_vert_line(line, cub, wall_height);
+		draw_vert_line(line, cub);
 }
 
-void	draw_texture(t_line line, t_cub *cub, t_txt *txt, float wall_height)
+void	draw_texture(t_line line, t_cub *cub, t_txt *txt)
 {
-	char		*dst;
-	char		*texture;
-	int			i;
-	float		scale;
-	float		cont;
-	float		txt_offset = 0;
+	char	*canvas;
+	char	*texture;
+	float	step;
+	int		i;
 
-	wall_height *= VERT_SCALE;
-	scale = (float)txt->h / wall_height;
-	if (wall_height > HEIGHT)
-	{
-		txt_offset = ((wall_height) - HEIGHT) / 2.0;
-		wall_height = HEIGHT;
-	}
-	line.y0 = (HEIGHT / 2) - (wall_height / 2);
-	line.y1 = (HEIGHT / 2) + (wall_height / 2);
-	cont = scale * txt_offset;
-	texture = txt->img.addr;
-	dst = cub->img.addr + (line.x0 * cub->img.bpp / 8);
-	dst = dst + (line.y0 * cub->img.bpp / 8 * WIDTH);
+	canvas = cub->img.addr + (line.x0 * cub->img.bpp / 8);
+	canvas = canvas + (line.y0 * cub->img.bpp / 8 * WIDTH);
+	texture = txt->img.addr + (txt->img.bpp / 8 * ((int)(cub->vert.ray_y) \
+	% WALL_SIZE));
+	step = txt->scale * txt->offset;
 	i = 0;
 	while (i < (line.y1 - line.y0))
 	{
-		*(unsigned int *)dst = *(unsigned int *)texture;
-		dst = dst + (cub->img.bpp / 8 * WIDTH);
-		i++;
-		cont = cont + scale;
-		while (cont >= 1)
+		*(unsigned int *)canvas = *(unsigned int *)texture;
+		canvas = canvas + (cub->img.bpp / 8 * WIDTH);
+		step = step + txt->scale;
+		while (step >= 1)
 		{
 			texture = texture + (txt->img.bpp / 8 * txt->w);
-			cont--;
+			step--;
 		}
+		i++;
 	}
+}
+
+float	line_height(t_line *line, t_cub *cub, t_txt *txt, float ray)
+{
+	float	wall_height;
+	float	eye_angle;
+
+	line->x0 = ray;
+	line->x1 = ray;
+	txt->offset = 0;
+	if (cub->vert.ray_length < cub->horz.ray_length)
+		wall_height = cub->vert.ray_length;
+	else
+	{
+		wall_height = cub->horz.ray_length;
+		line->color = 0x0000A4;
+	}
+	eye_angle = degrees_to_radians(cub->player.angle, 0) - cub->horz.ray_angle;
+	wall_height = HEIGHT * WALL_SIZE / (wall_height * cos(eye_angle));
+	wall_height *= VERT_SCALE;
+	txt->scale = (float)txt->h / wall_height;
+	if (wall_height > HEIGHT)
+	{
+		txt->offset = ((wall_height) - HEIGHT) / 2.0;
+		wall_height = HEIGHT;
+	}
+	line->y0 = (HEIGHT / 2) - (wall_height / 2);
+	line->y1 = (HEIGHT / 2) + (wall_height / 2);
+	return (wall_height);
 }
