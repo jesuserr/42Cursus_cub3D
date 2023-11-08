@@ -6,7 +6,7 @@
 /*   By: jesuserr <jesuserr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/03 09:53:27 by cescanue          #+#    #+#             */
-/*   Updated: 2023/11/07 22:31:34 by jesuserr         ###   ########.fr       */
+/*   Updated: 2023/11/08 22:41:24 by jesuserr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ int	ray_casting(t_cub *cub)
 		check_vertical_lines(&cub->vert, cub);
 		check_first_corner_exception(cub, &cub->vert, &cub->horz);
 		//draw_shorter_ray(cub, &cub->vert, &cub->horz);
-		rise_walls(cub, &cub->vert, &cub->horz, casted_rays);
+		draw_wall(cub, &cub->vert, &cub->horz, casted_rays);
 		ray_angle = ray_angle - ((float)FOV / (float)WIDTH);
 		casted_rays++;
 	}

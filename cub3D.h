@@ -6,7 +6,7 @@
 /*   By: jesuserr <jesuserr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/03 17:45:13 by cescanue          #+#    #+#             */
-/*   Updated: 2023/11/08 15:44:29 by jesuserr         ###   ########.fr       */
+/*   Updated: 2023/11/08 22:46:11 by jesuserr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -246,9 +246,9 @@ void	check_first_corner_exception(t_cub *cub, t_ray_cast *v, t_ray_cast *h);
 void	calc_player_vector(t_cub *cub);
 /*		wall_utils.c 		*/
 void	draw_floor_and_ceiling(t_cub *cub);
-void	rise_walls(t_cub *cub, t_ray_cast *vert, t_ray_cast *horz, float x);
-void	draw_texture(t_line line, t_cub *cub, t_txt *txt);
-float	line_height(t_line *line, t_cub *cub, t_txt *txt, float ray);
+void	draw_wall(t_cub *cub, t_ray_cast *vert, t_ray_cast *horz, float x);
+void	draw_texture(t_line line, t_cub *cub, t_txt *txt, float offset);
+void	calc_line_height(t_line *line, t_cub *cub, t_txt *txt);
 /*		txt_utils.c 		*/
 t_txt	*load_txt(char *file, t_cub *cub);
 void	load_textures(t_cub *cub);
