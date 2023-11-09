@@ -6,7 +6,7 @@
 /*   By: cescanue <cescanue@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 08:19:48 by cescanue          #+#    #+#             */
-/*   Updated: 2023/11/09 08:19:51 by cescanue         ###   ########.fr       */
+/*   Updated: 2023/11/09 12:11:39 by cescanue         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -257,5 +257,7 @@ void	load_textures(t_cub *cub);
 /*		sprites.c 		*/
 void	loading_sprites(t_cub *cub);
 void	move_sprite(t_enemy *enemy, t_cub *cub);
+/*		sprites2.c 		*/
+t_txt	*scale_img(t_txt *img, int scale, t_cub *cub);
 
 #endif

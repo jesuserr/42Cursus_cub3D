@@ -6,7 +6,7 @@
 /*   By: cescanue <cescanue@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 13:47:14 by cescanue          #+#    #+#             */
-/*   Updated: 2023/11/08 21:55:46 by cescanue         ###   ########.fr       */
+/*   Updated: 2023/11/09 12:11:25 by cescanue         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,21 +78,6 @@ void	loading_sprites(t_cub *cub)
 			ft_error_handler(ERROR_MEM, cub);
 		ft_loadimgs(cub->cmap->s_enemy, cub->enemy->sprites, cub);
 		cub->enemy->current = (*cub->enemy->sprites)->content;
-		//para borrar
-		cub->enemy->tmp = ft_calloc(1, sizeof(t_img));
-		cub->enemy->tmp->img =	mlx_new_image(cub->mlx, cub->enemy->current->w * 2, cub->enemy->current->h * 2);
-		cub->enemy->tmp->addr = mlx_get_data_addr(cub->enemy->tmp->img, &cub->enemy->tmp->bpp, \
-		&cub->enemy->tmp->len, &cub->enemy->tmp->endian);
-		char *dst;
-		char *or;
-		for (int w = 0 ; w < cub->enemy->current->w * 2; w++)
-			for (int h = 0 ; h < cub->enemy->current->h * 2 ; h++)
-			{
-				dst = cub->enemy->tmp->addr + (w  * cub->enemy->tmp->len + h * (cub->enemy->tmp->bpp / 8));
-				or = cub->enemy->current->img.addr + ((w/2) * cub->enemy->current->img.len + (h/2) * (cub->enemy->current->img.bpp / 8));
-				*(unsigned int *)dst = *(unsigned int *)or;
-					
-			}
 	}
 	ft_printf("OK!\n");
 }

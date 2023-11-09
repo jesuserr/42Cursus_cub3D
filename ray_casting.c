@@ -6,7 +6,7 @@
 /*   By: cescanue <cescanue@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 08:20:00 by cescanue          #+#    #+#             */
-/*   Updated: 2023/11/09 08:20:03 by cescanue         ###   ########.fr       */
+/*   Updated: 2023/11/09 11:44:55 by cescanue         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,18 +50,11 @@ int	ray_casting(t_cub *cub)
 	}
 	if (cub->enemy)
 	{
-		char *dst;
-		char *or;
-		for (int w = 0 ; w < cub->enemy->current->w * 2; w++)
-			for (int h = 0 ; h < cub->enemy->current->h * 2 ; h++)
-			{
-				dst = cub->enemy->tmp->addr + (w  * cub->enemy->tmp->len + h * (cub->enemy->tmp->bpp / 8));
-				or = cub->enemy->current->img.addr + ((w/2) * cub->enemy->current->img.len + (h/2) * (cub->enemy->current->img.bpp / 8));
-				*(unsigned int *)dst = *(unsigned int *)or;
-					
-			}
 		mlx_put_image_to_window(cub->mlx, cub->mlx_win, cub->enemy->current->img.img, 0, 0);
-		mlx_put_image_to_window(cub->mlx, cub->mlx_win, cub->enemy->tmp->img, 100, 100);
+		t_txt *t = scale_img(cub->enemy->current, 7, cub);
+		mlx_put_image_to_window(cub->mlx, cub->mlx_win, t->img.img, 100, 100);
+		mlx_destroy_image(cub->mlx, t->img.img);
+		free(t);
 	}
 	//endsprites
 	key_actions(cub);
