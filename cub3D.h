@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: cescanue <cescanue@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/09 12:14:21 by cescanue          #+#    #+#             */
-/*   Updated: 2023/11/09 18:01:55 by cescanue         ###   ########.fr       */
+/*   Created: 2023/11/09 18:19:01 by cescanue          #+#    #+#             */
+/*   Updated: 2023/11/09 18:19:01 by cescanue         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,9 +40,9 @@
 # define WALL_SIZE		64			// Must be power of 2
 # define ROT_ANGLE_INC	3			// Must be multiple of 360 and 90
 # define ROT_ANG_MOUSE	1			// Must be multiple of 360 and 90
-# define FOV			66			// Field of view (even number)
+# define FOV			64			// Field of view (even number)
 # define VERT_SCALE		1			// Modifies wall height in screen
-# define DIST_TO_WALL	4			// Multiple of WALL_SIZE
+# define DIST_TO_WALL	8			// Multiple of WALL_SIZE
 
 /*
 ** -.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-
