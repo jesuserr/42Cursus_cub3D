@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   errors.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cescanue <cescanue@student.42barcelona.    +#+  +:+       +#+        */
+/*   By: jesuserr <jesuserr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/03 17:45:04 by cescanue          #+#    #+#             */
-/*   Updated: 2023/11/07 20:53:25 by cescanue         ###   ########.fr       */
+/*   Updated: 2023/11/09 11:41:24 by jesuserr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,25 +66,25 @@ int	close_window(t_cub *cub, int exitcode)
 
 void	free_textures(t_cub *cub)
 {
-	if (cub->txt_so)
+	if (cub->textures[0])
 	{
-		mlx_destroy_image(cub->mlx, cub->txt_so->img.img);
-		free(cub->txt_so);
+		mlx_destroy_image(cub->mlx, cub->textures[0]->img.img);
+		free(cub->textures[0]);
 	}
-	if (cub->txt_no)
+	if (cub->textures[1])
 	{
-		mlx_destroy_image(cub->mlx, cub->txt_no->img.img);
-		free(cub->txt_no);
+		mlx_destroy_image(cub->mlx, cub->textures[1]->img.img);
+		free(cub->textures[1]);
 	}
-	if (cub->txt_ea)
+	if (cub->textures[2])
 	{
-		mlx_destroy_image(cub->mlx, cub->txt_ea->img.img);
-		free(cub->txt_ea);
+		mlx_destroy_image(cub->mlx, cub->textures[2]->img.img);
+		free(cub->textures[2]);
 	}
-	if (cub->txt_we)
+	if (cub->textures[3])
 	{
-		mlx_destroy_image(cub->mlx, cub->txt_we->img.img);
-		free(cub->txt_we);
+		mlx_destroy_image(cub->mlx, cub->textures[3]->img.img);
+		free(cub->textures[3]);
 	}
 }
 

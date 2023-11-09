@@ -9,7 +9,7 @@
 * ~~modificar movimiento jugador acuerdo subject jesuserr~~
 * ~~mejorar sistema de colisiones jesuserr~~
 * ~~investigar como usar el ratón y combinar movimientos (avanzar y girar a la vez, por ejemplo)~~
-* implementar texturas
+* implementar texturas de cualquier tamaño (64x64 ok)
 * implementar puertas
 * implementar sprites animados
 
