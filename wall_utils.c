@@ -5,12 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: cescanue <cescanue@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/30 20:13:31 by jesuserr          #+#    #+#             */
-<<<<<<< HEAD
-/*   Updated: 2023/11/08 21:21:19 by cescanue         ###   ########.fr       */
-=======
-/*   Updated: 2023/11/08 22:48:23 by jesuserr         ###   ########.fr       */
->>>>>>> ff82773a48262bbdd212d3ab350a6a24f72e319a
+/*   Created: 2023/11/09 08:21:31 by cescanue          #+#    #+#             */
+/*   Updated: 2023/11/09 08:21:48 by cescanue         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +72,6 @@ void	draw_wall(t_cub *cub, t_ray_cast *vert, t_ray_cast *horz, float ray)
 		calc_line_height(&line, cub, cub->txt_ea);
 		draw_texture(line, cub, cub->txt_ea, vert->ray_y);
 	}
->>>>>>> ff82773a48262bbdd212d3ab350a6a24f72e319a
 	else
 	{
 		calc_line_height(&line, cub, NULL);
