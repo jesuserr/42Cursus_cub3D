@@ -1,0 +1,5 @@
+d1.xpm
+d3.xpm
+d2.xpm
+d5.xpm
+d4.xpm
