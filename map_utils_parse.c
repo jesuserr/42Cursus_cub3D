@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_utils_parse.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cescanue <cescanue@student.42barcelona.    +#+  +:+       +#+        */
+/*   By: jesuserr <jesuserr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/30 11:42:12 by cescanue          #+#    #+#             */
-/*   Updated: 2023/11/03 16:28:08 by cescanue         ###   ########.fr       */
+/*   Updated: 2023/11/09 18:18:00 by jesuserr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,12 +26,15 @@ void	parse_map_set(t_parse *p, t_cub *cub)
 		cub->player.angle = 0;
 		cub->player.x_pos = p->map[p->xl].x + (WALL_SIZE / 2);
 		cub->player.y_pos = p->map[p->xl].y + (WALL_SIZE / 2);
+		cub->player.orig_x_pos = cub->player.x_pos;
+		cub->player.orig_y_pos = cub->player.y_pos;
 		if (cub->raw_map[p->xl] == 'N')
 			cub->player.angle = 90;
 		else if (cub->raw_map[p->xl] == 'S')
 			cub->player.angle = 270;
 		else if (cub->raw_map[p->xl] == 'W')
 			cub->player.angle = 180;
+		cub->player.orig_angle = cub->player.angle;
 	}
 }
 

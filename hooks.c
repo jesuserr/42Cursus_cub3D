@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: cescanue <cescanue@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/03 18:18:03 by cescanue          #+#    #+#             */
-/*   Updated: 2023/11/09 19:07:30 by cescanue         ###   ########.fr       */
+/*   Created: 2023/11/09 19:33:16 by cescanue          #+#    #+#             */
+/*   Updated: 2023/11/09 19:33:18 by cescanue         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,8 @@ int	key_pressed(int keycode, t_cub *cub)
 		cub->key.left_pressed = 1;
 	else if (keycode == RIGHT_KEY)
 		cub->key.right_pressed = 1;
+	else if (keycode == O_KEY)
+		reset_player(cub);
 	else if (keycode == SHIFT_KEY)
 	{
 		cub->key.shift_pressed = 1;
@@ -86,4 +88,12 @@ int	key_released(int keycode, t_cub *cub)
 	if (cub->cha && cub->cha->cu)
 		cub->cha->current = ((t_list *)*cub->cha->cu)->content;
 	return (0);
+}
+
+void	reset_player(t_cub *cub)
+{
+	cub->player.x_pos = cub->player.orig_x_pos;
+	cub->player.y_pos = cub->player.orig_y_pos;
+	cub->player.angle = cub->player.orig_angle;
+	calc_player_vector(cub);
 }
