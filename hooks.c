@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   hooks.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cescanue <cescanue@student.42barcelona.    +#+  +:+       +#+        */
+/*   By: jesuserr <jesuserr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/03 18:18:03 by cescanue          #+#    #+#             */
-/*   Updated: 2023/11/07 21:25:40 by cescanue         ###   ########.fr       */
+/*   Updated: 2023/11/09 18:59:00 by jesuserr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,8 @@ int	key_pressed(int keycode, t_cub *cub)
 		cub->key.left_pressed = 1;
 	else if (keycode == RIGHT_KEY)
 		cub->key.right_pressed = 1;
+	else if (keycode == O_KEY)
+		reset_player(cub);
 	else if (keycode == SHIFT_KEY)
 	{
 		cub->key.shift_pressed = 1;
@@ -83,4 +85,12 @@ int	key_released(int keycode, t_cub *cub)
 		cub->player.speed = INC_OFFSET;
 	}
 	return (0);
+}
+
+void	reset_player(t_cub *cub)
+{
+	cub->player.x_pos = cub->player.orig_x_pos;
+	cub->player.y_pos = cub->player.orig_y_pos;
+	cub->player.angle = cub->player.orig_angle;
+	calc_player_vector(cub);
 }

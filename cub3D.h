@@ -6,7 +6,7 @@
 /*   By: jesuserr <jesuserr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 12:14:21 by cescanue          #+#    #+#             */
-/*   Updated: 2023/11/09 17:48:36 by jesuserr         ###   ########.fr       */
+/*   Updated: 2023/11/09 18:29:10 by jesuserr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,7 +86,10 @@ typedef struct s_player
 	float	y_vector;
 	int		speed;
 	int		offset_x;
-	int		offset_y;	
+	int		offset_y;
+	int		orig_x_pos;
+	int		orig_y_pos;
+	int		orig_angle;
 }	t_player;
 
 typedef struct s_ray_cast
@@ -219,6 +222,7 @@ void	on_screen_minimap(t_cub *cub);
 int		mouse_move(int x, int y, t_cub *cub);
 int		key_pressed(int keycode, t_cub *cub);
 int		key_released(int keycode, t_cub *cub);
+void	reset_player(t_cub *cub);
 /*		map_utils.c				*/
 void	init_map(char *file, t_cub *cub);
 /*		map_utils2.c				*/
