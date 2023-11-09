@@ -6,7 +6,7 @@
 /*   By: cescanue <cescanue@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/03 17:45:04 by cescanue          #+#    #+#             */
-/*   Updated: 2023/11/09 12:19:57 by cescanue         ###   ########.fr       */
+/*   Updated: 2023/11/09 18:17:34 by cescanue         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,6 +100,14 @@ void	close_cmaps(t_cub *cub)
 		free(cub->cmap->t_ea);
 	if (cub->cmap && cub->cmap->s_enemy)
 		free(cub->cmap->s_enemy);
+	if (cub->cmap && cub->cmap->cha_u)
+		free(cub->cmap->cha_u);
+	if (cub->cmap && cub->cmap->cha_d)
+		free(cub->cmap->cha_d);
+	if (cub->cmap && cub->cmap->cha_l)
+		free(cub->cmap->cha_l);
+	if (cub->cmap && cub->cmap->cha_r)
+		free(cub->cmap->cha_r);
 	if (cub->cmap)
 		free(cub->cmap);
 }

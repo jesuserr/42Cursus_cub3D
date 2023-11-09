@@ -6,7 +6,7 @@
 /*   By: cescanue <cescanue@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/30 11:44:56 by cescanue          #+#    #+#             */
-/*   Updated: 2023/11/07 20:49:25 by cescanue         ###   ########.fr       */
+/*   Updated: 2023/11/09 18:12:34 by cescanue         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,12 +92,20 @@ void	read_text_colors2(char **line, int count, t_cub *cub)
 		cub->cmap->t_ea = get_text(&(*line)[count + 2], cub);
 	else if (!ft_strncmp(&(*line)[count], "WE", 2))
 		cub->cmap->t_we = get_text(&(*line)[count + 2], cub);
-	else if (!ft_strncmp(&(*line)[count], "F", 1))
-		cub->cmap->c_f = textrgbtoint(&(*line)[count], cub);
-	else if (!ft_strncmp(&(*line)[count], "C", 1))
-		cub->cmap->c_c = textrgbtoint(&(*line)[count], cub);
 	else if (!ft_strncmp(&(*line)[count], "ENEMY", 5))
 		cub->cmap->s_enemy = get_text(&(*line)[count + 5], cub);
+	else if (!ft_strncmp(&(*line)[count], "CU", 2))
+		cub->cmap->cha_u = get_text(&(*line)[count + 2], cub);
+	else if (!ft_strncmp(&(*line)[count], "CD", 2))
+		cub->cmap->cha_d = get_text(&(*line)[count + 2], cub);
+	else if (!ft_strncmp(&(*line)[count], "CL", 2))
+		cub->cmap->cha_l = get_text(&(*line)[count + 2], cub);
+	else if (!ft_strncmp(&(*line)[count], "CR", 2))
+		cub->cmap->cha_r = get_text(&(*line)[count + 2], cub);
+	else if (!ft_strncmp(&(*line)[count], "C", 1))
+		cub->cmap->c_c = textrgbtoint(&(*line)[count], cub);
+	else if (!ft_strncmp(&(*line)[count], "F", 1))
+		cub->cmap->c_f = textrgbtoint(&(*line)[count], cub);
 }
 
 void	read_text_colors(int fd, char **line, t_cub *cub)

@@ -6,7 +6,7 @@
 /*   By: cescanue <cescanue@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 13:47:14 by cescanue          #+#    #+#             */
-/*   Updated: 2023/11/09 12:11:25 by cescanue         ###   ########.fr       */
+/*   Updated: 2023/11/09 17:41:18 by cescanue         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,23 +63,6 @@ void	ft_loadimgs(char *path, t_list **lst, t_cub *cub)
 		tmp = get_next_line(fd);
 	}
 	close (fd);
-}
-
-void	loading_sprites(t_cub *cub)
-{
-	ft_printf("Loading sprites.... ");
-	if (cub->cmap->s_enemy)
-	{
-		cub->enemy = ft_calloc(1, sizeof(t_enemy));
-		if (!cub->enemy)
-			ft_error_handler(ERROR_MEM, cub);
-		cub->enemy->sprites = ft_calloc(1, sizeof(t_list **));
-		if (!cub->enemy->sprites)
-			ft_error_handler(ERROR_MEM, cub);
-		ft_loadimgs(cub->cmap->s_enemy, cub->enemy->sprites, cub);
-		cub->enemy->current = (*cub->enemy->sprites)->content;
-	}
-	ft_printf("OK!\n");
 }
 
 void	move_sprite(t_enemy *enemy, t_cub *cub)

@@ -6,7 +6,7 @@
 /*   By: jesuserr <jesuserr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 12:14:21 by cescanue          #+#    #+#             */
-/*   Updated: 2023/11/09 18:29:10 by jesuserr         ###   ########.fr       */
+/*   Updated: 2023/11/09 19:06:11 by jesuserr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -150,6 +150,10 @@ typedef struct s_map
 	char		*t_ea;
 	char		*t_we;
 	char		*s_enemy;
+	char		*cha_u;
+	char		*cha_d;
+	char		*cha_l;
+	char		*cha_r;
 	int			c_f;
 	int			c_c;
 }	t_map;
@@ -178,6 +182,15 @@ typedef struct s_enemy
 	t_txt	*current;
 }	t_enemy;
 
+typedef struct s_character
+{
+	t_list	**cu;
+	t_list	**cd;
+	t_list	**cl;
+	t_list	**cr;
+	t_txt	*current;
+}	t_character;
+
 typedef struct s_cub
 {
 	t_keys		key;
@@ -194,6 +207,7 @@ typedef struct s_cub
 	t_map		*cmap;
 	t_txt		*textures[5];
 	t_enemy		*enemy;
+	t_character	*cha;
 	t_ray_cast	horz;
 	t_ray_cast	vert;
 }	t_cub;
@@ -254,9 +268,13 @@ void	calc_line_height(t_line *line, t_cub *cub, t_txt *txt);
 t_txt	*load_txt(char *file, t_cub *cub);
 void	load_textures(t_cub *cub);
 /*		sprites.c 		*/
-void	loading_sprites(t_cub *cub);
+void	ft_loadimgs(char *path, t_list **lst, t_cub *cub);
 void	move_sprite(t_enemy *enemy, t_cub *cub);
 /*		sprites2.c 		*/
 t_txt	*scale_img(t_txt *img, int scale, t_cub *cub);
+/*		enemy.c*/
+void	load_enemy(t_cub *cub);
+/*		character.c*/
+void	load_character(t_cub *cub);
 
 #endif

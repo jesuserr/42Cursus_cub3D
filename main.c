@@ -6,7 +6,7 @@
 /*   By: cescanue <cescanue@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/03 17:44:36 by cescanue          #+#    #+#             */
-/*   Updated: 2023/11/09 12:19:50 by cescanue         ###   ########.fr       */
+/*   Updated: 2023/11/09 18:02:23 by cescanue         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,8 @@ int	main(int argc, char **argv)
 	init_win(&cub, argv[1]);
 	init_struct(&cub);
 	load_textures(&cub);
-	loading_sprites(&cub);
+	load_character(&cub);
+	load_enemy(&cub);
 	if (cub.map)
 	{
 		ray_casting(&cub);
