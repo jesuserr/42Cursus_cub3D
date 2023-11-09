@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3D.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jesuserr <jesuserr@student.42.fr>          +#+  +:+       +#+        */
+/*   By: cescanue <cescanue@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/03 17:45:13 by cescanue          #+#    #+#             */
-/*   Updated: 2023/11/08 15:44:29 by jesuserr         ###   ########.fr       */
+/*   Updated: 2023/11/08 21:14:13 by cescanue         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -173,6 +173,8 @@ typedef struct s_enemy
 {
 	t_list	**sprites;
 	t_txt	*current;
+	//para borrar
+	t_img	*tmp;
 }	t_enemy;
 
 typedef struct s_cub

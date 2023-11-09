@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   wall_utils.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jesuserr <jesuserr@student.42.fr>          +#+  +:+       +#+        */
+/*   By: cescanue <cescanue@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/30 20:13:31 by jesuserr          #+#    #+#             */
-/*   Updated: 2023/11/08 16:12:08 by jesuserr         ###   ########.fr       */
+/*   Updated: 2023/11/08 21:21:19 by cescanue         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,9 @@ void	rise_walls(t_cub *cub, t_ray_cast *vert, t_ray_cast *horz, float ray)
 
 	(void)vert;
 	(void)horz;
-	line.color = 0x0000FC;
+	(void) ray;
+	(void) wall_height;
+ 	line.color = 0x0000FC;
 	wall_height = line_height(&line, cub, cub->txt_no, ray);
 	if (cub->txt_ea && cub->txt_no && cub->txt_we && cub->txt_so)
 		draw_texture(line, cub, cub->txt_no);
