@@ -6,7 +6,7 @@
 /*   By: cescanue <cescanue@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 17:41:02 by cescanue          #+#    #+#             */
-/*   Updated: 2023/11/09 17:48:57 by cescanue         ###   ########.fr       */
+/*   Updated: 2023/11/09 18:31:23 by cescanue         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,3 +28,28 @@ void	load_enemy(t_cub *cub)
 	}
 	ft_printf("OK!\n");
 }
+
+void	move_enemy(t_enemy *enemy, t_cub *cub)
+{
+	t_list	*lst;
+
+	if (enemy)
+	{
+		lst = *enemy->sprites;
+		while (lst)
+		{
+			if (cub->enemy->current == lst->content)
+			{
+				if (lst->next)
+					cub->enemy->current = lst->next->content;
+				else
+					cub->enemy->current = 0;
+				break ;
+			}
+			lst = lst->next;
+		}
+		if (!cub->enemy->current || !lst)
+			cub->enemy->current = ((t_list *)*cub->enemy->sprites)->content;
+	}
+}
+

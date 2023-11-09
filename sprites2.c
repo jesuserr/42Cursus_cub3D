@@ -6,7 +6,7 @@
 /*   By: cescanue <cescanue@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 12:10:15 by cescanue          #+#    #+#             */
-/*   Updated: 2023/11/09 12:11:12 by cescanue         ###   ########.fr       */
+/*   Updated: 2023/11/09 19:06:13 by cescanue         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,8 @@ t_txt	*scale_img(t_txt *img, int scale, t_cub *cub)
 {
 	t_txt	*simg;
 
+	if (!img)
+		return (0);
 	simg = ft_calloc(1, sizeof(t_txt));
 	if (!simg)
 		ft_error_handler(ERROR_MEM, cub);
@@ -47,5 +49,7 @@ t_txt	*scale_img(t_txt *img, int scale, t_cub *cub)
 	simg->img.addr = mlx_get_data_addr(simg->img.img, &simg->img.bpp, \
 	&simg->img.len, &simg->img.endian);
 	scale_img2(img, simg, scale);
+	simg->h = img->h * scale;
+	simg->w = img->w * scale;
 	return (simg);
 }

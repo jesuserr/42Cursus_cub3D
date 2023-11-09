@@ -6,7 +6,7 @@
 /*   By: cescanue <cescanue@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/03 18:18:03 by cescanue          #+#    #+#             */
-/*   Updated: 2023/11/07 21:25:40 by cescanue         ###   ########.fr       */
+/*   Updated: 2023/11/09 19:07:30 by cescanue         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,5 +82,8 @@ int	key_released(int keycode, t_cub *cub)
 		cub->key.shift_pressed = 0;
 		cub->player.speed = INC_OFFSET;
 	}
+	//temporal character
+	if (cub->cha && cub->cha->cu)
+		cub->cha->current = ((t_list *)*cub->cha->cu)->content;
 	return (0);
 }
