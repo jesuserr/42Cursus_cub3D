@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3D.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cescanue <cescanue@student.42barcelona.    +#+  +:+       +#+        */
+/*   By: jesuserr <jesuserr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 12:14:21 by cescanue          #+#    #+#             */
-/*   Updated: 2023/11/09 12:16:51 by cescanue         ###   ########.fr       */
+/*   Updated: 2023/11/09 17:48:36 by jesuserr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,9 +40,9 @@
 # define WALL_SIZE		64			// Must be power of 2
 # define ROT_ANGLE_INC	3			// Must be multiple of 360 and 90
 # define ROT_ANG_MOUSE	1			// Must be multiple of 360 and 90
-# define FOV			66			// Field of view (even number)
+# define FOV			64			// Field of view (even number)
 # define VERT_SCALE		1			// Modifies wall height in screen
-# define DIST_TO_WALL	4			// Multiple of WALL_SIZE
+# define DIST_TO_WALL	8			// Multiple of WALL_SIZE
 
 /*
 ** -.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-

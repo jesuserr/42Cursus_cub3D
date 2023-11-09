@@ -6,7 +6,7 @@
 /*   By: jesuserr <jesuserr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/14 11:47:50 by jesuserr          #+#    #+#             */
-/*   Updated: 2023/11/03 12:11:26 by jesuserr         ###   ########.fr       */
+/*   Updated: 2023/11/09 17:41:47 by jesuserr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,13 +45,17 @@ void	key_actions(t_cub *cub)
 
 void	key_a_pressed(t_cub *cub)
 {
-	int	x_pos_temp;
-	int	y_pos_temp;
+	int		x_pos_temp;
+	int		y_pos_temp;
+	float	shift_offset;
 
+	shift_offset = 1;
+	if (cub->key.shift_pressed == 1)
+		shift_offset = 0.5;
 	x_pos_temp = cub->player.x_pos + ((cub->player.y_vector + \
-	cub->player.offset_y) * cub->player.speed);
+	cub->player.offset_y * shift_offset) * cub->player.speed);
 	y_pos_temp = cub->player.y_pos - ((cub->player.x_vector + \
-	cub->player.offset_x) * cub->player.speed);
+	cub->player.offset_x * shift_offset) * cub->player.speed);
 	if (cub->map[(x_pos_temp / WALL_SIZE) + (cub->player.y_pos / WALL_SIZE \
 	* cub->x_elem)].color == 0)
 		cub->player.x_pos += cub->player.y_vector * cub->player.speed;
@@ -62,13 +66,17 @@ void	key_a_pressed(t_cub *cub)
 
 void	key_d_pressed(t_cub *cub)
 {
-	int	x_pos_temp;
-	int	y_pos_temp;
+	int		x_pos_temp;
+	int		y_pos_temp;
+	float	shift_offset;
 
+	shift_offset = 1;
+	if (cub->key.shift_pressed == 1)
+		shift_offset = 0.5;
 	x_pos_temp = cub->player.x_pos - ((cub->player.y_vector + \
-	cub->player.offset_y) * cub->player.speed);
+	cub->player.offset_y * shift_offset) * cub->player.speed);
 	y_pos_temp = cub->player.y_pos + ((cub->player.x_vector + \
-	cub->player.offset_x) * cub->player.speed);
+	cub->player.offset_x * shift_offset) * cub->player.speed);
 	if (cub->map[(x_pos_temp / WALL_SIZE) + (cub->player.y_pos / WALL_SIZE \
 	* cub->x_elem)].color == 0)
 		cub->player.x_pos -= cub->player.y_vector * cub->player.speed;
@@ -79,13 +87,17 @@ void	key_d_pressed(t_cub *cub)
 
 void	key_w_pressed(t_cub *cub)
 {
-	int	x_pos_temp;
-	int	y_pos_temp;
+	int		x_pos_temp;
+	int		y_pos_temp;
+	float	shift_offset;
 
+	shift_offset = 1;
+	if (cub->key.shift_pressed == 1)
+		shift_offset = 0.5;
 	x_pos_temp = cub->player.x_pos + ((cub->player.x_vector + \
-	cub->player.offset_x) * cub->player.speed);
+	cub->player.offset_x * shift_offset) * cub->player.speed);
 	y_pos_temp = cub->player.y_pos + ((cub->player.y_vector + \
-	cub->player.offset_y) * cub->player.speed);
+	cub->player.offset_y * shift_offset) * cub->player.speed);
 	if (cub->map[(x_pos_temp / WALL_SIZE) + (cub->player.y_pos / WALL_SIZE \
 	* cub->x_elem)].color == 0)
 		cub->player.x_pos += cub->player.x_vector * cub->player.speed;
@@ -96,13 +108,17 @@ void	key_w_pressed(t_cub *cub)
 
 void	key_s_pressed(t_cub *cub)
 {
-	int	x_pos_temp;
-	int	y_pos_temp;
+	int		x_pos_temp;
+	int		y_pos_temp;
+	float	shift_offset;
 
+	shift_offset = 1;
+	if (cub->key.shift_pressed == 1)
+		shift_offset = 0.5;
 	x_pos_temp = cub->player.x_pos - ((cub->player.x_vector + \
-	cub->player.offset_x) * cub->player.speed);
+	cub->player.offset_x * shift_offset) * cub->player.speed);
 	y_pos_temp = cub->player.y_pos - ((cub->player.y_vector + \
-	cub->player.offset_y) * cub->player.speed);
+	cub->player.offset_y * shift_offset) * cub->player.speed);
 	if (cub->map[(x_pos_temp / WALL_SIZE) + (cub->player.y_pos / WALL_SIZE \
 	* cub->x_elem)].color == 0)
 		cub->player.x_pos -= cub->player.x_vector * cub->player.speed;
