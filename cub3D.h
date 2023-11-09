@@ -6,7 +6,7 @@
 /*   By: cescanue <cescanue@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 12:14:21 by cescanue          #+#    #+#             */
-/*   Updated: 2023/11/09 12:14:23 by cescanue         ###   ########.fr       */
+/*   Updated: 2023/11/09 12:16:51 by cescanue         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -173,8 +173,6 @@ typedef struct s_enemy
 {
 	t_list	**sprites;
 	t_txt	*current;
-	//para borrar
-	t_img	*tmp;
 }	t_enemy;
 
 typedef struct s_cub
