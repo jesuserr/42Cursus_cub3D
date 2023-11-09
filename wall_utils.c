@@ -6,7 +6,7 @@
 /*   By: jesuserr <jesuserr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 08:21:31 by cescanue          #+#    #+#             */
-/*   Updated: 2023/11/09 11:54:52 by jesuserr         ###   ########.fr       */
+/*   Updated: 2023/11/10 00:40:30 by jesuserr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -118,10 +118,14 @@ void	draw_texture(t_line line, t_cub *cub, t_txt *txt, float offset)
 
 	canvas = cub->img.addr + (line.x0 * cub->img.bpp / 8);
 	canvas = canvas + (line.y0 * cub->img.bpp / 8 * WIDTH);
-	texture = txt->img.addr + (txt->img.bpp / 8 * ((int)(offset) % WALL_SIZE));
+	texture = txt->img.addr + (txt->img.bpp / 8 * ((int)(offset) % WALL_SIZE) \
+	* txt->w / WALL_SIZE);
+	if ((float)txt->w / (float)WALL_SIZE < 1)
+		texture = txt->img.addr + (txt->img.bpp / 8 * (((int)(offset) % \
+		WALL_SIZE) / (WALL_SIZE / txt->w)));
 	step = txt->scale * txt->offset;
 	i = 0;
-	while (i < (line.y1 - line.y0))
+	while (i++ < (line.y1 - line.y0))
 	{
 		*(unsigned int *)canvas = *(unsigned int *)texture;
 		canvas = canvas + (cub->img.bpp / 8 * WIDTH);
@@ -131,6 +135,5 @@ void	draw_texture(t_line line, t_cub *cub, t_txt *txt, float offset)
 			texture = texture + (txt->img.bpp / 8 * txt->w);
 			step--;
 		}
-		i++;
 	}
 }
