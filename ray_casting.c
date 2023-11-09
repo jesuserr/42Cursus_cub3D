@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: cescanue <cescanue@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/09 08:20:00 by cescanue          #+#    #+#             */
-/*   Updated: 2023/11/09 21:47:25 by cescanue         ###   ########.fr       */
+/*   Created: 2023/11/09 21:51:50 by cescanue          #+#    #+#             */
+/*   Updated: 2023/11/09 21:51:53 by cescanue         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,7 @@ void	check_horizontal_lines(t_ray_cast *horz, t_cub *cub)
 	horz->tan = tan((PI / 2) - horz->ray_angle);
 	if (horz->ray_angle > 0 && horz->ray_angle < PI)
 	{
-		horz->ray_y = ((cub->player.y_pos / WALL_SIZE) * WALL_SIZE) - 0.0002;
+		horz->ray_y = ((cub->player.y_pos / WALL_SIZE) * WALL_SIZE) - 0.0003;
 		horz->ray_x = (cub->player.y_pos - horz->ray_y) * \
 		horz->tan + cub->player.x_pos;
 		horz->y_offset = -WALL_SIZE;
@@ -110,7 +110,7 @@ void	check_vertical_lines(t_ray_cast *vert, t_cub *cub)
 	}
 	else if (vert->ray_angle > PI / 2 && vert->ray_angle < PI * 3 / 2)
 	{
-		vert->ray_x = ((cub->player.x_pos / WALL_SIZE) * WALL_SIZE) - 0.0002;
+		vert->ray_x = ((cub->player.x_pos / WALL_SIZE) * WALL_SIZE) - 0.0003;
 		vert->ray_y = (cub->player.x_pos - vert->ray_x) * \
 		vert->tan + cub->player.y_pos;
 		vert->x_offset = -WALL_SIZE;
