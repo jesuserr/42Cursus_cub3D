@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3D.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cescanue <cescanue@student.42barcelona.    +#+  +:+       +#+        */
+/*   By: jesuserr <jesuserr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 08:19:48 by cescanue          #+#    #+#             */
-/*   Updated: 2023/11/09 08:19:51 by cescanue         ###   ########.fr       */
+/*   Updated: 2023/11/09 11:42:20 by jesuserr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -191,10 +191,7 @@ typedef struct s_cub
 	t_img		img;
 	t_player	player;
 	t_map		*cmap;
-	t_txt		*txt_so;
-	t_txt		*txt_no;
-	t_txt		*txt_we;
-	t_txt		*txt_ea;
+	t_txt		*textures[5];
 	t_enemy		*enemy;
 	t_ray_cast	horz;
 	t_ray_cast	vert;

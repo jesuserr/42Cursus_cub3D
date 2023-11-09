@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   txt_utils.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cescanue <cescanue@student.42barcelona.    +#+  +:+       +#+        */
+/*   By: jesuserr <jesuserr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/03 15:48:41 by cescanue          #+#    #+#             */
-/*   Updated: 2023/11/07 13:38:03 by cescanue         ###   ########.fr       */
+/*   Updated: 2023/11/09 11:37:33 by jesuserr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,10 +44,11 @@ void	load_textures(t_cub *cub)
 	ft_printf("Loading textures... ");
 	if (cub->cmap)
 	{
-		cub->txt_no = load_txt(cub->cmap->t_no, cub);
-		cub->txt_so = load_txt(cub->cmap->t_so, cub);
-		cub->txt_ea = load_txt(cub->cmap->t_ea, cub);
-		cub->txt_we = load_txt(cub->cmap->t_we, cub);
+		cub->textures[0] = load_txt(cub->cmap->t_ea, cub);
+		cub->textures[1] = load_txt(cub->cmap->t_no, cub);
+		cub->textures[2] = load_txt(cub->cmap->t_we, cub);
+		cub->textures[3] = load_txt(cub->cmap->t_so, cub);
+		cub->textures[4] = NULL;
 	}
 	ft_printf("OK!\n");
 }
