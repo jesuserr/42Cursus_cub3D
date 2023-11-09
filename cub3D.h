@@ -6,7 +6,7 @@
 /*   By: cescanue <cescanue@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 19:32:37 by cescanue          #+#    #+#             */
-/*   Updated: 2023/11/09 19:32:39 by cescanue         ###   ########.fr       */
+/*   Updated: 2023/11/09 21:23:14 by cescanue         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -189,6 +189,7 @@ typedef struct s_character
 	t_list	**cl;
 	t_list	**cr;
 	t_txt	*current;
+	int		timer;
 }	t_character;
 
 typedef struct s_cub
@@ -222,7 +223,8 @@ int		close_window(t_cub *cub, int exitcode);
 void	close_cmaps(t_cub *cub);
 void	free_textures(t_cub *cub);
 /*		errors2.c		*/
-void	free_sprites(t_cub *cub);
+void	free_enemy(t_cub *cub);
+void	free_character(t_cub *cub);
 /*		graphics.c		*/
 void	mlx_put_pixel(t_cub *cub, int x, int y, int color);
 void	draw_line(t_line line, t_cub *cub);
@@ -268,7 +270,7 @@ void	calc_line_height(t_line *line, t_cub *cub, t_txt *txt);
 t_txt	*load_txt(char *file, t_cub *cub);
 void	load_textures(t_cub *cub);
 /*		sprites.c 		*/
-void	ft_loadimgs(char *path, t_list **lst, t_cub *cub);
+void	ft_loadimgs(char *path, t_list **lst, int scale, t_cub *cub);
 t_txt	*move_sprite(t_list *lst, void *current);
 /*		sprites2.c 		*/
 t_txt	*scale_img(t_txt *img, int scale, t_cub *cub);
@@ -276,6 +278,8 @@ t_txt	*scale_img(t_txt *img, int scale, t_cub *cub);
 void	load_enemy(t_cub *cub);
 void	move_enemy(t_enemy *enemy, t_cub *cub);
 /*		character.c*/
-void	load_character(t_cub *cub);
+void	load_character(int scale, t_cub *cub);
+void	cha_hook(t_cub *cub);
+void	cha_releasekey(t_cub *cub);
 
 #endif

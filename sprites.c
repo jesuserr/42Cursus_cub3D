@@ -6,13 +6,27 @@
 /*   By: cescanue <cescanue@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 13:47:14 by cescanue          #+#    #+#             */
-/*   Updated: 2023/11/09 18:39:01 by cescanue         ###   ########.fr       */
+/*   Updated: 2023/11/09 21:27:37 by cescanue         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
 
-void	ft_putimgtolst(char *file, t_list **lst, t_cub *cub)
+t_txt	*ft_putimgtolstscale(int scale, t_txt *img, t_cub *cub)
+{
+	t_txt	*simg;
+
+	if (scale > 1)
+	{
+		simg = scale_img(img, scale, cub);
+		mlx_destroy_image(cub->mlx, img->img.img);
+		free(img);
+		return (simg);
+	}
+	return (img);
+}
+
+void	ft_putimgtolst(char *file, t_list **lst, int scale, t_cub *cub)
 {
 	t_txt	*img;
 
@@ -33,11 +47,12 @@ void	ft_putimgtolst(char *file, t_list **lst, t_cub *cub)
 	}
 	img->img.addr = mlx_get_data_addr(img->img.img, &img->img.bpp, \
 	&img->img.len, &img->img.endian);
+	img = ft_putimgtolstscale(scale, img, cub);
 	img->img.mlx = cub->mlx;
 	ft_lstadd_back(lst, ft_lstnew(img));
 }
 
-void	ft_loadimgs(char *path, t_list **lst, t_cub *cub)
+void	ft_loadimgs(char *path, t_list **lst, int scale, t_cub *cub)
 {
 	int		fd;
 	char	file[200];
@@ -58,7 +73,7 @@ void	ft_loadimgs(char *path, t_list **lst, t_cub *cub)
 			tmp[ft_strlen(tmp) - 1] = 0;
 		ft_strlcpy(file, path, 200);
 		ft_strlcat(file, tmp, 200);
-		ft_putimgtolst(file, lst, cub);
+		ft_putimgtolst(file, lst, scale, cub);
 		free(tmp);
 		tmp = get_next_line(fd);
 	}

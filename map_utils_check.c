@@ -6,7 +6,7 @@
 /*   By: cescanue <cescanue@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/30 13:56:56 by cescanue          #+#    #+#             */
-/*   Updated: 2023/11/06 19:07:03 by cescanue         ###   ########.fr       */
+/*   Updated: 2023/11/09 21:34:20 by cescanue         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,13 +28,11 @@ void	check_mapch(char *rmap, t_cub *cub)
 
 void	check_player(char *rmap, t_cub *cub)
 {
-	char	*tmap;
 	int		player;
 	int		cero;
 
 	player = 0;
 	cero = 0;
-	tmap = rmap;
 	while (*rmap)
 	{
 		if (*rmap == 'N' || *rmap == 'S' || *rmap == 'E'
@@ -48,7 +46,6 @@ void	check_player(char *rmap, t_cub *cub)
 	{
 		printf("\nError\nThe player is missing, you have more than one player");
 		printf(" or the map has no area for the player to move around.\n");
-		free(tmap);
 		ft_error_handler(ERROR_MAP_F, cub);
 	}
 }

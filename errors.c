@@ -6,7 +6,7 @@
 /*   By: cescanue <cescanue@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/03 17:45:04 by cescanue          #+#    #+#             */
-/*   Updated: 2023/11/09 19:28:01 by cescanue         ###   ########.fr       */
+/*   Updated: 2023/11/09 21:32:18 by cescanue         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,8 @@ void	ft_error_handler(int error, t_cub *cub)
 int	close_window(t_cub *cub, int exitcode)
 {
 	free_textures(cub);
-	free_sprites(cub);
+	free_character(cub);
+	free_enemy(cub);
 	close_cmaps(cub);
 	if (cub->map)
 		free(cub->map);
