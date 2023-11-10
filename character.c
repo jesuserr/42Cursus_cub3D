@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   character.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cescanue <cescanue@student.42barcelona.    +#+  +:+       +#+        */
+/*   By: jesuserr <jesuserr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 17:37:12 by cescanue          #+#    #+#             */
-/*   Updated: 2023/11/09 21:43:50 by cescanue         ###   ########.fr       */
+/*   Updated: 2023/11/10 01:12:15 by jesuserr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ void	cha_hook(t_cub *cub)
 	if (cub->cha && cub->cha->current)
 		mlx_put_image_to_window(cub->mlx, cub->mlx_win, \
 		cub->cha->current->img.img, (WIDTH / 2) - cub->cha->current->w / 2, \
-		HEIGHT - cub->cha->current->h);
+		HEIGHT - (cub->cha->current->h / 1.5));
 }
 
 void	cha_releasekey(t_cub *cub)

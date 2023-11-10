@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3D.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cescanue <cescanue@student.42barcelona.    +#+  +:+       +#+        */
+/*   By: jesuserr <jesuserr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 19:32:37 by cescanue          #+#    #+#             */
-/*   Updated: 2023/11/09 21:23:14 by cescanue         ###   ########.fr       */
+/*   Updated: 2023/11/10 10:06:48 by jesuserr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,8 @@
 # define ERROR_TXT			8
 # define ERROR_SPRITE		9
 
-# define WIDTH			1024
-# define HEIGHT			768
+# define WIDTH			1200
+# define HEIGHT			900
 # define DEF_COLOR		0xf26e04	// Wall RGB color
 # define WHITE			0xFFFFFF
 # define PI				3.141592654
@@ -43,6 +43,7 @@
 # define FOV			64			// Field of view (even number)
 # define VERT_SCALE		1			// Modifies wall height in screen
 # define DIST_TO_WALL	8			// Multiple of WALL_SIZE
+# define PLAYER_SIZE	10
 
 /*
 ** -.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-
@@ -90,6 +91,7 @@ typedef struct s_player
 	int		orig_x_pos;
 	int		orig_y_pos;
 	int		orig_angle;
+	int		size;
 }	t_player;
 
 typedef struct s_ray_cast

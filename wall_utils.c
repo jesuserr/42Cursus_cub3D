@@ -6,7 +6,7 @@
 /*   By: jesuserr <jesuserr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 08:21:31 by cescanue          #+#    #+#             */
-/*   Updated: 2023/11/10 00:40:30 by jesuserr         ###   ########.fr       */
+/*   Updated: 2023/11/10 10:20:06 by jesuserr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,20 +62,20 @@ int	choose_texture(t_cub *cub, t_ray_cast *vert, t_ray_cast *horz)
 	float	v_vs_h;
 
 	v_vs_h = vert->ray_length - horz->ray_length;
-	if (vert->ray_angle >= 0 && vert->ray_angle < (PI / 2) && v_vs_h < 0 && \
+	if (vert->ray_angle >= 0 && vert->ray_angle < (PI / 2) && v_vs_h <= 0 && \
 	cub->textures[0])
 		return (0);
-	else if (vert->ray_angle > 0 && vert->ray_angle < PI && v_vs_h > 0 && \
+	else if (vert->ray_angle > 0 && vert->ray_angle < PI && v_vs_h >= 0 && \
 	cub->textures[1])
 		return (1);
 	else if (vert->ray_angle > (PI / 2) && vert->ray_angle < (3 * PI / 2) && \
-	v_vs_h < 0 && cub->textures[2])
+	v_vs_h <= 0 && cub->textures[2])
 		return (2);
-	else if (vert->ray_angle > (PI) && vert->ray_angle < (2 * PI) && v_vs_h > 0 \
-	&& cub->textures[3])
+	else if (vert->ray_angle > (PI) && vert->ray_angle < (2 * PI) && \
+	v_vs_h >= 0 && cub->textures[3])
 		return (3);
 	else if (vert->ray_angle > (3 * PI / 2) && vert->ray_angle < (2 * PI) && \
-	v_vs_h < 0 && cub->textures[0])
+	v_vs_h <= 0 && cub->textures[0])
 		return (0);
 	return (4);
 }

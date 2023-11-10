@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cescanue <cescanue@student.42barcelona.    +#+  +:+       +#+        */
+/*   By: jesuserr <jesuserr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/03 17:44:36 by cescanue          #+#    #+#             */
-/*   Updated: 2023/11/09 21:35:05 by cescanue         ###   ########.fr       */
+/*   Updated: 2023/11/10 10:02:00 by jesuserr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ void	init_struct(t_cub *cub)
 	if (cub->key.map_scale < 5)
 		cub->key.map_scale = 5;
 	cub->key.map_x_offset = (WIDTH - cub->x_elem * cub->key.map_scale) / 2;
+	cub->player.size = HEIGHT / PLAYER_SIZE / 7;
 	calc_player_vector(cub);
 }
 
@@ -49,7 +50,7 @@ int	main(int argc, char **argv)
 	init_win(&cub, argv[1]);
 	init_struct(&cub);
 	load_textures(&cub);
-	load_character(5, &cub);
+	load_character(cub.player.size, &cub);
 	load_enemy(&cub);
 	if (cub.map)
 	{
