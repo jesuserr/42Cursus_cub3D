@@ -6,7 +6,7 @@
 /*   By: jesuserr <jesuserr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/03 17:44:36 by cescanue          #+#    #+#             */
-/*   Updated: 2023/11/11 20:19:26 by jesuserr         ###   ########.fr       */
+/*   Updated: 2023/11/11 22:02:26 by jesuserr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,11 +31,6 @@ void	init_struct(t_cub *cub)
 {
 	ft_memset(&cub->key, 0, sizeof(t_keys));
 	cub->player.speed = INC_OFFSET;
-	cub->key.map_scale = (-cub->x_elem / 3) + 18;
-	if (cub->key.map_scale < 5)
-		cub->key.map_scale = 5;
-	cub->key.map_x_offset = (WIDTH - cub->x_elem * cub->key.map_scale) / 2;
-	cub->player.size = HEIGHT / PLAYER_SIZE / 7;
 	calc_player_vector(cub);
 }
 

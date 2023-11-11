@@ -45,7 +45,7 @@ CFLAGS = -O3 -Wall -Wextra -Werror
 NORM = $(addprefix $(PATH_SRCS), $(SRCS)) $(PATH_SRCS)cub3d.h \
 $(PATH_SRCS)controls.h
 NORMB = $(addprefix $(PATH_SRCS_BONUS), $(SRCS_BONUS)) \
-$(PATH_SRCS_BONUS)cub3d.h $(PATH_SRCS_BONUS)controls.h
+$(PATH_SRCS_BONUS)cub3d_bonus.h $(PATH_SRCS_BONUS)controls_bonus.h
 GREEN = "\033[0;92m"
 RED = "\033[0;91m"
 BLUE = "\033[0;94m"

@@ -6,7 +6,7 @@
 /*   By: jesuserr <jesuserr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 19:32:37 by cescanue          #+#    #+#             */
-/*   Updated: 2023/11/11 21:00:31 by jesuserr         ###   ########.fr       */
+/*   Updated: 2023/11/11 22:08:36 by jesuserr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,6 @@
 # define WIDTH			1200
 # define HEIGHT			900
 # define DEF_COLOR		0xf26e04	// Wall RGB color
-# define WHITE			0xFFFFFF
 # define PI				3.141592654
 # define INC_OFFSET		4			// Player movement pixels,wall size multiple
 # define WALL_SIZE		64			// Must be power of 2
@@ -43,7 +42,6 @@
 # define FOV			64			// Field of view (even number)
 # define VERT_SCALE		1			// Modifies wall height in screen
 # define DIST_TO_WALL	8			// Multiple of WALL_SIZE
-# define PLAYER_SIZE	10
 
 /*
 ** -.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-
@@ -244,7 +242,6 @@ int		ray_casting(t_cub *cub);
 /*		raycast_utils.c 		*/
 void	init_ray_casters(t_cub *cub, t_ray_cast *ver, t_ray_cast *hor, float a);
 double	degrees_to_radians(int angle_degrees, float inc_angle);
-
 void	check_first_corner_exception(t_cub *cub, t_ray_cast *v, t_ray_cast *h);
 void	calc_player_vector(t_cub *cub);
 /*		wall_utils.c 		*/
