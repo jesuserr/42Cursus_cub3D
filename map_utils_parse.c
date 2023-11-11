@@ -6,7 +6,7 @@
 /*   By: jesuserr <jesuserr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/30 11:42:12 by cescanue          #+#    #+#             */
-/*   Updated: 2023/11/09 18:18:00 by jesuserr         ###   ########.fr       */
+/*   Updated: 2023/11/11 11:33:59 by jesuserr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	parse_map_set(t_parse *p, t_cub *cub)
 	p->map[p->xl].color = 0;
 	if (cub->raw_map[p->xl] == '1')
 		p->map[p->xl].color = DEF_COLOR;
-	else if (cub->raw_map[p->xl] == 'P' || cub->raw_map[p->xl] == 'N'
+	else if (cub->raw_map[p->xl] == 'N'
 		|| cub->raw_map[p->xl] == 'S' || cub->raw_map[p->xl] == 'W'
 		|| cub->raw_map[p->xl] == 'E')
 	{
