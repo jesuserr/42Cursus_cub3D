@@ -5,37 +5,47 @@
 #                                                     +:+ +:+         +:+      #
 #    By: jesuserr <jesuserr@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2023/05/19 13:35:34 by jesuserr          #+#    #+#              #
-#    Updated: 2023/06/16 12:59:44 by jesuserr         ###   ########.fr        #
+#    Created: 2023/11/11 13:18:46 by jesuserr          #+#    #+#              #
+#    Updated: 2023/11/11 13:18:46 by jesuserr         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 LIBFT_DIR = libft/
 LIBX_DIR = minilibx_macos/
 
-NAME = cub3D
+NAME = ./cub3D/cub3D
 SRCS = errors.c errors2.c graphics.c hooks.c main.c map_utils.c map_utils2.c \
 map_utils_parse.c map_utils_check.c map_utils_check2.c moves.c ray_casting.c \
 graphics_2.c raycast_utils.c wall_utils.c txt_utils.c sprites.c sprites2.c \
 enemy.c character.c
+PATH_SRCS = ./cub3D/
+PATH_OBJS = ./cub3D/
+PATH_DEPS = ./cub3D/
 
-NAME_BONUS = cub3D_bonus
-SRCS_BONUS = errors.c errors2.c graphics.c hooks.c main.c map_utils.c \
-map_utils2.c map_utils_parse.c map_utils_check.c map_utils_check2.c moves.c \
-ray_casting.c graphics_2.c raycast_utils.c wall_utils.c txt_utils.c sprites.c \
-sprites2.c enemy.c character.c
+NAME_BONUS = ./cub3D_bonus/cub3D_bonus
+SRCS_BONUS = errors_bonus.c errors2_bonus.c graphics_bonus.c hooks_bonus.c \
+main_bonus.c map_utils_bonus.c map_utils2_bonus.c map_utils_parse_bonus.c \
+map_utils_check_bonus.c map_utils_check2_bonus.c moves_bonus.c \
+ray_casting_bonus.c graphics_2_bonus.c raycast_utils_bonus.c \
+wall_utils_bonus.c txt_utils_bonus.c sprites_bonus.c sprites2_bonus.c \
+enemy_bonus.c character_bonus.c
+PATH_SRCS_BONUS = ./cub3D_bonus/
+PATH_OBJS_BONUS = ./cub3D_bonus/
+PATH_DEPS_BONUS = ./cub3D_bonus/
 
-OBJS = $(SRCS:.c=.o)
-OBJS_BONUS = $(SRCS_BONUS:.c=.o)
-DEPS = $(SRCS:.c=.d)
-DEPS_BONUS = $(SRCS_BONUS:.c=.d)
+OBJS = $(addprefix $(PATH_OBJS), $(SRCS:.c=.o))
+OBJS_BONUS = $(addprefix $(PATH_OBJS_BONUS), $(SRCS_BONUS:.c=.o))
+DEPS = $(addprefix $(PATH_DEPS), $(SRCS:.c=.d))
+DEPS_BONUS = $(addprefix $(PATH_DEPS_BONUS), $(SRCS_BONUS:.c=.d))
 
 INCLUDE = -I./ -I./minilibx_macos/ -I./libft/includes/
 RM = rm -f
 CFLAGS = -O3 -Wall -Wextra -Werror
 
-NORM = ${SRCS} cub3D.h controls.h
-NORMB = ${SRCS_BONUS} cub3D.h controls.h
+NORM = $(addprefix $(PATH_SRCS), $(SRCS)) $(PATH_SRCS)cub3d.h \
+$(PATH_SRCS)controls.h
+NORMB = $(addprefix $(PATH_SRCS_BONUS), $(SRCS_BONUS)) \
+$(PATH_SRCS_BONUS)cub3d.h $(PATH_SRCS_BONUS)controls.h
 GREEN = "\033[0;92m"
 RED = "\033[0;91m"
 BLUE = "\033[0;94m"

@@ -3,6 +3,11 @@ SO ./../textures/mossy.png
 WE ./../textures/redbrick.png
 NO ./../textures/greystone.png
 
+CU ./../sprites/character/u/
+CD ./../sprites/character/d/
+CL ./../sprites/character/l/
+CR ./../sprites/character/r/
+
 F 113,113,113
 C 56,56,56
 
