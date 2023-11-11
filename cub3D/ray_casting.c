@@ -6,14 +6,13 @@
 /*   By: jesuserr <jesuserr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 21:51:50 by cescanue          #+#    #+#             */
-/*   Updated: 2023/11/11 20:30:49 by jesuserr         ###   ########.fr       */
+/*   Updated: 2023/11/11 20:59:05 by jesuserr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
 
 int		ray_casting(t_cub *cub);
-void	draw_minimap_and_player(t_cub *cub);
 void	check_horizontal_lines(t_ray_cast *horz, t_cub *cub);
 void	check_vertical_lines(t_ray_cast *horz, t_cub *cub);
 void	check_hit_to_wall(t_cub *cub, t_ray_cast *cast);
@@ -26,14 +25,12 @@ int	ray_casting(t_cub *cub)
 	casted_rays = 0;
 	ray_angle = FOV / 2.0;
 	draw_floor_and_ceiling(cub);
-	//draw_minimap_and_player(cub);
 	while (casted_rays < WIDTH)
 	{
 		init_ray_casters(cub, &cub->vert, &cub->horz, ray_angle);
 		check_horizontal_lines(&cub->horz, cub);
 		check_vertical_lines(&cub->vert, cub);
 		check_first_corner_exception(cub, &cub->vert, &cub->horz);
-		//draw_shorter_ray(cub, &cub->vert, &cub->horz);
 		draw_wall(cub, &cub->vert, &cub->horz, casted_rays);
 		ray_angle = ray_angle - ((float)FOV / (float)WIDTH);
 		casted_rays++;
@@ -42,28 +39,6 @@ int	ray_casting(t_cub *cub)
 	cha_hook((cub));
 	key_actions(cub);
 	return (0);
-}
-
-void	draw_minimap_and_player(t_cub *cub)
-{
-	int		i;
-	t_point	square;
-
-	ft_bzero(cub->img.addr, WIDTH * HEIGHT * cub->img.bpp / 8);
-	i = 0;
-	while (i < (cub->x_elem * cub->y_elem))
-	{
-		square.x = cub->map[i].x;
-		square.y = cub->map[i].y;
-		square.color = cub->map[i].color;
-		if (square.color != 0)
-			draw_square(cub, square, WALL_SIZE - 1);
-		i++;
-	}
-	square.x = cub->player.x_pos - WALL_SIZE / 8;
-	square.y = cub->player.y_pos - WALL_SIZE / 8;
-	square.color = 0xFFFFFF;
-	draw_square(cub, square, WALL_SIZE / 4);
 }
 
 void	check_horizontal_lines(t_ray_cast *horz, t_cub *cub)

@@ -6,16 +6,13 @@
 /*   By: jesuserr <jesuserr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/06 16:03:40 by jesuserr          #+#    #+#             */
-/*   Updated: 2023/11/11 20:36:06 by jesuserr         ###   ########.fr       */
+/*   Updated: 2023/11/11 20:58:25 by jesuserr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
 
 void	mlx_put_pixel(t_cub *cub, int x, int y, int color);
-void	draw_line(t_line line, t_cub *cub);
-void	line_direction(t_line *line, t_line_aux *line_aux);
-void	draw_square(t_cub *cub, t_point square, int size);
 void	draw_vert_line(t_line line, t_cub *cub);
 
 void	mlx_put_pixel(t_cub *cub, int x, int y, int color)
@@ -24,68 +21,6 @@ void	mlx_put_pixel(t_cub *cub, int x, int y, int color)
 
 	dst = cub->img.addr + ((y * cub->img.len) + (x * (cub->img.bpp / 8)));
 	*(unsigned int *)dst = color;
-}
-
-/* Uses Bresenham's line algorithm (extended to work in any octant) */
-/* Pixels outside screen boundaries are not printed */
-
-void	draw_line(t_line line, t_cub *cub)
-{
-	t_line_aux	line_aux;
-
-	line_direction (&line, &line_aux);
-	line_aux.dx = abs(line.x1 - line.x0);
-	line_aux.dy = -abs(line.y1 - line.y0);
-	line_aux.error = line_aux.dx + line_aux.dy;
-	while (!(line.x0 == line.x1 && line.y0 == line.y1))
-	{
-		if (line.x0 >= 0 && line.y0 >= 0 && line.x0 < WIDTH && line.y0 < HEIGHT)
-			mlx_put_pixel(cub, line.x0, line.y0, line.color);
-		if ((2 * line_aux.error) >= line_aux.dy)
-		{
-			line_aux.error = line_aux.error + line_aux.dy;
-			line.x0 = line.x0 + line_aux.sx;
-		}
-		else
-		{
-			line_aux.error = line_aux.error + line_aux.dx;
-			line.y0 = line.y0 + line_aux.sy;
-		}
-	}
-}
-
-void	line_direction(t_line *line, t_line_aux *line_aux)
-{
-	if (line->x0 < line->x1)
-		line_aux->sx = 1;
-	else
-		line_aux->sx = -1;
-	if (line->y0 < line->y1)
-		line_aux->sy = 1;
-	else
-		line_aux->sy = -1;
-}
-
-void	draw_square(t_cub *cub, t_point square, int size)
-{
-	int		x;
-	int		y;
-	int		x_copy;
-
-	y = 0;
-	while (y < size)
-	{
-		x = 0;
-		x_copy = square.x;
-		while (x < size)
-		{
-			mlx_put_pixel(cub, x_copy, square.y, square.color);
-			x_copy++;
-			x++;
-		}
-		square.y++;
-		y++;
-	}
 }
 
 /* Optimized version of funct. draw_line for lines that are totally vertical */

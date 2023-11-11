@@ -6,7 +6,7 @@
 /*   By: jesuserr <jesuserr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 19:32:37 by cescanue          #+#    #+#             */
-/*   Updated: 2023/11/11 20:31:55 by jesuserr         ###   ########.fr       */
+/*   Updated: 2023/11/11 21:00:31 by jesuserr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -126,15 +126,6 @@ typedef struct s_line
 	int		color;
 }	t_line;
 
-typedef struct s_line_aux
-{
-	int		dx;
-	int		dy;
-	int		sx;
-	int		sy;
-	int		error;	
-}	t_line_aux;
-
 typedef struct s_img
 {
 	void	*img;
@@ -229,9 +220,6 @@ void	free_enemy(t_cub *cub);
 void	free_character(t_cub *cub);
 /*		graphics.c		*/
 void	mlx_put_pixel(t_cub *cub, int x, int y, int color);
-void	draw_line(t_line line, t_cub *cub);
-void	line_direction(t_line *line, t_line_aux *line_aux);
-void	draw_square(t_cub *cub, t_point square, int size);
 void	draw_vert_line(t_line line, t_cub *cub);
 /*		hooks.c				*/
 int		key_pressed(int keycode, t_cub *cub);
@@ -256,7 +244,7 @@ int		ray_casting(t_cub *cub);
 /*		raycast_utils.c 		*/
 void	init_ray_casters(t_cub *cub, t_ray_cast *ver, t_ray_cast *hor, float a);
 double	degrees_to_radians(int angle_degrees, float inc_angle);
-void	draw_shorter_ray(t_cub *cub, t_ray_cast *vert, t_ray_cast *horz);
+
 void	check_first_corner_exception(t_cub *cub, t_ray_cast *v, t_ray_cast *h);
 void	calc_player_vector(t_cub *cub);
 /*		wall_utils.c 		*/
