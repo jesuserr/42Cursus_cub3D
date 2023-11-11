@@ -13,25 +13,25 @@
 LIBFT_DIR = libft/
 LIBX_DIR = minilibx_macos/
 
-NAME = ./cub3D/cub3D
+NAME = cub3D
 SRCS = errors.c errors2.c graphics.c hooks.c main.c map_utils.c map_utils2.c \
 map_utils_parse.c map_utils_check.c map_utils_check2.c moves.c ray_casting.c \
 raycast_utils.c wall_utils.c txt_utils.c sprites.c sprites2.c enemy.c \
 character.c
-PATH_SRCS = ./cub3D/
-PATH_OBJS = ./cub3D/
-PATH_DEPS = ./cub3D/
+PATH_SRCS = ./cub3D_srcs/
+PATH_OBJS = ./cub3D_srcs/
+PATH_DEPS = ./cub3D_srcs/
 
-NAME_BONUS = ./cub3D_bonus/cub3D_bonus
+NAME_BONUS = cub3D_bonus
 SRCS_BONUS = errors_bonus.c errors2_bonus.c graphics_bonus.c hooks_bonus.c \
 main_bonus.c map_utils_bonus.c map_utils2_bonus.c map_utils_parse_bonus.c \
 map_utils_check_bonus.c map_utils_check2_bonus.c moves_bonus.c \
 ray_casting_bonus.c graphics_2_bonus.c raycast_utils_bonus.c \
 wall_utils_bonus.c txt_utils_bonus.c sprites_bonus.c sprites2_bonus.c \
 enemy_bonus.c character_bonus.c
-PATH_SRCS_BONUS = ./cub3D_bonus/
-PATH_OBJS_BONUS = ./cub3D_bonus/
-PATH_DEPS_BONUS = ./cub3D_bonus/
+PATH_SRCS_BONUS = ./cub3D_srcs_bonus/
+PATH_OBJS_BONUS = ./cub3D_srcs_bonus/
+PATH_DEPS_BONUS = ./cub3D_srcs_bonus/
 
 OBJS = $(addprefix $(PATH_OBJS), $(SRCS:.c=.o))
 OBJS_BONUS = $(addprefix $(PATH_OBJS_BONUS), $(SRCS_BONUS:.c=.o))

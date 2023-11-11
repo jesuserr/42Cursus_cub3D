@@ -1,12 +1,12 @@
-EA ./../textures/128-png/002.png
-WE ./../textures/128-png/014.png
-SO ./../textures/128-png/050.png
-NO ./../textures/128-png/012.png
+EA ./textures/128-png/002.png
+WE ./textures/128-png/014.png
+SO ./textures/128-png/050.png
+NO ./textures/128-png/012.png
 
-CU ./../sprites/character/u/
-CD ./../sprites/character/d/
-CL ./../sprites/character/l/
-CR ./../sprites/character/r/
+CU ./sprites/character/u/
+CD ./sprites/character/d/
+CL ./sprites/character/l/
+CR ./sprites/character/r/
 
 F 113,113,113
 C 56,56,56
