@@ -18,9 +18,9 @@ SRCS = errors.c errors2.c graphics.c hooks.c main.c map_utils.c map_utils2.c \
 map_utils_parse.c map_utils_check.c map_utils_check2.c moves.c ray_casting.c \
 raycast_utils.c wall_utils.c txt_utils.c sprites.c sprites2.c enemy.c \
 character.c
-PATH_SRCS = ./cub3D_srcs/
-PATH_OBJS = ./cub3D_srcs/
-PATH_DEPS = ./cub3D_srcs/
+PATH_SRCS = ./srcs/
+PATH_OBJS = ./srcs/objs/
+PATH_DEPS = ./srcs/objs/
 
 NAME_BONUS = cub3D_bonus
 SRCS_BONUS = errors_bonus.c errors2_bonus.c graphics_bonus.c hooks_bonus.c \
@@ -29,9 +29,9 @@ map_utils_check_bonus.c map_utils_check2_bonus.c moves_bonus.c \
 ray_casting_bonus.c graphics_2_bonus.c raycast_utils_bonus.c \
 wall_utils_bonus.c txt_utils_bonus.c sprites_bonus.c sprites2_bonus.c \
 enemy_bonus.c character_bonus.c
-PATH_SRCS_BONUS = ./cub3D_srcs_bonus/
-PATH_OBJS_BONUS = ./cub3D_srcs_bonus/
-PATH_DEPS_BONUS = ./cub3D_srcs_bonus/
+PATH_SRCS_BONUS = ./srcs_bonus/
+PATH_OBJS_BONUS = ./srcs_bonus/objs_bonus/
+PATH_DEPS_BONUS = ./srcs_bonus/objs_bonus/
 
 OBJS = $(addprefix $(PATH_OBJS), $(SRCS:.c=.o))
 OBJS_BONUS = $(addprefix $(PATH_OBJS_BONUS), $(SRCS_BONUS:.c=.o))
@@ -64,7 +64,12 @@ makelibx:
 	@rm ERRORS
 	@echo ${GREEN}"MiniLibx Compiled!\n"${NC};
 	
-%.o: %.c
+$(PATH_OBJS)%.o: $(PATH_SRCS)%.c
+	@mkdir -p $(PATH_OBJS)
+	$(CC) $(CFLAGS) -MMD $(INCLUDE) -c $< -o $@
+
+$(PATH_OBJS_BONUS)%.o: $(PATH_SRCS_BONUS)%.c
+	@mkdir -p $(PATH_OBJS_BONUS)
 	$(CC) $(CFLAGS) -MMD $(INCLUDE) -c $< -o $@
 	
 $(NAME): $(OBJS) $(LIBFT_DIR)libft.a $(LIBX_DIR)libmlx.a
@@ -76,18 +81,20 @@ bonus: makelibft makelibx $(NAME_BONUS)
 
 $(NAME_BONUS): $(OBJS_BONUS) $(LIBFT_DIR)libft.a $(LIBX_DIR)libmlx.a
 	$(CC) $(CFLAGS) $(OBJS_BONUS) $(LIBFT_DIR)libft.a $(LIBX) -o $@
-	@echo ${GREEN}"cub3D Bonus Compiled!\n"${NC};
+	@echo ${GREEN}"cub3D_bonus Compiled!\n"${NC};
 -include $(DEPS_BONUS)
 
 clean:
 	@make clean --no-print-directory -C $(LIBFT_DIR)
 	@make clean --no-print-directory -C $(LIBX_DIR)
-	$(RM) $(OBJS) $(DEPS) $(OBJS_BONUS) $(DEPS_BONUS)
+	@rm -rf $(PATH_OBJS)
+	@rm -rf $(PATH_OBJS_BONUS)
 		
 fclean:
 	@make fclean --no-print-directory -C $(LIBFT_DIR)
 	@make clean --no-print-directory -C $(LIBX_DIR)
-	$(RM) $(OBJS) $(DEPS) $(OBJS_BONUS) $(DEPS_BONUS)
+	@rm -rf $(PATH_OBJS)
+	@rm -rf $(PATH_OBJS_BONUS)
 	$(RM) $(NAME) $(NAME_BONUS)
 
 norm:
