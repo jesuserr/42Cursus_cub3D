@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_utils_parse_bonus.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jesuserr <jesuserr@student.42.fr>          +#+  +:+       +#+        */
+/*   By: cescanue <cescanue@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/30 11:42:12 by cescanue          #+#    #+#             */
-/*   Updated: 2023/11/11 20:04:55 by jesuserr         ###   ########.fr       */
+/*   Updated: 2023/11/11 20:58:17 by cescanue         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,8 @@ void	parse_map_set(t_parse *p, t_cub *cub)
 			cub->player.angle = 180;
 		cub->player.orig_angle = cub->player.angle;
 	}
+	else if (cub->raw_map[p->xl] == 'D')
+		p->map[p->xl].color = DEF_DOOR;
 }
 
 t_point	*parse_map(t_cub *cub)

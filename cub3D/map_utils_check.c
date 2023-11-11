@@ -6,7 +6,7 @@
 /*   By: cescanue <cescanue@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/30 13:56:56 by cescanue          #+#    #+#             */
-/*   Updated: 2023/11/09 21:34:20 by cescanue         ###   ########.fr       */
+/*   Updated: 2023/11/11 20:49:31 by cescanue         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	check_mapch(char *rmap, t_cub *cub)
 	while (*rmap)
 	{
 		if (*rmap != '0' && *rmap != '1' && *rmap != 'N' && *rmap != 'S'
-			&& *rmap != 'E' && *rmap != 'W' && *rmap != ' ' && *rmap != 'P')
+			&& *rmap != 'E' && *rmap != 'W' && *rmap != ' ')
 		{
 			printf("\nError\nIllegal character %c detected on map.\n", *rmap);
 			ft_error_handler(ERROR_MAP_F, cub);
@@ -36,7 +36,7 @@ void	check_player(char *rmap, t_cub *cub)
 	while (*rmap)
 	{
 		if (*rmap == 'N' || *rmap == 'S' || *rmap == 'E'
-			|| *rmap == 'W' || *rmap == 'P')
+			|| *rmap == 'W')
 			player++;
 		if (*rmap == '0')
 			cero++;

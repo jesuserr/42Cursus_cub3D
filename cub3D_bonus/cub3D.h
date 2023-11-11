@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3D.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jesuserr <jesuserr@student.42.fr>          +#+  +:+       +#+        */
+/*   By: cescanue <cescanue@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 19:32:37 by cescanue          #+#    #+#             */
-/*   Updated: 2023/11/11 20:13:00 by jesuserr         ###   ########.fr       */
+/*   Updated: 2023/11/11 20:59:33 by cescanue         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@
 # define WIDTH			1200
 # define HEIGHT			900
 # define DEF_COLOR		0xf26e04	// Wall RGB color
+# define DEF_DOOR		1			// Door tag
 # define WHITE			0xFFFFFF
 # define PI				3.141592654
 # define INC_OFFSET		4			// Player movement pixels,wall size multiple
