@@ -6,7 +6,7 @@
 /*   By: jesuserr <jesuserr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 19:32:37 by cescanue          #+#    #+#             */
-/*   Updated: 2023/11/10 10:06:48 by jesuserr         ###   ########.fr       */
+/*   Updated: 2023/11/11 20:19:11 by jesuserr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,11 +49,11 @@
 ** -.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-
 **                              HEADERS
 */
-# include "libft/includes/get_next_line.h"
-# include "libft/includes/ft_printf.h"
-# include "libft/includes/libft.h"
-# include "mlx.h"
-# include "minilibx_macos/mlx_error.h"
+# include "../libft/includes/get_next_line.h"
+# include "../libft/includes/ft_printf.h"
+# include "../libft/includes/libft.h"
+# include "../minilibx_macos/mlx.h"
+# include "../minilibx_macos/mlx_error.h"
 # include <fcntl.h>	// for open
 # include <math.h>
 # include "controls.h"
@@ -237,7 +237,6 @@ void	draw_vert_line(t_line line, t_cub *cub);
 void	draw_square(t_cub *cub, t_point square, int size);
 void	on_screen_minimap(t_cub *cub);
 /*		hooks.c				*/
-int		mouse_move(int x, int y, t_cub *cub);
 int		key_pressed(int keycode, t_cub *cub);
 int		key_released(int keycode, t_cub *cub);
 void	reset_player(t_cub *cub);

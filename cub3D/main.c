@@ -6,7 +6,7 @@
 /*   By: jesuserr <jesuserr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/03 17:44:36 by cescanue          #+#    #+#             */
-/*   Updated: 2023/11/10 10:02:00 by jesuserr         ###   ########.fr       */
+/*   Updated: 2023/11/11 20:19:26 by jesuserr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,6 @@ int	main(int argc, char **argv)
 		mlx_hook(cub.mlx_win, 2, 0, key_pressed, &cub);
 		mlx_loop_hook(cub.mlx, ray_casting, &cub);
 		mlx_hook(cub.mlx_win, 3, 0, key_released, &cub);
-		mlx_hook(cub.mlx_win, 6, 0, mouse_move, &cub);
 		mlx_loop(cub.mlx);
 	}
 	return (EXIT_SUCCESS);

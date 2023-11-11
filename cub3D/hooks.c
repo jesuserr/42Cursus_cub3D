@@ -3,39 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   hooks.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cescanue <cescanue@student.42barcelona.    +#+  +:+       +#+        */
+/*   By: jesuserr <jesuserr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 19:33:16 by cescanue          #+#    #+#             */
-/*   Updated: 2023/11/09 21:14:01 by cescanue         ###   ########.fr       */
+/*   Updated: 2023/11/11 20:18:34 by jesuserr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
-
-int	mouse_move(int x, int y, t_cub *cub)
-{
-	if (cub->key.mouse_x != 0 && x > -1 && x < WIDTH && y > -1 && y < HEIGHT)
-	{
-		if (cub->key.mouse_x > x)
-		{
-			cub->player.angle += ROT_ANG_MOUSE;
-			if (cub->player.angle >= 360)
-				cub->player.angle = 0;
-			calc_player_vector(cub);
-		}
-		else if (cub->key.mouse_x < x)
-		{
-			cub->player.angle -= ROT_ANG_MOUSE;
-			if (cub->player.angle < 0)
-				cub->player.angle = 360 - ROT_ANG_MOUSE;
-			calc_player_vector(cub);
-		}
-		cub->key.mouse_x = x;
-	}
-	if (!cub->key.mouse_x && x > -1 && x < WIDTH && y > -1 && y < HEIGHT)
-		cub->key.mouse_x = x;
-	return (0);
-}
 
 int	key_pressed(int keycode, t_cub *cub)
 {
