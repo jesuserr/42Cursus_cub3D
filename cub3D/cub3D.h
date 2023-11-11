@@ -6,7 +6,7 @@
 /*   By: jesuserr <jesuserr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 19:32:37 by cescanue          #+#    #+#             */
-/*   Updated: 2023/11/11 20:19:11 by jesuserr         ###   ########.fr       */
+/*   Updated: 2023/11/11 20:31:55 by jesuserr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -231,11 +231,8 @@ void	free_character(t_cub *cub);
 void	mlx_put_pixel(t_cub *cub, int x, int y, int color);
 void	draw_line(t_line line, t_cub *cub);
 void	line_direction(t_line *line, t_line_aux *line_aux);
-void	draw_pointer(t_cub *cub);
-void	draw_vert_line(t_line line, t_cub *cub);
-/*		graphics_2.c		*/
 void	draw_square(t_cub *cub, t_point square, int size);
-void	on_screen_minimap(t_cub *cub);
+void	draw_vert_line(t_line line, t_cub *cub);
 /*		hooks.c				*/
 int		key_pressed(int keycode, t_cub *cub);
 int		key_released(int keycode, t_cub *cub);

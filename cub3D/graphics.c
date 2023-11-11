@@ -6,7 +6,7 @@
 /*   By: jesuserr <jesuserr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/06 16:03:40 by jesuserr          #+#    #+#             */
-/*   Updated: 2023/11/08 15:41:57 by jesuserr         ###   ########.fr       */
+/*   Updated: 2023/11/11 20:36:06 by jesuserr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 void	mlx_put_pixel(t_cub *cub, int x, int y, int color);
 void	draw_line(t_line line, t_cub *cub);
 void	line_direction(t_line *line, t_line_aux *line_aux);
-void	draw_pointer(t_cub *cub);
+void	draw_square(t_cub *cub, t_point square, int size);
 void	draw_vert_line(t_line line, t_cub *cub);
 
 void	mlx_put_pixel(t_cub *cub, int x, int y, int color)
@@ -66,16 +66,26 @@ void	line_direction(t_line *line, t_line_aux *line_aux)
 		line_aux->sy = -1;
 }
 
-void	draw_pointer(t_cub *cub)
+void	draw_square(t_cub *cub, t_point square, int size)
 {
-	t_line	line;
+	int		x;
+	int		y;
+	int		x_copy;
 
-	line.x0 = cub->player.x_pos;
-	line.y0 = cub->player.y_pos;
-	line.x1 = line.x0 + WALL_SIZE / 1.5 * cos(cub->player.angle * PI / 180);
-	line.y1 = line.y0 - WALL_SIZE / 1.5 * sin(cub->player.angle * PI / 180);
-	line.color = 0x0000FF;
-	draw_line(line, cub);
+	y = 0;
+	while (y < size)
+	{
+		x = 0;
+		x_copy = square.x;
+		while (x < size)
+		{
+			mlx_put_pixel(cub, x_copy, square.y, square.color);
+			x_copy++;
+			x++;
+		}
+		square.y++;
+		y++;
+	}
 }
 
 /* Optimized version of funct. draw_line for lines that are totally vertical */

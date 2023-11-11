@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ray_casting.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cescanue <cescanue@student.42barcelona.    +#+  +:+       +#+        */
+/*   By: jesuserr <jesuserr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 21:51:50 by cescanue          #+#    #+#             */
-/*   Updated: 2023/11/09 21:51:53 by cescanue         ###   ########.fr       */
+/*   Updated: 2023/11/11 20:30:49 by jesuserr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,9 +38,6 @@ int	ray_casting(t_cub *cub)
 		ray_angle = ray_angle - ((float)FOV / (float)WIDTH);
 		casted_rays++;
 	}
-	if (cub->key.map_on_screen == 1)
-		on_screen_minimap(cub);
-	//draw_pointer(cub);
 	mlx_put_image_to_window(cub->mlx, cub->mlx_win, cub->img.img, 0, 0);
 	cha_hook((cub));
 	key_actions(cub);
