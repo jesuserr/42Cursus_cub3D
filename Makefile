@@ -72,11 +72,11 @@ $(NAME): $(OBJS) $(LIBFT_DIR)libft.a $(LIBX_DIR)libmlx.a
 	@echo ${GREEN}"cub3D Compiled!\n"${NC};
 -include $(DEPS)
 
-bonus: $(NAME_BONUS)
+bonus: makelibft makelibx $(NAME_BONUS)
 
 $(NAME_BONUS): $(OBJS_BONUS) $(LIBFT_DIR)libft.a $(LIBX_DIR)libmlx.a
 	$(CC) $(CFLAGS) $(OBJS_BONUS) $(LIBFT_DIR)libft.a $(LIBX) -o $@
-	@echo ${GREEN}"cub3D Compiled!\n"${NC};
+	@echo ${GREEN}"cub3D Bonus Compiled!\n"${NC};
 -include $(DEPS_BONUS)
 
 clean:
