@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   character_bonus.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jesuserr <jesuserr@student.42.fr>          +#+  +:+       +#+        */
+/*   By: cescanue <cescanue@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 17:37:12 by cescanue          #+#    #+#             */
-/*   Updated: 2023/11/11 20:03:54 by jesuserr         ###   ########.fr       */
+/*   Updated: 2023/11/11 21:44:42 by cescanue         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3D.h"
+#include "cub3D_bonus.h"
 
 t_list	**load_character_sprites(char *path, int scale, t_cub *cub)
 {

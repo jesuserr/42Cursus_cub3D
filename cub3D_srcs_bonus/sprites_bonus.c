@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   sprites_bonus.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jesuserr <jesuserr@student.42.fr>          +#+  +:+       +#+        */
+/*   By: cescanue <cescanue@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 13:47:14 by cescanue          #+#    #+#             */
-/*   Updated: 2023/11/11 20:05:21 by jesuserr         ###   ########.fr       */
+/*   Updated: 2023/11/11 21:46:03 by cescanue         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3D.h"
+#include "cub3D_bonus.h"
 
 t_txt	*ft_putimgtolstscale(int scale, t_txt *img, t_cub *cub)
 {

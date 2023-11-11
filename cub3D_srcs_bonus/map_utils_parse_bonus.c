@@ -6,11 +6,11 @@
 /*   By: cescanue <cescanue@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/30 11:42:12 by cescanue          #+#    #+#             */
-/*   Updated: 2023/11/11 20:58:17 by cescanue         ###   ########.fr       */
+/*   Updated: 2023/11/11 21:45:42 by cescanue         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3D.h"
+#include "cub3D_bonus.h"
 
 void	parse_map_set(t_parse *p, t_cub *cub)
 {

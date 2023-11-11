@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   graphics_2_bonus.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jesuserr <jesuserr@student.42.fr>          +#+  +:+       +#+        */
+/*   By: cescanue <cescanue@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/24 20:03:49 by jesuserr          #+#    #+#             */
-/*   Updated: 2023/11/11 20:04:28 by jesuserr         ###   ########.fr       */
+/*   Updated: 2023/11/11 21:45:20 by cescanue         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3D.h"
+#include "cub3D_bonus.h"
 
 void	draw_square(t_cub *cub, t_point square, int size)
 {

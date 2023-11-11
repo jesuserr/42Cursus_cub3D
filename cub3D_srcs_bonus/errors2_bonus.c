@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   errors2_bonus.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jesuserr <jesuserr@student.42.fr>          +#+  +:+       +#+        */
+/*   By: cescanue <cescanue@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 20:51:22 by cescanue          #+#    #+#             */
-/*   Updated: 2023/11/11 20:04:21 by jesuserr         ###   ########.fr       */
+/*   Updated: 2023/11/11 21:45:17 by cescanue         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3D.h"
+#include "cub3D_bonus.h"
 
 void	ft_dellsti(void *img)
 {

@@ -6,11 +6,11 @@
 /*   By: cescanue <cescanue@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/30 13:56:56 by cescanue          #+#    #+#             */
-/*   Updated: 2023/11/11 20:49:21 by cescanue         ###   ########.fr       */
+/*   Updated: 2023/11/11 21:45:36 by cescanue         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3D.h"
+#include "cub3D_bonus.h"
 
 void	check_mapch(char *rmap, t_cub *cub)
 {

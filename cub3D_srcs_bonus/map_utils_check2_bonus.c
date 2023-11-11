@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   map_utils_check2_bonus.c                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jesuserr <jesuserr@student.42.fr>          +#+  +:+       +#+        */
+/*   By: cescanue <cescanue@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/30 21:36:37 by cescanue          #+#    #+#             */
-/*   Updated: 2023/11/11 20:04:51 by jesuserr         ###   ########.fr       */
+/*   Updated: 2023/11/11 21:45:39 by cescanue         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3D.h"
+#include "cub3D_bonus.h"
 
 void	freearray(char **mapa, int y)
 {

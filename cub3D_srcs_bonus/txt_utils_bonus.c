@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   txt_utils_bonus.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jesuserr <jesuserr@student.42.fr>          +#+  +:+       +#+        */
+/*   By: cescanue <cescanue@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/03 15:48:41 by cescanue          #+#    #+#             */
-/*   Updated: 2023/11/11 20:05:31 by jesuserr         ###   ########.fr       */
+/*   Updated: 2023/11/11 21:46:09 by cescanue         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3D.h"
+#include "cub3D_bonus.h"
 
 t_txt	*load_txt(char *file, t_cub *cub)
 {

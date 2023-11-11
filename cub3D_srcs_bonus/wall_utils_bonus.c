@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   wall_utils_bonus.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jesuserr <jesuserr@student.42.fr>          +#+  +:+       +#+        */
+/*   By: cescanue <cescanue@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 08:21:31 by cescanue          #+#    #+#             */
-/*   Updated: 2023/11/11 20:05:36 by jesuserr         ###   ########.fr       */
+/*   Updated: 2023/11/11 21:46:12 by cescanue         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3D.h"
+#include "cub3D_bonus.h"
 
 void	draw_floor_and_ceiling(t_cub *cub);
 void	draw_wall(t_cub *cub, t_ray_cast *vert, t_ray_cast *horz, float x);
