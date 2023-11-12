@@ -6,7 +6,7 @@
 /*   By: cescanue <cescanue@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/03 17:45:04 by cescanue          #+#    #+#             */
-/*   Updated: 2023/11/09 21:32:18 by cescanue         ###   ########.fr       */
+/*   Updated: 2023/11/12 20:36:50 by cescanue         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,16 +32,12 @@ void	ft_error_handler(int error, t_cub *cub)
 		ft_printf ("%s\nError\nThe map format is not correct\n", RED);
 	else if (error == ERROR_TXT)
 		ft_printf ("%s\nError\nError in some of the textures\n", RED);
-	else if (error == ERROR_SPRITE)
-		ft_printf ("%s\nError\nError in some of the sprites\n", RED);
 	close_window(cub, EXIT_FAILURE);
 }
 
 int	close_window(t_cub *cub, int exitcode)
 {
 	free_textures(cub);
-	free_character(cub);
-	free_enemy(cub);
 	close_cmaps(cub);
 	if (cub->map)
 		free(cub->map);
@@ -99,16 +95,6 @@ void	close_cmaps(t_cub *cub)
 		free(cub->cmap->t_no);
 	if (cub->cmap && cub->cmap->t_ea)
 		free(cub->cmap->t_ea);
-	if (cub->cmap && cub->cmap->s_enemy)
-		free(cub->cmap->s_enemy);
-	if (cub->cmap && cub->cmap->cha_u)
-		free(cub->cmap->cha_u);
-	if (cub->cmap && cub->cmap->cha_d)
-		free(cub->cmap->cha_d);
-	if (cub->cmap && cub->cmap->cha_l)
-		free(cub->cmap->cha_l);
-	if (cub->cmap && cub->cmap->cha_r)
-		free(cub->cmap->cha_r);
 	if (cub->cmap)
 		free(cub->cmap);
 }

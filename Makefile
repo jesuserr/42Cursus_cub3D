@@ -14,10 +14,9 @@ LIBFT_DIR = libft/
 LIBX_DIR = minilibx_macos/
 
 NAME = cub3D
-SRCS = errors.c errors2.c graphics.c hooks.c main.c map_utils.c map_utils2.c \
+SRCS = errors.c graphics.c hooks.c main.c map_utils.c map_utils2.c \
 map_utils_parse.c map_utils_check.c map_utils_check2.c moves.c ray_casting.c \
-raycast_utils.c wall_utils.c txt_utils.c sprites.c sprites2.c enemy.c \
-character.c
+raycast_utils.c wall_utils.c txt_utils.c 
 PATH_SRCS = ./srcs/
 PATH_OBJS = ./srcs/objs/
 PATH_DEPS = ./srcs/objs/

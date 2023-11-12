@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3D.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jesuserr <jesuserr@student.42.fr>          +#+  +:+       +#+        */
+/*   By: cescanue <cescanue@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 19:32:37 by cescanue          #+#    #+#             */
-/*   Updated: 2023/11/11 22:08:36 by jesuserr         ###   ########.fr       */
+/*   Updated: 2023/11/12 20:37:04 by cescanue         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,6 @@
 # define ERROR_COLOR_F		6
 # define ERROR_MAP_F		7
 # define ERROR_TXT			8
-# define ERROR_SPRITE		9
 
 # define WIDTH			1200
 # define HEIGHT			900
@@ -140,11 +139,6 @@ typedef struct s_map
 	char		*t_so;
 	char		*t_ea;
 	char		*t_we;
-	char		*s_enemy;
-	char		*cha_u;
-	char		*cha_d;
-	char		*cha_l;
-	char		*cha_r;
 	int			c_f;
 	int			c_c;
 }	t_map;
@@ -167,22 +161,6 @@ typedef struct s_txt
 	float	offset;
 }	t_txt;
 
-typedef struct s_enemy
-{
-	t_list	**sprites;
-	t_txt	*current;
-}	t_enemy;
-
-typedef struct s_character
-{
-	t_list	**cu;
-	t_list	**cd;
-	t_list	**cl;
-	t_list	**cr;
-	t_txt	*current;
-	int		timer;
-}	t_character;
-
 typedef struct s_cub
 {
 	t_keys		key;
@@ -198,8 +176,6 @@ typedef struct s_cub
 	t_player	player;
 	t_map		*cmap;
 	t_txt		*textures[5];
-	t_enemy		*enemy;
-	t_character	*cha;
 	t_ray_cast	horz;
 	t_ray_cast	vert;
 }	t_cub;
@@ -213,9 +189,6 @@ void	ft_error_handler(int error, t_cub *cub);
 int		close_window(t_cub *cub, int exitcode);
 void	close_cmaps(t_cub *cub);
 void	free_textures(t_cub *cub);
-/*		errors2.c		*/
-void	free_enemy(t_cub *cub);
-void	free_character(t_cub *cub);
 /*		graphics.c		*/
 void	mlx_put_pixel(t_cub *cub, int x, int y, int color);
 void	draw_vert_line(t_line line, t_cub *cub);
@@ -252,17 +225,5 @@ void	calc_line_height(t_line *line, t_cub *cub, t_txt *txt);
 /*		txt_utils.c 		*/
 t_txt	*load_txt(char *file, t_cub *cub);
 void	load_textures(t_cub *cub);
-/*		sprites.c 		*/
-void	ft_loadimgs(char *path, t_list **lst, int scale, t_cub *cub);
-t_txt	*move_sprite(t_list *lst, void *current);
-/*		sprites2.c 		*/
-t_txt	*scale_img(t_txt *img, int scale, t_cub *cub);
-/*		enemy.c*/
-void	load_enemy(t_cub *cub);
-void	move_enemy(t_enemy *enemy, t_cub *cub);
-/*		character.c*/
-void	load_character(int scale, t_cub *cub);
-void	cha_hook(t_cub *cub);
-void	cha_releasekey(t_cub *cub);
 
 #endif

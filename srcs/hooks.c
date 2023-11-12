@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   hooks.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jesuserr <jesuserr@student.42.fr>          +#+  +:+       +#+        */
+/*   By: cescanue <cescanue@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 19:33:16 by cescanue          #+#    #+#             */
-/*   Updated: 2023/11/11 20:26:49 by jesuserr         ###   ########.fr       */
+/*   Updated: 2023/11/12 20:35:22 by cescanue         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,6 @@ int	key_released(int keycode, t_cub *cub)
 		cub->key.shift_pressed = 0;
 		cub->player.speed = INC_OFFSET;
 	}
-	cha_releasekey(cub);
 	return (0);
 }
 
