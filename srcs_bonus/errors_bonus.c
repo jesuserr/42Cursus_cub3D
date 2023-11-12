@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   errors_bonus.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cescanue <cescanue@student.42barcelona.    +#+  +:+       +#+        */
+/*   By: jesuserr <jesuserr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/03 17:45:04 by cescanue          #+#    #+#             */
-/*   Updated: 2023/11/11 21:45:15 by cescanue         ###   ########.fr       */
+/*   Updated: 2023/11/12 18:25:30 by jesuserr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,6 +99,8 @@ void	close_cmaps(t_cub *cub)
 		free(cub->cmap->t_no);
 	if (cub->cmap && cub->cmap->t_ea)
 		free(cub->cmap->t_ea);
+	if (cub->cmap && cub->cmap->t_door)
+		free(cub->cmap->t_door);
 	if (cub->cmap && cub->cmap->s_enemy)
 		free(cub->cmap->s_enemy);
 	if (cub->cmap && cub->cmap->cha_u)

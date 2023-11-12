@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   raycast_utils_bonus.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cescanue <cescanue@student.42barcelona.    +#+  +:+       +#+        */
+/*   By: jesuserr <jesuserr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/26 19:24:03 by jesuserr          #+#    #+#             */
-/*   Updated: 2023/11/11 21:45:59 by cescanue         ###   ########.fr       */
+/*   Updated: 2023/11/12 18:48:48 by jesuserr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,11 @@ void	init_ray_casters(t_cub *cub, t_ray_cast *ver, t_ray_cast *hor, float a)
 	hor->ray_angle = degrees_to_radians(cub->player.angle, a);
 	hor->depth_of_field = 0;
 	hor->ray_length = WIDTH * HEIGHT;
+	hor->door_hit = 0;
 	ver->ray_angle = degrees_to_radians(cub->player.angle, a);
 	ver->depth_of_field = 0;
 	ver->ray_length = WIDTH * HEIGHT;
+	ver->door_hit = 0;
 }
 
 double	degrees_to_radians(int angle_degrees, float inc_angle)

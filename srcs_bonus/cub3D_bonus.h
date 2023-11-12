@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3D_bonus.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cescanue <cescanue@student.42barcelona.    +#+  +:+       +#+        */
+/*   By: jesuserr <jesuserr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 19:32:37 by cescanue          #+#    #+#             */
-/*   Updated: 2023/11/11 21:47:26 by cescanue         ###   ########.fr       */
+/*   Updated: 2023/11/12 22:27:16 by jesuserr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@
 # define WIDTH			1200
 # define HEIGHT			900
 # define DEF_COLOR		0xf26e04	// Wall RGB color
-# define DEF_DOOR		1			// Door tag
+# define DEF_DOOR		0x77AAFF	// Door tag
 # define WHITE			0xFFFFFF
 # define PI				3.141592654
 # define INC_OFFSET		4			// Player movement pixels,wall size multiple
@@ -108,7 +108,8 @@ typedef struct s_ray_cast
 	float	x_offset;
 	float	y_offset;
 	double	ray_angle;
-	float	ray_length;	
+	float	ray_length;
+	int		door_hit;
 }	t_ray_cast;
 
 typedef struct s_point
@@ -152,6 +153,7 @@ typedef struct s_map
 	char		*t_so;
 	char		*t_ea;
 	char		*t_we;
+	char		*t_door;
 	char		*s_enemy;
 	char		*cha_u;
 	char		*cha_d;
@@ -209,7 +211,7 @@ typedef struct s_cub
 	t_img		img;
 	t_player	player;
 	t_map		*cmap;
-	t_txt		*textures[5];
+	t_txt		*textures[7];
 	t_enemy		*enemy;
 	t_character	*cha;
 	t_ray_cast	horz;
@@ -232,11 +234,12 @@ void	free_character(t_cub *cub);
 void	mlx_put_pixel(t_cub *cub, int x, int y, int color);
 void	draw_line(t_line line, t_cub *cub);
 void	line_direction(t_line *line, t_line_aux *line_aux);
-void	draw_pointer(t_cub *cub);
 void	draw_vert_line(t_line line, t_cub *cub);
+void	draw_floor_and_ceiling(t_cub *cub);
 /*		graphics_2.c		*/
 void	draw_square(t_cub *cub, t_point square, int size);
 void	on_screen_minimap(t_cub *cub);
+void	draw_texture(t_line line, t_cub *cub, t_txt *txt, float offset);
 /*		hooks.c				*/
 int		mouse_move(int x, int y, t_cub *cub);
 int		key_pressed(int keycode, t_cub *cub);
@@ -265,9 +268,7 @@ void	draw_shorter_ray(t_cub *cub, t_ray_cast *vert, t_ray_cast *horz);
 void	check_first_corner_exception(t_cub *cub, t_ray_cast *v, t_ray_cast *h);
 void	calc_player_vector(t_cub *cub);
 /*		wall_utils.c 		*/
-void	draw_floor_and_ceiling(t_cub *cub);
 void	draw_wall(t_cub *cub, t_ray_cast *vert, t_ray_cast *horz, float x);
-void	draw_texture(t_line line, t_cub *cub, t_txt *txt, float offset);
 void	calc_line_height(t_line *line, t_cub *cub, t_txt *txt);
 /*		txt_utils.c 		*/
 t_txt	*load_txt(char *file, t_cub *cub);

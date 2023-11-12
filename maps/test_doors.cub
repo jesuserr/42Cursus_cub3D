@@ -1,0 +1,18 @@
+EA ./textures/128-png/002.png
+WE ./textures/128-png/014.png
+SO ./textures/128-png/050.png
+NO ./textures/128-png/008.png
+
+DO ./textures/128-png/126.png
+
+F 113,113,113
+C 56,56,56
+
+111111111
+100000001
+1111D1111
+101000101
+10D0S0D01
+101000101
+1111D1111
+111111111

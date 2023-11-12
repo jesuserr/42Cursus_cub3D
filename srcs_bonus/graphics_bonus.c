@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   graphics_bonus.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cescanue <cescanue@student.42barcelona.    +#+  +:+       +#+        */
+/*   By: jesuserr <jesuserr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/06 16:03:40 by jesuserr          #+#    #+#             */
-/*   Updated: 2023/11/11 21:45:22 by cescanue         ###   ########.fr       */
+/*   Updated: 2023/11/12 21:51:13 by jesuserr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,8 @@
 void	mlx_put_pixel(t_cub *cub, int x, int y, int color);
 void	draw_line(t_line line, t_cub *cub);
 void	line_direction(t_line *line, t_line_aux *line_aux);
-void	draw_pointer(t_cub *cub);
 void	draw_vert_line(t_line line, t_cub *cub);
+void	draw_floor_and_ceiling(t_cub *cub);
 
 void	mlx_put_pixel(t_cub *cub, int x, int y, int color)
 {
@@ -66,18 +66,6 @@ void	line_direction(t_line *line, t_line_aux *line_aux)
 		line_aux->sy = -1;
 }
 
-void	draw_pointer(t_cub *cub)
-{
-	t_line	line;
-
-	line.x0 = cub->player.x_pos;
-	line.y0 = cub->player.y_pos;
-	line.x1 = line.x0 + WALL_SIZE / 1.5 * cos(cub->player.angle * PI / 180);
-	line.y1 = line.y0 - WALL_SIZE / 1.5 * sin(cub->player.angle * PI / 180);
-	line.color = 0x0000FF;
-	draw_line(line, cub);
-}
-
 /* Optimized version of funct. draw_line for lines that are totally vertical */
 /* as the ones used to draw solid walls. Since it doesn't need complex */
 /* calculations the color can be written directly in the memory just */
@@ -95,6 +83,27 @@ void	draw_vert_line(t_line line, t_cub *cub)
 	{
 		*(unsigned int *)dst = line.color;
 		dst = dst + (cub->img.bpp / 8 * WIDTH);
+		i++;
+	}
+}
+
+void	draw_floor_and_ceiling(t_cub *cub)
+{
+	char	*dst;
+	int		i;
+
+	dst = cub->img.addr;
+	i = 0;
+	while (i < WIDTH * HEIGHT / 2)
+	{
+		*(unsigned int *)dst = cub->cmap->c_c;
+		dst = dst + cub->img.bpp / 8;
+		i++;
+	}
+	while (i < WIDTH * HEIGHT)
+	{
+		*(unsigned int *)dst = cub->cmap->c_f;
+		dst = dst + cub->img.bpp / 8;
 		i++;
 	}
 }

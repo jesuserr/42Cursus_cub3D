@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ray_casting_bonus.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cescanue <cescanue@student.42barcelona.    +#+  +:+       +#+        */
+/*   By: jesuserr <jesuserr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 21:51:50 by cescanue          #+#    #+#             */
-/*   Updated: 2023/11/11 21:45:55 by cescanue         ###   ########.fr       */
+/*   Updated: 2023/11/12 21:05:54 by jesuserr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,6 @@ int	ray_casting(t_cub *cub)
 	}
 	if (cub->key.map_on_screen == 1)
 		on_screen_minimap(cub);
-	//draw_pointer(cub);
 	mlx_put_image_to_window(cub->mlx, cub->mlx_win, cub->img.img, 0, 0);
 	cha_hook((cub));
 	key_actions(cub);
@@ -59,7 +58,7 @@ void	draw_minimap_and_player(t_cub *cub)
 		square.x = cub->map[i].x;
 		square.y = cub->map[i].y;
 		square.color = cub->map[i].color;
-		if (square.color != 0)
+		if (square.color == DEF_COLOR || square.color == DEF_DOOR)
 			draw_square(cub, square, WALL_SIZE - 1);
 		i++;
 	}
@@ -140,6 +139,8 @@ void	check_hit_to_wall(t_cub *cub, t_ray_cast *cast)
 			cast->ray_length = cos(cast->ray_angle) * \
 			(cast->ray_x - cub->player.x_pos) - sin(cast->ray_angle) * \
 			(cast->ray_y - cub->player.y_pos);
+			if (cub->map[cast->map_pos].color == DEF_DOOR)
+				cast->door_hit = 1;
 			break ;
 		}
 		else

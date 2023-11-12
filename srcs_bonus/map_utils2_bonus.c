@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_utils2_bonus.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cescanue <cescanue@student.42barcelona.    +#+  +:+       +#+        */
+/*   By: jesuserr <jesuserr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/30 11:44:56 by cescanue          #+#    #+#             */
-/*   Updated: 2023/11/11 21:45:45 by cescanue         ###   ########.fr       */
+/*   Updated: 2023/11/12 18:23:53 by jesuserr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,6 +92,8 @@ void	read_text_colors2(char **line, int count, t_cub *cub)
 		cub->cmap->t_ea = get_text(&(*line)[count + 2], cub);
 	else if (!ft_strncmp(&(*line)[count], "WE", 2))
 		cub->cmap->t_we = get_text(&(*line)[count + 2], cub);
+	else if (!ft_strncmp(&(*line)[count], "DO", 2))
+		cub->cmap->t_door = get_text(&(*line)[count + 2], cub);
 	else if (!ft_strncmp(&(*line)[count], "ENEMY", 5))
 		cub->cmap->s_enemy = get_text(&(*line)[count + 5], cub);
 	else if (!ft_strncmp(&(*line)[count], "CU", 2))
