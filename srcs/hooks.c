@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   hooks.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cescanue <cescanue@student.42barcelona.    +#+  +:+       +#+        */
+/*   By: jesuserr <jesuserr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 19:33:16 by cescanue          #+#    #+#             */
-/*   Updated: 2023/11/12 20:35:22 by cescanue         ###   ########.fr       */
+/*   Updated: 2023/11/13 22:54:39 by jesuserr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ int	key_pressed(int keycode, t_cub *cub)
 	else if (keycode == SHIFT_KEY)
 	{
 		cub->key.shift_pressed = 1;
-		cub->player.speed *= 2;
+		cub->player.speed = INC_OFFSET * 2;
 	}
 	return (0);
 }

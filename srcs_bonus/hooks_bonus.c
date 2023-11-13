@@ -6,7 +6,7 @@
 /*   By: jesuserr <jesuserr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 19:33:16 by cescanue          #+#    #+#             */
-/*   Updated: 2023/11/13 10:01:09 by jesuserr         ###   ########.fr       */
+/*   Updated: 2023/11/13 22:56:31 by jesuserr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,7 @@ int	key_pressed_2(int keycode, t_cub *cub)
 	if (keycode == SHIFT_KEY)
 	{
 		cub->key.shift_pressed = 1;
-		cub->player.speed *= 2;
+		cub->player.speed = INC_OFFSET * 2;
 		cub->player.zoom = PLAYER_ZOOM / 1.1;
 		load_character(cub->player.size / 1.05, cub);
 	}
