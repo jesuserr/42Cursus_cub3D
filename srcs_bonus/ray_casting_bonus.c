@@ -6,7 +6,7 @@
 /*   By: jesuserr <jesuserr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 21:51:50 by cescanue          #+#    #+#             */
-/*   Updated: 2023/11/12 21:05:54 by jesuserr         ###   ########.fr       */
+/*   Updated: 2023/11/12 23:52:08 by jesuserr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -140,7 +140,10 @@ void	check_hit_to_wall(t_cub *cub, t_ray_cast *cast)
 			(cast->ray_x - cub->player.x_pos) - sin(cast->ray_angle) * \
 			(cast->ray_y - cub->player.y_pos);
 			if (cub->map[cast->map_pos].color == DEF_DOOR)
+			{
+				cast->ray_length += WALL_SIZE / 16;
 				cast->door_hit = 1;
+			}
 			break ;
 		}
 		else

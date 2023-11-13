@@ -6,7 +6,7 @@
 /*   By: jesuserr <jesuserr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 19:32:37 by cescanue          #+#    #+#             */
-/*   Updated: 2023/11/12 22:27:16 by jesuserr         ###   ########.fr       */
+/*   Updated: 2023/11/13 00:34:03 by jesuserr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,8 @@
 # define FOV			64			// Field of view (even number)
 # define VERT_SCALE		1			// Modifies wall height in screen
 # define DIST_TO_WALL	8			// Multiple of WALL_SIZE
-# define PLAYER_SIZE	10
+# define PLAYER_SIZE	10			// Player Size
+# define PLAYER_ZOOM	1.5			// Portion of player's body shown
 
 /*
 ** -.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-
@@ -93,6 +94,7 @@ typedef struct s_player
 	int		orig_y_pos;
 	int		orig_angle;
 	int		size;
+	float	zoom;
 }	t_player;
 
 typedef struct s_ray_cast

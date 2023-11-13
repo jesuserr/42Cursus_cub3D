@@ -3,14 +3,20 @@
 /*                                                        :::      ::::::::   */
 /*   hooks_bonus.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cescanue <cescanue@student.42barcelona.    +#+  +:+       +#+        */
+/*   By: jesuserr <jesuserr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 19:33:16 by cescanue          #+#    #+#             */
-/*   Updated: 2023/11/11 21:45:25 by cescanue         ###   ########.fr       */
+/*   Updated: 2023/11/13 00:50:41 by jesuserr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D_bonus.h"
+
+int		mouse_move(int x, int y, t_cub *cub);
+int		key_pressed(int keycode, t_cub *cub);
+int		key_pressed_2(int keycode, t_cub *cub);
+int		key_released(int keycode, t_cub *cub);
+void	reset_player(t_cub *cub);
 
 int	mouse_move(int x, int y, t_cub *cub)
 {
@@ -57,10 +63,17 @@ int	key_pressed(int keycode, t_cub *cub)
 		cub->key.right_pressed = 1;
 	else if (keycode == O_KEY)
 		reset_player(cub);
-	else if (keycode == SHIFT_KEY)
+	return (key_pressed_2(keycode, cub));
+}
+
+int	key_pressed_2(int keycode, t_cub *cub)
+{
+	if (keycode == SHIFT_KEY)
 	{
 		cub->key.shift_pressed = 1;
 		cub->player.speed *= 2;
+		cub->player.zoom = PLAYER_ZOOM / 1.1;
+		load_character(cub->player.size / 1.05, cub);
 	}
 	return (0);
 }
@@ -83,6 +96,8 @@ int	key_released(int keycode, t_cub *cub)
 	{
 		cub->key.shift_pressed = 0;
 		cub->player.speed = INC_OFFSET;
+		cub->player.zoom = PLAYER_ZOOM;
+		load_character(cub->player.size, cub);
 	}
 	cha_releasekey(cub);
 	return (0);

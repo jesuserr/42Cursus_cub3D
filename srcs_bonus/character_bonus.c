@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   character_bonus.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cescanue <cescanue@student.42barcelona.    +#+  +:+       +#+        */
+/*   By: jesuserr <jesuserr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 17:37:12 by cescanue          #+#    #+#             */
-/*   Updated: 2023/11/11 21:44:42 by cescanue         ###   ########.fr       */
+/*   Updated: 2023/11/13 00:51:16 by jesuserr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,14 +30,19 @@ t_list	**load_character_sprites(char *path, int scale, t_cub *cub)
 
 void	load_character(int scale, t_cub *cub)
 {
-	ft_printf("Loading character.. ");
+	static int	i = 0;
+
+	if (i == 0)
+		ft_printf("Loading character.. ");
 	if (!cub->cha)
 		cub->cha = ft_calloc(1, sizeof(t_character));
 	cub->cha->cr = load_character_sprites(cub->cmap->cha_r, scale, cub);
 	cub->cha->cl = load_character_sprites(cub->cmap->cha_l, scale, cub);
 	cub->cha->cd = load_character_sprites(cub->cmap->cha_d, scale, cub);
 	cub->cha->cu = load_character_sprites(cub->cmap->cha_u, scale, cub);
-	ft_printf("OK!\n");
+	if (i == 0)
+		ft_printf("OK!\n");
+	i++;
 }
 
 void	cha_hook(t_cub *cub)
@@ -58,7 +63,7 @@ void	cha_hook(t_cub *cub)
 	if (cub->cha && cub->cha->current)
 		mlx_put_image_to_window(cub->mlx, cub->mlx_win, \
 		cub->cha->current->img.img, (WIDTH / 2) - cub->cha->current->w / 2, \
-		HEIGHT - (cub->cha->current->h / 1.5));
+		HEIGHT - (cub->cha->current->h / cub->player.zoom));
 }
 
 void	cha_releasekey(t_cub *cub)
