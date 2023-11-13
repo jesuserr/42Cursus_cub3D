@@ -3,15 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   moves_bonus.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cescanue <cescanue@student.42barcelona.    +#+  +:+       +#+        */
+/*   By: jesuserr <jesuserr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/14 11:47:50 by jesuserr          #+#    #+#             */
-/*   Updated: 2023/11/11 21:45:52 by cescanue         ###   ########.fr       */
+/*   Updated: 2023/11/13 22:31:48 by jesuserr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D_bonus.h"
 
+void	key_actions(t_cub *cub);
 void	key_a_pressed(t_cub *cub);
 void	key_d_pressed(t_cub *cub);
 void	key_w_pressed(t_cub *cub);

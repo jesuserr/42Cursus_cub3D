@@ -6,11 +6,17 @@
 /*   By: jesuserr <jesuserr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/13 10:01:16 by jesuserr          #+#    #+#             */
-/*   Updated: 2023/11/13 19:04:16 by jesuserr         ###   ########.fr       */
+/*   Updated: 2023/11/13 22:29:54 by jesuserr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D_bonus.h"
+
+void	init_doors(t_cub *cub);
+void	detect_door(t_cub *cub);
+void	assign_start_time(t_cub *cub, int pos);
+long	get_time_ms(void);
+void	scan_doors(t_cub *cub);
 
 void	init_doors(t_cub *cub)
 {

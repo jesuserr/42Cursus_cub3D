@@ -25,9 +25,8 @@ NAME_BONUS = cub3D_bonus
 SRCS_BONUS = errors_bonus.c errors2_bonus.c graphics_bonus.c hooks_bonus.c \
 main_bonus.c map_utils_bonus.c map_utils2_bonus.c map_utils_parse_bonus.c \
 map_utils_check_bonus.c map_utils_check2_bonus.c moves_bonus.c \
-ray_casting_bonus.c graphics_2_bonus.c raycast_utils_bonus.c \
-wall_utils_bonus.c txt_utils_bonus.c sprites_bonus.c sprites2_bonus.c \
-character_bonus.c doors_bonus.c
+ray_casting_bonus.c raycast_utils_bonus.c wall_utils_bonus.c txt_utils_bonus.c \
+sprites_bonus.c sprites2_bonus.c character_bonus.c doors_bonus.c
 PATH_SRCS_BONUS = ./srcs_bonus/
 PATH_OBJS_BONUS = ./srcs_bonus/objs_bonus/
 PATH_DEPS_BONUS = ./srcs_bonus/objs_bonus/

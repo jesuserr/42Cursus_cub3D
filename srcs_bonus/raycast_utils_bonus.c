@@ -6,7 +6,7 @@
 /*   By: jesuserr <jesuserr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/26 19:24:03 by jesuserr          #+#    #+#             */
-/*   Updated: 2023/11/12 18:48:48 by jesuserr         ###   ########.fr       */
+/*   Updated: 2023/11/13 22:07:05 by jesuserr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 
 void	init_ray_casters(t_cub *cub, t_ray_cast *ver, t_ray_cast *hor, float a);
 double	degrees_to_radians(int angle_degrees, float inc_angle);
-void	draw_shorter_ray(t_cub *cub, t_ray_cast *vert, t_ray_cast *horz);
 void	check_first_corner_exception(t_cub *cub, t_ray_cast *v, t_ray_cast *h);
 void	calc_player_vector(t_cub *cub);
 
@@ -40,27 +39,6 @@ double	degrees_to_radians(int angle_degrees, float inc_angle)
 	while (angle_radians < 0)
 		angle_radians += 2 * PI;
 	return (angle_radians);
-}
-
-void	draw_shorter_ray(t_cub *cub, t_ray_cast *vert, t_ray_cast *horz)
-{
-	t_line	line;
-
-	line.x0 = cub->player.x_pos;
-	line.y0 = cub->player.y_pos;
-	if (vert->ray_length < horz->ray_length)
-	{
-		line.x1 = vert->ray_x;
-		line.y1 = vert->ray_y;
-		line.color = 0xFF00FF;
-	}
-	else
-	{
-		line.x1 = horz->ray_x;
-		line.y1 = horz->ray_y;
-		line.color = 0xFFFF00;
-	}
-	draw_line(line, cub);
 }
 
 void	check_first_corner_exception(t_cub *cub, t_ray_cast *v, t_ray_cast *h)
