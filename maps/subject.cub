@@ -1,7 +1,7 @@
-EA ./textures/eagle.png
-SO ./textures/mossy.png
-WE ./textures/redbrick.png
-NO ./textures/greystone.png
+EA ./textures/128-png/002.png
+WE ./textures/128-png/014.png
+SO ./textures/128-png/050.png
+NO ./textures/128-png/008.png
 F 220,100,0
 C 225,30,0
         1111111111111111111111111
