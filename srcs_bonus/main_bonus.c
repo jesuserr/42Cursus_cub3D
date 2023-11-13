@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main_bonus.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jesuserr <jesuserr@student.42.fr>          +#+  +:+       +#+        */
+/*   By: cescanue <cescanue@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/03 17:44:36 by cescanue          #+#    #+#             */
-/*   Updated: 2023/11/13 15:23:19 by jesuserr         ###   ########.fr       */
+/*   Updated: 2023/11/13 20:31:05 by cescanue         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,6 @@ int	main(int argc, char **argv)
 	init_struct(&cub);
 	load_textures(&cub);
 	load_character(cub.player.size, &cub);
-	load_enemy(&cub);
 	if (cub.map)
 	{
 		ray_casting(&cub);

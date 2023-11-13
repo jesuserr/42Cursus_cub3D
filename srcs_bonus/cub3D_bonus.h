@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3D_bonus.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jesuserr <jesuserr@student.42.fr>          +#+  +:+       +#+        */
+/*   By: cescanue <cescanue@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 19:32:37 by cescanue          #+#    #+#             */
-/*   Updated: 2023/11/13 19:10:19 by jesuserr         ###   ########.fr       */
+/*   Updated: 2023/11/13 20:32:12 by cescanue         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -158,7 +158,6 @@ typedef struct s_map
 	char		*t_ea;
 	char		*t_we;
 	char		*t_door;
-	char		*s_enemy;
 	char		*cha_u;
 	char		*cha_d;
 	char		*cha_l;
@@ -184,12 +183,6 @@ typedef struct s_txt
 	float	scale;
 	float	offset;
 }	t_txt;
-
-typedef struct s_enemy
-{
-	t_list	**sprites;
-	t_txt	*current;
-}	t_enemy;
 
 typedef struct s_character
 {
@@ -223,7 +216,6 @@ typedef struct s_cub
 	t_player	player;
 	t_map		*cmap;
 	t_txt		*textures[7];
-	t_enemy		*enemy;
 	t_character	*cha;
 	t_ray_cast	horz;
 	t_ray_cast	vert;
@@ -239,7 +231,6 @@ int		close_window(t_cub *cub, int exitcode);
 void	close_cmaps(t_cub *cub);
 void	free_textures(t_cub *cub);
 /*		errors2_bonus.c				*/
-void	free_enemy(t_cub *cub);
 void	free_character(t_cub *cub);
 /*		graphics_bonus.c			*/
 void	mlx_put_pixel(t_cub *cub, int x, int y, int color);
@@ -289,9 +280,6 @@ void	ft_loadimgs(char *path, t_list **lst, int scale, t_cub *cub);
 t_txt	*move_sprite(t_list *lst, void *current);
 /*		sprites2_bonus.c 			*/
 t_txt	*scale_img(t_txt *img, int scale, t_cub *cub);
-/*		enemy_bonus.c				*/
-void	load_enemy(t_cub *cub);
-void	move_enemy(t_enemy *enemy, t_cub *cub);
 /*		character_bonus.c			*/
 void	load_character(int scale, t_cub *cub);
 void	cha_hook(t_cub *cub);

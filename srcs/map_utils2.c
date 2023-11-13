@@ -6,7 +6,7 @@
 /*   By: cescanue <cescanue@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/30 11:44:56 by cescanue          #+#    #+#             */
-/*   Updated: 2023/11/12 20:36:12 by cescanue         ###   ########.fr       */
+/*   Updated: 2023/11/13 20:55:06 by cescanue         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,18 +84,23 @@ char	*get_text(char *line, t_cub *cub)
 
 void	read_text_colors2(char **line, int count, t_cub *cub)
 {
-	if (!ft_strncmp(&(*line)[count], "NO", 2))
+	if (!ft_strncmp(&(*line)[count], "NO ", 3))
 		cub->cmap->t_no = get_text(&(*line)[count + 2], cub);
-	else if (!ft_strncmp(&(*line)[count], "SO", 2))
+	else if (!ft_strncmp(&(*line)[count], "SO ", 3))
 		cub->cmap->t_so = get_text(&(*line)[count + 2], cub);
-	else if (!ft_strncmp(&(*line)[count], "EA", 2))
+	else if (!ft_strncmp(&(*line)[count], "EA ", 3))
 		cub->cmap->t_ea = get_text(&(*line)[count + 2], cub);
-	else if (!ft_strncmp(&(*line)[count], "WE", 2))
+	else if (!ft_strncmp(&(*line)[count], "WE ", 3))
 		cub->cmap->t_we = get_text(&(*line)[count + 2], cub);
-	else if (!ft_strncmp(&(*line)[count], "C", 1))
+	else if (!ft_strncmp(&(*line)[count], "C ", 2))
 		cub->cmap->c_c = textrgbtoint(&(*line)[count], cub);
-	else if (!ft_strncmp(&(*line)[count], "F", 1))
+	else if (!ft_strncmp(&(*line)[count], "F ", 2))
 		cub->cmap->c_f = textrgbtoint(&(*line)[count], cub);
+	else if ((*line)[count] != '\n' && (*line)[count] != '1')
+	{
+		ft_printf("\nError\nUnexpected key %s", &(*line)[count]);
+		ft_error_handler(ERROR_MAP_F, cub);
+	}
 }
 
 void	read_text_colors(int fd, char **line, t_cub *cub)

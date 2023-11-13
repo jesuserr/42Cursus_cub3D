@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ray_casting_bonus.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jesuserr <jesuserr@student.42.fr>          +#+  +:+       +#+        */
+/*   By: cescanue <cescanue@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 21:51:50 by cescanue          #+#    #+#             */
-/*   Updated: 2023/11/13 18:16:06 by jesuserr         ###   ########.fr       */
+/*   Updated: 2023/11/13 21:12:31 by cescanue         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

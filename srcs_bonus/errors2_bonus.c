@@ -6,7 +6,7 @@
 /*   By: cescanue <cescanue@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 20:51:22 by cescanue          #+#    #+#             */
-/*   Updated: 2023/11/11 21:45:17 by cescanue         ###   ########.fr       */
+/*   Updated: 2023/11/13 20:32:20 by cescanue         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,17 +18,6 @@ void	ft_dellsti(void *img)
 		mlx_destroy_image(((t_txt *)img)->img.mlx, ((t_txt *)img)->img.img);
 	if (((t_txt *)img))
 		free(((t_img *)img));
-}
-
-void	free_enemy(t_cub *cub)
-{
-	if (cub->enemy && cub->enemy->sprites)
-	{
-		ft_lstclear(cub->enemy->sprites, ft_dellsti);
-		free(cub->enemy->sprites);
-	}
-	if (cub->enemy)
-		free(cub->enemy);
 }
 
 void	free_character(t_cub *cub)

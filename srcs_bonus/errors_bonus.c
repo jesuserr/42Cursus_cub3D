@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   errors_bonus.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jesuserr <jesuserr@student.42.fr>          +#+  +:+       +#+        */
+/*   By: cescanue <cescanue@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/03 17:45:04 by cescanue          #+#    #+#             */
-/*   Updated: 2023/11/12 18:25:30 by jesuserr         ###   ########.fr       */
+/*   Updated: 2023/11/13 20:32:02 by cescanue         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,6 @@ int	close_window(t_cub *cub, int exitcode)
 {
 	free_textures(cub);
 	free_character(cub);
-	free_enemy(cub);
 	close_cmaps(cub);
 	if (cub->map)
 		free(cub->map);
@@ -101,8 +100,6 @@ void	close_cmaps(t_cub *cub)
 		free(cub->cmap->t_ea);
 	if (cub->cmap && cub->cmap->t_door)
 		free(cub->cmap->t_door);
-	if (cub->cmap && cub->cmap->s_enemy)
-		free(cub->cmap->s_enemy);
 	if (cub->cmap && cub->cmap->cha_u)
 		free(cub->cmap->cha_u);
 	if (cub->cmap && cub->cmap->cha_d)

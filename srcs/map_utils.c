@@ -6,7 +6,7 @@
 /*   By: cescanue <cescanue@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/24 21:08:23 by cescanue          #+#    #+#             */
-/*   Updated: 2023/11/07 14:30:49 by cescanue         ###   ########.fr       */
+/*   Updated: 2023/11/13 20:37:50 by cescanue         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,6 +84,12 @@ char	*read_map(char *file, t_cub *cub)
 	char	*line;
 	char	*smap;
 
+	if (!ft_strnstr(file, ".cub", ft_strlen(file))
+		&& !ft_strnstr(file, ".CUB", ft_strlen(file)))
+	{
+		ft_printf("\nError\nThe map file is not .cub extension");
+		ft_error_handler(ERROR_MAP_F, cub);
+	}
 	smap = 0;
 	fd = open(file, O_RDONLY);
 	if (fd == -1)
