@@ -6,7 +6,7 @@
 /*   By: jesuserr <jesuserr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/13 10:01:16 by jesuserr          #+#    #+#             */
-/*   Updated: 2023/11/13 22:29:54 by jesuserr         ###   ########.fr       */
+/*   Updated: 2023/11/13 22:40:09 by jesuserr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,26 +40,26 @@ void	init_doors(t_cub *cub)
 
 void	detect_door(t_cub *cub)
 {
-	int	position;
+	int	player_position;
 	int	angle;
 	int	index;
 
 	index = 0;
 	angle = cub->player.angle;
-	position = (cub->player.y_pos / WALL_SIZE) * cub->x_elem + \
+	player_position = (cub->player.y_pos / WALL_SIZE) * cub->x_elem + \
 	(cub->player.x_pos / WALL_SIZE);
-	if (cub->map[position + 1].color == DEF_DOOR && (angle <= 45 || \
+	if (cub->map[player_position + 1].color == DEF_DOOR && (angle <= 45 || \
 	angle >= 315))
-		index = position + 1;
-	else if (cub->map[position - 1].color == DEF_DOOR && (angle >= 135 && \
-	angle <= 225))
-		index = position - 1;
-	else if (cub->map[position + (cub->x_elem)].color == DEF_DOOR && \
+		index = player_position + 1;
+	else if (cub->map[player_position - 1].color == DEF_DOOR && (angle >= 135 \
+	&& angle <= 225))
+		index = player_position - 1;
+	else if (cub->map[player_position + (cub->x_elem)].color == DEF_DOOR && \
 	(angle >= 225 && angle <= 315))
-		index = position + (cub->x_elem);
-	else if (cub->map[position - (cub->x_elem)].color == DEF_DOOR && \
+		index = player_position + (cub->x_elem);
+	else if (cub->map[player_position - (cub->x_elem)].color == DEF_DOOR && \
 	(angle >= 45 && angle <= 135))
-		index = position - (cub->x_elem);
+		index = player_position - (cub->x_elem);
 	if (index != 0)
 	{
 		cub->map[index].color = 0;
@@ -93,16 +93,18 @@ long	get_time_ms(void)
 
 void	scan_doors(t_cub *cub)
 {
-	int		i;
+	int	i;
+	int	player_position;
 
 	i = 0;
+	player_position = (cub->player.y_pos / WALL_SIZE) * cub->x_elem + \
+	(cub->player.x_pos / WALL_SIZE);
 	while (cub->doors[i].map_pos != 0)
 	{
 		if (cub->doors[i].start_time != 0)
 		{
 			if ((get_time_ms() - cub->doors[i].start_time > DOOR_DELAY) && \
-			((cub->player.y_pos / WALL_SIZE) * cub->x_elem + \
-			(cub->player.x_pos / WALL_SIZE) != cub->doors[i].map_pos))
+			(player_position != cub->doors[i].map_pos))
 			{
 				cub->map[cub->doors[i].map_pos].color = DEF_DOOR;
 				cub->doors[i].start_time = 0;
