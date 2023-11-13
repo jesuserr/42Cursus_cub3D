@@ -6,7 +6,7 @@
 /*   By: jesuserr <jesuserr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 19:32:37 by cescanue          #+#    #+#             */
-/*   Updated: 2023/11/13 00:34:03 by jesuserr         ###   ########.fr       */
+/*   Updated: 2023/11/13 10:03:38 by jesuserr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -224,68 +224,70 @@ typedef struct s_cub
 ** -.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-
 **                        FUNCTION PROTOTYPES
 */
-/*		errors.c		*/
+/*		errors_bonus.c				*/
 void	ft_error_handler(int error, t_cub *cub);
 int		close_window(t_cub *cub, int exitcode);
 void	close_cmaps(t_cub *cub);
 void	free_textures(t_cub *cub);
-/*		errors2.c		*/
+/*		errors2_bonus.c				*/
 void	free_enemy(t_cub *cub);
 void	free_character(t_cub *cub);
-/*		graphics.c		*/
+/*		graphics_bonus.c			*/
 void	mlx_put_pixel(t_cub *cub, int x, int y, int color);
 void	draw_line(t_line line, t_cub *cub);
 void	line_direction(t_line *line, t_line_aux *line_aux);
 void	draw_vert_line(t_line line, t_cub *cub);
 void	draw_floor_and_ceiling(t_cub *cub);
-/*		graphics_2.c		*/
+/*		graphics_2_bonus.c			*/
 void	draw_square(t_cub *cub, t_point square, int size);
 void	on_screen_minimap(t_cub *cub);
-void	draw_texture(t_line line, t_cub *cub, t_txt *txt, float offset);
-/*		hooks.c				*/
+/*		hooks_bonus.c				*/
 int		mouse_move(int x, int y, t_cub *cub);
 int		key_pressed(int keycode, t_cub *cub);
 int		key_released(int keycode, t_cub *cub);
 void	reset_player(t_cub *cub);
-/*		map_utils.c				*/
+/*		map_utils_bonus.c			*/
 void	init_map(char *file, t_cub *cub);
-/*		map_utils2.c				*/
+/*		map_utils2_bonus.c			*/
 void	read_text_colors(int fd, char **line, t_cub *cub);
-/*		map_utils_parse.c		*/
+/*		map_utils_parse_bonus.c		*/
 t_point	*parse_map(t_cub *cub);
-/*		map_utils_check.c		*/
+/*		map_utils_check_bonus.c		*/
 int		check_map(t_cub *cub);
-/*		map_utils_check.c		*/
+/*		map_utils_check_bonus.c		*/
 char	**str_to_array(int lx, int ly, char *smap, t_cub *cub);
-/*		map_utils_check2.c		*/
+/*		map_utils_check2_bonus.c	*/
 void	check_limits(t_cub *cub);
-/*		moves.c				*/
+/*		moves_bonus.c				*/
 void	key_actions(t_cub *cub);
-/*		ray_casting.c		*/
+/*		ray_casting_bonus.c			*/
 int		ray_casting(t_cub *cub);
-/*		raycast_utils.c 		*/
+/*		raycast_utils_bonus.c 		*/
 void	init_ray_casters(t_cub *cub, t_ray_cast *ver, t_ray_cast *hor, float a);
 double	degrees_to_radians(int angle_degrees, float inc_angle);
 void	draw_shorter_ray(t_cub *cub, t_ray_cast *vert, t_ray_cast *horz);
 void	check_first_corner_exception(t_cub *cub, t_ray_cast *v, t_ray_cast *h);
 void	calc_player_vector(t_cub *cub);
-/*		wall_utils.c 		*/
+/*		wall_utils_bonus.c 			*/
 void	draw_wall(t_cub *cub, t_ray_cast *vert, t_ray_cast *horz, float x);
 void	calc_line_height(t_line *line, t_cub *cub, t_txt *txt);
-/*		txt_utils.c 		*/
+void	draw_texture(t_line line, t_cub *cub, t_txt *txt, float offset);
+/*		txt_utils_bonus.c 			*/
 t_txt	*load_txt(char *file, t_cub *cub);
 void	load_textures(t_cub *cub);
-/*		sprites.c 		*/
+/*		sprites_bonus.c 			*/
 void	ft_loadimgs(char *path, t_list **lst, int scale, t_cub *cub);
 t_txt	*move_sprite(t_list *lst, void *current);
-/*		sprites2.c 		*/
+/*		sprites2_bonus.c 			*/
 t_txt	*scale_img(t_txt *img, int scale, t_cub *cub);
-/*		enemy.c*/
+/*		enemy_bonus.c				*/
 void	load_enemy(t_cub *cub);
 void	move_enemy(t_enemy *enemy, t_cub *cub);
-/*		character.c*/
+/*		character_bonus.c			*/
 void	load_character(int scale, t_cub *cub);
 void	cha_hook(t_cub *cub);
 void	cha_releasekey(t_cub *cub);
+/*		doors_bonus.c				*/
+void	detect_door(t_cub *cub);
 
 #endif

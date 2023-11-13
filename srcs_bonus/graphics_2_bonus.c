@@ -6,7 +6,7 @@
 /*   By: jesuserr <jesuserr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/24 20:03:49 by jesuserr          #+#    #+#             */
-/*   Updated: 2023/11/12 22:25:45 by jesuserr         ###   ########.fr       */
+/*   Updated: 2023/11/13 09:43:50 by jesuserr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 
 void	draw_square(t_cub *cub, t_point square, int size);
 void	on_screen_minimap(t_cub *cub);
-void	draw_texture(t_line line, t_cub *cub, t_txt *txt, float offset);
 
 void	draw_square(t_cub *cub, t_point square, int size)
 {
@@ -63,33 +62,4 @@ void	on_screen_minimap(t_cub *cub)
 	square.y = (square.y / WALL_SIZE) + 10;
 	square.color = 0xFFFFFF;
 	draw_square(cub, square, cub->key.map_scale / 2);
-}
-
-void	draw_texture(t_line line, t_cub *cub, t_txt *txt, float offset)
-{
-	char	*canvas;
-	char	*texture;
-	float	step;
-	int		i;
-
-	canvas = cub->img.addr + (line.x0 * cub->img.bpp / 8);
-	canvas = canvas + (line.y0 * cub->img.bpp / 8 * WIDTH);
-	texture = txt->img.addr + (txt->img.bpp / 8 * ((int)(offset) % WALL_SIZE) \
-	* txt->w / WALL_SIZE);
-	if ((float)txt->w / (float)WALL_SIZE < 1)
-		texture = txt->img.addr + (txt->img.bpp / 8 * (((int)(offset) % \
-		WALL_SIZE) / (WALL_SIZE / txt->w)));
-	step = txt->scale * txt->offset;
-	i = 0;
-	while (i++ < (line.y1 - line.y0))
-	{
-		*(unsigned int *)canvas = *(unsigned int *)texture;
-		canvas = canvas + (cub->img.bpp / 8 * WIDTH);
-		step = step + txt->scale;
-		while (step >= 1)
-		{
-			texture = texture + (txt->img.bpp / 8 * txt->w);
-			step--;
-		}
-	}
 }
