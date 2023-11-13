@@ -6,7 +6,7 @@
 /*   By: jesuserr <jesuserr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/03 17:44:36 by cescanue          #+#    #+#             */
-/*   Updated: 2023/11/13 00:11:27 by jesuserr         ###   ########.fr       */
+/*   Updated: 2023/11/13 15:23:19 by jesuserr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ void	init_struct(t_cub *cub)
 	cub->player.size = HEIGHT / PLAYER_SIZE / 7;
 	cub->player.zoom = PLAYER_ZOOM;
 	calc_player_vector(cub);
+	init_doors(cub);
 }
 
 int	main(int argc, char **argv)

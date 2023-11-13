@@ -10,10 +10,11 @@
 * ~~mejorar sistema de colisiones jesuserr~~
 * ~~investigar como usar el ratón y combinar movimientos (avanzar y girar a la vez, por ejemplo)~~
 * ~~implementar texturas de cualquier tamaño (64x64 ok)~~
-* implementar puertas
+* ~~implementar puertas~~
 * ~~implementar sprites animados~~
-* dividir mandatory / bonus
-
+* ~~dividir mandatory / bonus~~
+* limpiar bonus
+* probar mapas / errores / revisar evaluation sheet
 
 ## Notes
 

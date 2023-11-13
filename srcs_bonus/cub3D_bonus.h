@@ -6,7 +6,7 @@
 /*   By: jesuserr <jesuserr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 19:32:37 by cescanue          #+#    #+#             */
-/*   Updated: 2023/11/13 10:03:38 by jesuserr         ###   ########.fr       */
+/*   Updated: 2023/11/13 19:10:19 by jesuserr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,7 @@
 # define DIST_TO_WALL	8			// Multiple of WALL_SIZE
 # define PLAYER_SIZE	10			// Player Size
 # define PLAYER_ZOOM	1.5			// Portion of player's body shown
+# define DOOR_DELAY		5000		// Door delay in ms
 
 /*
 ** -.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-
@@ -60,6 +61,7 @@
 # include <math.h>
 # include "controls_bonus.h"
 # include <stdio.h>	// for printf
+# include <sys/time.h>  // for timer
 
 /*
 ** -.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-
@@ -199,6 +201,12 @@ typedef struct s_character
 	int		timer;
 }	t_character;
 
+typedef struct s_doors
+{
+	int		map_pos;
+	size_t	start_time;
+}	t_doors;
+
 typedef struct s_cub
 {
 	t_keys		key;
@@ -209,6 +217,7 @@ typedef struct s_cub
 	int			y_elem;
 	int			mapconsistency;
 	int			timer;
+	t_doors		doors[1000];
 	t_point		*map;
 	t_img		img;
 	t_player	player;
@@ -288,6 +297,10 @@ void	load_character(int scale, t_cub *cub);
 void	cha_hook(t_cub *cub);
 void	cha_releasekey(t_cub *cub);
 /*		doors_bonus.c				*/
+void	init_doors(t_cub *cub);
 void	detect_door(t_cub *cub);
+void	assign_start_time(t_cub *cub, int pos);
+long	get_time_ms(void);
+void	scan_doors(t_cub *cub);
 
 #endif
