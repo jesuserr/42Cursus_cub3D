@@ -6,7 +6,7 @@
 /*   By: cescanue <cescanue@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 20:51:22 by cescanue          #+#    #+#             */
-/*   Updated: 2023/11/14 20:54:16 by cescanue         ###   ########.fr       */
+/*   Updated: 2023/11/14 21:28:36 by cescanue         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,30 @@ void	ft_dellsti(void *img)
 		free(((t_img *)img));
 }
 
+void	free_character2(t_cub *cub)
+{
+	t_list		**tmp;
+	t_character	*ctmp;
+
+	if (cub->cha && cub->cha->cr)
+	{
+		tmp = cub->cha->cr;
+		cub->cha->cr = 0;
+		ft_lstclear(tmp, ft_dellsti);
+		free(tmp);
+	}
+	if (cub->cha)
+	{
+		ctmp = cub->cha;
+		cub->cha = 0;
+		free(ctmp);
+	}
+}
+
 void	free_character(t_cub *cub)
 {
-	t_list **tmp;
+	t_list	**tmp;
+
 	if (cub->cha && cub->cha->cu)
 	{
 		tmp = cub->cha->cu;
@@ -44,16 +65,5 @@ void	free_character(t_cub *cub)
 		ft_lstclear(tmp, ft_dellsti);
 		free(tmp);
 	}
-	if (cub->cha && cub->cha->cr)
-	{
-		tmp = cub->cha->cr;
-		cub->cha->cr = 0;
-		ft_lstclear(tmp, ft_dellsti);
-		free(tmp);
-	}
-	if (cub->cha)
-	{
-		free(cub->cha);
-		cub->cha = 0;
-	}
+	free_character2(cub);
 }

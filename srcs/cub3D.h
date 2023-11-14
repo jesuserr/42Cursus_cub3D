@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3D.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jesuserr <jesuserr@student.42.fr>          +#+  +:+       +#+        */
+/*   By: cescanue <cescanue@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 19:32:37 by cescanue          #+#    #+#             */
-/*   Updated: 2023/11/14 13:05:40 by jesuserr         ###   ########.fr       */
+/*   Updated: 2023/11/14 21:52:07 by cescanue         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -201,6 +201,8 @@ void	reset_player(t_cub *cub);
 void	init_map(char *file, t_cub *cub);
 /*		map_utils2.c				*/
 void	read_text_colors(int fd, char **line, t_cub *cub);
+/*		map_utils3.c				*/
+int		textrgbtoint(char *line, t_cub *cub);
 /*		map_utils_parse.c		*/
 t_point	*parse_map(t_cub *cub);
 /*		map_utils_check.c		*/

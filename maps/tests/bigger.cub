@@ -1,11 +1,8 @@
-R 1920 1080
-
 NO ./textures/planks.xpm
 SO ./textures/enemy1.xpm
 WE ./textures/torch.xpm
 EA ./textures/attack_torch.xpm
 
-S ./textures/creeper.xpm
 F 113,113,113
 C 56,56,56
 
