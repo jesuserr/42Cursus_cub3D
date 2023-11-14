@@ -6,7 +6,7 @@
 /*   By: jesuserr <jesuserr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/26 19:24:03 by jesuserr          #+#    #+#             */
-/*   Updated: 2023/11/13 22:07:05 by jesuserr         ###   ########.fr       */
+/*   Updated: 2023/11/14 13:26:33 by jesuserr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@ void	init_ray_casters(t_cub *cub, t_ray_cast *ver, t_ray_cast *hor, float a);
 double	degrees_to_radians(int angle_degrees, float inc_angle);
 void	check_first_corner_exception(t_cub *cub, t_ray_cast *v, t_ray_cast *h);
 void	calc_player_vector(t_cub *cub);
+float	wall_height_and_color(t_line *line, t_cub *cub);
 
 void	init_ray_casters(t_cub *cub, t_ray_cast *ver, t_ray_cast *hor, float a)
 {
@@ -66,4 +67,25 @@ void	calc_player_vector(t_cub *cub)
 		cub->player.offset_y = DIST_TO_WALL;
 	else
 		cub->player.offset_y = -DIST_TO_WALL;
+}
+
+float	wall_height_and_color(t_line *line, t_cub *cub)
+{
+	float	wall_height;
+
+	if (cub->vert.ray_length < cub->horz.ray_length)
+	{
+		wall_height = cub->vert.ray_length;
+		line->color = 0x0000FC;
+		if (cub->vert.ray_angle > (PI / 2) && cub->vert.ray_angle < (1.5 * PI))
+			line->color = 0x0368AC;
+	}
+	else
+	{
+		wall_height = cub->horz.ray_length;
+		line->color = 0x0000A4;
+		if (cub->horz.ray_angle > PI && cub->horz.ray_angle < (2 * PI))
+			line->color = 0x0098FD;
+	}
+	return (wall_height);
 }

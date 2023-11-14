@@ -6,7 +6,7 @@
 /*   By: jesuserr <jesuserr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 08:21:31 by cescanue          #+#    #+#             */
-/*   Updated: 2023/11/13 09:43:41 by jesuserr         ###   ########.fr       */
+/*   Updated: 2023/11/14 13:26:27 by jesuserr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,6 @@ void	draw_wall(t_cub *cub, t_ray_cast *vert, t_ray_cast *horz, float ray)
 	t_line	line;
 	int		index;
 
-	line.color = 0x0000FC;
 	line.x0 = ray;
 	line.x1 = ray;
 	index = choose_texture(cub, vert, horz);
@@ -98,20 +97,15 @@ void	calc_line_height(t_line *line, t_cub *cub, t_txt *txt)
 	float	wall_height;
 	float	eye_angle;
 
-	if (txt)
-		txt->offset = 0;
-	if (cub->vert.ray_length < cub->horz.ray_length)
-		wall_height = cub->vert.ray_length;
-	else
-	{
-		wall_height = cub->horz.ray_length;
-		line->color = 0x0000A4;
-	}
+	wall_height = wall_height_and_color(line, cub);
 	eye_angle = degrees_to_radians(cub->player.angle, 0) - cub->horz.ray_angle;
 	wall_height = HEIGHT * WALL_SIZE / (wall_height * cos(eye_angle));
 	wall_height *= VERT_SCALE;
 	if (txt)
+	{
+		txt->offset = 0;
 		txt->scale = (float)txt->h / wall_height;
+	}
 	if (wall_height > HEIGHT)
 	{
 		if (txt)
