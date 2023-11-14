@@ -6,7 +6,7 @@
 /*   By: jesuserr <jesuserr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/06 16:03:40 by jesuserr          #+#    #+#             */
-/*   Updated: 2023/11/11 22:05:11 by jesuserr         ###   ########.fr       */
+/*   Updated: 2023/11/14 09:06:40 by jesuserr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 void	mlx_put_pixel(t_cub *cub, int x, int y, int color);
 void	draw_vert_line(t_line line, t_cub *cub);
+void	draw_floor_and_ceiling(t_cub *cub);
 
 void	mlx_put_pixel(t_cub *cub, int x, int y, int color)
 {
@@ -35,6 +36,27 @@ void	draw_vert_line(t_line line, t_cub *cub)
 	{
 		*(unsigned int *)dst = line.color;
 		dst = dst + (cub->img.bpp / 8 * WIDTH);
+		i++;
+	}
+}
+
+void	draw_floor_and_ceiling(t_cub *cub)
+{
+	char	*dst;
+	int		i;
+
+	dst = cub->img.addr;
+	i = 0;
+	while (i < WIDTH * HEIGHT / 2)
+	{
+		*(unsigned int *)dst = cub->cmap->c_c;
+		dst = dst + cub->img.bpp / 8;
+		i++;
+	}
+	while (i < WIDTH * HEIGHT)
+	{
+		*(unsigned int *)dst = cub->cmap->c_f;
+		dst = dst + cub->img.bpp / 8;
 		i++;
 	}
 }

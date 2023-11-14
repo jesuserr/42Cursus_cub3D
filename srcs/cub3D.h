@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3D.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cescanue <cescanue@student.42barcelona.    +#+  +:+       +#+        */
+/*   By: jesuserr <jesuserr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 19:32:37 by cescanue          #+#    #+#             */
-/*   Updated: 2023/11/12 20:37:04 by cescanue         ###   ########.fr       */
+/*   Updated: 2023/11/14 13:05:40 by jesuserr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -192,6 +192,7 @@ void	free_textures(t_cub *cub);
 /*		graphics.c		*/
 void	mlx_put_pixel(t_cub *cub, int x, int y, int color);
 void	draw_vert_line(t_line line, t_cub *cub);
+void	draw_floor_and_ceiling(t_cub *cub);
 /*		hooks.c				*/
 int		key_pressed(int keycode, t_cub *cub);
 int		key_released(int keycode, t_cub *cub);
@@ -218,10 +219,11 @@ double	degrees_to_radians(int angle_degrees, float inc_angle);
 void	check_first_corner_exception(t_cub *cub, t_ray_cast *v, t_ray_cast *h);
 void	calc_player_vector(t_cub *cub);
 /*		wall_utils.c 		*/
-void	draw_floor_and_ceiling(t_cub *cub);
 void	draw_wall(t_cub *cub, t_ray_cast *vert, t_ray_cast *horz, float x);
-void	draw_texture(t_line line, t_cub *cub, t_txt *txt, float offset);
+int		choose_texture(t_cub *cub, t_ray_cast *vert, t_ray_cast *horz);
 void	calc_line_height(t_line *line, t_cub *cub, t_txt *txt);
+float	wall_height_and_color(t_line *line, t_cub *cub);
+void	draw_texture(t_line line, t_cub *cub, t_txt *txt, float offset);
 /*		txt_utils.c 		*/
 t_txt	*load_txt(char *file, t_cub *cub);
 void	load_textures(t_cub *cub);

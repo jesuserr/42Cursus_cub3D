@@ -6,45 +6,23 @@
 /*   By: jesuserr <jesuserr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 08:21:31 by cescanue          #+#    #+#             */
-/*   Updated: 2023/11/10 10:20:06 by jesuserr         ###   ########.fr       */
+/*   Updated: 2023/11/14 13:05:18 by jesuserr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
 
-void	draw_floor_and_ceiling(t_cub *cub);
 void	draw_wall(t_cub *cub, t_ray_cast *vert, t_ray_cast *horz, float x);
 int		choose_texture(t_cub *cub, t_ray_cast *vert, t_ray_cast *horz);
 void	calc_line_height(t_line *line, t_cub *cub, t_txt *txt);
+float	wall_height_and_color(t_line *line, t_cub *cub);
 void	draw_texture(t_line line, t_cub *cub, t_txt *txt, float offset);
-
-void	draw_floor_and_ceiling(t_cub *cub)
-{
-	char	*dst;
-	int		i;
-
-	dst = cub->img.addr;
-	i = 0;
-	while (i < WIDTH * HEIGHT / 2)
-	{
-		*(unsigned int *)dst = cub->cmap->c_c;
-		dst = dst + cub->img.bpp / 8;
-		i++;
-	}
-	while (i < WIDTH * HEIGHT)
-	{
-		*(unsigned int *)dst = cub->cmap->c_f;
-		dst = dst + cub->img.bpp / 8;
-		i++;
-	}
-}
 
 void	draw_wall(t_cub *cub, t_ray_cast *vert, t_ray_cast *horz, float ray)
 {
 	t_line	line;
 	int		index;
 
-	line.color = 0x0000FC;
 	line.x0 = ray;
 	line.x1 = ray;
 	index = choose_texture(cub, vert, horz);
@@ -85,20 +63,15 @@ void	calc_line_height(t_line *line, t_cub *cub, t_txt *txt)
 	float	wall_height;
 	float	eye_angle;
 
-	if (txt)
-		txt->offset = 0;
-	if (cub->vert.ray_length < cub->horz.ray_length)
-		wall_height = cub->vert.ray_length;
-	else
-	{
-		wall_height = cub->horz.ray_length;
-		line->color = 0x0000A4;
-	}
+	wall_height = wall_height_and_color(line, cub);
 	eye_angle = degrees_to_radians(cub->player.angle, 0) - cub->horz.ray_angle;
 	wall_height = HEIGHT * WALL_SIZE / (wall_height * cos(eye_angle));
 	wall_height *= VERT_SCALE;
 	if (txt)
+	{
+		txt->offset = 0;
 		txt->scale = (float)txt->h / wall_height;
+	}
 	if (wall_height > HEIGHT)
 	{
 		if (txt)
@@ -107,6 +80,27 @@ void	calc_line_height(t_line *line, t_cub *cub, t_txt *txt)
 	}
 	line->y0 = (HEIGHT / 2) - (wall_height / 2);
 	line->y1 = (HEIGHT / 2) + (wall_height / 2);
+}
+
+float	wall_height_and_color(t_line *line, t_cub *cub)
+{
+	float	wall_height;
+
+	if (cub->vert.ray_length < cub->horz.ray_length)
+	{
+		wall_height = cub->vert.ray_length;
+		line->color = 0x0000FC;
+		if (cub->vert.ray_angle > (PI / 2) && cub->vert.ray_angle < (1.5 * PI))
+			line->color = 0x0368AC;
+	}
+	else
+	{
+		wall_height = cub->horz.ray_length;
+		line->color = 0x0000A4;
+		if (cub->horz.ray_angle > PI && cub->horz.ray_angle < (2 * PI))
+			line->color = 0x0098FD;
+	}
+	return (wall_height);
 }
 
 void	draw_texture(t_line line, t_cub *cub, t_txt *txt, float offset)
