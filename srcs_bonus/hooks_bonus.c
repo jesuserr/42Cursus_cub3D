@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   hooks_bonus.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jesuserr <jesuserr@student.42.fr>          +#+  +:+       +#+        */
+/*   By: cescanue <cescanue@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 19:33:16 by cescanue          #+#    #+#             */
-/*   Updated: 2023/11/13 22:56:31 by jesuserr         ###   ########.fr       */
+/*   Updated: 2023/11/14 20:51:37 by cescanue         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,6 +75,7 @@ int	key_pressed_2(int keycode, t_cub *cub)
 		cub->key.shift_pressed = 1;
 		cub->player.speed = INC_OFFSET * 2;
 		cub->player.zoom = PLAYER_ZOOM / 1.1;
+		free_character(cub);
 		load_character(cub->player.size / 1.05, cub);
 	}
 	return (0);
@@ -99,6 +100,7 @@ int	key_released(int keycode, t_cub *cub)
 		cub->key.shift_pressed = 0;
 		cub->player.speed = INC_OFFSET;
 		cub->player.zoom = PLAYER_ZOOM;
+		free_character(cub);
 		load_character(cub->player.size, cub);
 	}
 	cha_releasekey(cub);

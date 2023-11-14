@@ -6,7 +6,7 @@
 /*   By: cescanue <cescanue@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 20:51:22 by cescanue          #+#    #+#             */
-/*   Updated: 2023/11/13 20:32:20 by cescanue         ###   ########.fr       */
+/*   Updated: 2023/11/14 20:54:16 by cescanue         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,26 +22,38 @@ void	ft_dellsti(void *img)
 
 void	free_character(t_cub *cub)
 {
+	t_list **tmp;
 	if (cub->cha && cub->cha->cu)
 	{
-		ft_lstclear(cub->cha->cu, ft_dellsti);
-		free(cub->cha->cu);
+		tmp = cub->cha->cu;
+		cub->cha->cu = 0;
+		ft_lstclear(tmp, ft_dellsti);
+		free(tmp);
 	}
 	if (cub->cha && cub->cha->cd)
 	{
-		ft_lstclear(cub->cha->cd, ft_dellsti);
-		free(cub->cha->cd);
+		tmp = cub->cha->cd;
+		cub->cha->cd = 0;
+		ft_lstclear(tmp, ft_dellsti);
+		free(tmp);
 	}
 	if (cub->cha && cub->cha->cl)
 	{
-		ft_lstclear(cub->cha->cl, ft_dellsti);
-		free(cub->cha->cl);
+		tmp = cub->cha->cl;
+		cub->cha->cl = 0;
+		ft_lstclear(tmp, ft_dellsti);
+		free(tmp);
 	}
 	if (cub->cha && cub->cha->cr)
 	{
-		ft_lstclear(cub->cha->cr, ft_dellsti);
-		free(cub->cha->cr);
+		tmp = cub->cha->cr;
+		cub->cha->cr = 0;
+		ft_lstclear(tmp, ft_dellsti);
+		free(tmp);
 	}
 	if (cub->cha)
+	{
 		free(cub->cha);
+		cub->cha = 0;
+	}
 }
