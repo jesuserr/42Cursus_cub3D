@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   errors_bonus.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cescanue <cescanue@student.42barcelona.    +#+  +:+       +#+        */
+/*   By: jesuserr <jesuserr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/03 17:45:04 by cescanue          #+#    #+#             */
-/*   Updated: 2023/11/13 20:32:02 by cescanue         ###   ########.fr       */
+/*   Updated: 2023/11/14 19:19:42 by jesuserr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,6 +85,11 @@ void	free_textures(t_cub *cub)
 	{
 		mlx_destroy_image(cub->mlx, cub->textures[3]->img.img);
 		free(cub->textures[3]);
+	}
+	if (cub->textures[5])
+	{
+		mlx_destroy_image(cub->mlx, cub->textures[5]->img.img);
+		free(cub->textures[5]);
 	}
 }
 
