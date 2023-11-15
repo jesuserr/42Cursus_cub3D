@@ -3,8 +3,6 @@ SO ./textures/bluestone.png
 WE ./textures/eagle.png
 EA ./textures/wood.png
 
-ENEMY ./sprites/enemy1/
-
 CU ./sprites/character/u/
 CD ./sprites/character/d/
 CL ./sprites/character/l/

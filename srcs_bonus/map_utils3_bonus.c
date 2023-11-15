@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   map_utils3.c                                       :+:      :+:    :+:   */
+/*   map_utils3_bonus.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cescanue <cescanue@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/14 21:50:27 by cescanue          #+#    #+#             */
-/*   Updated: 2023/11/15 09:18:32 by cescanue         ###   ########.fr       */
+/*   Updated: 2023/11/15 09:24:18 by cescanue         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3D.h"
+#include "cub3D_bonus.h"
 
 void	ttorgbcheckcoma(char **line, t_cub *cub)
 {

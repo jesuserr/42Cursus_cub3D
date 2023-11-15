@@ -6,53 +6,11 @@
 /*   By: cescanue <cescanue@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/30 11:44:56 by cescanue          #+#    #+#             */
-/*   Updated: 2023/11/13 20:58:25 by cescanue         ###   ########.fr       */
+/*   Updated: 2023/11/15 10:02:38 by cescanue         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D_bonus.h"
-
-void	ttorgbcheckcoma(char **line, t_cub *cub)
-{
-	int	count;
-
-	count = 0;
-	while (**line >= '0' && **line <= '9')
-	{
-		count++;
-		(*line)++;
-	}
-	if (count > 3 || !count)
-		ft_error_handler(ERROR_COLOR_F, cub);
-}
-
-int	textrgbtoint(char *line, t_cub *cub)
-{
-	int	rgb[3];
-	int	color;
-	int	count;
-
-	if (*(line + 1) != ' ')
-		ft_error_handler(ERROR_COLOR_F, cub);
-	color = 0;
-	while (color < 3)
-	{
-		count = 0;
-		while (*line && *line != '\n' && (*line < '0' || *line > '9'))
-		{
-			if (*line == ',')
-				count++;
-			line++;
-		}
-		if (!*line || *line == '\n' || (color && count != 1))
-			ft_error_handler(ERROR_COLOR_F, cub);
-		rgb[color] = ft_atoi(line);
-		count = 0;
-		ttorgbcheckcoma(&line, cub);
-		color++;
-	}
-	return (((rgb[0] << 16) | (rgb[1] << 8) | rgb[2]));
-}
 
 char	*get_text(char *line, t_cub *cub)
 {
@@ -82,30 +40,39 @@ char	*get_text(char *line, t_cub *cub)
 	return (tmp);
 }
 
+void	read_text_colors3(char **line, int count, t_cub *cub)
+{
+	ft_printf("\nError\nUnexpected key or double key");
+	ft_printf(" %s", &(*line)[count]);
+	ft_error_handler(ERROR_MAP_F, cub);
+}
+
 void	read_text_colors2(char **line, int count, t_cub *cub)
 {
-	if (!ft_strncmp(&(*line)[count], "NO ", 3))
+	if (!cub->cmap->t_no && !ft_strncmp(&(*line)[count], "NO ", 3))
 		cub->cmap->t_no = get_text(&(*line)[count + 2], cub);
-	else if (!ft_strncmp(&(*line)[count], "SO ", 3))
+	else if (!cub->cmap->t_so && !ft_strncmp(&(*line)[count], "SO ", 3))
 		cub->cmap->t_so = get_text(&(*line)[count + 2], cub);
-	else if (!ft_strncmp(&(*line)[count], "EA ", 3))
+	else if (!cub->cmap->t_ea && !ft_strncmp(&(*line)[count], "EA ", 3))
 		cub->cmap->t_ea = get_text(&(*line)[count + 2], cub);
-	else if (!ft_strncmp(&(*line)[count], "WE ", 3))
+	else if (!cub->cmap->t_we && !ft_strncmp(&(*line)[count], "WE ", 3))
 		cub->cmap->t_we = get_text(&(*line)[count + 2], cub);
-	else if (!ft_strncmp(&(*line)[count], "DO ", 3))
+	else if (!cub->cmap->t_door && !ft_strncmp(&(*line)[count], "DO ", 3))
 		cub->cmap->t_door = get_text(&(*line)[count + 2], cub);
-	else if (!ft_strncmp(&(*line)[count], "CU ", 3))
+	else if (!cub->cmap->cha_u && !ft_strncmp(&(*line)[count], "CU ", 3))
 		cub->cmap->cha_u = get_text(&(*line)[count + 2], cub);
-	else if (!ft_strncmp(&(*line)[count], "CD ", 3))
+	else if (!cub->cmap->cha_d && !ft_strncmp(&(*line)[count], "CD ", 3))
 		cub->cmap->cha_d = get_text(&(*line)[count + 2], cub);
-	else if (!ft_strncmp(&(*line)[count], "CL ", 3))
+	else if (!cub->cmap->cha_l && !ft_strncmp(&(*line)[count], "CL ", 3))
 		cub->cmap->cha_l = get_text(&(*line)[count + 2], cub);
-	else if (!ft_strncmp(&(*line)[count], "CR ", 3))
+	else if (!cub->cmap->cha_r && !ft_strncmp(&(*line)[count], "CR ", 3))
 		cub->cmap->cha_r = get_text(&(*line)[count + 2], cub);
-	else if (!ft_strncmp(&(*line)[count], "C ", 2))
+	else if (!cub->cmap->c_c && !ft_strncmp(&(*line)[count], "C ", 2))
 		cub->cmap->c_c = textrgbtoint(&(*line)[count], cub);
-	else if (!ft_strncmp(&(*line)[count], "F ", 2))
+	else if (!cub->cmap->c_f && !ft_strncmp(&(*line)[count], "F ", 2))
 		cub->cmap->c_f = textrgbtoint(&(*line)[count], cub);
+	else if (**line != '\n' && ft_strncmp(&(*line)[count], "1", 1))
+		read_text_colors3(line, count, cub);
 }
 
 void	read_text_colors(int fd, char **line, t_cub *cub)

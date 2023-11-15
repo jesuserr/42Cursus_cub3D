@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3D_bonus.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jesuserr <jesuserr@student.42.fr>          +#+  +:+       +#+        */
+/*   By: cescanue <cescanue@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 19:32:37 by cescanue          #+#    #+#             */
-/*   Updated: 2023/11/14 13:27:01 by jesuserr         ###   ########.fr       */
+/*   Updated: 2023/11/15 09:24:00 by cescanue         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -238,6 +238,8 @@ void	reset_player(t_cub *cub);
 void	init_map(char *file, t_cub *cub);
 /*		map_utils2_bonus.c			*/
 void	read_text_colors(int fd, char **line, t_cub *cub);
+/*		map_utils3_bonus.c				*/
+int		textrgbtoint(char *line, t_cub *cub);
 /*		map_utils_parse_bonus.c		*/
 t_point	*parse_map(t_cub *cub);
 /*		map_utils_check_bonus.c		*/
