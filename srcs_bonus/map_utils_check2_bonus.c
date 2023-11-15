@@ -6,7 +6,7 @@
 /*   By: cescanue <cescanue@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/30 21:36:37 by cescanue          #+#    #+#             */
-/*   Updated: 2023/11/11 21:45:39 by cescanue         ###   ########.fr       */
+/*   Updated: 2023/11/15 13:34:28 by cescanue         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ void	check_limits(t_cub *cub)
 		{
 			mapa = str_to_array(cub->x_elem, cub->y_elem, cub->raw_map, cub);
 			ft_checkmapclose(mapa, count / cub->x_elem,
-				(count % cub->x_elem) - 1, cub);
+				(count % cub->x_elem), cub);
 			freearray(mapa, cub->y_elem);
 			if (cub->mapconsistency)
 			{
