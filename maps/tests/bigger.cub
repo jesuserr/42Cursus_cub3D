@@ -4,7 +4,7 @@ WE ./textures/torch.xpm
 EA ./textures/attack_torch.xpm
 
 F 113,113,113
-C 56,56,56
+C 56,56,56 
 
         111111111111111111111111
         100000000011000000000001

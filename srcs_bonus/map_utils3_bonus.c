@@ -6,7 +6,7 @@
 /*   By: cescanue <cescanue@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/14 21:50:27 by cescanue          #+#    #+#             */
-/*   Updated: 2023/11/15 09:24:18 by cescanue         ###   ########.fr       */
+/*   Updated: 2023/11/15 14:05:32 by cescanue         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,16 @@ void	checkrgbcolor(int color, t_cub *cub)
 	}
 }
 
+void	check_rgb_extra(char *line, t_cub *cub)
+{
+	while (*line)
+	{
+		if (*line != ' ' && *line != '\n')
+			ft_error_handler(ERROR_COLOR_F, cub);
+		line++;
+	}
+}
+
 int	textrgbtoint(char *line, t_cub *cub)
 {
 	int	rgb[3];
@@ -58,9 +68,9 @@ int	textrgbtoint(char *line, t_cub *cub)
 		if (!*line || *line == '\n' || (color && count != 1))
 			ft_error_handler(ERROR_COLOR_F, cub);
 		rgb[color] = ft_atoi(line);
-		checkrgbcolor(rgb[color], cub);
-		color++;
+		checkrgbcolor(rgb[color++], cub);
 		ttorgbcheckcoma(&line, cub);
 	}
+	check_rgb_extra(line, cub);
 	return (((rgb[0] << 16) | (rgb[1] << 8) | rgb[2]));
 }
