@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   character_bonus.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jesuserr <jesuserr@student.42.fr>          +#+  +:+       +#+        */
+/*   By: cescanue <cescanue@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 17:37:12 by cescanue          #+#    #+#             */
-/*   Updated: 2023/11/13 00:51:16 by jesuserr         ###   ########.fr       */
+/*   Updated: 2023/11/16 13:05:31 by cescanue         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,19 +30,23 @@ t_list	**load_character_sprites(char *path, int scale, t_cub *cub)
 
 void	load_character(int scale, t_cub *cub)
 {
-	static int	i = 0;
-
-	if (i == 0)
-		ft_printf("Loading character.. ");
 	if (!cub->cha)
 		cub->cha = ft_calloc(1, sizeof(t_character));
 	cub->cha->cr = load_character_sprites(cub->cmap->cha_r, scale, cub);
 	cub->cha->cl = load_character_sprites(cub->cmap->cha_l, scale, cub);
 	cub->cha->cd = load_character_sprites(cub->cmap->cha_d, scale, cub);
 	cub->cha->cu = load_character_sprites(cub->cmap->cha_u, scale, cub);
-	if (i == 0)
-		ft_printf("OK!\n");
-	i++;
+}
+
+void	load_characters(t_cub *cub)
+{
+	ft_printf("Loading character.. ");
+	load_character(cub->player.size / 1.05, cub);
+	cub->cha2 = cub->cha;
+	cub->cha = 0;
+	load_character(cub->player.size, cub);
+	cub->cha1 = cub->cha;
+	ft_printf("OK!\n");
 }
 
 void	cha_hook(t_cub *cub)

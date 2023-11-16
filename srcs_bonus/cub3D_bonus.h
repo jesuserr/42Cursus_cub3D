@@ -6,7 +6,7 @@
 /*   By: cescanue <cescanue@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 19:32:37 by cescanue          #+#    #+#             */
-/*   Updated: 2023/11/15 09:24:00 by cescanue         ###   ########.fr       */
+/*   Updated: 2023/11/16 12:49:12 by cescanue         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -208,6 +208,8 @@ typedef struct s_cub
 	t_map		*cmap;
 	t_txt		*textures[7];
 	t_character	*cha;
+	t_character	*cha1;
+	t_character	*cha2;
 	t_ray_cast	horz;
 	t_ray_cast	vert;
 }	t_cub;
@@ -222,7 +224,7 @@ int		close_window(t_cub *cub, int exitcode);
 void	close_cmaps(t_cub *cub);
 void	free_textures(t_cub *cub);
 /*		errors2_bonus.c				*/
-void	free_character(t_cub *cub);
+void	free_characters(t_cub *cub);
 /*		graphics_bonus.c			*/
 void	mlx_put_pixel(t_cub *cub, int x, int y, int color);
 void	draw_vert_line(t_line line, t_cub *cub);
@@ -271,7 +273,7 @@ t_txt	*move_sprite(t_list *lst, void *current);
 /*		sprites2_bonus.c 			*/
 t_txt	*scale_img(t_txt *img, int scale, t_cub *cub);
 /*		character_bonus.c			*/
-void	load_character(int scale, t_cub *cub);
+void	load_characters(t_cub *cub);
 void	cha_hook(t_cub *cub);
 void	cha_releasekey(t_cub *cub);
 /*		doors_bonus.c				*/

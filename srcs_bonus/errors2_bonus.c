@@ -6,7 +6,7 @@
 /*   By: cescanue <cescanue@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 20:51:22 by cescanue          #+#    #+#             */
-/*   Updated: 2023/11/14 21:28:36 by cescanue         ###   ########.fr       */
+/*   Updated: 2023/11/16 12:50:06 by cescanue         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,4 +66,15 @@ void	free_character(t_cub *cub)
 		free(tmp);
 	}
 	free_character2(cub);
+}
+
+void	free_characters(t_cub *cub)
+{
+	cub->cha = cub->cha1;
+	free_character(cub);
+	cub->cha1 = 0;
+	cub->cha = cub->cha2;
+	free_character(cub);
+	cub->cha1 = 0;
+	cub->cha = 0;
 }

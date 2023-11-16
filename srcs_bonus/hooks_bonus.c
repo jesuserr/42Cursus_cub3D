@@ -6,7 +6,7 @@
 /*   By: cescanue <cescanue@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 19:33:16 by cescanue          #+#    #+#             */
-/*   Updated: 2023/11/14 20:51:37 by cescanue         ###   ########.fr       */
+/*   Updated: 2023/11/16 12:44:43 by cescanue         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,8 +75,7 @@ int	key_pressed_2(int keycode, t_cub *cub)
 		cub->key.shift_pressed = 1;
 		cub->player.speed = INC_OFFSET * 2;
 		cub->player.zoom = PLAYER_ZOOM / 1.1;
-		free_character(cub);
-		load_character(cub->player.size / 1.05, cub);
+		cub->cha = cub->cha2;
 	}
 	return (0);
 }
@@ -100,8 +99,7 @@ int	key_released(int keycode, t_cub *cub)
 		cub->key.shift_pressed = 0;
 		cub->player.speed = INC_OFFSET;
 		cub->player.zoom = PLAYER_ZOOM;
-		free_character(cub);
-		load_character(cub->player.size, cub);
+		cub->cha = cub->cha1;
 	}
 	cha_releasekey(cub);
 	return (0);
