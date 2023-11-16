@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   errors_bonus.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cescanue <cescanue@student.42barcelona.    +#+  +:+       +#+        */
+/*   By: jesuserr <jesuserr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/03 17:45:04 by cescanue          #+#    #+#             */
-/*   Updated: 2023/11/16 13:07:02 by cescanue         ###   ########.fr       */
+/*   Updated: 2023/11/16 19:56:21 by jesuserr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,30 +66,17 @@ int	close_window(t_cub *cub, int exitcode)
 
 void	free_textures(t_cub *cub)
 {
-	if (cub->textures[0])
+	int	i;
+
+	i = 0;
+	while (i <= 4)
 	{
-		mlx_destroy_image(cub->mlx, cub->textures[0]->img.img);
-		free(cub->textures[0]);
-	}
-	if (cub->textures[1])
-	{
-		mlx_destroy_image(cub->mlx, cub->textures[1]->img.img);
-		free(cub->textures[1]);
-	}
-	if (cub->textures[2])
-	{
-		mlx_destroy_image(cub->mlx, cub->textures[2]->img.img);
-		free(cub->textures[2]);
-	}
-	if (cub->textures[3])
-	{
-		mlx_destroy_image(cub->mlx, cub->textures[3]->img.img);
-		free(cub->textures[3]);
-	}
-	if (cub->textures[5])
-	{
-		mlx_destroy_image(cub->mlx, cub->textures[5]->img.img);
-		free(cub->textures[5]);
+		if (cub->textures[i])
+		{
+			mlx_destroy_image(cub->mlx, cub->textures[i]->img.img);
+			free(cub->textures[i]);
+		}
+		i++;
 	}
 }
 

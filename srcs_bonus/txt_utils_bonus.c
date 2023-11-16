@@ -6,7 +6,7 @@
 /*   By: jesuserr <jesuserr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/03 15:48:41 by cescanue          #+#    #+#             */
-/*   Updated: 2023/11/12 20:55:26 by jesuserr         ###   ########.fr       */
+/*   Updated: 2023/11/16 19:36:50 by jesuserr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,9 +48,10 @@ void	load_textures(t_cub *cub)
 		cub->textures[1] = load_txt(cub->cmap->t_no, cub);
 		cub->textures[2] = load_txt(cub->cmap->t_we, cub);
 		cub->textures[3] = load_txt(cub->cmap->t_so, cub);
-		cub->textures[4] = NULL;
-		cub->textures[5] = load_txt(cub->cmap->t_door, cub);
-		cub->textures[6] = cub->textures[5];
+		cub->textures[4] = load_txt(cub->cmap->t_door, cub);
+		cub->textures[5] = cub->textures[4];
+		cub->textures[6] = NULL;
+		cub->textures[7] = NULL;
 	}
 	ft_printf("OK!\n");
 }

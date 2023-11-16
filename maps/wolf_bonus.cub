@@ -8,6 +8,7 @@ CD ./sprites/character/d/
 CL ./sprites/character/l/
 CR ./sprites/character/r/
 
+DO ./textures/128-png/126.png
 
 F 113,113,113
 C 56,56,56

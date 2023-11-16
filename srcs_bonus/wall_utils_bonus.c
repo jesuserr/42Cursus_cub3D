@@ -6,7 +6,7 @@
 /*   By: jesuserr <jesuserr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 08:21:31 by cescanue          #+#    #+#             */
-/*   Updated: 2023/11/14 13:26:27 by jesuserr         ###   ########.fr       */
+/*   Updated: 2023/11/16 19:40:16 by jesuserr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,16 +27,16 @@ void	draw_wall(t_cub *cub, t_ray_cast *vert, t_ray_cast *horz, float ray)
 	line.x1 = ray;
 	index = choose_texture(cub, vert, horz);
 	calc_line_height(&line, cub, cub->textures[index]);
-	if (index == 0 || index == 2 || index == 5)
+	if (index == 0 || index == 2 || index == 4)
 		draw_texture(line, cub, cub->textures[index], vert->ray_y);
-	else if (index == 1 || index == 3 || index == 6)
+	else if (index == 1 || index == 3 || index == 5)
 		draw_texture(line, cub, cub->textures[index], horz->ray_x);
-	else if (index == 7)
+	else if (index == 6)
 	{
 		line.color = DEF_DOOR;
 		draw_vert_line(line, cub);
 	}
-	else
+	else if (index == 7)
 		draw_vert_line(line, cub);
 }
 
@@ -50,19 +50,19 @@ int	choose_texture(t_cub *cub, t_ray_cast *vert, t_ray_cast *horz)
 	{
 		if (vert->door_hit == 0 && cub->textures[0])
 			return (0);
-		if (vert->door_hit == 1 && cub->textures[5])
-			return (5);
-		if (vert->door_hit == 1 && !cub->textures[5])
-			return (7);
+		if (vert->door_hit == 1 && cub->textures[4])
+			return (4);
+		if (vert->door_hit == 1 && !cub->textures[4])
+			return (6);
 	}
 	else if (vert->ray_angle > 0 && vert->ray_angle < PI && v_vs_h >= 0)
 	{
 		if (horz->door_hit == 0 && cub->textures[1])
 			return (1);
-		if (horz->door_hit == 1 && cub->textures[6])
+		if (horz->door_hit == 1 && cub->textures[5])
+			return (5);
+		if (horz->door_hit == 1 && !cub->textures[5])
 			return (6);
-		if (horz->door_hit == 1 && !cub->textures[6])
-			return (7);
 	}
 	return (choose_text_2(cub, vert, horz, v_vs_h));
 }
@@ -74,22 +74,22 @@ int	choose_text_2(t_cub *cub, t_ray_cast *vert, t_ray_cast *horz, float v_vs_h)
 	{
 		if (vert->door_hit == 0 && cub->textures[2])
 			return (2);
-		if (vert->door_hit == 1 && cub->textures[5])
-			return (5);
-		if (vert->door_hit == 1 && !cub->textures[5])
-			return (7);
+		if (vert->door_hit == 1 && cub->textures[4])
+			return (4);
+		if (vert->door_hit == 1 && !cub->textures[4])
+			return (6);
 	}
 	else if (vert->ray_angle > (PI) && vert->ray_angle < (2 * PI) && \
 	v_vs_h >= 0)
 	{
 		if (horz->door_hit == 0 && cub->textures[3])
 			return (3);
-		if (horz->door_hit == 1 && cub->textures[6])
+		if (horz->door_hit == 1 && cub->textures[5])
+			return (5);
+		if (horz->door_hit == 1 && !cub->textures[5])
 			return (6);
-		if (horz->door_hit == 1 && !cub->textures[6])
-			return (7);
 	}
-	return (4);
+	return (7);
 }
 
 void	calc_line_height(t_line *line, t_cub *cub, t_txt *txt)

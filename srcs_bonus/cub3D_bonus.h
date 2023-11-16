@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3D_bonus.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cescanue <cescanue@student.42barcelona.    +#+  +:+       +#+        */
+/*   By: jesuserr <jesuserr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 19:32:37 by cescanue          #+#    #+#             */
-/*   Updated: 2023/11/16 12:49:12 by cescanue         ###   ########.fr       */
+/*   Updated: 2023/11/16 19:38:19 by jesuserr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -206,7 +206,7 @@ typedef struct s_cub
 	t_img		img;
 	t_player	player;
 	t_map		*cmap;
-	t_txt		*textures[7];
+	t_txt		*textures[8];
 	t_character	*cha;
 	t_character	*cha1;
 	t_character	*cha2;
