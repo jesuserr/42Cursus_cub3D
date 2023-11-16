@@ -6,7 +6,7 @@
 /*   By: jesuserr <jesuserr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 08:21:31 by cescanue          #+#    #+#             */
-/*   Updated: 2023/11/14 13:05:18 by jesuserr         ###   ########.fr       */
+/*   Updated: 2023/11/16 23:06:49 by jesuserr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ void	calc_line_height(t_line *line, t_cub *cub, t_txt *txt)
 	wall_height = wall_height_and_color(line, cub);
 	eye_angle = degrees_to_radians(cub->player.angle, 0) - cub->horz.ray_angle;
 	wall_height = HEIGHT * WALL_SIZE / (wall_height * cos(eye_angle));
-	wall_height *= VERT_SCALE;
+	wall_height *= cub->aspect_ratio;
 	if (txt)
 	{
 		txt->offset = 0;

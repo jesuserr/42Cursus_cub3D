@@ -6,7 +6,7 @@
 /*   By: jesuserr <jesuserr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 19:32:37 by cescanue          #+#    #+#             */
-/*   Updated: 2023/11/16 19:38:19 by jesuserr         ###   ########.fr       */
+/*   Updated: 2023/11/16 23:14:07 by jesuserr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@
 # define ERROR_TXT			8
 # define ERROR_SPRITE		9
 
-# define WIDTH			1200
+# define WIDTH			1200		// 42_iMac 2560x1440 full screen
 # define HEIGHT			900
 # define DEF_COLOR		0xf26e04	// Wall RGB color
 # define DEF_DOOR		0x77AAFF	// Door tag
@@ -201,6 +201,7 @@ typedef struct s_cub
 	int			y_elem;
 	int			mapconsistency;
 	int			timer;
+	float		aspect_ratio;
 	t_doors		doors[1000];
 	t_point		*map;
 	t_img		img;

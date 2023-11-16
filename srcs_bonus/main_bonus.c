@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main_bonus.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cescanue <cescanue@student.42barcelona.    +#+  +:+       +#+        */
+/*   By: jesuserr <jesuserr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/03 17:44:36 by cescanue          #+#    #+#             */
-/*   Updated: 2023/11/16 13:07:10 by cescanue         ###   ########.fr       */
+/*   Updated: 2023/11/16 23:03:12 by jesuserr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@ void	init_struct(t_cub *cub)
 	cub->key.map_x_offset = (WIDTH - cub->x_elem * cub->key.map_scale) / 2;
 	cub->player.size = HEIGHT / PLAYER_SIZE / 7;
 	cub->player.zoom = PLAYER_ZOOM;
+	cub->aspect_ratio = ((float)WIDTH / (float)HEIGHT) * 0.75 * VERT_SCALE;
 	calc_player_vector(cub);
 	init_doors(cub);
 }

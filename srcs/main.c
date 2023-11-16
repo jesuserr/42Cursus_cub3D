@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cescanue <cescanue@student.42barcelona.    +#+  +:+       +#+        */
+/*   By: jesuserr <jesuserr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/03 17:44:36 by cescanue          #+#    #+#             */
-/*   Updated: 2023/11/12 20:35:42 by cescanue         ###   ########.fr       */
+/*   Updated: 2023/11/16 23:06:29 by jesuserr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ void	init_struct(t_cub *cub)
 {
 	ft_memset(&cub->key, 0, sizeof(t_keys));
 	cub->player.speed = INC_OFFSET;
+	cub->aspect_ratio = ((float)WIDTH / (float)HEIGHT) * 0.75 * VERT_SCALE;
 	calc_player_vector(cub);
 }
 

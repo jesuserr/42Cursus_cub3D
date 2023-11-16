@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3D.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cescanue <cescanue@student.42barcelona.    +#+  +:+       +#+        */
+/*   By: jesuserr <jesuserr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 19:32:37 by cescanue          #+#    #+#             */
-/*   Updated: 2023/11/14 21:52:07 by cescanue         ###   ########.fr       */
+/*   Updated: 2023/11/16 23:18:40 by jesuserr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@
 # define ERROR_MAP_F		7
 # define ERROR_TXT			8
 
-# define WIDTH			1200
+# define WIDTH			1200		// 42_iMac 2560x1440 full screen
 # define HEIGHT			900
 # define DEF_COLOR		0xf26e04	// Wall RGB color
 # define PI				3.141592654
@@ -171,6 +171,7 @@ typedef struct s_cub
 	int			y_elem;
 	int			mapconsistency;
 	int			timer;
+	float		aspect_ratio;
 	t_point		*map;
 	t_img		img;
 	t_player	player;
