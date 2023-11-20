@@ -6,7 +6,7 @@
 /*   By: jesuserr <jesuserr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 19:33:16 by cescanue          #+#    #+#             */
-/*   Updated: 2023/11/20 10:41:55 by jesuserr         ###   ########.fr       */
+/*   Updated: 2023/11/20 20:06:03 by jesuserr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,8 @@ int	key_pressed(int keycode, t_cub *cub)
 		reset_player(cub);
 	else if (keycode == BAR_KEY)
 		detect_door(cub);
+	else if (keycode == I_KEY)
+		cub->key.info_on_screen = !cub->key.info_on_screen;
 	return (key_pressed_2(keycode, cub));
 }
 

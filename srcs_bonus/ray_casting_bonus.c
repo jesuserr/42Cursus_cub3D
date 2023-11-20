@@ -6,7 +6,7 @@
 /*   By: jesuserr <jesuserr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 21:51:50 by cescanue          #+#    #+#             */
-/*   Updated: 2023/11/13 22:06:11 by jesuserr         ###   ########.fr       */
+/*   Updated: 2023/11/20 20:28:14 by jesuserr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@ int		ray_casting(t_cub *cub);
 void	check_horizontal_lines(t_ray_cast *horz, t_cub *cub);
 void	check_vertical_lines(t_ray_cast *horz, t_cub *cub);
 void	check_hit_to_wall(t_cub *cub, t_ray_cast *cast);
+void	keys_info_on_screen(t_cub *cub);
 
 int	ray_casting(t_cub *cub)
 {
@@ -38,6 +39,8 @@ int	ray_casting(t_cub *cub)
 	if (cub->key.map_on_screen == 1)
 		on_screen_minimap(cub);
 	mlx_put_image_to_window(cub->mlx, cub->mlx_win, cub->img.img, 0, 0);
+	if (cub->key.info_on_screen == 1 && WIDTH >= 400 && HEIGHT >= 400)
+		keys_info_on_screen(cub);
 	cha_hook((cub));
 	key_actions(cub);
 	scan_doors(cub);
@@ -129,4 +132,19 @@ void	check_hit_to_wall(t_cub *cub, t_ray_cast *cast)
 			cast->depth_of_field++;
 		}
 	}
+}
+
+void	keys_info_on_screen(t_cub *cub)
+{
+	mlx_string_put(cub->mlx, cub->mlx_win, 10, 10, DEF_COLOR, "Look:");
+	mlx_string_put(cub->mlx, cub->mlx_win, 75, 10, WHITE, \
+	"Left/Right Arrow Keys or Mouse");
+	mlx_string_put(cub->mlx, cub->mlx_win, 10, 30, DEF_COLOR, "Move:");
+	mlx_string_put(cub->mlx, cub->mlx_win, 75, 30, WHITE, "W/A/S/D Keys");
+	mlx_string_put(cub->mlx, cub->mlx_win, 10, 50, DEF_COLOR, "Map :");
+	mlx_string_put(cub->mlx, cub->mlx_win, 75, 50, WHITE, "TAB Key");
+	mlx_string_put(cub->mlx, cub->mlx_win, 10, 70, DEF_COLOR, "Door:");
+	mlx_string_put(cub->mlx, cub->mlx_win, 75, 70, WHITE, "Space Bar");
+	mlx_string_put(cub->mlx, cub->mlx_win, 10, 90, DEF_COLOR, "Exit:");
+	mlx_string_put(cub->mlx, cub->mlx_win, 75, 90, WHITE, "ESC Key");
 }

@@ -6,7 +6,7 @@
 /*   By: jesuserr <jesuserr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 19:32:37 by cescanue          #+#    #+#             */
-/*   Updated: 2023/11/20 10:34:53 by jesuserr         ###   ########.fr       */
+/*   Updated: 2023/11/20 20:30:05 by jesuserr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,6 +78,7 @@ typedef struct s_keys
 	int		right_pressed;
 	int		shift_pressed;
 	int		map_on_screen;
+	int		info_on_screen;
 	int		map_scale;
 	int		map_x_offset;
 }	t_keys;

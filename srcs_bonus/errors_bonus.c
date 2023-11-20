@@ -6,7 +6,7 @@
 /*   By: jesuserr <jesuserr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/03 17:45:04 by cescanue          #+#    #+#             */
-/*   Updated: 2023/11/16 19:56:21 by jesuserr         ###   ########.fr       */
+/*   Updated: 2023/11/20 19:57:30 by jesuserr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,8 +60,6 @@ int	close_window(t_cub *cub, int exitcode)
 		free(cub->mlx);
 	}
 	exit (exitcode);
-	ft_memset(cub, 0, sizeof(t_cub));
-	return (exitcode);
 }
 
 void	free_textures(t_cub *cub)
