@@ -6,7 +6,7 @@
 /*   By: jesuserr <jesuserr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 21:51:50 by cescanue          #+#    #+#             */
-/*   Updated: 2023/11/20 20:28:14 by jesuserr         ###   ########.fr       */
+/*   Updated: 2023/11/20 20:43:56 by jesuserr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -141,10 +141,12 @@ void	keys_info_on_screen(t_cub *cub)
 	"Left/Right Arrow Keys or Mouse");
 	mlx_string_put(cub->mlx, cub->mlx_win, 10, 30, DEF_COLOR, "Move:");
 	mlx_string_put(cub->mlx, cub->mlx_win, 75, 30, WHITE, "W/A/S/D Keys");
-	mlx_string_put(cub->mlx, cub->mlx_win, 10, 50, DEF_COLOR, "Map :");
-	mlx_string_put(cub->mlx, cub->mlx_win, 75, 50, WHITE, "TAB Key");
+	mlx_string_put(cub->mlx, cub->mlx_win, 10, 50, DEF_COLOR, "Run:");
+	mlx_string_put(cub->mlx, cub->mlx_win, 75, 50, WHITE, "L-Shift Key");
 	mlx_string_put(cub->mlx, cub->mlx_win, 10, 70, DEF_COLOR, "Door:");
 	mlx_string_put(cub->mlx, cub->mlx_win, 75, 70, WHITE, "Space Bar");
-	mlx_string_put(cub->mlx, cub->mlx_win, 10, 90, DEF_COLOR, "Exit:");
-	mlx_string_put(cub->mlx, cub->mlx_win, 75, 90, WHITE, "ESC Key");
+	mlx_string_put(cub->mlx, cub->mlx_win, 10, 90, DEF_COLOR, "Map :");
+	mlx_string_put(cub->mlx, cub->mlx_win, 75, 90, WHITE, "TAB Key");
+	mlx_string_put(cub->mlx, cub->mlx_win, 10, 110, DEF_COLOR, "Exit:");
+	mlx_string_put(cub->mlx, cub->mlx_win, 75, 110, WHITE, "ESC Key");
 }
