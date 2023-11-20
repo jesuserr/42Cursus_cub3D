@@ -6,7 +6,7 @@
 /*   By: jesuserr <jesuserr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/03 17:44:36 by cescanue          #+#    #+#             */
-/*   Updated: 2023/11/20 19:39:26 by jesuserr         ###   ########.fr       */
+/*   Updated: 2023/11/20 20:56:38 by jesuserr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,14 @@ void	init_struct(t_cub *cub)
 	calc_player_vector(cub);
 }
 
+void	init_hooks(t_cub *cub)
+{
+	mlx_hook(cub->mlx_win, 17, 0, close_window, cub);
+	mlx_hook(cub->mlx_win, 2, 0, key_pressed, cub);
+	mlx_loop_hook(cub->mlx, ray_casting, cub);
+	mlx_hook(cub->mlx_win, 3, 0, key_released, cub);
+}
+
 int	main(int argc, char **argv)
 {
 	t_cub	cub;
@@ -47,10 +55,7 @@ int	main(int argc, char **argv)
 	init_struct(&cub);
 	load_textures(&cub);
 	ray_casting(&cub);
-	mlx_hook(cub.mlx_win, 17, 0, close_window, &cub);
-	mlx_hook(cub.mlx_win, 2, 0, key_pressed, &cub);
-	mlx_loop_hook(cub.mlx, ray_casting, &cub);
-	mlx_hook(cub.mlx_win, 3, 0, key_released, &cub);
+	init_hooks(&cub);
 	mlx_loop(cub.mlx);
 	return (EXIT_SUCCESS);
 }

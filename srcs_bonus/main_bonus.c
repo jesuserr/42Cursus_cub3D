@@ -6,7 +6,7 @@
 /*   By: jesuserr <jesuserr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/03 17:44:36 by cescanue          #+#    #+#             */
-/*   Updated: 2023/11/20 19:55:40 by jesuserr         ###   ########.fr       */
+/*   Updated: 2023/11/20 20:54:40 by jesuserr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,16 @@ void	init_struct(t_cub *cub)
 	init_doors(cub);
 }
 
+void	init_hooks(t_cub *cub)
+{
+	mlx_hook(cub->mlx_win, 17, 0, close_window, cub);
+	mlx_hook(cub->mlx_win, 2, 0, key_pressed, cub);
+	mlx_loop_hook(cub->mlx, ray_casting, cub);
+	mlx_hook(cub->mlx_win, 3, 0, key_released, cub);
+	mlx_mouse_hide();
+	mlx_hook(cub->mlx_win, 6, 0, mouse_move, cub);
+}
+
 int	main(int argc, char **argv)
 {
 	t_cub	cub;
@@ -55,12 +65,7 @@ int	main(int argc, char **argv)
 	load_textures(&cub);
 	load_characters(&cub);
 	ray_casting(&cub);
-	mlx_hook(cub.mlx_win, 17, 0, close_window, &cub);
-	mlx_hook(cub.mlx_win, 2, 0, key_pressed, &cub);
-	mlx_loop_hook(cub.mlx, ray_casting, &cub);
-	mlx_hook(cub.mlx_win, 3, 0, key_released, &cub);
-	mlx_mouse_hide();
-	mlx_hook(cub.mlx_win, 6, 0, mouse_move, &cub);
+	init_hooks(&cub);
 	mlx_loop(cub.mlx);
 	return (EXIT_SUCCESS);
 }
