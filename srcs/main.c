@@ -6,7 +6,7 @@
 /*   By: jesuserr <jesuserr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/03 17:44:36 by cescanue          #+#    #+#             */
-/*   Updated: 2023/11/16 23:06:29 by jesuserr         ###   ########.fr       */
+/*   Updated: 2023/11/20 19:39:26 by jesuserr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,14 +46,11 @@ int	main(int argc, char **argv)
 	init_win(&cub, argv[1]);
 	init_struct(&cub);
 	load_textures(&cub);
-	if (cub.map)
-	{
-		ray_casting(&cub);
-		mlx_hook(cub.mlx_win, 17, 0, close_window, &cub);
-		mlx_hook(cub.mlx_win, 2, 0, key_pressed, &cub);
-		mlx_loop_hook(cub.mlx, ray_casting, &cub);
-		mlx_hook(cub.mlx_win, 3, 0, key_released, &cub);
-		mlx_loop(cub.mlx);
-	}
+	ray_casting(&cub);
+	mlx_hook(cub.mlx_win, 17, 0, close_window, &cub);
+	mlx_hook(cub.mlx_win, 2, 0, key_pressed, &cub);
+	mlx_loop_hook(cub.mlx, ray_casting, &cub);
+	mlx_hook(cub.mlx_win, 3, 0, key_released, &cub);
+	mlx_loop(cub.mlx);
 	return (EXIT_SUCCESS);
 }

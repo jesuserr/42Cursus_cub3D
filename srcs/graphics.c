@@ -6,7 +6,7 @@
 /*   By: jesuserr <jesuserr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/06 16:03:40 by jesuserr          #+#    #+#             */
-/*   Updated: 2023/11/14 09:06:40 by jesuserr         ###   ########.fr       */
+/*   Updated: 2023/11/20 19:45:53 by jesuserr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 void	mlx_put_pixel(t_cub *cub, int x, int y, int color);
 void	draw_vert_line(t_line line, t_cub *cub);
 void	draw_floor_and_ceiling(t_cub *cub);
+void	keys_info_on_screen(t_cub *cub);
 
 void	mlx_put_pixel(t_cub *cub, int x, int y, int color)
 {
@@ -59,4 +60,15 @@ void	draw_floor_and_ceiling(t_cub *cub)
 		dst = dst + cub->img.bpp / 8;
 		i++;
 	}
+}
+
+void	keys_info_on_screen(t_cub *cub)
+{
+	mlx_string_put(cub->mlx, cub->mlx_win, 10, 10, DEF_COLOR, "Look:");
+	mlx_string_put(cub->mlx, cub->mlx_win, 75, 10, WHITE, \
+	"Left/Right Arrow Keys");
+	mlx_string_put(cub->mlx, cub->mlx_win, 10, 30, DEF_COLOR, "Move:");
+	mlx_string_put(cub->mlx, cub->mlx_win, 75, 30, WHITE, "W/A/S/D Keys");
+	mlx_string_put(cub->mlx, cub->mlx_win, 10, 50, DEF_COLOR, "Exit:");
+	mlx_string_put(cub->mlx, cub->mlx_win, 75, 50, WHITE, "ESC Key");
 }

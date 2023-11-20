@@ -6,7 +6,7 @@
 /*   By: jesuserr <jesuserr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 19:33:16 by cescanue          #+#    #+#             */
-/*   Updated: 2023/11/13 22:54:39 by jesuserr         ###   ########.fr       */
+/*   Updated: 2023/11/20 19:41:23 by jesuserr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,8 @@ int	key_pressed(int keycode, t_cub *cub)
 		cub->key.shift_pressed = 1;
 		cub->player.speed = INC_OFFSET * 2;
 	}
+	else if (keycode == I_KEY)
+		cub->key.info_on_screen = !cub->key.info_on_screen;
 	return (0);
 }
 

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ray_casting.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cescanue <cescanue@student.42barcelona.    +#+  +:+       +#+        */
+/*   By: jesuserr <jesuserr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 21:51:50 by cescanue          #+#    #+#             */
-/*   Updated: 2023/11/12 20:36:25 by cescanue         ###   ########.fr       */
+/*   Updated: 2023/11/20 19:45:53 by jesuserr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,8 @@ int	ray_casting(t_cub *cub)
 		casted_rays++;
 	}
 	mlx_put_image_to_window(cub->mlx, cub->mlx_win, cub->img.img, 0, 0);
+	if (cub->key.info_on_screen == 1 && WIDTH > 300 && HEIGHT > 300)
+		keys_info_on_screen(cub);
 	key_actions(cub);
 	return (0);
 }

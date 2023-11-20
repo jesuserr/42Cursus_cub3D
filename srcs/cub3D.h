@@ -6,7 +6,7 @@
 /*   By: jesuserr <jesuserr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 19:32:37 by cescanue          #+#    #+#             */
-/*   Updated: 2023/11/16 23:18:40 by jesuserr         ###   ########.fr       */
+/*   Updated: 2023/11/20 19:45:53 by jesuserr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@
 # define WIDTH			1200		// 42_iMac 2560x1440 full screen
 # define HEIGHT			900
 # define DEF_COLOR		0xf26e04	// Wall RGB color
+# define WHITE			0xFFFFFF
 # define PI				3.141592654
 # define INC_OFFSET		4			// Player movement pixels,wall size multiple
 # define WALL_SIZE		64			// Must be power of 2
@@ -70,7 +71,7 @@ typedef struct s_keys
 	int		left_pressed;
 	int		right_pressed;
 	int		shift_pressed;
-	int		map_on_screen;
+	int		info_on_screen;
 	int		map_scale;
 	int		map_x_offset;
 }	t_keys;
@@ -194,6 +195,7 @@ void	free_textures(t_cub *cub);
 void	mlx_put_pixel(t_cub *cub, int x, int y, int color);
 void	draw_vert_line(t_line line, t_cub *cub);
 void	draw_floor_and_ceiling(t_cub *cub);
+void	keys_info_on_screen(t_cub *cub);
 /*		hooks.c				*/
 int		key_pressed(int keycode, t_cub *cub);
 int		key_released(int keycode, t_cub *cub);
