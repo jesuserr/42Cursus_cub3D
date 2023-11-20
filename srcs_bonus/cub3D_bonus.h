@@ -6,7 +6,7 @@
 /*   By: jesuserr <jesuserr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 19:32:37 by cescanue          #+#    #+#             */
-/*   Updated: 2023/11/16 23:14:07 by jesuserr         ###   ########.fr       */
+/*   Updated: 2023/11/20 10:34:53 by jesuserr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@
 # define INC_OFFSET		4			// Player movement pixels,wall size multiple
 # define WALL_SIZE		64			// Must be power of 2
 # define ROT_ANGLE_INC	3			// Must be multiple of 360 and 90
-# define ROT_ANG_MOUSE	1			// Must be multiple of 360 and 90
+# define ROT_ANG_MOUSE	2			// Must be multiple of 360 and 90
 # define FOV			64			// Field of view (even number)
 # define VERT_SCALE		1			// Modifies wall height in screen
 # define DIST_TO_WALL	8			// Multiple of WALL_SIZE

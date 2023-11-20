@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   hooks_bonus.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cescanue <cescanue@student.42barcelona.    +#+  +:+       +#+        */
+/*   By: jesuserr <jesuserr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 19:33:16 by cescanue          #+#    #+#             */
-/*   Updated: 2023/11/16 12:44:43 by cescanue         ###   ########.fr       */
+/*   Updated: 2023/11/20 10:41:55 by jesuserr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,8 @@ int	mouse_move(int x, int y, t_cub *cub)
 			calc_player_vector(cub);
 		}
 		cub->key.mouse_x = x;
+		if (x < (WIDTH / 10) || x > (9 * WIDTH / 10))
+			mlx_mouse_move(cub->mlx_win, WIDTH / 2, HEIGHT / 2);
 	}
 	if (!cub->key.mouse_x && x > -1 && x < WIDTH && y > -1 && y < HEIGHT)
 		cub->key.mouse_x = x;
