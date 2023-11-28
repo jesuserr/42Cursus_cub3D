@@ -3,17 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   ft_lstclear.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jesuserr <jesuserr@student.42barcelona.    +#+  +:+       +#+        */
+/*   By: jesuserr <jesuserr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/25 14:38:15 by jesuserr          #+#    #+#             */
-/*   Updated: 2023/01/30 16:35:41 by jesuserr         ###   ########.fr       */
+/*   Updated: 2023/11/28 23:31:10 by jesuserr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
 void	ft_lstclear(t_list **lst, void (*del)(void*))
-{	
+{
 	t_list	*temp;
 
 	if (!lst)

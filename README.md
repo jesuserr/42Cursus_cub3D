@@ -2,7 +2,7 @@
 
 ## To-do
 
-30/10 para revisar
+~~30/10 para revisar~~
 * ~~Tamaño del mapa en funcion del mapa del fichero jesuserr~~
 * ~~Se tiene que hacer free de los punteros donde se almacenan los nobmres de las texturas.~~ 
 * ~~mlx_loop_hook cescanue~~
@@ -13,8 +13,8 @@
 * ~~implementar puertas~~
 * ~~implementar sprites animados~~
 * ~~dividir mandatory / bonus~~
-* limpiar bonus
-* probar mapas / errores / revisar evaluation sheet
+* ~~limpiar bonus~~
+* ~~probar mapas / errores / revisar evaluation sheet~~
 
 ## Notes
 
