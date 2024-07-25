@@ -1,32 +1,12 @@
-# cub3D
+Mandatory part + Bonus -> 125%
 
-## To-do
+cub3D - My first RayCaster with miniLibX  
 
-~~30/10 para revisar~~
-* ~~Tamaño del mapa en funcion del mapa del fichero jesuserr~~
-* ~~Se tiene que hacer free de los punteros donde se almacenan los nobmres de las texturas.~~ 
-* ~~mlx_loop_hook cescanue~~
-* ~~modificar movimiento jugador acuerdo subject jesuserr~~
-* ~~mejorar sistema de colisiones jesuserr~~
-* ~~investigar como usar el ratón y combinar movimientos (avanzar y girar a la vez, por ejemplo)~~
-* ~~implementar texturas de cualquier tamaño (64x64 ok)~~
-* ~~implementar puertas~~
-* ~~implementar sprites animados~~
-* ~~dividir mandatory / bonus~~
-* ~~limpiar bonus~~
-* ~~probar mapas / errores / revisar evaluation sheet~~
+Summary: This project is inspired by the world-famous Wolfenstein 3D game, which
+was the first FPS ever. It will enable you to explore ray-casting. Your goal will be to
+make a dynamic view inside a maze, in which you’ll have to find your way.
 
-## Notes
+For detailed information, refer to the subject of this project  
 
-- Subject y evaluation page dentro de carpeta misc
-
-## Links
-
-- (https://lodev.org/cgtutor/raycasting.html)  
-- (https://www.youtube.com/watch?v=xW8skO7MFYw)  
-- (https://www.youtube.com/watch?v=vYgIKn7iDH8)  
-- (https://www.youtube.com/watch?v=I845O57ZSy4&t=7767s)  
-- (https://www.youtube.com/watch?v=gYRrGTC7GtA)  
-- (https://www.youtube.com/watch?v=NbSee-XM7WA)  
-- (https://www.youtube.com/watch?v=HEb2akswCcw)  
-- (https://www.youtube.com/watch?v=eOCQfxRQ2pY)
+In order to have a successfull compilation the zlib library must be compiled for the specific MacOS system and the binary 'libz.a' be placed inside folder 'minilibx_macos'.  
+Inside 'misc' folder there are some compiled versions of zlib for different MacOS. The one provided is suitable for MacOS 14.1.2 and later.
